@@ -1,0 +1,31 @@
+{{dfp-ad
+  slotClassNames="is-collapsed l-constrained aligncenter leaderboard"
+  slot="/6483581/leaderboard/wnyc_leaderboard"
+  target="leaderboard"
+  mapping=(array (array 0 (array 300 50)) (array 758 (array 728 90)) (array 1203 (array 970 415)))
+  sizes=(array (array 970 415) (array 728 90) (array 300 50))}}
+
+{{#django-page page=model.page}}
+
+  {{#if model.story.commentsEnabled}}
+    {{#ember-wormhole to="comments"}}
+      {{story-comments story=model.story
+                       isStaff=session.data.isStaff
+                       email=user.email
+                       userName=(or session.data.staffName user.preferredUsername)
+                       getComments=model.getComments
+                       browserId=session.data.browserId}}
+    {{/ember-wormhole}}
+  {{/if}}
+
+  {{#ember-wormhole to="related"}}
+    {{related-stories getStories=model.getRelatedStories}}
+  {{/ember-wormhole}}
+  
+  {{#if session.data.isStaff}}
+    {{#ember-wormhole to="edit-story"}}
+        <a href="{{model.adminURL}}/{{model.story.editLink}}" class="btn btn--green" target="_blank" data-test-selector="admin-link">Edit this</a>
+    {{/ember-wormhole}}
+  {{/if}}
+
+{{/django-page}}
