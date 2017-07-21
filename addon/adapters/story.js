@@ -1,6 +1,6 @@
-import ENV from '../config/environment';
+import ENV from 'ember-get-config';
 import DS from 'ember-data';
-import wrapAjax from 'wnyc-web-client/lib/wrap-ajax';
+import wrapAjax from 'nypr-publisher-lib/utils/wrap-ajax';
 // TODO: auth headers for native fetch
 // import fetch from 'fetch';
 import DataAdapterMixin from 'ember-simple-auth/mixins/data-adapter-mixin';
@@ -20,7 +20,7 @@ export default DS.JSONAPIAdapter.extend(DataAdapterMixin, {
         options.dataType = 'jsonp';
         options.jsonpCallback = 'RELATED';
         options.cache = true;
-      } 
+      }
       return wrapAjax(options);
     } else {
       return this._super(...arguments);

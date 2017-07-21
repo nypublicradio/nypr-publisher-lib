@@ -1,6 +1,6 @@
 import Ember from 'ember';
-import config from 'wnyc-web-client/config/environment';
-import { canonicalize } from 'wnyc-web-client/services/script-loader';
+import config from 'ember-get-config';
+import { canonicalize } from 'nypr-publisher-lib/services/script-loader';
 
 const {
   get,

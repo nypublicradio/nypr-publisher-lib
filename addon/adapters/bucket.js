@@ -1,7 +1,7 @@
-import ApplicationAdapter from 'wnyc-web-client/adapters/application';
-import config from 'wnyc-web-client/config/environment';
+import config from 'ember-get-config';
+import DS from 'ember-data';
 
-export default ApplicationAdapter.extend({
+export default DS.JSONAPIAdapter.extend({
   buildURL(modelName, id, snapshot, requestType, query) {
     if (requestType !== 'findRecord') {
       return this._super(...arguments);

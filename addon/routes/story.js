@@ -1,8 +1,8 @@
 import Ember from 'ember';
 import service from 'ember-service/inject';
-import PlayParamMixin from 'wnyc-web-client/mixins/play-param';
-import { beforeTeardown } from 'wnyc-web-client/lib/compat-hooks';
-import config from 'wnyc-web-client/config/environment';
+import PlayParamMixin from 'nypr-publisher-lib/mixins/play-param';
+import { beforeTeardown } from 'nypr-publisher-lib/lib/compat-hooks';
+import config from 'ember-get-config';
 const { get } = Ember;
 const { hash: waitFor } = Ember.RSVP;
 

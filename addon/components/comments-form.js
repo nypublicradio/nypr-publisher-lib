@@ -1,7 +1,7 @@
 import Component from 'ember-component';
 import computed, { reads } from 'ember-computed';
 import Ember from 'ember';
-import config from 'wnyc-web-client/config/environment';
+import config from 'ember-get-config';
 import fetch from 'fetch';
 
 export default Component.extend({

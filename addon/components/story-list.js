@@ -1,6 +1,6 @@
 import Component from 'ember-component';
 import service from 'ember-service/inject';
-import config from 'wnyc-web-client/config/environment';
+import config from 'ember-get-config';
 
 export default Component.extend({
   session: service(),

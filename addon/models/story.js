@@ -1,10 +1,10 @@
 import Ember from 'ember';
 import DS from 'ember-data';
-import ENV from '../config/environment';
+import ENV from 'ember-get-config';
 import get, { getProperties } from 'ember-metal/get';
 import computed from 'ember-computed';
 import parseAnalyticsCode from '../utils/analytics-code-parser';
-import { shareMetadata } from 'wnyc-web-client/helpers/share-metadata';
+import { shareMetadata } from 'nypr-publisher-lib/helpers/share-metadata';
 const { attr, Model } = DS;
 
 export default Model.extend({
@@ -94,7 +94,7 @@ export default Model.extend({
   shareMetadata: computed(function() {
     return shareMetadata(this);
   }),
-  
+
   // so Ember Simple Auth inludes a records ID when it saves
   toJSON() {
     var serializer = this.store.serializerFor('story');
@@ -134,7 +134,7 @@ export default Model.extend({
       return this.getCurrentSegment();
     }
   },
-  
+
   forListenAction(data) {
     return Ember.RSVP.Promise.resolve(Object.assign({
       audio_type: 'on_demand',
@@ -142,7 +142,7 @@ export default Model.extend({
       item_type: this.get('itemType'),
     }, data));
   },
-  
+
   forDfp() {
     return getProperties(this, 'tags', 'show', 'channel', 'series');
   }

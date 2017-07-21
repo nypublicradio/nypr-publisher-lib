@@ -1,5 +1,5 @@
 import Component from 'ember-component';
-import { imageTemplate } from 'wnyc-web-client/helpers/image-template';
+import { imageTemplate } from 'nypr-publisher-lib/helpers/image-template';
 import { htmlSafe } from 'ember-string';
 import get from 'ember-metal/get';
 import set from 'ember-metal/set';

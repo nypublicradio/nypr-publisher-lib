@@ -1,4 +1,4 @@
-import ENV from '../config/environment';
+import ENV from 'ember-get-config';
 import DS from 'ember-data';
 import Ember from 'ember';
 
