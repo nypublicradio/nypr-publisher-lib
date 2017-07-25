@@ -3,7 +3,7 @@ import DS from 'ember-data';
 import ENV from 'ember-get-config';
 import get, { getProperties } from 'ember-metal/get';
 import computed from 'ember-computed';
-import parseAnalyticsCode from '../utils/analytics-code-parser';
+import parseAnalyticsCode from 'nypr-publisher-lib/utils/analytics-code-parser';
 import { shareMetadata } from 'nypr-publisher-lib/helpers/share-metadata';
 const { attr, Model } = DS;
 

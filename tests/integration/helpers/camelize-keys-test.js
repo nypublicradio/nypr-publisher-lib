@@ -1,17 +1,10 @@
+import { camelizeKeys } from 'nypr-publisher-lib/helpers/camelize-keys';
+import { module, test } from 'qunit';
 
-import { moduleForComponent, test } from 'ember-qunit';
-import hbs from 'htmlbars-inline-precompile';
-
-moduleForComponent('camelize-keys', 'helper:camelize-keys', {
-  integration: true
-});
+module('Unit | Helper | camelize-keys');
 
 // Replace this with your real tests.
-test('it renders', function(assert) {
-  this.set('inputValue', '1234');
-
-  this.render(hbs`{{camelize-keys inputValue}}`);
-
-  assert.equal(this.$().text().trim(), '1234');
+test('it camelizes keys', function(assert) {
+  let result = camelizeKeys([{ 'foo-bar': true, foo_baz: true }]);
+  assert.deepEqual(result, {fooBar: true, fooBaz: true});
 });
-

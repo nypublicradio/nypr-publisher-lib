@@ -8,10 +8,9 @@ moduleForComponent('capitalize-word', 'helper:capitalize-word', {
 
 // Replace this with your real tests.
 test('it renders', function(assert) {
-  this.set('inputValue', '1234');
+  this.set('inputValue', 'hello');
 
   this.render(hbs`{{capitalize-word inputValue}}`);
 
-  assert.equal(this.$().text().trim(), '1234');
+  assert.equal(this.$().text().trim(), 'Hello');
 });
-

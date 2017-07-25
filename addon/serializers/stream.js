@@ -1,9 +1,10 @@
 import DS from 'ember-data';
+import Ember from 'ember';
 import { camelizeKeys } from 'nypr-publisher-lib/helpers/camelize-keys';
 
 export default DS.JSONAPISerializer.extend({
   keyForAttribute(key) {
-    return key.underscore();
+    return Ember.String.underscore(key);
   },
 
   normalizeFindRecordResponse(store, modelClass, {stream, whatsOn}, ...rest) {
@@ -24,8 +25,8 @@ export default DS.JSONAPISerializer.extend({
   // TODO: this should be handled by ember
   _apiFormatStream(data) {
     let keys = [
-      'has_playlists', 
-      'image_logo', 
+      'has_playlists',
+      'image_logo',
       'name',
       'slug',
       'schedule_url',
@@ -49,19 +50,19 @@ export default DS.JSONAPISerializer.extend({
     if (!whatsOn) {
       return json;
     }
-    
+
     let {
       attributes,
       relationships
     } = json;
-    
+
     let {
       current_show,
       has_playlists,
       current_playlist_item,
       future
     } = whatsOn;
-    
+
     if (current_show) {
       attributes.current_show = current_show;
       if (current_show.show_title) {
@@ -101,13 +102,13 @@ export default DS.JSONAPISerializer.extend({
       attributes.future = [];
       future.forEach((p, i) => attributes.future[i] = camelizeKeys([ p ]));
     }
-      
+
     json.attributes = attributes;
     json.relationships = relationships;
     return json;
   },
 
-  // given an object with a urls key, return a sorted array with stream mounts 
+  // given an object with a urls key, return a sorted array with stream mounts
   // in this order:
   // mobile platforms: [icecast aac, icecast mp3]
   // non-mobile (desktop) platforms: [icecast mp3, icecast aac]
@@ -124,15 +125,15 @@ export default DS.JSONAPISerializer.extend({
     let {
       /*ipod:hls,*/ // no HLS until CDN servers are working correctly
       aac, rtsp:mp3, mobile_aac, mobile:mobile_mp3 } = urls;
-    
+
     // why is this an array?
     aac = aac[0];
-    
+
     if (browser.mobile || browser.android || browser.ios) {
       // there are mobile-specific mount points for mp3 and aac
       aac = mobile_aac ? mobile_aac : aac;
       mp3 = mobile_mp3 ? mobile_mp3 : mp3;
-      
+
       // only offer aac streams on mobile for now until HLS servers are working
       // also: the mp3 mount point does not have an extension
       return [aac, {url: mp3, mimeType: 'audio/mpeg'}];
