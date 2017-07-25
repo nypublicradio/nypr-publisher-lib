@@ -1,18 +1,14 @@
 import Ember from 'ember';
 import service from 'ember-service/inject';
-import PlayParamMixin from 'nypr-publisher-lib/mixins/play-param';
 import { beforeTeardown } from 'nypr-publisher-lib/lib/compat-hooks';
 import config from 'ember-get-config';
 const { get } = Ember;
 const { hash: waitFor } = Ember.RSVP;
 
-export default Ember.Route.extend(PlayParamMixin, {
-  metrics:      service(),
+export default Ember.Route.extend({
   session:      service(),
-  googleAds:    service(),
-  dataPipeline: service(),
   currentUser:  service(),
-  
+
   titleToken(model) {
     return `${get(model, 'story.title')} - ${get(model, 'story.headers.brand.title')}`;
   },
@@ -34,56 +30,24 @@ export default Ember.Route.extend(PlayParamMixin, {
     });
   },
   afterModel(model, transition) {
-    get(this, 'googleAds').doTargeting(get(model, 'story').forDfp());
+    // get(this, 'googleAds').doTargeting(get(model, 'story').forDfp());
 
     if (get(model, 'story.headerDonateChunk')) {
       transition.send('updateDonateChunk', get(model, 'story.headerDonateChunk'));
     }
   },
-  
+
   setupController(controller) {
     controller.set('isMobile', window.Modernizr.touchevents);
     controller.set('session', get(this, 'session'));
     controller.set('user', get(this, 'currentUser.user'));
     return this._super(...arguments);
   },
-  
+
   actions: {
     willTransition() {
       this._super(...arguments);
       beforeTeardown();
-      return true;
-    },
-    
-    didTransition() {
-      this._super(...arguments);
-      
-      let model = get(this, 'currentModel');
-      let metrics = get(this, 'metrics');
-      let dataPipeline = get(this, 'dataPipeline');
-      let {containers:action, title:label} = get(model, 'story.analytics');
-      let nprVals = get(model, 'story.nprAnalyticsDimensions');
-
-      // google analytics
-      metrics.trackEvent('GoogleAnalytics', {
-        category: 'Viewed Story',
-        action,
-        label,
-      });
-
-      // NPR
-      metrics.trackPage('NprAnalytics', {
-        page: `/story/${get(model, 'story.slug')}`,
-        title: label,
-        nprVals,
-      });
-      
-      // data pipeline
-      dataPipeline.reportItemView({
-        cms_id: get(model, 'story.id'),
-        item_type: get(model, 'story.itemType'),
-      });
-      
       return true;
     }
   }

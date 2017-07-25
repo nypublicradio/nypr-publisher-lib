@@ -1,12 +1,17 @@
 import config from 'ember-get-config';
 import DS from 'ember-data';
+import ENV from 'ember-get-config';
 
 export default DS.JSONAPIAdapter.extend({
+  host: ENV.wnycAPI,
+  namespace: 'api/v3',
   buildURL(modelName, id, snapshot, requestType, query) {
+    let url = this._super(...arguments);
     if (requestType !== 'findRecord') {
-      return this._super(...arguments);
+      return url;
     }
-    let url = `${this.host}/${this.namespace}/${modelName}/${id}/?site=${config.siteSlug}`;
+
+    url += `/?site=${config.siteSlug}`;
     if (query && Object.keys(query).length) {
       let qp = Object.keys(query).map(k => `${k}=${query[k]}`);
       url += qp.join('&');
