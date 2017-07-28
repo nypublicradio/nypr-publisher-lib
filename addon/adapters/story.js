@@ -1,34 +1,33 @@
-import ENV from 'ember-get-config';
 import DS from 'ember-data';
-import wrapAjax from 'nypr-publisher-lib/utils/wrap-ajax';
-// TODO: auth headers for native fetch
-// import fetch from 'fetch';
-import DataAdapterMixin from 'ember-simple-auth/mixins/data-adapter-mixin';
+import { camelizeObj } from 'nypt-publisher-lib/helpers/camelize-object';
 
-export default DS.JSONAPIAdapter.extend(DataAdapterMixin, {
-  authorizer: 'authorizer:nypr',
-  host: ENV.wnycAPI,
-  namespace: 'api/v3',
-  pathForType: () => 'story/',
-  query(store, type, {itemId, limit}) {
-    if (itemId) {
-      let url = `${this.host}/api/v2/related/${itemId}/?limit=${limit}`;
-      let options = this.ajaxOptions(url, 'GET', {});
-      // Django isn't setup to honor XHR requests at the related stories endpoint,
-      // so just use the jQuery JSONp for now
-      if (ENV.environment === 'production') {
-        options.dataType = 'jsonp';
-        options.jsonpCallback = 'RELATED';
-        options.cache = true;
+//dasherized versions of names in model bc they haven't been processsed yet
+const propertiesWithChildren = [
+  'appearances',
+  'chunks',
+  'headers',
+  'image-main',
+  'playlist',
+  'producing-organizations',
+  'segments',
+  'series',
+  'show-producing-orgs',
+  'slideshow'
+];
+
+export default DS.JSONAPISerializer.extend({
+  extractId: (modelClass, {attributes}) => attributes.slug,
+
+  normalizeResponse(store, primaryModelClass, payload, id, requestType) {
+
+    for (var prop of propertiesWithChildren) {
+      //if we have the property, process it
+      if (payload.data.attributes && payload.data.attributes.hasOwnProperty(prop)){
+        payload.data.attributes[prop] = camelizeObj(payload.data.attributes[prop]);
       }
-      return wrapAjax(options);
-    } else {
-      return this._super(...arguments);
     }
+
+    return this._super(store, primaryModelClass, payload, id, requestType);
   },
-  findRecord(store, type, id/*, snapshot*/) {
-    var url = [this.host, 'api/v3', 'story', 'detail', id].join('/') + '/';
-    let options = this.ajaxOptions(url, 'GET', {});
-    return wrapAjax(options);
-  }
+
 });

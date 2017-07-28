@@ -2,9 +2,10 @@ import Component from 'ember-component';
 import computed, { readOnly } from 'ember-computed';
 import service from 'ember-service/inject';
 import get from 'ember-metal/get';
-
+import layout from '../templates/components/stream-playlist';
 
 export default Component.extend({
+  layout,
   store: service(),
   stream: null,
   homepage: computed('stream', function() {

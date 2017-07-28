@@ -6,10 +6,11 @@ export default Route.extend({
   titleToken: 'Listen Live to WNYC, WQXR, Q2, Operavore, NJPR, and the Jonathan Channel',
 
   model() {
-    return this.store.findAll('stream');
+    return this.store.findAll('stream').then(streams => {
+      return {
+        wqxrStreams: streams.filterBy('isWQXR'),
+        wnycStreams: streams.filterBy('isWNYC')
+      };
+    });
   }
-
-  // afterModel() {
-    // this.get('googleAds').doTargeting();
-  // }
 });

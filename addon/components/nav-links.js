@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import config from 'ember-get-config';
 import { canonicalize } from 'nypr-publisher-lib/services/script-loader';
+import layout from '../templates/components/nav-link';
 
 const {
   get,
@@ -12,6 +13,7 @@ const {
 } = Ember;
 
 export default Component.extend({
+  layout,
   tagName: 'nav',
   links: [],
   classNames: ['tabs-header', 'tabs-header--border'],
@@ -21,7 +23,7 @@ export default Component.extend({
     if (config.environment === 'development') {
       // in development, we're usually running a copy of the prod DB which will
       // point to prod
-      // in prod builds on demo or production, these values will point to our 
+      // in prod builds on demo or production, these values will point to our
       // configured wnycURL
       origin = 'http://www.wnyc.org';
     } else {

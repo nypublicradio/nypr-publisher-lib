@@ -3,8 +3,10 @@ import Component from 'ember-component';
 import computed from 'ember-computed';
 import set from 'ember-metal/set';
 import get from 'ember-metal/get';
+import layout from '../templates/components/tabbed-list';
 
 export default  Component.extend({
+  layout,
   metrics: service(),
   tabTitles: [],
   childComponents: [],

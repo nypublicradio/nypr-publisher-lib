@@ -6,6 +6,7 @@ import get, { getProperties } from 'ember-metal/get';
 import set from 'ember-metal/set';
 import { imageTemplate } from 'nypr-publisher-lib/helpers/image-template';
 import { htmlSafe } from 'ember-string';
+import layout from '../templates/components/story-tease';
 
 const STATUSES = {
   LIVE: 'On Air Now',
@@ -14,6 +15,7 @@ const STATUSES = {
 };
 
 export default Component.extend({
+  layout,
   whatsOn:            service(),
   audio:              service(),
 

@@ -3,8 +3,10 @@ import { imageTemplate } from 'nypr-publisher-lib/helpers/image-template';
 import { htmlSafe } from 'ember-string';
 import get from 'ember-metal/get';
 import set from 'ember-metal/set';
+import layout from '../templates/components/x-marquee';
 
 export default Component.extend({
+  layout,
   classNames: ['marquee'],
   init() {
     this._super(...arguments);

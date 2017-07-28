@@ -1,6 +1,5 @@
 import Ember from 'ember';
 import service from 'ember-service/inject';
-import { beforeTeardown } from 'nypr-publisher-lib/lib/compat-hooks';
 import config from 'ember-get-config';
 const { get } = Ember;
 const { hash: waitFor } = Ember.RSVP;
@@ -13,15 +12,13 @@ export default Ember.Route.extend({
     return `${get(model, 'story.title')} - ${get(model, 'story.headers.brand.title')}`;
   },
   title(tokens) {
-    return `${tokens[0]} - WNYC`;
+    return `${tokens[0]} - WQXR`;
   },
-  model({ slug }) {
-    return this.store.findRecord('django-page', `story/${slug}`.replace(/\/*$/, '/')).then(page => {
-      let story = page.get('wnycContent');
-      let comments = this.store.query('comment', { itemTypeId: story.get('itemTypeId'), itemId: story.get('id') });
-      let relatedStories = this.store.query('story', { itemId: story.get('id'), limit: 5});
+  model({ slug }, { queryParams }) {
+    return this.store.findRecord('story', slug, {adapterOptions: {queryParams}}).then(story => {
+      let comments = this.store.query('comment', { itemTypeId: story.get('itemTypeId'), itemId: story.get('cmsPK') });
+      let relatedStories = this.store.query('story', {related: { itemId: story.get('cmsPK'), limit: 5 }});
       return waitFor({
-        page,
         story,
         getComments: () => comments,
         getRelatedStories: () => relatedStories,
@@ -30,7 +27,6 @@ export default Ember.Route.extend({
     });
   },
   afterModel(model, transition) {
-    // get(this, 'googleAds').doTargeting(get(model, 'story').forDfp());
 
     if (get(model, 'story.headerDonateChunk')) {
       transition.send('updateDonateChunk', get(model, 'story.headerDonateChunk'));
@@ -45,10 +41,6 @@ export default Ember.Route.extend({
   },
 
   actions: {
-    willTransition() {
-      this._super(...arguments);
-      beforeTeardown();
-      return true;
-    }
+
   }
 });

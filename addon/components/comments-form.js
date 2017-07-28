@@ -3,8 +3,10 @@ import computed, { reads } from 'ember-computed';
 import Ember from 'ember';
 import config from 'ember-get-config';
 import fetch from 'fetch';
+import layout from '../templates/components/comments-form';
 
 export default Component.extend({
+  layout,
   tagName: 'form',
   classNames: ['form'],
   classNameBindings: ['isSaved:is-fadeout'],

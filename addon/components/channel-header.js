@@ -1,7 +1,10 @@
 import Component from 'ember-component';
 import { readOnly } from 'ember-computed';
+import layout from '../templates/components/channel-header';
 
 export default Component.extend({
+  layout,
+
   classNames:         ['channel-header'],
   elementId:          'channel-header',
   subscribeOptions:   readOnly('model.podcastLinks'),

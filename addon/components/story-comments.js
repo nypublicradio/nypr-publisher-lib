@@ -2,11 +2,13 @@ import Component from 'ember-component';
 import computed from 'ember-computed';
 import service from 'ember-service/inject';
 import config from 'ember-get-config';
+import layout from '../templates/components/story-comments';
 
 export default Component.extend({
+  layout,
   metrics: service(),
   adminURL: `${config.wnycAdminRoot}/admin`,
-  
+
   comments: computed('getComments', {
     get() {
       this.set('isLoading', true);

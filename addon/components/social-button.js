@@ -2,8 +2,10 @@ import Component from 'ember-component';
 import $ from 'jquery';
 import computed, { equal } from 'ember-computed';
 import get from 'ember-metal/get';
+import layout from '../templates/components/social-button';
 
 export default Component.extend({
+  layout,
   tagName: '',
 
   isTwitter: equal('item.service', 'twitter'),

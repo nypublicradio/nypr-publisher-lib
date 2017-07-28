@@ -1,6 +1,8 @@
 import Ember from 'ember';
+import layout from '../templates/components/related-stories';
 
 export default Ember.Component.extend({
+  layout,
   classNames: ['list', 'list--noborder'],
   pathname: document.location.pathname,
 
