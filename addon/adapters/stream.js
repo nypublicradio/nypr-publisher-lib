@@ -1,10 +1,9 @@
 import config from 'ember-get-config';
 import DS from 'ember-data';
 import Ember from 'ember';
-import DataAdapterMixin from 'ember-simple-auth/mixins/data-adapter-mixin';
 const { hash } = Ember.RSVP;
 
-export default DS.JSONAPIAdapter.extend(DataAdapterMixin, {
+export default DS.JSONAPIAdapter.extend({
   authorizer: 'authorizer:nypr',
   host: config.environment === 'development' ? '' : config.wnycAPI, // use proxy to wnyc
   namespace: 'api/v1',
