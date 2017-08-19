@@ -5,7 +5,7 @@ const { hash } = Ember.RSVP;
 
 export default DS.JSONAPIAdapter.extend({
   authorizer: 'authorizer:nypr',
-  host: config.environment === 'development' ? '' : config.wnycAPI, // use proxy to wnyc
+  host: config.wnycAPI,
   namespace: 'api/v1',
   findAll() {
     let streams, whatsOn;
