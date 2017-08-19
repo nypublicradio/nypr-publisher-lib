@@ -46,8 +46,8 @@
     "ember-simple-auth": "^1.4.0",
     "ember-source": "~2.14.0",
     "loader.js": "^4.2.3",
-    "nypr-auth": "git+ssh://git@github.com/nypublicradio/nypr-auth.git",
-    "nypr-ui": "git+ssh://git@github.com/nypublicradio/nypr-ui.git#nypr-audio-services"
+    "nypr-auth": "nypublicradio/nypr-auth",
+    "nypr-ui": "nypublicradio/nypr-ui"
   },
   "engines": {
     "node": "^4.5 || 6.* || >= 7.*"
