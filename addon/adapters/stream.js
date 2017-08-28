@@ -4,17 +4,16 @@ import Ember from 'ember';
 const { hash } = Ember.RSVP;
 
 export default DS.JSONAPIAdapter.extend({
-  authorizer: 'authorizer:nypr',
   host: config.wnycAPI,
   namespace: 'api/v1',
   findAll() {
     let streams, whatsOn;
     let streamUrl = [this.host, this.namespace, 'list/streams'].join('/') + '/';
     let whatsOnUrl = [this.host, this.namespace, 'whats_on'].join('/') + '/';
-    
+
     let options = this.ajaxOptions(streamUrl, 'GET', {});
     streams = Ember.$.get(options);
-    
+
     options = this.ajaxOptions(whatsOnUrl, 'GET', {});
     whatsOn = Ember.$.get(options);
     return hash({streams, whatsOn});
@@ -23,10 +22,10 @@ export default DS.JSONAPIAdapter.extend({
     let stream, whatsOn;
     let streamUrl = [this.host, this.namespace, 'list/streams', id].join('/') + '/';
     let whatsOnUrl = [this.host, this.namespace, 'whats_on', id].join('/') + '/';
-    
+
     let options = this.ajaxOptions(streamUrl, 'GET', {});
     stream = Ember.$.get(options);
-    
+
     options = this.ajaxOptions(whatsOnUrl, 'GET', {});
     whatsOn = Ember.$.get(options);
     return hash({stream, whatsOn});

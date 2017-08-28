@@ -2467,7 +2467,7 @@ ember-click-outside@0.1.9:
   resolved "https://registry.yarnpkg.com/ember-click-outside/-/ember-click-outside-0.1.9.tgz#a8bf22739814ae44785919faa62102cf7d70a123"
   dependencies:
     ember-cli-babel "^6.0.0"
-    ember-cli-htmlbars "^1.1.1"
+    ember-cli-htmlbars "*"
 
 ember-composable-helpers@2.0.1:
   version "2.0.1"
@@ -2773,7 +2773,7 @@ ember-weakmap@^2.0.0:
   dependencies:
     ember-cli-babel "^5.1.6"
 
-ember-wormhole@^0.5.1:
+ember-wormhole@^0.5.1, ember-wormhole@^0.5.2:
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/ember-wormhole/-/ember-wormhole-0.5.2.tgz#cc0ceb7db4f8b8da0fd852edc81d75cb1dcd92f1"
   dependencies:
@@ -4658,6 +4658,14 @@ nypr-auth@nypublicradio/nypr-auth:
   dependencies:
     ember-cli-babel "^5.1.7"
     ember-get-config "^0.2.2"
+
+nypr-django-for-ember@nypublicradio/nypr-django-for-ember:
+  version "0.0.0"
+  resolved "https://codeload.github.com/nypublicradio/nypr-django-for-ember/tar.gz/39fef536e92d0d4efad9abb0c0b77e3fa1547598"
+  dependencies:
+    ember-cli-babel "^6.3.0"
+    ember-cli-htmlbars "^2.0.1"
+    ember-wormhole "^0.5.2"
 
 nypr-ui@nypublicradio/nypr-ui:
   version "0.0.0"

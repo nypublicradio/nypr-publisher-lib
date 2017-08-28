@@ -8,7 +8,6 @@ import wrapAjax from 'nypr-publisher-lib/utils/wrap-ajax';
 const DRAFT_TOKENS = ['content_type_id', 'object_id', 'token', '_']
 
 export default DS.JSONAPIAdapter.extend({
-  authorizer: 'authorizer:nypr',
   host: config.wnycAPI,
   namespace: 'api/v3',
   pathForType: () => 'story',

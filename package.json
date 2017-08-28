@@ -47,7 +47,8 @@
     "ember-source": "~2.14.0",
     "loader.js": "^4.2.3",
     "nypr-auth": "nypublicradio/nypr-auth",
-    "nypr-ui": "nypublicradio/nypr-ui"
+    "nypr-ui": "nypublicradio/nypr-ui",
+    "nypr-django-for-ember": "nypublicradio/nypr-django-for-ember"
   },
   "engines": {
     "node": "^4.5 || 6.* || >= 7.*"
