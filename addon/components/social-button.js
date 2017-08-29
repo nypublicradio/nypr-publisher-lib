@@ -1,3 +1,4 @@
+
 import Component from 'ember-component';
 import $ from 'jquery';
 import computed, { equal } from 'ember-computed';
@@ -7,9 +8,7 @@ import layout from '../templates/components/social-button';
 export default Component.extend({
   layout,
   tagName: '',
-
   isTwitter: equal('item.service', 'twitter'),
-
   iconname: computed('item.service', function() {
     let svc = get(this, 'item.service');
     return svc === 'email' ? 'envelope' : svc;
@@ -20,9 +19,9 @@ export default Component.extend({
 
     switch(svc) {
       case 'facebook':
-        return `http:\/\/facebook.com/${user}`;
+        return `http://facebook.com/${user}`;
       case 'instagram':
-        return `http:\/\/instagram.com/${user}`;
+        return `http://instagram.com/${user}`;
       case 'email':
         return `mailto:${user}`;
       default:

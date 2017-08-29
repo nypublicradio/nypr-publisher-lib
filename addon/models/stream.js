@@ -2,7 +2,7 @@ import Model from 'ember-data/model';
 import attr from 'ember-data/attr';
 import { belongsTo } from 'ember-data/relationships';
 import computed, { readOnly } from 'ember-computed';
-import { shareMetadata } from 'nypr-publisher-lib/helpers/share-metadata';
+import get from 'ember-metal/get';
 
 const WQXR_slugs = ["wqxr","q2","jonathan-channel","wqxr-special","wqxr-special2"];
 // wqxr-special = Operavore,
@@ -36,36 +36,49 @@ export default Model.extend({
   audioBumper:          attr('string'),
 
   isWQXR:               computed('slug', function(){
-    return WQXR_slugs.includes(this.get('slug'));
+    return WQXR_slugs.includes(get(this, 'slug'));
   }),
 
   isWNYC:               computed('slug', function(){
-    return WNYC_slugs.includes(this.get('slug'));
+    return WNYC_slugs.includes(get(this, 'slug'));
   }),
 
   liveWQXR:             computed('isWQXR', 'whatsOn', function(){
-    return this.get('isWQXR') && (this.get('whatsOn') > 0);
+    return get(this, 'isWQXR') && (get(this, 'whatsOn') > 0);
   }),
 
   shareMetadata:        computed('currentShow', 'currentPlaylistItem', function() {
-    return shareMetadata(this);
+    let shareText = '';
+    let shareUrl = '';
+    let analyticsCode = '';
+
+    let entry = get(this, 'currentPlaylistItem.catalogEntry');
+    if (entry) {
+      shareText = `${entry.title} - ${entry.composer.name}`;
+      shareUrl = 'http://www.wnyc.org/streams/' + get(this, 'slug');
+    } else {
+      shareText = get(this, 'currentShow.title');
+      shareUrl = get(this, 'currentShow.url');
+    }
+
+    return ({shareText, shareUrl, analyticsCode});
   }),
 
   currentComposer:      computed('currentPlaylistItem', function() {
-    return this.get('currentPlaylistItem.catalogEntry.composer');
+    return get(this, 'currentPlaylistItem.catalogEntry.composer');
   }),
   currentPiece:         computed('currentPlaylistItem', function() {
-    return this.get('currentPlaylistItem.catalogEntry.title');
+    return get(this, 'currentPlaylistItem.catalogEntry.title');
   }),
 
   forListenAction(data = {}) {
-    return this.get('currentStory').then(s => {
+    return get(this, 'currentStory').then(s => {
       data.current_audio_position = 0; // stream should always report 0
       return Object.assign({
         audio_type: 'livestream',
         cms_id: s && s.get('cmsPK'),
         item_type: s && s.get('itemType'), // episode, article, segment
-        stream_id: this.get('cmsPK'),
+        stream_id: get(this, 'cmsPK'),
       }, data);
     });
   }

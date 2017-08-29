@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import config from 'ember-get-config';
-import { canonicalize } from 'nypr-publisher-lib/services/script-loader';
-import layout from '../templates/components/nav-link';
+import { canonicalize } from 'nypr-django-for-ember/services/script-loader';
+import layout from '../templates/components/nav-links';
 
 const {
   get,

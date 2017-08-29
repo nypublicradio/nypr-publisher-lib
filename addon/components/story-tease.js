@@ -4,9 +4,8 @@ import Component from 'ember-component';
 import computed, { and, equal, readOnly, or } from 'ember-computed';
 import get, { getProperties } from 'ember-metal/get';
 import set from 'ember-metal/set';
-import { imageTemplate } from 'nypr-publisher-lib/helpers/image-template';
+import { imageTemplate } from 'wnyc-web-client/helpers/image-template';
 import { htmlSafe } from 'ember-string';
-import layout from '../templates/components/story-tease';
 
 const STATUSES = {
   LIVE: 'On Air Now',
@@ -15,9 +14,7 @@ const STATUSES = {
 };
 
 export default Component.extend({
-  layout,
   whatsOn:            service(),
-  audio:              service(),
 
   status:             null,
   streamSlug:         null,
@@ -34,12 +31,6 @@ export default Component.extend({
 
   itemId: computed('isLive', 'streamSlug', 'item.id', function() {
     return get(this, 'isLive') ? get(this, 'streamSlug') : get(this, 'item.id');
-  }),
-  isCurrentAudio: computed('audio.currentId', 'itemId', function() {
-    return get(this, 'audio.currentId') === get(this, 'itemId');
-  }),
-  listenState: computed('isCurrentAudio', 'audio.playState', function() {
-    return get(this, 'isCurrentAudio') ? get(this, 'audio.playState') : 'is-paused';
   }),
   isListenableEventually: computed('status', function() {
     const status = get(this, 'status');
@@ -92,21 +83,9 @@ export default Component.extend({
     this._checkWhatsOn();
   },
 
-  actions: {
-    listen: function listen(model, streamSlug) {
-      let audio = get(this, 'audio');
-      let currentAudio = get(this, 'audio.currentId');
-      if (currentAudio === streamSlug && get(this, 'audio.isPlaying')) {
-        audio.pause();
-      } else {
-        audio.playStream(streamSlug);
-      }
-    }
-  },
-
   _checkWhatsOn() {
     const story = get(this, 'item');
-    const pk = get(story, 'id');
+    const pk = get(story, 'cmsPK');
     const isLatest = get(this, 'item.isLatest');
     const whatsOn = get(this, 'whatsOn');
 
@@ -131,7 +110,7 @@ export default Component.extend({
   },
 
   _isUpcoming() {
-    const datetime = get(this, 'item.dateLineDatetime');
+    const datetime = get(this, 'item.newsdate');
     const itemdate = new Date(datetime);
     const itemdateEpoch = itemdate.getTime();
     const now = new Date();

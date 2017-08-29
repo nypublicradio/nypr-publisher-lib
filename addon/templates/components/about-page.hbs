@@ -13,7 +13,7 @@
                 {{person.name}}
             </h1>
         </a>
-        
+
         <p class="nudge-down">{{person.jobTitle}}</p>
         <div class="btn-group">
           {{#each person.social as |social|}}
@@ -23,19 +23,19 @@
           {{/each}}
         </div>
       </div>
-      <!-- .flag-body -->  
-        
-        
+      <!-- .flag-body -->
+
+
       {{#if person.image}}
       <div class="flag-image no-decor">
-        <img class="middle-narrow-up" alt="{{person.name}}" 
-            src="{{image-template person.image.template 100 100 person.image.crop}}" 
+        <img class="middle-narrow-up" alt="{{person.name}}"
+            src="{{image-template person.image.template 100 100 person.image.crop}}"
             srcset="{{image-template person.image.template 200 200 person.image.crop}} 2x,
                 {{image-template person.image.template 300 300 person.image.crop}} 3x"
             width="100" height="100">
       </div>
       {{/if}}
-      
+
     </div>
     <!-- .flag -->
   </article>

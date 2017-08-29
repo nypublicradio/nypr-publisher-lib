@@ -1,7 +1,7 @@
 import DS from 'ember-data';
 import computed from 'ember-computed';
 import get from 'ember-metal/get';
-import { totalPages } from '../utils/math-util';
+import { totalPages } from 'nypr-publisher-lib/utils/math-util';
 
 export default DS.Model.extend({
   teaseList: DS.hasMany('story', {async: false}),

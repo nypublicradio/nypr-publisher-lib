@@ -4,7 +4,7 @@
 
 {{#holygrail-layout tagName='li' class='streamitem' as |g|}}
   {{#g.left}}
-    <div class="streamitem-imagewrap"><img class="streamitem-image" src={{stream.imageLogo}}></div>
+    <a class="streamitem-imagelink" href="{{stream.scheduleUrl}}"><img class="streamitem-image" src={{stream.imageLogo}}></a>
   {{/g.left}}
 
   {{#g.center class='streamitem-info'}}
@@ -33,6 +33,7 @@
   {{#g.right}}
     {{#if media.isMediumAndUp}}
       {{#listen-button
+        class='listen-button--stream'
         type='gray-minion'
         itemPK=stream.slug
         itemTitle=stream.name}}
@@ -40,6 +41,7 @@
       {{/listen-button}}
     {{else}}
       {{listen-button
+        class='listen-button--stream'
         type='blue-hollow'
         itemPK=stream.slug
         itemTitle=stream.name}}

@@ -7,7 +7,6 @@ import layout from '../templates/components/tabbed-list';
 
 export default  Component.extend({
   layout,
-  metrics: service(),
   tabTitles: [],
   childComponents: [],
   defaultTab: 0,
@@ -30,12 +29,16 @@ export default  Component.extend({
         "My Listening History": "History"
       };
       let tabLabel = titleMap[tabTitle] || tabTitle;
-      get(this, 'metrics').trackEvent('GoogleAnalytics', {
-        category: 'Persistent Player',
-        action: 'Click',
-        label: `Switch to ${tabLabel} Tab`
-      });
+      if (get(this, 'onChooseTab')) {
+          this.send('onChooseTab', tabLabel);
+
+          // get(this, 'metrics').trackEvent('GoogleAnalytics', {
+          //   category: 'Persistent Player',
+          //   action: 'Click',
+          //   label: `Switch to ${tabLabel} Tab`
+          // });
+
+      }
     }
   }
-
 });

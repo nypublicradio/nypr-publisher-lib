@@ -1,18 +1,17 @@
 import Component from 'ember-component';
 import computed from 'ember-computed';
-import service from 'ember-service/inject';
 import config from 'ember-get-config';
 import layout from '../templates/components/story-comments';
+import get from 'ember-metal/get';
 
 export default Component.extend({
   layout,
-  metrics: service(),
   adminURL: `${config.wnycAdminRoot}/admin`,
 
   comments: computed('getComments', {
     get() {
       this.set('isLoading', true);
-      this.get('getComments')().then(comments => {
+      get(this, 'getComments')().then(comments => {
         this.set('comments', comments);
       }).finally(() => this.set('isLoading', false));
     },
@@ -20,22 +19,22 @@ export default Component.extend({
   }),
 
   didInsertElement() {
-    if (this.get('isShowingComments')) {
-      this.get('element').scrollIntoView();
+    if (get(this, 'isShowingComments')) {
+      get(this, 'element').scrollIntoView();
     }
   },
 
   commentsCount: computed('comments.[]', 'story', function() {
-    if (this.get('comments')) {
-      return this.get('comments.length');
+    if (get(this, 'comments')) {
+      return get(this, 'comments.length');
     } else {
-      return this.get('story.commentsCount');
+      return get(this, 'story.commentsCount');
     }
   }),
 
   isShowingForm: computed({
     get() {
-      return this.get('isShowingComments');
+      return get(this, 'isShowingComments');
     },
     set(k,v) { return v; }
   }),
@@ -50,15 +49,8 @@ export default Component.extend({
 
   actions: {
     getComments() {
-      if (!this.get('isShowingComments')) {
-        let metrics = this.get('metrics');
-        let {containers:action, title:label} = this.get('story.analytics');
-
-        metrics.trackEvent('GoogleAnalytics', {
-          category: 'Displayed Comments',
-          action,
-          label
-        });
+      if (!get(this, 'isShowingComments') && !!get(this, 'onShowComments')) {
+        this.send('onShowComments', get(this, 'story'))
       }
       this.set('isShowingComments', true);
       this.set('isShowingForm', true);

@@ -1,4 +1,3 @@
-import config from 'ember-get-config';
 import DS from 'ember-data';
 import ENV from 'ember-get-config';
 
@@ -11,7 +10,7 @@ export default DS.JSONAPIAdapter.extend({
       return url;
     }
 
-    url += `/?site=${config.siteSlug}`;
+    url += `/?site=${ENV.siteSlug}`;
     if (query && Object.keys(query).length) {
       let qp = Object.keys(query).map(k => `${k}=${query[k]}`);
       url += qp.join('&');

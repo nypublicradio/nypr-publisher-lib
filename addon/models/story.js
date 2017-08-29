@@ -3,7 +3,6 @@ import DS from 'ember-data';
 import ENV from 'ember-get-config';
 import get, { getProperties } from 'ember-metal/get';
 import computed from 'ember-computed';
-import { shareMetadata } from 'nypr-publisher-lib/helpers/share-metadata';
 import { producingOrgs } from 'nypr-publisher-lib/helpers/producing-orgs';
 const { attr, Model } = DS;
 
@@ -187,7 +186,13 @@ export default Model.extend({
     }
   }),
   shareMetadata: computed(function() {
-    return shareMetadata(this);
+    let title = get(this, 'twitterHeadline') || get(this, 'title');
+    let parentTitle = get(this, 'headers.brand.title');
+    let shareText = [parentTitle, title].filter(t => t).join(' - ');
+    let shareUrl = get(this, 'url');
+    let analyticsCode = get(this, 'analyticsCode') || '';
+
+    return ({shareText, shareUrl, analyticsCode});
   }),
 
   // so Ember Simple Auth inludes a records ID when it saves

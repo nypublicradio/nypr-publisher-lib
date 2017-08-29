@@ -1,10 +1,10 @@
-import config from 'ember-get-config';
+import ENV from 'ember-get-config';
 import DS from 'ember-data';
 import Ember from 'ember';
 const { hash } = Ember.RSVP;
 
 export default DS.JSONAPIAdapter.extend({
-  host: config.wnycAPI,
+  host: ENV.wnycAPI,
   namespace: 'api/v1',
   findAll() {
     let streams, whatsOn;
