@@ -1,16 +1,9 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import { startMirage } from 'dummy/initializers/ember-cli-mirage';
 import { faker } from 'ember-cli-mirage';
 
 moduleForComponent('story-tease', 'Integration | Component | story tease', {
-  integration: true,
-  beforeEach() {
-    startMirage(this.container);
-  },
-  afterEach() {
-    server.shutdown();
-  }
+  integration: true
 });
 
 const item = {

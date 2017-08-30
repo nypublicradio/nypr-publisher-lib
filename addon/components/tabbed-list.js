@@ -1,4 +1,3 @@
-import service from 'ember-service/inject';
 import Component from 'ember-component';
 import computed from 'ember-computed';
 import set from 'ember-metal/set';

@@ -1,8 +1,9 @@
 import Ember from 'ember';
-const { helper } = Ember.Helper;
 
-export default helper(function([ value ]){
-    if ( value ) {
-        return value.charAt(0).toUpperCase() + value.slice(1);
-    }
-});
+export function capitalizeWord([ value ]){
+  if ( value ) {
+      return value.charAt(0).toUpperCase() + value.slice(1);
+  }
+}
+
+export default Ember.Helper.helper(capitalizeWord);

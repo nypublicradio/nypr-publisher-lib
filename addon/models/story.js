@@ -98,12 +98,12 @@ export default Model.extend({
     return processedChunks;
   }),
   segmentedAudio: computed('audio', function() {
-    return Array.isArray(this.get('audio'));
+    return Array.isArray(get(this, 'audio'));
   }),
   commentSecurityURL(browserId) {
     let data = {
-      content_type: 'cms.' + this.get('itemType'),
-      object_pk: this.get('cmsPK'),
+      content_type: 'cms.' + get(this, 'itemType'),
+      object_pk: get(this, 'cmsPK'),
       bust_cache: Math.random()
     };
     if (browserId) {
@@ -202,33 +202,33 @@ export default Model.extend({
     return serializer.serialize(snapshot, {includeId: true});
   },
   getNextSegment() {
-    if (!this.get('segmentedAudio')) {
+    if (!get(this, 'segmentedAudio')) {
       return null;
     } else if (!this.hasNextSegment()) {
       // wrap around
       this.resetSegments();
-      return this.get('audio.firstObject');
+      return get(this, 'audio')[0];
     } else {
-      return this.get('audio')[this.incrementProperty('_currentSegment')];
+      return get(this, 'audio')[this.incrementProperty('_currentSegment')];
     }
   },
   getCurrentSegment() {
-    if (!this.get('segmentedAudio')) {
-      return this.get('audio');
+    if (!get(this, 'segmentedAudio')) {
+      return get(this, 'audio');
     } else {
-      return this.get('audio')[this.get('_currentSegment') || 0];
+      return get(this, 'audio')[get(this, '_currentSegment') || 0];
     }
   },
   hasNextSegment() {
-    if (!this.get('segmentedAudio')) {
+    if (!get(this, 'segmentedAudio')) {
       return false;
     } else {
-      return this.getCurrentSegment() !== this.get('audio.lastObject');
+      return this.getCurrentSegment() !== get(this, 'audio')[get(this, 'audio').length-1];
     }
   },
   resetSegments() {
-    if (!this.get('segmentedAudio')) {
-      return this.get('audio');
+    if (!get(this, 'segmentedAudio')) {
+      return get(this, 'audio');
     } else {
       this._currentSegment = 0;
       return this.getCurrentSegment();
@@ -238,8 +238,8 @@ export default Model.extend({
   forListenAction(data = {}) {
     return Ember.RSVP.Promise.resolve(Object.assign({
       audio_type: 'on_demand',
-      cms_id: this.get('cmsPK'),
-      item_type: this.get('itemType') // episode, article, segment
+      cms_id: get(this, 'cmsPK'),
+      item_type: get(this, 'itemType') // episode, article, segment
     }, data));
   },
 

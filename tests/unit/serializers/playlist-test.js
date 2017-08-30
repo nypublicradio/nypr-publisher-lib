@@ -5,11 +5,7 @@ moduleForModel('playlist', 'Unit | Serializer | playlist', {
   needs: ['serializer:playlist']
 });
 
-// Replace this with your real tests.
-test('it serializes records', function(assert) {
+test('it loads',  function(assert) {
   let record = this.subject();
-
-  let serializedRecord = record.serialize();
-
-  assert.ok(serializedRecord);
+  assert.ok(record);
 });

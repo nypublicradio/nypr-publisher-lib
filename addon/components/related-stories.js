@@ -1,5 +1,7 @@
 import Ember from 'ember';
 import layout from '../templates/components/related-stories';
+import get from 'ember-metal/get';
+import set from 'ember-metal/set';
 
 export default Ember.Component.extend({
   layout,
@@ -8,8 +10,8 @@ export default Ember.Component.extend({
 
   stories: Ember.computed('getStories', {
     get() {
-      this.get('getStories')().then(stories => {
-        this.set('stories', stories);
+      get(this, 'getStories')().then(stories => {
+        set(this, 'stories', stories);
         Ember.run.scheduleOnce('afterRender', this, this.imagesLoaded);
       });
     },

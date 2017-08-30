@@ -1,17 +1,10 @@
+import { camelizeObject } from 'nypr-publisher-lib/helpers/camelize-object';
+import { module, test } from 'qunit';
 
-import { moduleForComponent, test } from 'ember-qunit';
-import hbs from 'htmlbars-inline-precompile';
-
-moduleForComponent('camelize-object', 'helper:camelize-object', {
-  integration: true
-});
+module('Unit | Helper | camelize-object');
 
 // Replace this with your real tests.
-test('it renders', function(assert) {
-  this.set('inputValue', '1234');
-
-  this.render(hbs`{{camelize-object inputValue}}`);
-
-  assert.equal(this.$().text().trim(), '1234');
+test('it camelizes object', function(assert) {
+  let result = camelizeObject({ 'foo-bar': true, foo_baz: true });
+  assert.deepEqual(result, {fooBar: true, fooBaz: true});
 });
-

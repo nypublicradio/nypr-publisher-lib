@@ -1,17 +1,48 @@
+import { producingOrgs } from 'nypr-publisher-lib/helpers/producing-orgs';
+import { module, test } from 'qunit';
+import $ from 'jquery';
 
-import { moduleForComponent, test } from 'ember-qunit';
-import hbs from 'htmlbars-inline-precompile';
+module('Unit | Helper | producing orgs');
 
-moduleForComponent('producing-orgs', 'helper:producing-orgs', {
-  integration: true
+
+const NPR = {
+  name: "NPR",
+  url: "http://www.npr.org"
+};
+const WNYC = {
+  name:"WNYC Studios",
+  url:"http://wnycstudios.wnyc.org/"
+};
+const PRX = {
+  name: "PRX",
+  url: "http://www.prx.org/"
+};
+
+test('it works', function(assert) {
+  let theOrgs = [NPR];
+  let result = producingOrgs([theOrgs], {unlinked:true});
+  assert.ok(result);
 });
 
-// Replace this with your real tests.
-test('it renders', function(assert) {
-  this.set('inputValue', '1234');
-
-  this.render(hbs`{{producing-orgs inputValue}}`);
-
-  assert.equal(this.$().text().trim(), '1234');
+test('uses "and" with two organizations', function(assert) {
+  let theOrgs = [NPR,PRX];
+  let result = producingOrgs([theOrgs], {unlinked:true});
+  assert.ok(result);
+  assert.equal(result.string.trim(), 'NPR and PRX', 'Producing orgs should render with "and"');
 });
 
+test('places a comma when three or more organizations', function(assert) {
+  let theOrgs = [NPR,WNYC,PRX];
+  let result = producingOrgs([theOrgs], {unlinked:true});
+  assert.ok(result);
+  assert.equal(result.string.trim(), 'NPR, WNYC Studios and PRX', 'Producing orgs should render with comma and "and"');
+});
+
+test('links items when unlinked is unspecified', function(assert) {
+  let theOrgs = [NPR,WNYC,PRX];
+  let result = producingOrgs([theOrgs]);
+  assert.ok(result);
+
+  let resultHTML = $.parseHTML("<div>" + result.string + "</div>");
+  assert.equal($(resultHTML).find("a").length, 3, "there should be 3 links");
+});

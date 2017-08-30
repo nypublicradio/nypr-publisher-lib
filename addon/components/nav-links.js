@@ -50,7 +50,7 @@ export default Component.extend({
     // fallback to null if defaultSlug is undefined because a linkrolLlink without
     // a navSlug key will match on `undefined` in `findBy` below
     let defaultSlug = get(this, 'defaultSlug') || null;
-    let links = get(this, 'links');
+    let links = new Ember.A(get(this, 'links'));
     let defaultIndex = links.indexOf(links.findBy('navSlug', defaultSlug));
     set(this, 'activeTabIndex', defaultIndex === -1 ? 0 : defaultIndex);
   },

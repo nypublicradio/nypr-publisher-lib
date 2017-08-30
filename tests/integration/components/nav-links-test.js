@@ -1,4 +1,4 @@
-import config from 'wnyc-web-client/config/environment';
+import config from 'ember-get-config';
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import { canonicalize  } from 'nypr-django-for-ember/services/script-loader';
@@ -7,15 +7,6 @@ wnycURL = canonicalize(wnycURL);
 
 moduleForComponent('nav-links', 'Integration | Component | nav links', {
   integration: true
-});
-
-test('it renders', function(assert) {
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
-
-  this.render(hbs`{{nav-links}}`);
-
-  assert.equal(this.$().text().trim(), 'Sub Nav');
 });
 
 test('it properly sets the activeTab if defaultTab is undefined', function(assert) {

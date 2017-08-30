@@ -2,14 +2,10 @@ import { moduleForModel, test } from 'ember-qunit';
 
 moduleForModel('api-response', 'Unit | Serializer | api response', {
   // Specify the other units that are required for this test.
-  needs: ['serializer:api-response']
+  needs: ['serializer:api-response', 'model:api-response']
 });
 
-// Replace this with your real tests.
-test('it serializes records', function(assert) {
+test('it loads',  function(assert) {
   let record = this.subject();
-
-  let serializedRecord = record.serialize();
-
-  assert.ok(serializedRecord);
+  assert.ok(record);
 });

@@ -3,6 +3,9 @@
 
 module.exports = {
   name: 'nypr-publisher-lib',
+  included: function() {
+    this._super.included.apply(this, arguments);
+  },
   isDevelopingAddon: function() {
     return true;
   }

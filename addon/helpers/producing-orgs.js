@@ -7,7 +7,7 @@ const {
 export function producingOrgs([ orgsList ]/*, hash*/, {unlinked=false}={}) {
   let producingString = '';
 
-  orgsList.forEach((org, idx) => {
+  Ember.makeArray(orgsList).forEach((org, idx) => {
     let line = '';
 
     if (unlinked){
