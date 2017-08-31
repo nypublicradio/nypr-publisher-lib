@@ -32,7 +32,7 @@ test('it has the required information for sending a listen action', function(ass
 
   assert.ok(model.forListenAction, "should have forListenAction method");
 
-  Ember.run(() => {
+  // Ember.run(() => {
     model.forListenAction({
       custom: 5
     }).then(d => {
@@ -45,5 +45,5 @@ test('it has the required information for sending a listen action', function(ass
         stream_id: 123
       });
     });
-  })
+  // })
 });

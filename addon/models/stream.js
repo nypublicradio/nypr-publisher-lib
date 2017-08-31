@@ -72,13 +72,13 @@ export default Model.extend({
   }),
 
   forListenAction(data = {}) {
-    return get(this, 'currentStory').then(s => {
+    return this.get('currentStory').then(s => {
       data.current_audio_position = 0; // stream should always report 0
       return Object.assign({
         audio_type: 'livestream',
         cms_id: s && s.get('cmsPK'),
         item_type: s && s.get('itemType'), // episode, article, segment
-        stream_id: get(this, 'cmsPK'),
+        stream_id: this.get('cmsPK'),
       }, data);
     });
   }

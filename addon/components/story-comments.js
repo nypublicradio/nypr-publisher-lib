@@ -50,7 +50,7 @@ export default Component.extend({
   actions: {
     getComments() {
       if (!get(this, 'isShowingComments') && !!get(this, 'onShowComments')) {
-        this.send('onShowComments', get(this, 'story'))
+        this.attrs.onShowComments(get(this, 'story'));
       }
       this.set('isShowingComments', true);
       this.set('isShowingForm', true);
