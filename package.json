@@ -25,6 +25,7 @@
     "ember-get-config": "^0.2.2",
     "liquid-fire": "0.27.2",
     "nypr-django-for-ember": "nypublicradio/nypr-django-for-ember",
+    "nypr-audio-services": "nypublicradio/nypr-audio-services",
     "nypr-ui": "nypublicradio/nypr-ui"
   },
   "devDependencies": {

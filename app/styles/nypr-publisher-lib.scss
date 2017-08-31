@@ -1,6 +1,12 @@
-@import "nypr-ui/vars";
-@import "nypr-ui/colors";
-@import "nypr-ui/z-index";
+
+@import "nypr-ui";
+
+
+%vertical-rhythm {
+  display: block;
+  margin-top: 0;
+  margin-bottom: #{$line-height/$base-font}rem;
+}
 
 @import "nypr-publisher-lib/tabbed-list";
 @import "nypr-publisher-lib/stream-list";

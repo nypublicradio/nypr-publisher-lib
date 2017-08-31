@@ -1,5 +1,5 @@
 import DS from 'ember-data';
-import { camelizeObj } from 'nypr-publisher-lib/helpers/camelize-object';
+import { camelizeObject } from 'nypr-publisher-lib/helpers/camelize-object';
 
 //dasherized versions of names in model bc they haven't been processsed yet
 const propertiesWithChildren = [
@@ -24,7 +24,7 @@ export default DS.JSONAPISerializer.extend({
     for (var prop of propertiesWithChildren) {
       //if we have the property, process it
       if (payload.data.attributes && payload.data.attributes.hasOwnProperty(prop)){
-        payload.data.attributes[prop] = camelizeObj(payload.data.attributes[prop]);
+        payload.data.attributes[prop] = camelizeObject(payload.data.attributes[prop]);
       }
     }
 

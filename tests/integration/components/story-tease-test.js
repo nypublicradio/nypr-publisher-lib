@@ -25,7 +25,7 @@ test('it renders', function(assert) {
   this.set('item', item);
 
   this.render(hbs`{{story-tease item=item}}`);
-
+  
   assert.equal(this.$('[data-test-selector=story-tease-title]').text().trim(), 'foo');
   assert.ok(this.$('a[href="foo-link"]').length, 'header links are rendered');
 

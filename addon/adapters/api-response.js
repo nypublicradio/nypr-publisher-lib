@@ -8,5 +8,9 @@ export default DS.JSONAPIAdapter.extend({
   buildURL() {
     let url = this._super(...arguments);
     return decodeURIComponent(url);
+  },
+  // ember 2.0 deprecation
+  shouldBackgroundReloadRecord() {
+    return false;
   }
 });
