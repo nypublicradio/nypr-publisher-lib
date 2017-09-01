@@ -1,6 +1,8 @@
-
-@import "nypr-ui";
-
+@import "compass/css3";
+@import "nypr-ui/vars";
+@import "nypr-ui/colors";
+@import "nypr-ui/z-index";
+@import "nypr-ui/utils";
 
 %vertical-rhythm {
   display: block;

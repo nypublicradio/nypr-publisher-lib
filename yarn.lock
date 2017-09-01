@@ -1358,7 +1358,7 @@ broccoli-lint-eslint@^3.3.0:
     lodash.defaultsdeep "^4.6.0"
     md5-hex "^2.0.0"
 
-broccoli-merge-trees@1.1.1, broccoli-merge-trees@^1.0.0, broccoli-merge-trees@^1.1.0, broccoli-merge-trees@^1.1.1:
+broccoli-merge-trees@1.1.1, broccoli-merge-trees@^1.0.0, broccoli-merge-trees@^1.1.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/broccoli-merge-trees/-/broccoli-merge-trees-1.1.1.tgz#1e283d18c686da922bb91a80d7aac0d161388e21"
   dependencies:
@@ -1370,7 +1370,7 @@ broccoli-merge-trees@1.1.1, broccoli-merge-trees@^1.0.0, broccoli-merge-trees@^1
     rimraf "^2.4.3"
     symlink-or-copy "^1.0.0"
 
-broccoli-merge-trees@^1.2.0:
+broccoli-merge-trees@^1.1.1, broccoli-merge-trees@^1.2.0:
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/broccoli-merge-trees/-/broccoli-merge-trees-1.2.4.tgz#a001519bb5067f06589d91afa2942445a2d0fdb5"
   dependencies:
@@ -2855,7 +2855,7 @@ ember-weakmap@2.0.0, ember-weakmap@^2.0.0:
   dependencies:
     ember-cli-babel "^5.1.6"
 
-ember-wormhole@^0.5.1:
+ember-wormhole@^0.5.1, ember-wormhole@^0.5.2:
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/ember-wormhole/-/ember-wormhole-0.5.2.tgz#cc0ceb7db4f8b8da0fd852edc81d75cb1dcd92f1"
   dependencies:
@@ -5008,6 +5008,7 @@ nypr-django-for-ember@nypublicradio/nypr-django-for-ember:
   dependencies:
     ember-cli-babel "^6.3.0"
     ember-cli-htmlbars "^2.0.1"
+    ember-wormhole "^0.5.2"
 
 nypr-metrics@nypublicradio/nypr-metrics:
   version "0.0.0"
