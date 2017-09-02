@@ -2,7 +2,6 @@ import Ember from 'ember';
 import config from 'ember-get-config';
 import { canonicalize } from 'nypr-django-for-ember/services/script-loader';
 import layout from '../templates/components/nav-links';
-
 const {
   get,
   set,
@@ -29,10 +28,10 @@ export default Component.extend({
     } else {
       origin = canonicalize(config.wnycURL);
     }
-    let links = get(this, 'links');
+    let links = Ember.A(get(this, 'links'));
     let navRoot = get(this, 'navRoot');
     return links.map(i => {
-      let { href, navSlug } = i;
+      let { href, 'nav-slug':navSlug } = i;
       if (!href) {
         i.href = `/${navRoot}/${navSlug}`;
         return i;
@@ -50,8 +49,9 @@ export default Component.extend({
     // fallback to null if defaultSlug is undefined because a linkrolLlink without
     // a navSlug key will match on `undefined` in `findBy` below
     let defaultSlug = get(this, 'defaultSlug') || null;
-    let links = new Ember.A(get(this, 'links'));
-    let defaultIndex = links.indexOf(links.findBy('navSlug', defaultSlug));
+    let links = Ember.A(get(this, 'links'));
+
+    let defaultIndex = links.indexOf(links.findBy('nav-slug', defaultSlug));
     set(this, 'activeTabIndex', defaultIndex === -1 ? 0 : defaultIndex);
   },
 
