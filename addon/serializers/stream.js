@@ -1,11 +1,9 @@
 import DS from 'ember-data';
-import Ember from 'ember';
+import { underscore } from 'ember-string';
 import { camelizeKeys } from 'nypr-publisher-lib/helpers/camelize-keys';
 
 export default DS.JSONAPISerializer.extend({
-  keyForAttribute(key) {
-    return Ember.String.underscore(key);
-  },
+  keyForAttribute: key => underscore(key),
 
   normalizeFindRecordResponse(store, modelClass, {stream, whatsOn}, ...rest) {
     let json = this._apiFormatStream(stream);
