@@ -1,7 +1,7 @@
 import ENV from 'ember-get-config';
 import DS from 'ember-data';
-import Ember from 'ember';
-const { hash } = Ember.RSVP;
+import { hash } from 'ember-rsvp';
+import wrapAjax from 'nypr-publisher-lib/utils/wrap-ajax';
 
 export default DS.JSONAPIAdapter.extend({
   host: ENV.wnycAPI,
@@ -12,10 +12,10 @@ export default DS.JSONAPIAdapter.extend({
     let whatsOnUrl = [this.host, this.namespace, 'whats_on'].join('/') + '/';
 
     let options = this.ajaxOptions(streamUrl, 'GET', {});
-    streams = Ember.$.get(options);
+    streams = wrapAjax(options);
 
     options = this.ajaxOptions(whatsOnUrl, 'GET', {});
-    whatsOn = Ember.$.get(options);
+    whatsOn = wrapAjax(options);
     return hash({streams, whatsOn});
   },
   findRecord(store, type, id/*, snapshot*/) {
@@ -24,10 +24,10 @@ export default DS.JSONAPIAdapter.extend({
     let whatsOnUrl = [this.host, this.namespace, 'whats_on', id].join('/') + '/';
 
     let options = this.ajaxOptions(streamUrl, 'GET', {});
-    stream = Ember.$.get(options);
+    stream = wrapAjax(options);
 
     options = this.ajaxOptions(whatsOnUrl, 'GET', {});
-    whatsOn = Ember.$.get(options);
+    whatsOn = wrapAjax(options);
     return hash({stream, whatsOn});
   }
 });

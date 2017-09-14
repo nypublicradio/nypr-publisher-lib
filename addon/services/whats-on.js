@@ -1,5 +1,5 @@
 import ENV from 'ember-get-config';
-import wrapAjax from 'nypr-django-for-ember/utils/wrap-ajax';
+import wrapAjax from 'nypr-publisher-lib/utils/wrap-ajax';
 import Service from 'ember-service';
 import get from 'ember-metal/get';
 import { canonicalize } from 'nypr-django-for-ember/services/script-loader';

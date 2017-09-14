@@ -1,6 +1,6 @@
 import ENV from 'ember-get-config';
 import DS from 'ember-data';
-import wrapAjax from 'nypr-django-for-ember/utils/wrap-ajax';
+import wrapAjax from 'nypr-publisher-lib/utils/wrap-ajax';
 // TODO: auth headers for native fetch
 // import fetch from 'fetch';
 
