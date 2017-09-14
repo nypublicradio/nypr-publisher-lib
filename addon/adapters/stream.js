@@ -1,6 +1,6 @@
 import ENV from 'ember-get-config';
 import DS from 'ember-data';
-import { hash } from 'ember-rsvp';
+import rsvp from 'rsvp';
 import wrapAjax from 'nypr-publisher-lib/utils/wrap-ajax';
 
 export default DS.JSONAPIAdapter.extend({
@@ -16,7 +16,7 @@ export default DS.JSONAPIAdapter.extend({
 
     options = this.ajaxOptions(whatsOnUrl, 'GET', {});
     whatsOn = wrapAjax(options);
-    return hash({streams, whatsOn});
+    return rsvp.hash({streams, whatsOn});
   },
   findRecord(store, type, id/*, snapshot*/) {
     let stream, whatsOn;
@@ -28,6 +28,6 @@ export default DS.JSONAPIAdapter.extend({
 
     options = this.ajaxOptions(whatsOnUrl, 'GET', {});
     whatsOn = wrapAjax(options);
-    return hash({stream, whatsOn});
+    return rsvp.hash({stream, whatsOn});
   }
 });
