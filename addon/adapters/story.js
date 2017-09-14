@@ -4,8 +4,7 @@ import wrapAjax from 'nypr-publisher-lib/utils/wrap-ajax';
 // TODO: auth headers for native fetch
 // import fetch from 'fetch';
 
-
-const DRAFT_TOKENS = ['content_type_id', 'object_id', 'token', '_']
+const DRAFT_TOKENS = ['content_type_id', 'object_id', 'token', '_'];
 
 export default DS.JSONAPIAdapter.extend({
   host: ENV.wnycAPI,
