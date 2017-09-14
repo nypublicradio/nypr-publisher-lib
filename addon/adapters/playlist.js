@@ -6,7 +6,7 @@ export default DS.JSONAPIAdapter.extend({
   host: ENV.wnycAPI,
   namespace: 'api/v1',
   findRecord(store, type, id) {
-    let playlistUrl = [this.host, this.namespace, 'stream_playlist', id].join('/') + '/';
+    let playlistUrl = `${this.host}/${this.namespace}/stream_playlist/${id}/`;
     let options = this.ajaxOptions(playlistUrl, 'GET', {});
     return wrapAjax(options);
   }
