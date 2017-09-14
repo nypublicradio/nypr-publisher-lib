@@ -1,4 +1,5 @@
 import JSONAPISerializer from 'ember-data/serializers/json-api';
+import { camelize } from 'ember-string';
 
 export default JSONAPISerializer.extend({
   extractId: (modelClass, {attributes}) => attributes.slug,
@@ -9,7 +10,7 @@ export default JSONAPISerializer.extend({
       item.attributes = {};
 
       Object.keys(attributes)
-        .forEach(k => item.attributes[k.camelize()] = attributes[k]);
+        .forEach(k => item.attributes[camelize(k)] = attributes[k]);
     });
     return this._super(...arguments);
   }
