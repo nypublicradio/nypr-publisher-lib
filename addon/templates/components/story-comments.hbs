@@ -1,4 +1,4 @@
-<h1 class="h3">
+<h1 class="text--default">
   <button class="btn btn--large btn--link btn--linkicon" {{action 'getComments'}} data-test-selector="story-comments">
     <i class="fa fa-comment icon--prefix--large"></i>
     <span class="btn--prefixbody">
@@ -15,9 +15,6 @@
 </h1>
 
 {{#if isShowingComments}}
-  <div class="text">
-    <a href="/feeds/comments/{{story.itemTypeId}}/{{story.id}}" target="_blank">RSS Feed for Comments</a> | <a href="#commentsForm">Leave a Comment</a>
-  </div>
   {{comments-list adminURL=adminURL comments=comments isStaff=isStaff browserId=browserId}}
 {{/if}}
 

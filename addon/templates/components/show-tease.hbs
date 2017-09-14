@@ -28,7 +28,9 @@
       {{#if featuredSpot}}
 
         {{#unless simpleLayout}}
-          <h4 class="text--small text--lightgray text--spacing text--upper nudge medium-up">{{producing-orgs show.producingOrganizations unlinked=true}}</h4>
+          <h4 class="text--small text--lightgray text--lato text--heavy text--upper nudge-mini medium-up">
+            {{producing-orgs show.producingOrganizations unlinked=true}}
+          </h4>
         {{/unless}}
 
         <h2 class="h1 h2--mq-small nudge text--white">
@@ -41,7 +43,7 @@
         </h2>
 
         {{#unless simpleLayout}}
-          <div class="h3 text--white medium-up">
+          <div class="text--default text--white medium-up">
             {{{show.tease}}}
           </div>
         {{/unless}}
@@ -62,7 +64,7 @@
         </h2>
 
         {{#unless simpleLayout}}
-        <div class="text-body--nopad text--medium medium-up">{{{show.tease}}}</div>
+        <div class="text-body--nopad medium-up">{{{show.tease}}}</div>
         {{/unless}}
 
       {{/if}}
