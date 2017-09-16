@@ -44,7 +44,8 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-
+    ENV.rootURL = '/nypr-publisher-lib';
+    ENV.locationType = 'hash';
   }
 
   return ENV;
