@@ -3,6 +3,7 @@ import Ember from 'ember';
 const { computed, get } = Ember;
 
 export default DS.Model.extend({
+  // BEGIN-SNIPPET about-page-model
   body: DS.attr('string'),
   people: DS.attr(),
   social: DS.attr(),
@@ -12,4 +13,5 @@ export default DS.Model.extend({
       return body.replace(/\\x3C\/script>/g, '</script>');
     }
   }),
+  // END-SNIPPET
 });
