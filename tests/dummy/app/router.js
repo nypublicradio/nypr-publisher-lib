@@ -7,6 +7,9 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
+  this.route('mas', function() {
+    this.route('models');
+  });
 });
 
 export default Router;

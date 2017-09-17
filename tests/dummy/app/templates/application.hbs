@@ -1,33 +1,8 @@
-<h1>nypr publisher lib</h1>
+{{md-text text="# `nypr-publisher-lib`"}}
+<ul>
+  <li>
+    {{link-to 'Models, Adapters, &  Serializers' 'mas'}}
+  </li>
+</ul>
 
-{{md-text text="
-## Models, Adapters, and Serializers
-
-This library provides ember-data interfaces to objects managed and published via the [publisher django app](https://github.com/nypublicradio/publisher). For the most part these are availabled at REST endpoints that follow the JSON:API spec, but a few produced in ad-hoc formats that don't follow a known spec.
-
-For more information about publisher's REST endpoints, please [go to the API docs](http://docs.nyprpublisher.apiary.io).
-"}}
-
-- api-response
-
-- bucket
-
-- channel
-
-- chunk
-
-- comment
-
-- playlist
-
-- show
-
-- story
-
-- stream
-
-- about-page (model only)
-{{code-snippet name="about-page-model.js"}}
-- image (model only)
-
-- producing-organization (model only)
+{{outlet}}
