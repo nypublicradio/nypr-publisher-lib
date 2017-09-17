@@ -22,6 +22,7 @@
     "ember-cli-babel": "^6.3.0",
     "ember-cli-htmlbars": "^2.0.1",
     "ember-cli-htmlbars-inline-precompile": "^0.4.3",
+    "ember-cli-sass": "^7.0.0",
     "ember-code-snippet": "^2.0.0",
     "ember-get-config": "^0.2.2",
     "liquid-fire": "0.27.2",
