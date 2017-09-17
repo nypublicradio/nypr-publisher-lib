@@ -4,6 +4,7 @@ import get from 'ember-metal/get';
 import { totalPages } from 'nypr-publisher-lib/utils/math-util';
 
 export default DS.Model.extend({
+  // BEGIN-SNIPPET api-response-fields
   teaseList: DS.hasMany('story', {async: false}),
   story: DS.belongsTo('story', {async: false}),
   aboutPage: DS.belongsTo('about-page', {async: false}),
@@ -38,4 +39,5 @@ export default DS.Model.extend({
       return totalPages(total);
     }
   }),
+  // END-SNIPPET
 });

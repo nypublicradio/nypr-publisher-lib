@@ -10,6 +10,7 @@ const WQXR_slugs = ["wqxr","q2","jonathan-channel","wqxr-special","wqxr-special2
 const WNYC_slugs = ["wnyc-fm939", "wnyc-am820"];
 
 export default Model.extend({
+  // BEGIN-SNIPPET stream-fields
   audioType:            'livestream',
 
   hasPlaylists:         attr('boolean'),
@@ -82,4 +83,5 @@ export default Model.extend({
       }, data);
     });
   }
+  // END-SNIPPET
 });

@@ -3,6 +3,7 @@ import Model from 'ember-data/model';
 import attr from 'ember-data/attr';
 
 export default Model.extend({
+  // BEGIN-SNIPPET chunk-fields
   slug: attr(),
   content: attr(),
   pagecontent: Ember.computed('content', function() {
@@ -15,4 +16,5 @@ export default Model.extend({
     }
     
   })
+  // END-SNIPPET
 });

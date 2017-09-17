@@ -4,6 +4,7 @@ import get from 'ember-metal/get';
 import { normalizeForSorting } from 'nypr-publisher-lib/helpers/normalize-for-sorting';
 
 export default DS.Model.extend({
+  // BEGIN-SNIPPET channel-fields
   altLayout: DS.attr('boolean'),
   slug: DS.attr('string'),
   cmsPK: DS.attr('number'),
@@ -75,4 +76,5 @@ export default DS.Model.extend({
   hasSubscriptionLinks: computed.bool('podcastLinks.firstObject'),
   hasHeaderButtons: computed.or('donateChunk', 'hasSubscriptionLinks'),
   nprAnalyticsDimensions: DS.attr(),
+  // END-SNIPPET
 });

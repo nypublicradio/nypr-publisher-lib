@@ -3,7 +3,7 @@ import Ember from 'ember';
 const { computed, get } = Ember;
 
 export default DS.Model.extend({
-  // BEGIN-SNIPPET about-page-model
+  // BEGIN-SNIPPET about-page-fields
   body: DS.attr('string'),
   people: DS.attr(),
   social: DS.attr(),

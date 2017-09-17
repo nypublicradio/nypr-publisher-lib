@@ -7,6 +7,7 @@ import { producingOrgs } from 'nypr-publisher-lib/helpers/producing-orgs';
 const { attr, Model } = DS;
 
 export default Model.extend({
+  // BEGIN-SNIPPET story-fields
   analyticsCode: attr('string'),
   appearances: attr(),
   audio: attr(),
@@ -247,4 +248,5 @@ export default Model.extend({
   forDfp() {
     return getProperties(this, 'tags', 'show', 'channel', 'series');
   }
+  // END-SNIPPET
 });

@@ -1,6 +1,7 @@
 import DS from 'ember-data';
 
 export default DS.Model.extend({
+  // BEGIN-SNIPPET image-fields
   caption: DS.attr('string'),
   creditsUrl: DS.attr('string'),
   creditsName: DS.attr('string'),
@@ -12,4 +13,5 @@ export default DS.Model.extend({
   template: DS.attr('string'),
   url: DS.attr('string'),
   w: DS.attr('number')
+  // END-SNIPPET
 });
