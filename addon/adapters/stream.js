@@ -5,7 +5,7 @@ import wrapAjax from 'nypr-publisher-lib/utils/wrap-ajax';
 
 export default DS.JSONAPIAdapter.extend({
   host: ENV.wnycAPI,
-  namespace: 'api/v1',
+  namespace: 'v1',
   findAll() {
     let streams, whatsOn;
     let streamUrl = [this.host, this.namespace, 'list/streams'].join('/') + '/';
