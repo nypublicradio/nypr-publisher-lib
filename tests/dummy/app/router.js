@@ -12,6 +12,8 @@ Router.map(function() {
     this.route('adapters');
     this.route('serializers');
   });
+  this.route('components');
+  this.route('services');
 });
 
 export default Router;
