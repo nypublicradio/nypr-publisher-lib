@@ -36,7 +36,7 @@ export default DS.JSONAPISerializer.extend({
     if (featuredStory) {
       let story = {
         type: 'story',
-        id: featuredStory.id,
+        id: featuredStory.slug,
         attributes: featuredStory
       };
 
