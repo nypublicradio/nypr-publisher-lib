@@ -2,7 +2,8 @@
 
 module.exports = function(deployTarget) {
   var ENV = {
-    build: {
+    build: {},
+    git: {
       commitMessage: '[skip ci] Deployed %@'
     }
     // include other plugin configuration that applies to all deploy targets here
