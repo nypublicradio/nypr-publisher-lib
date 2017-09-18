@@ -18,6 +18,7 @@ export default DS.JSONAPIAdapter.extend({
     whatsOn = wrapAjax(options);
     return rsvp.hash({streams, whatsOn});
   },
+  // BEGIN-SNIPPET stream-find-record
   findRecord(store, type, id/*, snapshot*/) {
     let stream, whatsOn;
     let streamUrl = [this.host, this.namespace, 'list/streams', id].join('/') + '/';
@@ -30,4 +31,5 @@ export default DS.JSONAPIAdapter.extend({
     whatsOn = wrapAjax(options);
     return rsvp.hash({stream, whatsOn});
   }
+  // END-SNIPPET
 });

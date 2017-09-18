@@ -9,6 +9,7 @@ const Router = Ember.Router.extend({
 Router.map(function() {
   this.route('mas', function() {
     this.route('models');
+    this.route('adapters');
   });
 });
 
