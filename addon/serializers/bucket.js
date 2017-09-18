@@ -3,6 +3,7 @@ import { camelize } from 'ember-string';
 
 export default JSONAPISerializer.extend({
   extractId: (modelClass, {attributes}) => attributes.slug,
+  // BEGIN-SNIPPET bucket-serializer
   normalizeResponse(store, klass, payload/*, id, requestType*/) {
     // these are not actual ember models; need to camelize for consumption by components
     payload.data.attributes['bucket-items'].forEach(item => {
@@ -14,4 +15,5 @@ export default JSONAPISerializer.extend({
     });
     return this._super(...arguments);
   }
+  // END-SNIPPET
 });

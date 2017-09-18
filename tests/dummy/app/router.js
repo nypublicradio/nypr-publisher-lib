@@ -10,6 +10,7 @@ Router.map(function() {
   this.route('mas', function() {
     this.route('models');
     this.route('adapters');
+    this.route('serializers');
   });
 });
 

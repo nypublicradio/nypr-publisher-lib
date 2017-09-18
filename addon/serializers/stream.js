@@ -107,6 +107,7 @@ export default DS.JSONAPISerializer.extend({
     return json;
   },
 
+  // BEGIN-SNIPPET stream-serializer-urls
   // given an object with a urls key, return a sorted array with stream mounts
   // in this order:
   // mobile platforms: [icecast aac, icecast mp3]
@@ -141,4 +142,5 @@ export default DS.JSONAPISerializer.extend({
       return [{url: mp3, mimeType: 'audio/mpeg'}, aac];
     }
   }
+  // END-SNIPPET
 });
