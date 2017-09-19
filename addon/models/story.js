@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import DS from 'ember-data';
-import ENV from 'ember-get-config';
+import config from 'ember-get-config';
 import get, { getProperties } from 'ember-metal/get';
 import computed from 'ember-computed';
 import { producingOrgs } from 'nypr-publisher-lib/helpers/producing-orgs';
@@ -124,7 +124,7 @@ export default Model.extend({
     if (browserId) {
       data.id = browserId;
     }
-    return `${ENV.wnycAdminRoot}/comments/security_info/?${Ember.$.param(data)}`;
+    return `${config.adminRoot}/comments/security_info/?${Ember.$.param(data)}`;
   },
   nprAnalyticsDimensions: attr(),
   allProducingOrgs: computed('producingOrganizations', 'showProducingOrgs', function(){

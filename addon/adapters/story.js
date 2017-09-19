@@ -1,4 +1,4 @@
-import ENV from 'ember-get-config';
+import config from 'ember-get-config';
 import DS from 'ember-data';
 import wrapAjax from 'nypr-publisher-lib/utils/wrap-ajax';
 // TODO: auth headers for native fetch
@@ -7,7 +7,7 @@ import wrapAjax from 'nypr-publisher-lib/utils/wrap-ajax';
 const DRAFT_TOKENS = ['content_type_id', 'object_id', 'token', '_'];
 
 export default DS.JSONAPIAdapter.extend({
-  host: ENV.wnycAPI,
+  host: config.publisherAPI,
   namespace: 'v3',
   pathForType: () => 'story',
   buildURL() {

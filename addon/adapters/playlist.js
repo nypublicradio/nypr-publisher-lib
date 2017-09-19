@@ -1,8 +1,8 @@
-import ENV from 'ember-get-config';
+import config from 'ember-get-config';
 import DS from 'ember-data';
 
 export default DS.JSONAPIAdapter.extend({
-  host: ENV.wnycAPI,
+  host: config.publisherAPI,
   namespace: 'v1',
   pathForType: () => 'stream_playlist',
   buildURL() {

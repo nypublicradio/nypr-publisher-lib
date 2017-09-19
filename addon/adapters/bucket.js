@@ -1,8 +1,8 @@
 import DS from 'ember-data';
-import ENV from 'ember-get-config';
+import config from 'ember-get-config';
 
 export default DS.JSONAPIAdapter.extend({
-  host: ENV.wnycAPI,
+  host: config.publisherAPI,
   namespace: 'v3',
   buildURL(modelName, id, snapshot, requestType, query) {
     let url = this._super(...arguments);
@@ -10,7 +10,7 @@ export default DS.JSONAPIAdapter.extend({
       return url;
     }
 
-    url += `/?site=${ENV.siteSlug}`;
+    url += `/?site=${config.siteSlug}`;
     if (query && Object.keys(query).length) {
       let qp = Object.keys(query).map(k => `${k}=${query[k]}`);
       url += qp.join('&');

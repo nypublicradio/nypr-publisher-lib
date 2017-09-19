@@ -1,8 +1,8 @@
 import DS from 'ember-data';
-import ENV from 'ember-get-config';
+import config from 'ember-get-config';
 
 export default DS.JSONAPIAdapter.extend({
-  host: ENV.wnycAPI,
+  host: config.publisherAPI,
   namespace: 'v3',
   pathForType: () => 'channel',
   buildURL() {
