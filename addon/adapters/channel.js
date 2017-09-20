@@ -1,10 +1,10 @@
 import DS from 'ember-data';
 import Ember from 'ember';
-import ENV from 'ember-get-config';
+import config from 'ember-get-config';
 
 export default DS.JSONAPIAdapter.extend({
-  host: ENV.wnycAPI,
-  namespace: 'api/v3',
+  host: config.publisherAPI,
+  namespace: 'v3',
   pathForType: () => 'channel',
   ajaxOptions(urlToDecode, type, options = {}) {
     options = this._super(...arguments);

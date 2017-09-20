@@ -23,10 +23,10 @@ export default Component.extend({
       // in development, we're usually running a copy of the prod DB which will
       // point to prod
       // in prod builds on demo or production, these values will point to our
-      // configured wnycURL
+      // configured webRoot
       origin = 'http://www.wnyc.org';
     } else {
-      origin = canonicalize(config.wnycURL);
+      origin = canonicalize(config.webRoot);
     }
     let links = Ember.A(get(this, 'links'));
     let navRoot = get(this, 'navRoot');

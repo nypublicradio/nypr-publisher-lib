@@ -7,5 +7,5 @@ export default Component.extend({
   layout,
   session: service(),
   tagName: 'section',
-  adminURL: `${config.wnycAdminRoot}/admin`
+  adminURL: `${config.adminRoot}/admin`
 });

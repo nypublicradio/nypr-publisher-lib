@@ -1,11 +1,11 @@
-import ENV from 'ember-get-config';
+import config from 'ember-get-config';
 import DS from 'ember-data';
 import rsvp from 'rsvp';
 import wrapAjax from 'nypr-publisher-lib/utils/wrap-ajax';
 
 export default DS.JSONAPIAdapter.extend({
-  host: ENV.wnycAPI,
-  namespace: 'api/v1',
+  host: config.publisherAPI,
+  namespace: 'v1',
   findAll() {
     let streams, whatsOn;
     let streamUrl = [this.host, this.namespace, 'list/streams'].join('/') + '/';

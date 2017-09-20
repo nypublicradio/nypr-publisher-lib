@@ -6,7 +6,7 @@ import get from 'ember-metal/get';
 
 export default Component.extend({
   layout,
-  adminURL: `${config.wnycAdminRoot}/admin`,
+  adminURL: `${config.adminRoot}/admin`,
 
   comments: computed('getComments', {
     get() {
