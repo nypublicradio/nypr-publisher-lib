@@ -1,4 +1,36 @@
 import Ember from 'ember';
 
+const DUMMY_STORY = {
+  audioAvailable: true,
+  cmsPK: 371424,
+  editLink: "cms/segment/371424",
+  headers: {
+    "brand": {
+      "url": "http://www.wnyc.org/shows/bl",
+      "title": "The Brian Lehrer Show",
+      "slug": "bl",
+    },
+    "links": [{
+      "url": "http://www.wnyc.org/shows/bl",
+      "title": "The Brian Lehrer Show",
+      "itemType": "show",
+      "slug": "bl"
+    }]
+  },
+  imageMain: {
+    "crop": "l",
+    "template": "https://media2.wnyc.org/i/%s/%s/%s/%s/1/13958409859_774dfdc534_b.jpg",
+  },
+  newsdate: "2014-05-19T00:00:00-04:00",
+  tease: "When the owner of reBar, a DUMBO gastropub and wedding venue, disappeared two weeks ago with upwards of $150,000 in deposits, couples and employees were left in the lurch. The restaurateur has since turned himself in and paid bail but now faces up to 15 years in prison.",
+  title: "reBar: Closed and Bankrupt",
+  url: "http://www.wnyc.org/story/rebar/",
+}
+
 export default Ember.Route.extend({
+  model() {
+    return {
+      item: DUMMY_STORY
+    };
+  }
 });
