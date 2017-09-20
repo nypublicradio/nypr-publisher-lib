@@ -1,14 +1,18 @@
-<h1>{{#link-to 'index'}}{{md-text text="`nypr-publisher-lib`"}}{{/link-to}}</h1>
-<ul>
-  <li>
-    {{link-to 'Models, Adapters, &  Serializers' 'mas'}}
-  </li>
-  <li>
-    {{link-to 'Components' 'components'}}
-  </li>
-  <li>
-    {{link-to 'Services' 'services'}}
-  </li>
-</ul>
+{{#site-chrome as |chrome|}}
 
-{{outlet}}
+  {{#chrome.nav as |nav|}}
+    {{#nav.corner}}
+      <h1 class="site-title">{{#link-to 'index'}}{{md-text text="`nypr-publisher-lib`"}}{{/link-to}}</h1>
+    {{/nav.corner}}
+    
+    {{#nav.links as |links|}}
+      {{links.link text='Models, Adapters, &  Serializers' route='mas'}}
+      {{links.link text='Components' route='components'}}
+      {{links.link text='Services' route='services'}}
+    {{/nav.links}}
+  {{/chrome.nav}}
+  
+  {{#chrome.body}}
+    {{outlet}}
+  {{/chrome.body}}
+{{/site-chrome}}

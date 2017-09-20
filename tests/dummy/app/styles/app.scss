@@ -1,3 +1,4 @@
+@import "nypr-ui/site-chrome";
 @import "nypr-publisher-lib";
 
 .language-javascript {
@@ -6,4 +7,28 @@
   padding: 0.5em;
   color: #333;
   overflow-x: auto;
+}
+
+.site-title {
+  font-size: 14px;
+  padding: 0 12px;
+  
+  > a {
+    color: black;
+    
+    &:focus,
+    &:hover {
+      color: #333;
+    }
+  }
+}
+
+.site-chrome__link > a {
+  font-size: 14px;
+  color: black;
+    
+    &:focus,
+    &:hover {
+      color: #333;
+    }
 }
