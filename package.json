@@ -16,7 +16,7 @@
     "build": "ember build",
     "start": "ember server",
     "test": "ember try:each",
-    "upgrade-nypr": "yarn upgrade nypr-django-for-ember nypr-ui"
+    "upgrade-nypr": "yarn upgrade nypr-django-for-ember nypr-ui nypr-audio-services"
   },
   "dependencies": {
     "ember-cli-babel": "^6.3.0",
@@ -26,9 +26,9 @@
     "ember-code-snippet": "^2.0.0",
     "ember-get-config": "^0.2.2",
     "liquid-fire": "0.27.2",
-    "nypr-audio-services": "nypublicradio/nypr-audio-services",
+    "nypr-audio-services": "nypublicradio/nypr-audio-services#node-sass",
     "nypr-django-for-ember": "nypublicradio/nypr-django-for-ember",
-    "nypr-ui": "nypublicradio/nypr-ui"
+    "nypr-ui": "nypublicradio/nypr-ui#node-sass"
   },
   "devDependencies": {
     "broccoli-asset-rev": "^2.4.5",
