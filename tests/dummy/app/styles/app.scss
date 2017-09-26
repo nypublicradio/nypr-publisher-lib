@@ -1,14 +1,75 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+$site-chrome-nav-bg: #f1f1f1;
+$site-chrome-nav-bg-small: #f1f1f1;
+$site-chrome-link-color: #333;
+$site-chrome-link-hover: #999;
+$site-chrome-active-link-color: #3480ce; 
+$site-chrome-active-link-right-border: #3480ce;
+$site-chrome-active-link-bg: #ddd;
+$site-chrome-nav-width-large: 175px;
 @import "nypr-ui/site-chrome";
 @import "nypr-publisher-lib";
 @import "nypr-audio-services";
 
-.language-javascript {
-  display: block;
-  background-color: #f8f8f8;
-  padding: 0.5em;
-  color: #333;
-  overflow-x: auto;
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
 }
+
+html {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+}
+
+img {
+  max-width: 100%;
+}
+
+code {
+  padding: 0;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(27,31,35,0.05);
+  border-radius: 3px;
+  @include mq((max-width: 600px)) {
+    word-break: break-all;
+  }
+  
+  &::before,
+  &::after {
+    letter-spacing: -0.2em;
+    content: "\00a0";
+  }
+}
+
+pre > code {
+  display: block;
+  padding:: 16px;
+  overflow: auto;
+  
+  &::before,
+  &::after {
+    display: none;
+  }
+}
+
+.l-page {
+  max-width: 1000px;
+  margin: auto;
+  
+   > p {
+     line-height: 1.8;
+   }
+   
+   > ul {
+     line-height: 1.8;
+   }
+}
+
 
 .site-title {
   font-size: 14px;
