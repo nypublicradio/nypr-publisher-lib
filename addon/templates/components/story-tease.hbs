@@ -61,7 +61,7 @@
           playContext=playContext
           itemPK=itemId
           itemTitle=item.title
-          itemShow=item.showTitle}}
+          itemShow=(or item.showTitle item.headers.brand.title)}}
           {{if isLive 'Listen Live' 'Listen'}}
           <span class="story-tease__duration">{{if isLive endtimeLabel item.audioDurationReadable}}</span>
 
