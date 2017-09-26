@@ -14,7 +14,7 @@
   </div>
 {{/if}}
 
-<div class="story-tease-meta {{if flipped 'story-tease--flipped flag--med' 'flag--rev'}} flush">
+<div class="story-tease-meta {{if flipped 'story-tease--flipped flag--med'}} flush">
 
   {{#if (and item.imageMain flipped)}}
   <a href={{item.url}} class="flag-image link--nodecor middle-narrow-up">
@@ -27,7 +27,7 @@
   <!-- .flag-image -->
   {{/if}}
 
-  <div class="story-tease__body {{if isSmallAndUp 'flag-body--rightpad'}}">
+  <div class="story-tease__body">
     {{#if (and item.headers.links showParent)}}
       <div class="story-tease-parent">
         {{#each item.headers.links as |link|}}
@@ -37,23 +37,23 @@
       </div>
     {{/if}}
 
-    <div class="story-tease__body-text text {{if (and isFancyFeatured (not fullScreen)) 'text--350'}}">
-      <h2 class="story-tease__title {{if isFeatured 'h-featured' 'h2 h2--mq-small'}} nudge-mini">
+    <div class="story-tease__body-text {{if (and isFancyFeatured (not fullScreen)) 'text--350'}}">
+      <h2 class="story-tease__title {{if isFeatured 'h-featured'}}">
         {{! #link-to 'story' item.id class="link--dark"}}{{! item.title}}{{! /link-to}}
-        <a class="{{if isFancyFeatured 'link--white' 'link--dark'}}" data-test-selector="story-tease-title" href={{item.url}}>
+        <a class="{{if isFancyFeatured 'link--white'}}" data-test-selector="story-tease-title" href={{item.url}}>
           {{{item.title}}}
         </a>
       </h2>
 
-      <div class="text-body text-body--nopad {{if isFancyFeatured 'text--white text--semi'}}">
+      <div class={{if isFancyFeatured 'text--white text--semi'}}>
         {{{item.tease}}}
         {{#if (not fullScreen)}}
-          <span class="dimmed text--small"> {{moment-format item.newsdate 'MMM D, YYYY'}}</span>
+          <span class="story-tease__newsdate"> {{moment-format item.newsdate 'MMM D, YYYY'}}</span>
         {{/if}}
       </div>
     </div>
 
-    <div class="btn-group btn-group--storytease">
+    <div class="story-tease__footer">
       {{#if isListenableNow}}
         {{#listen-button
           isLive=isLive
@@ -63,7 +63,7 @@
           itemTitle=item.title
           itemShow=item.showTitle}}
           {{if isLive 'Listen Live' 'Listen'}}
-          <span class="text--small dimmed">{{if isLive endtimeLabel item.audioDurationReadable}}</span>
+          <span class="story-tease__duration">{{if isLive endtimeLabel item.audioDurationReadable}}</span>
 
         {{/listen-button}}
 
@@ -102,4 +102,4 @@
   <!-- .flag-image -->
   {{/if}}
 
-</div><!-- .flag -->
+</div>
