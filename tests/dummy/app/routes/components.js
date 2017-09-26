@@ -1,7 +1,10 @@
 import Ember from 'ember';
 
 const DUMMY_STORY = {
+  id: 'rebar',
+  audio: 'https://www.podtrac.com/pts/redirect.mp3/audio.wnyc.org/bl/bl051914bpod.mp3',
   audioAvailable: true,
+  audioDurationReadable: '1 hr',
   cmsPK: 371424,
   editLink: "cms/segment/371424",
   headers: {
@@ -11,6 +14,11 @@ const DUMMY_STORY = {
       "slug": "bl",
     },
     "links": [{
+      "url": "http://localhost:4567/blogs/scrapbook",
+      "title": "Huh. (The Brian Lehrer Show Blog)",
+      "item-type": "blog",
+      "slug": "scrapbook"
+    },{
       "url": "http://www.wnyc.org/shows/bl",
       "title": "The Brian Lehrer Show",
       "itemType": "show",
