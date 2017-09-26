@@ -18,6 +18,10 @@ $site-chrome-nav-width-large: 175px;
   box-sizing: border-box;
 }
 
+body {
+  margin: 0;
+}
+
 html {
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
@@ -60,6 +64,7 @@ pre > code {
 .l-page {
   max-width: 1000px;
   margin: auto;
+  padding: 0 15px;
   
    > p {
      line-height: 1.8;
@@ -74,6 +79,7 @@ pre > code {
 .site-title {
   font-size: 14px;
   padding: 0 12px;
+  margin-top: 0;
   
   > a {
     color: black;
@@ -83,6 +89,10 @@ pre > code {
       color: #333;
     }
   }
+}
+
+.site-chrome__nav {
+  padding: 0 15px;
 }
 
 .site-chrome__link > a {
