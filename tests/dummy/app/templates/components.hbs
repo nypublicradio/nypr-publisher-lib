@@ -15,21 +15,26 @@ Accepts the following parameters:
 - `playContext`: a string passed to Google Analytics event tracking
 
 There are four variations on a story tease.
-
-1. The \"normal\" story tease looks someting like this:
 "}}
-{{story-tease item=model.item}}
 
-{{md-text text="
-2. \"Flipped\" layout:"}}
-{{story-tease item=model.item flipped=true}}
-
-{{md-text text="
-2. Story teases can have a more visual layout, colloquially known as the \"fancy featured image\".
-"}}
-{{story-tease item=model.item isFeatured=true}}
-
-{{md-text text="
-3. Full screen layout:
-"}}
-{{story-tease item=model.item fullScreen=true}}
+<ol>
+  <li>
+    The "normal" story tease looks someting like this:  
+    {{story-tease item=model.item}}
+  </li>
+  
+  <li>
+    "Flipped" layout:
+    {{story-tease item=model.item flipped=true}}
+  </li>
+  
+  <li>
+    Story teases can have a more visual layout, colloquially known as the \"fancy featured image\".
+    {{story-tease item=model.item isFeatured=true}}
+  </li>
+  
+  <li>
+    Full screen layout:
+    {{story-tease item=model.item fullScreen=true}}
+  </li>
+</ol>
