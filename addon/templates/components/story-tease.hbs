@@ -27,21 +27,18 @@
   <!-- .flag-image -->
   {{/if}}
 
-  <div class="flag-body {{if isSmallAndUp 'flag-body--rightpad'}}">
+  <div class="story-tease__body {{if isSmallAndUp 'flag-body--rightpad'}}">
     {{#if (and item.headers.links showParent)}}
-      <div class="story-parent text text--small nudge-mini">
-        <span class="text-divide">
-          {{#each item.headers.links as |link|}}
-            <a class="{{if isFancyFeatured 'link--white' 'link--dark'}}" href="{{link.url}}">{{{link.title}}}</a>
-            <span class="text-divide-slash"> / </span>
-          {{/each}}
-        </span>
-        <!-- .text-divide -->
+      <div class="story-tease-parent">
+        {{#each item.headers.links as |link|}}
+          <a class="story-tease-parent__link {{if isFancyFeatured 'link--white' 'link--dark'}}" href="{{link.url}}">{{{link.title}}}</a>
+          <span class="story-tease-parent__slash"> / </span>
+        {{/each}}
       </div>
     {{/if}}
 
-    <div class="text {{if (and isFancyFeatured (not fullScreen)) 'text--350'}}">
-      <h2 class="{{if isFeatured 'h-featured' 'h2 h2--mq-small'}} nudge-mini">
+    <div class="story-tease__body-text text {{if (and isFancyFeatured (not fullScreen)) 'text--350'}}">
+      <h2 class="story-tease__title {{if isFeatured 'h-featured' 'h2 h2--mq-small'}} nudge-mini">
         {{! #link-to 'story' item.id class="link--dark"}}{{! item.title}}{{! /link-to}}
         <a class="{{if isFancyFeatured 'link--white' 'link--dark'}}" data-test-selector="story-tease-title" href={{item.url}}>
           {{{item.title}}}
@@ -95,7 +92,7 @@
   </div> <!-- .flag-body -->
 
   {{#if (and item.imageMain (not flipped) (not isFancyFeatured))}}
-  <a href={{item.url}} class="flag-image link--nodecor middle-narrow-up">
+  <a href={{item.url}} class="story-tease__image flag-image link--nodecor middle-narrow-up">
     <img alt="{{item.title}}"
       src="{{image-template item.imageMain.template 100 100 item.imageMain.crop}}"
       srcset="{{image-template item.imageMain.template 200 200 item.imageMain.crop}} 2x,
