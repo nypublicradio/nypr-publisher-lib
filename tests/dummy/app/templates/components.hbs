@@ -14,35 +14,63 @@ Accepts the following parameters:
 - `adminURL`: the *host* of the admin site used in editorial controls.
 - `playContext`: a string passed to Google Analytics event tracking
 
-There are four variations on a story tease.
+There are four variations on a story tease. These examples will use the following dummy object:
 "}}
+{{code-snippet name="story-tease-object.js"}}
 
 <ol>
   <li>
     <p>
       The "normal" story tease looks someting like this:  
     </p>
+    {{code-snippet name="story-tease-normal.hbs"}}
+    {{!-- BEGIN-SNIPPET story-tease-normal --}}
     {{story-tease item=model.item}}
+    {{!-- END-SNIPPET --}}
   </li>
   
   <li>
     <p>
       "Flipped" layout:
     </p>
+    {{code-snippet name="story-tease-flipped.hbs"}}
+    {{!-- BEGIN-SNIPPET story-tease-flipped --}}
     {{story-tease item=model.item flipped=true}}
+    {{!-- END-SNIPPET --}}
   </li>
   
   <li>
     <p>
-      Story teases can have a more visual layout, colloquially known as the "fancy featured image".
+      Story teases can be given a "featured" treatment: some extra padding and and a gray background. If an <code>isLatest</code> attribute is set to <code>true</code>, the component will check the <code>whats-on</code> endpoint and render a UI label to show if the given story is currently airing or not.
     </p>
-    {{story-tease item=model.item isFeatured=true}}
+    {{code-snippet name="story-tease-featured.hbs"}}
+    {{!-- BEGIN-SNIPPET story-tease-featured --}}
+    {{story-tease item=model.latestItem isFeatured=true}}
+    {{!-- END-SNIPPET --}}
+  </li>
+  
+  <li>
+    <p>
+      Story teases can have a more visual layout, colloquially known as the "fancy featured image". That can be set from the context by setting <code>isFancyFeatured</code> to <code>true</code>, otherwise there is a computed property that will determine if a tease should be "fancy featured".
+    </p>
+    {{code-snippet name="is-fancy-featured-cp.js"}}
+    {{code-snippet name="story-tease-fancy.hbs"}}
+    {{!-- BEGIN-SNIPPET story-tease-fancy --}}
+    {{story-tease item=model.latestItem isFeatured=true isFancyFeatured=true}}
+    {{!-- END-SNIPPET --}}
   </li>
   
   <li>
     <p>
       Full screen layout:
     </p>
-    {{story-tease item=model.item fullScreen=true}}
+    {{code-snippet name="story-tease-full-screen.hbs"}}
+    {{!-- BEGIN-SNIPPET story-tease-full-screen --}}
+    {{#story-tease item=model.latestItem isFeatured=true fullScreen=true}}
+      <p style="max-width: 800px; padding: 0 25px; margin: 0 auto;">
+        Floating Story Tease Header
+      </p>
+    {{/story-tease}}
+    {{!-- END-SNIPPET --}}
   </li>
 </ol>
