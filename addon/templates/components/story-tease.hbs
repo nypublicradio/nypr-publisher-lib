@@ -1,24 +1,24 @@
-{{#if isFancyFeatured}}
-  <div class="box-mat {{if fullScreen 'box-mat--fullscreen'}}" style={{fancyFeaturedBackground}}></div>
+{{#if (or isFancyFeatured fullScreen)}}
+  <div class="story-tease__backdrop {{if fullScreen 'box-mat--fullscreen'}}" style={{fancyFeaturedBackground}}></div>
 {{/if}}
 
 {{#if hasBlock}}
-<div class="story-tease-floating-header">
+<div class="story-tease__floating-header">
   {{yield}}
 </div>
 {{/if}}
 
 {{#if isFeatured}}
-  <div class="text text--small text--upper text--heavy text--spacing nudge {{if isFancyFeatured 'text--white'}}">
+  <div class="story-tease__status">
     <p>{{status}}</p>
   </div>
 {{/if}}
 
-<div class="story-tease-meta {{if flipped 'story-tease--flipped flag--med'}} flush">
+<div class="story-tease-meta">
 
   {{#if (and item.imageMain flipped)}}
-  <a href={{item.url}} class="flag-image link--nodecor middle-narrow-up">
-    <img class="squarebadge--md badge--shadow" alt="{{item.title}}"
+  <a href={{item.url}} class="story-tease__image story-tease__image--flipped">
+    <img alt="{{item.title}}"
       src="{{image-template item.imageMain.template 200 200 item.imageMain.crop}}"
       srcset="{{image-template item.imageMain.template 400 400 item.imageMain.crop}} 2x,
         {{image-template item.imageMain.template 600 600 item.imageMain.crop}} 3x"
@@ -31,26 +31,26 @@
     {{#if (and item.headers.links showParent)}}
       <div class="story-tease-parent">
         {{#each item.headers.links as |link|}}
-          <a class="story-tease-parent__link {{if isFancyFeatured 'link--white' 'link--dark'}}" href="{{link.url}}">{{{link.title}}}</a>
+          <a class="story-tease-parent__link" href="{{link.url}}">{{{link.title}}}</a>
           <span class="story-tease-parent__slash"> / </span>
         {{/each}}
       </div>
     {{/if}}
 
-    <div class="story-tease__body-text {{if (and isFancyFeatured (not fullScreen)) 'text--350'}}">
-      <h2 class="story-tease__title {{if isFeatured 'h-featured'}}">
+    <div class="story-tease__body-text">
+      <h2 class="story-tease__title">
         {{! #link-to 'story' item.id class="link--dark"}}{{! item.title}}{{! /link-to}}
-        <a class="{{if isFancyFeatured 'link--white'}}" data-test-selector="story-tease-title" href={{item.url}}>
+        <a data-test-selector="story-tease-title" href={{item.url}}>
           {{{item.title}}}
         </a>
       </h2>
 
-      <div class={{if isFancyFeatured 'text--white text--semi'}}>
+      <p>
         {{{item.tease}}}
         {{#if (not fullScreen)}}
           <span class="story-tease__newsdate"> {{moment-format item.newsdate 'MMM D, YYYY'}}</span>
         {{/if}}
-      </div>
+      </p>
     </div>
 
     <div class="story-tease__footer">
@@ -69,7 +69,7 @@
 
         {{#if item.audioAvailable}}
           {{queue-button
-            type=(if isFancyFeatured 'queue-button--fancyfeature' 'just-gray')
+            type=(if (or isFancyFeatured fullScreen) 'queue-button--fancyfeature' 'just-gray')
             itemPK=item.id
             itemTitle=item.title
             duration=item.audioDurationReadable
@@ -91,8 +91,8 @@
 
   </div> <!-- .flag-body -->
 
-  {{#if (and item.imageMain (not flipped) (not isFancyFeatured))}}
-  <a href={{item.url}} class="story-tease__image flag-image link--nodecor middle-narrow-up">
+  {{#if (and item.imageMain (not flipped) (not isFancyFeatured) (not fullScreen))}}
+  <a href={{item.url}} class="story-tease__image">
     <img alt="{{item.title}}"
       src="{{image-template item.imageMain.template 100 100 item.imageMain.crop}}"
       srcset="{{image-template item.imageMain.template 200 200 item.imageMain.crop}} 2x,

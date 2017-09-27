@@ -1,11 +1,104 @@
 .story-tease {
+  position: relative;
+  @include fontsize(14);
   margin-bottom: 48px;
   color: $darkergray;
-  @include fontsize(16);
-  line-height: 1.7rem;
+  line-height: 1.5;
   
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  
+  @include mq($large-and-up) {
+    @include fontsize(16);
+  }
+}
+
+.story-tease--featured {
+  margin-left: -15px;
+  margin-right: -15px;
+  padding: 30px 15px;
+  overflow: hidden;
+  background-color: $nearwhite;
+}
+
+.story-tease--fancyfeatured {
+  background-color: black;
+  color: white;
+}
+
+.story-tease--fullscreen {
+  margin: 0;
+  text-align: center;
+  height: 100%;
+  padding: 110px 8% 30px;
+  color: white;
+
+  @include mq($medium-and-up) {
+    padding: 150px 0 90px;
+    height: 490px;
+  }
+}
+
+.story-tease__backdrop {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  background-position: center 40%;
+  filter: blur(3px);
+  
+  @include mq((min-width: 476px)) {
+    background-position: 0 0;
+    filter: none;
+  }
+  
+  ~ * {
+    position: relative;
+  }
+}
+
+.story-tease--fullscreen > .story-tease__backdrop {
+  background-position: center 35%;
+}
+
+.story-tease__backdrop::before {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(to right, rgba(0,0,0,0.6), rgba(0,0,0,0.6));
+  
+  @include mq((min-width: 476px)) {
+    background: linear-gradient(to right, black 35%, rgba(0,0,0,0.3), rgba(0,0,0,0));
+  }
+}
+
+.story-tease--fullscreen > .story-tase__backdrop::before {
+  background: linear-gradient(20deg,rgba(0,0,0,.6),rgba(0,0,0,.6));
+  
+  @include mq((min-width: 1025px)) {
+    background: linear-gradient(20deg,rgba(0,0,0,.8),rgba(0,0,0,.1));
+  }
+}
+
+.story-tease__status {
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+  @include fontsize(12);
+  line-height: 1.5;
+  
+  > p {
+    margin: 0;
+  }
 }
 
 .story-tease-meta {
@@ -15,8 +108,15 @@
 }
 
 .story-tease__body {
-  @include mq($small-and-up) {
-    max-width: 590px;
+  max-width: 590px;
+
+  .story-tease--fancyfeatured & {
+    max-width: 350px;
+  }
+  
+  .story-tease--fullscreen & {
+    max-width: 650px;
+    margin: auto;
   }
 }
 
@@ -25,6 +125,11 @@
   @include fontsize(12);
   line-height: 1.125rem;
   margin-bottom: 5px;
+  
+  .story-tease--fullscreen &,
+  .story-tease--fancyfeatured & {
+    color: white;
+  }
 }
 
 .story-tease-parent__link {
@@ -34,10 +139,20 @@
   &:hover {
     color: $blue;
   }
+  
+  .story-tease--fullscreen &,
+  .story-tease--fancyfeatured & {
+    color: white;
+  }
 }
 
 .story-tease-parent__slash {
   color: $lightgray;
+  
+  .story-tease--fullscreen &,
+  .story-tease--fancyfeatured & {
+    color: white;
+  }
 }
 
 .story-tease-parent__slash:last-child {
@@ -46,6 +161,17 @@
 
 .story-tease__body-text {
   margin-bottom: 24px;
+  
+  > p {
+    margin: 0;
+  }
+  
+  .story-tease--fullscreen &,
+  .story-tease--fancyfeatured & {
+    > p {
+      font-weight: 600;
+    }
+  }
 }
 
 .story-tease__title {
@@ -71,12 +197,48 @@
   }
 }
 
-.story-tease__image   {
+.story-tease--fullscreen,
+.story-tease--fancyfeatured {
+  .story-tease__title > a {
+    color: white;
+  }  
+}
+
+.story-tease--flipped .story-tease__title {
+  font-weight: 400;
+}
+
+.story-tease--featured .story-tease__title {
+  @include fontsize(24);
+  line-height: 1.325;
+
+  @include mq($medium-and-up) {
+    @include fontsize(32);
+    line-height: 1.5;
+  }
+}
+
+.story-tease__image {
+  display: none;
   margin-left: 40px;
+  
+  @include mq($middle-narrow-and-up) {
+    display: block;
+  }
   
   > img {
     max-width: none;
     display: block;
+  }
+}
+
+.story-tease__image--flipped {
+  margin-left: 0;
+  margin-right: 35px;
+  
+  > img {
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,0.2);
+    border-radius: 7px;
   }
 }
 
@@ -89,9 +251,14 @@
 .story-tease__footer {
   display: flex;
   align-items: center;
+  // negative bottom on the container plus opposing margin on children
+  // allows for the items to wrap with even vertical spacing withouth
+  // doubling up spacing below the container itself
+  margin-bottom: -24px;
   
   > * {
     margin-right: 10px;
+    margin-bottom: 24px;
   }
   
   > :last-child {
@@ -99,32 +266,16 @@
   }
 }
 
-.story-tease.full-screen {
-  position: relative;
-  text-align: center;
-  padding: 150px 0 90px;
-  height: 490px;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
-
-  @include mq($medium-only) {
-    height: 100%;
-    padding: 110px 8% 30px;
-  }
-
-  .story-tease-meta {
-    max-width: 650px;
-    width: 100%;
-  }
+.story-tease--fullscreen .story-tease__footer {
+  justify-content: center;
 }
 
-.story-tease-floating-header {
+
+.story-tease__floating-header {
   text-align: left;
   position: absolute;
   top: 25px;
+  width: 100%;
 
   @include mq($small-only) {
     width: 90%;
@@ -143,11 +294,5 @@
       width: 50px;
       height: 50px;
     }
-  }
-}
-
-.story-tease--flipped {
-  .h2 {
-    font-weight: normal;
   }
 }

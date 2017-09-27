@@ -25,10 +25,19 @@ export default Component.extend({
   isLive:             equal('status', STATUSES.LIVE),
   isLatest:           readOnly('item.isLatest'),
   isListenableNow:    or('item.audioAvailable', 'isLive'),
+  // BEGIN-SNIPPET is-fancy-featured-cp
   isFancyFeatured:    and('item.largeTeaseLayout', 'item.imageMain', 'isFeatured'),
+  // END-SNIPPET
+
 
   tagName:            'article',
-  classNameBindings:  ['featuredClasses', 'fullScreen'],
+  classNameBindings:  [
+    'featuredClasses',
+    'fullScreen:story-tease--fullscreen',
+    'isFeatured:story-tease--featured',
+    'isFancyFeatured:story-tease--fancyfeatured',
+    'flipped:story-tease--flipped'
+  ],
   classNames:         ['story-tease'],
 
   itemId: computed('isLive', 'streamSlug', 'item.id', function() {
@@ -88,10 +97,9 @@ export default Component.extend({
   _checkWhatsOn() {
     const story = get(this, 'item');
     const pk = get(story, 'cmsPK');
-    const isLatest = get(this, 'item.isLatest');
     const whatsOn = get(this, 'whatsOn');
 
-    if (!isLatest) {
+    if (!get(this, 'isLatest')) {
       return;
     }
 
