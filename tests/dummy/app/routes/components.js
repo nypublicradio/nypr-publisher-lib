@@ -1,5 +1,6 @@
 import Ember from 'ember';
 
+// BEGIN-SNIPPET story-tease-object
 const DUMMY_STORY = {
   id: 'rebar',
   audio: 'https://www.podtrac.com/pts/redirect.mp3/audio.wnyc.org/bl/bl051914bpod.mp3',
@@ -34,11 +35,17 @@ const DUMMY_STORY = {
   title: "reBar: Closed and Bankrupt",
   url: "http://www.wnyc.org/story/rebar/",
 }
+// END-SNIPPET
+
+// quick n dirty object copy
+const LATEST_STORY = JSON.parse(JSON.stringify(DUMMY_STORY));
+LATEST_STORY.isLatest = true;
 
 export default Ember.Route.extend({
   model() {
     return {
-      item: DUMMY_STORY
+      item: DUMMY_STORY,
+      latestItem: LATEST_STORY
     };
   }
 });
