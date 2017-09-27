@@ -38,9 +38,11 @@ const DUMMY_STORY = {
 }
 // END-SNIPPET
 
+// BEGIN-SNIPPET latest-story
 // quick n dirty object copy
 const LATEST_STORY = JSON.parse(JSON.stringify(DUMMY_STORY));
 LATEST_STORY.isLatest = true;
+// END-SNIPPET
 
 export default Ember.Route.extend({
   model() {
