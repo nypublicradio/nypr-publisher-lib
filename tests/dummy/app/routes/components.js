@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import config from 'dummy/config/environment';
 
 // BEGIN-SNIPPET story-tease-object
 const DUMMY_STORY = {
@@ -47,5 +48,9 @@ export default Ember.Route.extend({
       item: DUMMY_STORY,
       latestItem: LATEST_STORY
     };
+  },
+  setupController(controller) {
+    this._super(...arguments);
+    controller.set('config', config);
   }
 });
