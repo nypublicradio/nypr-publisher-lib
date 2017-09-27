@@ -15,6 +15,7 @@ Router.map(function() {
   this.route('components', function() {
     this.route('stories', function() {
       this.route('story-tease');
+      this.route('story-comments');
       this.route('related-stories');
     });
   });
