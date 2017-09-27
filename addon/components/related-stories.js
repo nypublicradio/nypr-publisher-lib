@@ -4,6 +4,7 @@ import get from 'ember-metal/get';
 import set from 'ember-metal/set';
 
 export default Ember.Component.extend({
+  tagName: 'section',
   layout,
   classNames: ['related-stories'],
 
