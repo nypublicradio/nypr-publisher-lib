@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700');
 
 $site-chrome-nav-bg: #f1f1f1;
 $site-chrome-nav-bg-small: #f1f1f1;
@@ -7,7 +7,7 @@ $site-chrome-link-hover: #999;
 $site-chrome-active-link-color: #3480ce; 
 $site-chrome-active-link-right-border: #3480ce;
 $site-chrome-active-link-bg: #ddd;
-$site-chrome-nav-width-large: 175px;
+$site-chrome-nav-width-large: 200px;
 @import "nypr-ui/site-chrome";
 @import "nypr-publisher-lib";
 @import "nypr-audio-services";
@@ -66,20 +66,20 @@ pre > code {
   margin: auto;
   padding: 0 15px;
   
-   > p {
+   p {
      line-height: 1.8;
    }
    
-   > ul {
+   ul {
      line-height: 1.8;
    }
 }
 
 
 .site-title {
-  font-size: 14px;
-  padding: 0 12px;
-  margin-top: 0;
+  font-size: 16px;
+  margin-bottom: 10px;
+  font-weight: 600;
   
   > a {
     color: black;
@@ -91,16 +91,43 @@ pre > code {
   }
 }
 
+.site-tag {
+  font-size: 10px;
+  margin-bottom: 20px;
+  
+  @include mq((min-width: 1025px))  {
+    font-size: 12px;
+  }
+}
+
+.site-chrome__left-corner {
+  margin-bottom: 15px;
+  padding-right: 15px;
+}
+
 .site-chrome__nav {
-  padding: 0 15px;
+  text-align: right;
 }
 
 .site-chrome__link > a {
   font-size: 14px;
   color: black;
+  font-weight: 600;
     
-    &:focus,
-    &:hover {
-      color: #333;
-    }
+  &:focus,
+  &:hover {
+    color: #333;
+  }
+  
+  @include mq((min-width: 1025px)) {
+    font-size: 16px;
+  }
+}
+
+.index-header {
+  font-size: 14px;
+  
+  @include mq((min-width: 600px)) {
+    font-size: 32px;
+  }
 }
