@@ -1,0 +1,20 @@
+{{md-text text="
+#### `related-stories`
+
+The `related-stories` component takes a function that should run a query lookup on the store. The `related-stories` component will call this function and set its result as its `stories` property, which it will loop through and render out each item in a `story-tease` component.
+
+So the function passed to `getStories` should look like:
+"}}
+{{code-snippet name="get-related-stories.js"}}
+
+{{md-text text="Assuming `RELATED_TO_ID` is set as:"}}
+{{code-snippet name="related-to.js"}}
+
+{{md-text text="
+You can then render out a list of stories related to `RELATED_TO_ID` like so:
+"}}
+{{code-snippet name="related-stories.hbs"}}
+
+{{!-- BEGIN-SNIPPET related-stories --}}
+{{related-stories getStories=model.getRelatedStories}}
+{{!-- END-SNIPPET --}}
