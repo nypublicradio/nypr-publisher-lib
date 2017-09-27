@@ -12,7 +12,11 @@ Router.map(function() {
     this.route('adapters');
     this.route('serializers');
   });
-  this.route('components');
+  this.route('components', function() {
+    this.route('stories', function() {
+      this.route('story-tease');
+    });
+  });
   this.route('services');
 });
 
