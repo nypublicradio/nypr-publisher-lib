@@ -23,7 +23,9 @@ module.exports = function(environment) {
       // when it is created
     },
     publisherAPI: 'https://api.demo.nypr.digital/api',
-    platformEventsAPI: 'https://api.demo.nypr.digital/analytics'
+    platformEventsAPI: 'https://api.demo.nypr.digital/analytics',
+    webRoot: 'https://wnyc.demo2.wnyc.net',
+    adminRoot: 'https://internal.demo2.wnyc.net',
   };
 
   if (environment === 'development') {
