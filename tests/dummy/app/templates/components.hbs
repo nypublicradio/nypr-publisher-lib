@@ -6,22 +6,17 @@ The components in `nypr-publisher-lib` provide basic UI representations of the p
 ### Stories
 
 #### Story Tease
-Accepts the following parameters:
-- `item`: the story to be rendered
-- `parentTitle`: if the story tease is rendered on a page branded for its show or \"parent\" object, pass in the title of the parent to optionally hide the name of the show in the tease object. See below.
-- `flipped`: a boolean to turn on an alternate layout
-- `isStaff`: a boolean to determine whether or not to render staff-level editorial controls
-- `adminURL`: the *host* of the admin site used in editorial controls.
-- `playContext`: a string passed to Google Analytics event tracking
+Renders the given `item` in a compact UI that is suitable for a listing context. Expects a `story` model as its `item` parameter.
 
-There are four variations on a story tease. These examples will use the following dummy object:
+##### Layouts
+There are several variations on the story tease layout. They are controlled via a combination of passed-in parameters and computed properties derived from the `item` attributes. The examples below will use the following dummy object:
 "}}
 {{code-snippet name="story-tease-object.js"}}
 
 <ol>
   <li>
     <p>
-      The "normal" story tease looks someting like this:  
+      Nothing special. Pass in the `item`.
     </p>
     {{code-snippet name="story-tease-normal.hbs"}}
     {{!-- BEGIN-SNIPPET story-tease-normal --}}
@@ -31,7 +26,7 @@ There are four variations on a story tease. These examples will use the followin
   
   <li>
     <p>
-      "Flipped" layout:
+      The "flipped" layout is controlled with the <code>flipped</code> parameter.
     </p>
     {{code-snippet name="story-tease-flipped.hbs"}}
     {{!-- BEGIN-SNIPPET story-tease-flipped --}}
@@ -40,9 +35,12 @@ There are four variations on a story tease. These examples will use the followin
   </li>
   
   <li>
-    <p>
-      Story teases can be given a "featured" treatment: some extra padding and and a gray background. If an <code>isLatest</code> attribute is set to <code>true</code>, the component will check the <code>whats-on</code> endpoint and render a UI label to show if the given story is currently airing or not.
-    </p>
+    {{md-text text="
+The \"featured\" layout: some extra padding and and a gray background.
+
+Set the `isFeatured` parameter to be true. If the passed in `item` must has its `isLatest` attribute set to `true`, the component will use the `whats-on` service and render a UI label to show if the given story is currently airing or not. The following example uses this dummy object:
+    "}}
+    {{code-snippet name="latest-story.js"}}
     {{code-snippet name="story-tease-featured.hbs"}}
     {{!-- BEGIN-SNIPPET story-tease-featured --}}
     {{story-tease item=model.latestItem isFeatured=true}}
@@ -50,9 +48,11 @@ There are four variations on a story tease. These examples will use the followin
   </li>
   
   <li>
-    <p>
-      Story teases can have a more visual layout, colloquially known as the "fancy featured image". That can be set from the context by setting <code>isFancyFeatured</code> to <code>true</code>, otherwise there is a computed property that will determine if a tease should be "fancy featured".
-    </p>
+    {{md-text text="
+The \"fancy featured image\" layout: use the main image as a background and add a gradient.
+
+Set `isFancyFeatured` to `true`, or else let the component derive it using the `isFancyFeatured` computed property.
+    "}}
     {{code-snippet name="is-fancy-featured-cp.js"}}
     {{code-snippet name="story-tease-fancy.hbs"}}
     {{!-- BEGIN-SNIPPET story-tease-fancy --}}
@@ -61,9 +61,11 @@ There are four variations on a story tease. These examples will use the followin
   </li>
   
   <li>
-    <p>
-      Full screen layout:
-    </p>
+    {{md-text text="
+The full screen layout: set `isFeatured` and `fullScreen` to `true`.
+
+Accepts a block which is positioned above the main tease content inside a `.story-tease__floating-header` node.
+    "}}
     {{code-snippet name="story-tease-full-screen.hbs"}}
     {{!-- BEGIN-SNIPPET story-tease-full-screen --}}
     {{#story-tease item=model.latestItem isFeatured=true fullScreen=true}}
@@ -72,5 +74,32 @@ There are four variations on a story tease. These examples will use the followin
       </p>
     {{/story-tease}}
     {{!-- END-SNIPPET --}}
+  </li>
+</ol>
+
+{{md-text text="##### Other Parameters"}}
+<ol>
+  <li>
+    {{md-text text="`parentTitle`:  used to control if the the story's \"parent\" is rendered as a link above the story title. If the `parentTitle` matches the value of `item.headers.brand.title`, the links will **not** be rendered."}}
+    {{code-snippet name="parent-title.hbs"}}
+    {{!-- BEGIN-SNIPPET parent-title --}}
+    {{story-tease item=model.item parentTitle="The Brian Lehrer Show"}}
+    {{!-- END-SNIPPET --}}
+  </li>
+  
+  <li>
+    {{md-text text="
+`adminURL`: the **host and path prefix** of the admin site used in editorial controls.
+
+`isStaff`: a boolean to determine whether or not to render staff-level editorial controls.
+    "}}
+    {{code-snippet name="admin-url.hbs"}}
+    {{!-- BEGIN-SNIPPET admin-url --}}
+    {{story-tease item=model.item isStaff=true adminURL=(concat config.adminRoot '/admin')}}
+    {{!-- END-SNIPPET --}}
+  </li>
+  
+  <li>
+    {{md-text text="`playContext`: a string passed to Google Analytics event tracking"}}
   </li>
 </ol>
