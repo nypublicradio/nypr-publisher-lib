@@ -1,0 +1,23 @@
+.related-stories__heading {
+  margin-top: 0;
+  margin-bottom: 24px;
+  color: $lightgray;
+  border-bottom: 1px solid $lightestgray;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  
+  @include fontsize(12);
+  font-weight: 700;
+  line-height: 2.7;
+  
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.related-item {
+  padding: 38px 0;
+  
+  > .story-tease {
+    margin-bottom: 0;
+  }
+}

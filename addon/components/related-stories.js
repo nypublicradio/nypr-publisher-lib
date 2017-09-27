@@ -5,7 +5,7 @@ import set from 'ember-metal/set';
 
 export default Ember.Component.extend({
   layout,
-  classNames: ['list', 'list--noborder'],
+  classNames: ['related-stories'],
 
   stories: Ember.computed('getStories', {
     get() {
