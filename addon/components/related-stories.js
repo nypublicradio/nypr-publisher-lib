@@ -12,7 +12,10 @@ export default Ember.Component.extend({
     get() {
       get(this, 'getStories')().then(stories => {
         set(this, 'stories', stories);
-        Ember.run.scheduleOnce('afterRender', this, this.imagesLoaded);
+        // TODO: make this an app concern
+        if (this.$().imagesLoaded) {
+          Ember.run.scheduleOnce('afterRender', this, this.imagesLoaded);
+        }
       });
     },
     set(k,v) { return v; }
