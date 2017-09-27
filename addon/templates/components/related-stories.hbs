@@ -1,11 +1,9 @@
 {{#if stories}}
-<div class="list-heading">
-    <h1 class="h5">Related</h1>
-</div>
+  <h1 class="related-stories__heading">Related</h1>
 {{/if}}
 
 {{#each stories as |item|}}
-<div class="list-item">
+<div class="related-item">
   {{story-tease item=item playContext='RelatedStories'}}
 </div>
 {{/each}}
