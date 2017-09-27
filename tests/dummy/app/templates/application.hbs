@@ -2,10 +2,11 @@
 
   {{#chrome.nav as |nav|}}
     {{#nav.corner}}
-      <h1 class="site-title">{{link-to 'nypr publisher lib''index'}}</h1>
+      <h1 class="site-title">nypr publisher lib</h1>
     {{/nav.corner}}
     
     {{#nav.links as |links|}}
+      {{links.link text='Home' route='index'}}
       {{links.link text='Models, Adapters, &  Serializers' route='mas'}}
       {{links.link text='Components' route='components'}}
       {{links.link text='Services' route='services'}}
