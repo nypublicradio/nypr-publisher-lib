@@ -1,3 +1,5 @@
+@import "../nypr-ui/buttons";
+
 .story-tease {
   position: relative;
   @include fontsize(14);
@@ -270,6 +272,22 @@
   justify-content: center;
 }
 
+.story-tease__staff-btn {
+  @include btn;
+  text-decoration: none;
+  background-color: $lightgreen;
+  border-color: $lightgreen;
+  color: white;
+  
+  &:not([disabled]) {
+    &:hover,
+    &:focus {
+      background-color: $darkgreen;
+      border-color: $darkgreen;
+      color: white;
+    }
+  }
+}
 
 .story-tease__floating-header {
   text-align: left;
