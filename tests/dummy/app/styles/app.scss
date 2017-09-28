@@ -138,3 +138,10 @@ pre > code {
     font-size: 32px;
   }
 }
+
+hr {
+  border: none;
+  height: 1px;
+  background-color: $lightestgray;
+  max-width: 80%;
+}

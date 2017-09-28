@@ -14,9 +14,18 @@ export default Ember.Route.extend({
       aboutPage: this.store.createRecord('about-page', ABOUT_PAGE)
     });
     // END-SNIPPET
+    // BEGIN-SNIPPET tease-list-api-response
+    let listApiResponse = this.store.createRecord('api-response', {
+      teaseList: [
+        this.store.createRecord('story', DUMMY_STORY_1),
+        this.store.createRecord('story', DUMMY_STORY_2),
+      ]
+    });
+    // END-SNIPPET
     
     return {
       aboutApiResponse,
+      listApiResponse,
     };
   }
 });

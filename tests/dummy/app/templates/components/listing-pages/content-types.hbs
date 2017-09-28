@@ -23,3 +23,21 @@ And the `about-page` component will be rendered out like this:
 {{about-page model=model.aboutApiResponse}}
 {{!-- END-SNIPPET --}}
 <hr>
+
+{{md-text text="
+##### `tease-list`
+The `tease-list` component renders out an `api-response` that has a `teaseList` attribute, which is just a list of `story` models.
+
+So let's say we have an `api-response` defined like so with a list of `story` models set as its `teaseList` property:
+"}}
+{{code-snippet name="tease-list-api-response.js"}}
+
+{{md-text text="
+The `story-list` component is rendered like so, accepting the `api-response` model as its `model` parameter:
+"}}
+{{code-snippet name="story-list-component.hbs"}}
+
+{{!-- BEGIN-SNIPPET story-list-component --}}
+{{story-list model=model.listApiResponse}}
+{{!-- END-SNIPPET --}}
+

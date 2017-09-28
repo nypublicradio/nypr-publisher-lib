@@ -5,6 +5,7 @@ import layout from '../templates/components/story-list';
 
 export default Component.extend({
   layout,
+  classNames: ['story-list'],
   session: service(),
   tagName: 'section',
   adminURL: `${config.adminRoot}/admin`
