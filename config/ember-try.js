@@ -13,7 +13,7 @@ module.exports = {
       },
       npm: {
         dependencies: {
-          'ember-font-awesome': '^2.0.0'
+          'ember-font-awesome': '^3.0.0'
         },
         devDependencies: {
           'ember-source': null
@@ -32,7 +32,7 @@ module.exports = {
       },
       npm: {
         dependencies: {
-          'ember-font-awesome': '^2.0.0'
+          'ember-font-awesome': '^3.0.0'
         },
         devDependencies: {
           'ember-source': null
