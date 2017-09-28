@@ -12,6 +12,9 @@ module.exports = {
         }
       },
       npm: {
+        dependencies: {
+          'ember-font-awesome': null
+        },
         peerDependencies: {
           'ember-font-awesome': '^3.0.0'
         },
@@ -31,6 +34,9 @@ module.exports = {
         }
       },
       npm: {
+        dependencies: {
+          'ember-font-awesome': null
+        },
         peerDependencies: {
           'ember-font-awesome': '^3.0.0'
         },
