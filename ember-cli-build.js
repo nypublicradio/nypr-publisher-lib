@@ -1,10 +1,12 @@
-/*jshint node:true*/
-/* global require, module */
+/* eslint-env node */
 var EmberAddon = require('ember-cli/lib/broccoli/ember-addon');
 
 module.exports = function(defaults) {
   let app = new EmberAddon(defaults, {
     snippetSearchPaths: ['app', 'tests/dummy/app', 'addon'],
+    'ember-font-awesome': {
+      includeFontFiles: false
+    }
   });
 
   /*
