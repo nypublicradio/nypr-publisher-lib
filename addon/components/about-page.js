@@ -3,5 +3,6 @@ import layout from '../templates/components/about-page';
 
 export default Component.extend({
   layout,
-  tagName: 'section'
+  tagName: 'section',
+  classNames: ['about-page']
 });

@@ -1,0 +1,62 @@
+@import "../nypr-ui/utils";
+@import "mixins";
+
+.about-page {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+  p {
+    margin-top: 0;
+    margin-bottom: 24px;
+  }
+}
+
+.about-person,
+.about-show {
+    margin-bottom: 3.75rem;
+}
+
+.about-page__hidden {
+  @include visuallyhidden;
+}
+
+.about-person {
+  @include fontsize(14);
+  line-height: 1.5;
+  color: $darkergray;
+  
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.about-person__body {}
+.about-person__link {
+  @include publisher-link;
+  color: $darkergray;
+  border: none;
+  
+  > h1 {
+    transition: font-size 250ms ease,line-height 250ms ease;
+    @include fontsize(20);
+    line-height: 1.5;
+    font-weight: 600;
+    margin-bottom: 5px;
+    
+    @include mq($medium-and-up) {
+      @include fontsize(24);
+      line-height: 2.125;
+    }
+  }
+}
+
+.about-person__job {
+  margin-bottom: 20px;
+}
+.about-person__social-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.about-person__image {}
