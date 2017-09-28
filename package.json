@@ -24,6 +24,7 @@
     "ember-cli-htmlbars-inline-precompile": "^0.4.3",
     "ember-cli-sass": "^7.0.0",
     "ember-code-snippet": "^2.0.0",
+    "ember-font-awesome": "^4.0.0-alpha.10",
     "ember-get-config": "^0.2.2",
     "liquid-fire": "0.27.2",
     "nypr-audio-services": "nypublicradio/nypr-audio-services#node-sass",
