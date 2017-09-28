@@ -51,16 +51,18 @@ const STORY_ID = 371424;
 
 export default Ember.Route.extend({
   model() {
-    return rsvp.hash({
-      item: DUMMY_STORY,
-      latestItem: LATEST_STORY,
-      realStory: this.store.findRecord('story', 'rebar'),
-      // BEGIN-SNIPPET get-related-stories
-      getRelatedStories: () => this.store.query('story', {related: {itemId: STORY_ID, limit: 5}}),
-      // END-SNIPPET
-      // BEGIN-SNIPPET get-comments
-      getComments: () =>  this.store.query('comment', { itemTypeId: 21, itemId: STORY_ID })
-      // END-SNIPPET
+    return this.store.findRecord('story', 'rebar').then(story => {
+      return rsvp.hash({
+        realStory: story,
+        item: DUMMY_STORY,
+        latestItem: LATEST_STORY,
+        // BEGIN-SNIPPET get-related-stories
+        getRelatedStories: () => this.store.query('story', {related: {itemId: STORY_ID, limit: 5}}),
+        // END-SNIPPET
+        // BEGIN-SNIPPET get-comments
+        getComments: () =>  this.store.query('comment', { itemTypeId: story.get('itemTypeId'), itemId: story.get('cmsPK') })
+        // END-SNIPPET
+      });
     });
   },
   setupController(controller) {
