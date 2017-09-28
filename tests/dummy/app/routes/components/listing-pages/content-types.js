@@ -22,10 +22,16 @@ export default Ember.Route.extend({
       ]
     });
     // END-SNIPPET
+    // BEGIN-SNIPPET detail-api-response
+    let detailApiResponse = this.store.createRecord('api-response', {
+      story: this.store.createRecord('story', DUMMY_STORY_2)
+    });
+    // END-SNIPPET
     
     return {
       aboutApiResponse,
       listApiResponse,
+      detailApiResponse
     };
   }
 });

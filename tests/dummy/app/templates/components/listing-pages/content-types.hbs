@@ -41,3 +41,25 @@ The `story-list` component is rendered like so, accepting the `api-response` mod
 {{story-list model=model.listApiResponse}}
 {{!-- END-SNIPPET --}}
 
+{{md-text text="
+##### `story-detail`
+The `story-detail` component renders an `api-response` that has a `story` attribute that points to a `story` model. It renders the full content of the `body` attribute of the story, but it passes that text through a `django-page` component in order to properly execute any embedded `<script>` tags that may be found.
+
+The `api-response` with a `story` attribute can be defined like so:
+"}}
+{{code-snippet name="detail-api-response.js"}}
+
+{{md-text text="
+The `story-detail` component is rendered like this, taking an `api-response` model as its `model` parameter, and expecting to find a `story` model at the `story` attribute.
+"}}
+{{code-snippet name="story-detail-component.hbs"}}
+
+{{md-text text="
+The `story-detail` component will just render the body text:
+"}}
+{{!-- BEGIN-SNIPPET story-detail-component --}}
+{{story-detail model=model.detailApiResponse}}
+{{!-- END-SNIPPET --}}
+
+<hr>
+
