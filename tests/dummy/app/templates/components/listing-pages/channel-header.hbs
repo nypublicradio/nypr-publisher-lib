@@ -1,1 +1,6 @@
-{{outlet}}
+{{channel-header
+  model=model.channel
+  listenLive=model.listenLive.pagecontent
+  isStaff=session.data.isStaff
+  adminURL=adminURL
+  classNames=(unless model.channel.featured 'flush')}}
