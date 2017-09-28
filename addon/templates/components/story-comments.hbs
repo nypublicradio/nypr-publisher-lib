@@ -1,7 +1,7 @@
-<h1 class="text--default">
-  <button class="btn btn--large btn--link btn--linkicon" {{action 'getComments'}} data-test-selector="story-comments">
-    <i class="fa fa-comment icon--prefix--large"></i>
-    <span class="btn--prefixbody">
+<h1 class="story-comments__title">
+  <button class="story-comments__reveal-button" {{action 'getComments'}} data-test-selector="story-comments">
+    {{fa-icon 'comment' class="story-comments__icon"}}
+    <span class="story-comments__button-text">
     {{#if (gt commentsCount 1)}}
       {{commentsCount}} Comments
     {{else if (gt commentsCount 0)}}
@@ -11,7 +11,7 @@
     {{/if}}
     </span>
   </button>
-  <i class="fa fa-circle-o-notch fa-spin" data-state="{{if isLoading 'is-visible' 'is-fadeout'}}"></i>
+  {{fa-icon "circle-o-notch" spin=true class=(if isLoading 'is-visible' 'is-fadeout')}}
 </h1>
 
 {{#if isShowingComments}}
@@ -21,7 +21,7 @@
 {{#if isShowingForm}}
   {{comments-form action='saveSuccess' email=email userName=userName isStaff=isStaff browserId=browserId story=story}}
 
-  <div class="text">
+  <div class="story-comments__note">
     <p>Please stay on topic, be civil, and be brief. By leaving a comment, you agree to our <a href="/privacy">Privacy Policy</a> and <a href="/terms/">Terms Of Use</a>.</p>
   </div>
 {{/if}}

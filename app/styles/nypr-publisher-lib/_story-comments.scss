@@ -1,0 +1,150 @@
+@import "../nypr-ui/buttons";
+@import "mixins";
+
+.story-comments {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: $darkergray;
+}
+
+.story-comments__title {
+  @include fontsize(16);
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 24px;
+}
+
+.story-comments__reveal-button {
+  @include btn;
+  color: inherit;
+  border: none;
+  padding: 0;
+  @include fontsize(16);
+  line-height: 1.5;
+  font-family: inherit;
+}
+
+.story-comments__icon {
+  margin-left: 1px;
+  margin-right: 8px;
+  vertical-align: baseline;
+  pointer-events: none;
+}
+
+.story-comments__button-text {
+  border-bottom: 1px solid rgba(204,204,204,.8);
+  pointer-events: none;
+}
+
+.story-comments__title > i.fa-circle-o-notch {
+  @include fontsize(24);
+  padding: 1px;
+  transition: opcaity 250ms ease;
+  vertical-align: middle;
+  
+  &.is-fadeout {
+    opacity: 0;
+  }
+}
+
+.story-comments__note {
+  > p {
+    margin: 0;
+  }
+  
+  a {
+    @include publisher-link;
+  }
+}
+
+.comment-list {
+  margin-bottom: 24px;
+}
+
+.comment-list__item {
+  padding: 2.4rem 0;
+  border-top: 1px solid $nearwhite;
+  margin-bottom: 0;
+}
+
+.comment-list__item--highlight {
+  background-color: $lightestgray;
+}
+
+.comment-author {
+  @include fontsize(16);
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+.comment-body {
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: $darkergray;
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+
+.comment-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.comment-date {
+  margin-right: 15px;
+  opacity: 0.7;
+}
+
+.comment-moderate {
+  @include publisher-link;
+}
+
+.comment-form {
+  display: block;
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.comment-form__header {
+  @include fontsize(16);
+  font-weight: 600;
+  margin: 0;
+}
+
+.comment-form__subhead {
+  margin-bottom: 24px;
+}
+
+.comment-fieldset {
+  border: none;
+  margin: 0 0 24px;
+  padding: 0;
+  width: 100%;
+  
+  > label {
+    @include fontsize(14);
+    font-weight: 600
+  }
+}
+
+.comment-input {
+  @include fontsize(12);
+  border: 1px solid $lightestgray;
+  padding: 12px;
+  line-height: 1.2;
+  display: block;
+  width: 100%;
+  transition: background-color 250ms ease;
+}
+
+.comment-submit-btn {
+  @include btn;
+  border-radius: 6px;
+  padding: 0 8px;
+  font-family: inherit;
+}
+
+.comment-error {
+  color: $red;
+}

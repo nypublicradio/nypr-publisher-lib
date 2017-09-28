@@ -6,6 +6,7 @@ import get from 'ember-metal/get';
 
 export default Component.extend({
   layout,
+  classNames: ['story-comments'],
   adminURL: `${config.adminRoot}/admin`,
 
   comments: computed('getComments', {

@@ -8,7 +8,7 @@ import layout from '../templates/components/comments-form';
 export default Component.extend({
   layout,
   tagName: 'form',
-  classNames: ['form'],
+  classNames: ['comment-form'],
   classNameBindings: ['isSaved:is-fadeout'],
 
   name: reads('userName'),
