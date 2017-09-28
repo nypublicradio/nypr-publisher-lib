@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import config from 'dummy/config/environment';
+import rsvp from 'rsvp';
 
 // BEGIN-SNIPPET story-tease-object
 const DUMMY_STORY = {
@@ -50,16 +51,17 @@ const STORY_ID = 371424;
 
 export default Ember.Route.extend({
   model() {
-    return {
+    return rsvp.hash({
       item: DUMMY_STORY,
       latestItem: LATEST_STORY,
+      realStory: this.store.findRecord('story', 'rebar'),
       // BEGIN-SNIPPET get-related-stories
       getRelatedStories: () => this.store.query('story', {related: {itemId: STORY_ID, limit: 5}}),
       // END-SNIPPET
       // BEGIN-SNIPPET get-comments
       getComments: () =>  this.store.query('comment', { itemTypeId: 21, itemId: STORY_ID })
       // END-SNIPPET
-    };
+    });
   },
   setupController(controller) {
     this._super(...arguments);
