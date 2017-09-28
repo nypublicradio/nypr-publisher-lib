@@ -66,12 +66,16 @@ pre > code {
   margin: auto;
   padding: 0 15px;
   
-   p {
-     line-height: 1.8;
-   }
+    p {
+      line-height: 1.8;
+    }
    
-   ul {
-     line-height: 1.8;
+    ul {
+      line-height: 1.8;
+
+      a {
+        font-size: 14px;
+      }
    }
 }
 
