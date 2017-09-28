@@ -1,1 +1,25 @@
-{{outlet}}
+{{md-text text="
+#### `content-types`
+These components are used to render the content proxied to by an `api-response`. The `model` passed into each of these will be an `api-response` model, and the component is configured to pull out the appropriate attributes to use for rendering.
+
+Remember, an `api-response` is an `ember-data` model with an attribute that points to **another** `ember-data` model.
+
+##### `about-page`
+So let's say we have an `about-page` model with the following attributes.
+"}}
+{{code-snippet name="about-page.js"}}
+{{md-text text="
+The `api-response` model that is passed into the `about-page` component could be defined like so:
+"}}
+{{code-snippet name="about-page-api-response.js"}}
+
+{{md-text text="
+And the `about-page` component will be rendered out like this:
+"}}
+{{code-snippet name="about-page-component.hbs"}}
+
+{{md-text text="###### About"}}
+{{!-- BEGIN-SNIPPET about-page-component --}}
+{{about-page model=model.aboutApiResponse}}
+{{!-- END-SNIPPET --}}
+<hr>
