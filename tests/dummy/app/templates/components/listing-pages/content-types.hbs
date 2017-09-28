@@ -63,3 +63,13 @@ The `story-detail` component will just render the body text:
 
 <hr>
 
+{{md-text text="
+#### Adding new `content-types`
+The nice part of this setup is that it keeps the templates fairly simple. A dynamic computed proprety of the `api-response` model can be passed to the `component` helper, which renders the correct UI for the available property.
+
+To add a new component/content-type pairing, do the following:
+1. Generate a new component that is specialized to render the passed in content
+1. Add a new clause to the `contentType` computed property of the `api-response` model, returning the name of the component you generated in step 1.
+1. Add a new relationship field to the `api-response` model to match the data that is returned for this new `contentType`
+1. Update the pubslier back end to return your new content type. A discusson of the publiser logic is outside the scope of this document.
+"}}
