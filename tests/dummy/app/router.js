@@ -18,6 +18,13 @@ Router.map(function() {
       this.route('story-comments');
       this.route('related-stories');
     });
+    this.route('listing-pages', function() {
+      this.route('content-types');
+      this.route('channel-header');
+      this.route('nav-links');
+      this.route('x-marquee');
+      this.route('social-links');
+    });
   });
   this.route('services');
 });
