@@ -25,6 +25,7 @@ Router.map(function() {
       this.route('x-marquee');
       this.route('social-links');
     });
+    this.route('streams');
   });
   this.route('services');
 });
