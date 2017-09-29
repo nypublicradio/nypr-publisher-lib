@@ -36,11 +36,11 @@
     {{#if model.hasSubscriptionLinks}}
       {{#dropdown-panel direction="br" as |panel|}}
         {{#panel.button}}Subscribe to the podcast ▾{{/panel.button}}
-        {{#panel.body}}
+        {{#panel.body as |body|}}
           {{#each model.podcastLinks as |podcast|}}
-            <a class="panel-link text--medium link--dark" href={{podcast.href}} target="_blank">
+            {{#body.link href=podcast.href}}
               <i class="fa {{if (eq podcast.title 'via RSS') 'fa-rss' 'fa-mobile'}}"></i> {{podcast.title}}
-            </a>
+            {{/body.link}}
           {{/each}}
         {{/panel.body}}
       {{/dropdown-panel}}
