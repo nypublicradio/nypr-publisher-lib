@@ -2,6 +2,7 @@ import DS from 'ember-data';
 import computed from 'ember-computed';
 import get from 'ember-metal/get';
 import { normalizeForSorting } from 'nypr-publisher-lib/helpers/normalize-for-sorting';
+import { A } from 'ember-array/utils';
 
 export default DS.Model.extend({
   // BEGIN-SNIPPET channel-fields
@@ -21,7 +22,7 @@ export default DS.Model.extend({
       if (!chunks) {
         return '';
       }
-      const chunk = chunks.compact().findBy('position', 'top');
+      const chunk = A(A(chunks).compact()).findBy('position', 'top');
       if (chunk) {
         let text = chunk.content.replace(/\\x3C\/script>/g, '</script>');
         return this.store.createRecord('django-page', { text });
@@ -36,7 +37,7 @@ export default DS.Model.extend({
       if (!chunks) {
         return '';
       }
-      const chunk = chunks.compact().findBy('position', 'bottom');
+      const chunk = A(A(chunks).compact()).findBy('position', 'bottom');
       if (chunk) {
         let text = chunk.content.replace(/\\x3C\/script>/g, '</script>');
         return this.store.createRecord('django-page', { text });
@@ -71,9 +72,9 @@ export default DS.Model.extend({
   scheduleSummary: DS.attr('string'),
   producingOrganizations: DS.attr(),
   // computeds
-  hasLinkroll: computed.bool('linkroll.firstObject'),
+  hasLinkroll: computed.bool('linkroll.length'),
   hasMarquee: computed.bool('marqueeImage'),
-  hasSubscriptionLinks: computed.bool('podcastLinks.firstObject'),
+  hasSubscriptionLinks: computed.bool('podcastLinks.length'),
   hasHeaderButtons: computed.or('donateChunk', 'hasSubscriptionLinks'),
   nprAnalyticsDimensions: DS.attr(),
   // END-SNIPPET
