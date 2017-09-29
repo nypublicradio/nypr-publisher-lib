@@ -10,7 +10,7 @@ export default Ember.Route.extend({
   model() {
     // BEGIN-SNIPPET about-page-api-response
     let aboutApiResponse = this.store.createRecord('api-response', {
-      id: 'shows/bl/about/1',
+      id: 'shows/foo/about/1',
       aboutPage: this.store.createRecord('about-page', ABOUT_PAGE)
     });
     // END-SNIPPET
