@@ -47,38 +47,6 @@
     }
 }
 
-.channel-header {
-  @extend %vertical-rhythm;
-  margin-bottom: 50px;
-}
-
-.channel-info {
-    //display: inline-block;
-    margin-top: 12px;
-    margin-left: 145px;
-
-    @include mq($small-only) {
-        font-size: 1.2em;
-        //display: block;
-    }
-
-    p {
-        margin-bottom: 0.3rem;
-    }
-
-    .blurb {
-        font-weight: normal;
-        margin-left: 0.2rem;
-    }
-
-    .title {
-        @include mq($small-only) {
-            font-size: 1rem;
-            font-weight: bold;
-        }
-    }
-}
-
 .marquee-buttons {
     margin-top: 25px;
     margin-left: 50px;
@@ -100,10 +68,6 @@
     .marquee & {
       margin-top: 10px;
     }
-}
-
-.channel-logo {
-    padding-right: 20px;
 }
 
 .channel-ad {
