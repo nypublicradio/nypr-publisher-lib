@@ -12,8 +12,6 @@ export default DS.JSONAPIAdapter.extend({
 
     return Ember.assign(options, {
       url: url.slice(-1) === '/' ? `${url}/` : url,
-      dataType: 'jsonp',
-      jsonpCallback: 'WNYC'
     });
   }
 });
