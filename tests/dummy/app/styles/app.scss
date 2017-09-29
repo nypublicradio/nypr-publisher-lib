@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700');
 
+@import "ember-power-select";
+
 $site-chrome-nav-bg: #f1f1f1;
 $site-chrome-nav-bg-small: #f1f1f1;
 $site-chrome-link-color: #333;
@@ -8,7 +10,9 @@ $site-chrome-active-link-color: #3480ce;
 $site-chrome-active-link-right-border: #3480ce;
 $site-chrome-active-link-bg: #ddd;
 $site-chrome-nav-width-large: 200px;
+
 @import "nypr-ui/site-chrome";
+@import "nypr-ui/dropdown";
 @import "nypr-publisher-lib";
 @import "nypr-audio-services";
 
