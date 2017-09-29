@@ -273,20 +273,7 @@
 }
 
 .story-tease__staff-btn {
-  @include btn;
-  text-decoration: none;
-  background-color: $lightgreen;
-  border-color: $lightgreen;
-  color: white;
-  
-  &:not([disabled]) {
-    &:hover,
-    &:focus {
-      background-color: $darkgreen;
-      border-color: $darkgreen;
-      color: white;
-    }
-  }
+  @include btn--lightgreen;
 }
 
 .story-tease__floating-header {
