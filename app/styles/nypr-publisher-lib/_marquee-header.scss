@@ -1,0 +1,45 @@
+.marquee {
+  position: relative;
+}
+
+.marquee-image {
+  height: 200px;
+  position: relative;
+
+  @include mq($small-only) {
+    display: none;
+  }
+}
+
+.marquee-gradient {
+  display: block;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background-size: 120% 300%;
+  background-position: center;
+}
+
+
+.marquee-footer {
+  position: relative;
+
+  @include mq($medium-and-up) {
+    // set children to relative position so they respect z-index
+    > * {
+      position: relative;
+    }
+  }
+}
+
+.marquee-buttons {
+  margin-top: 25px;
+  margin-left: 50px;
+
+  @include mq($small-only) {
+    margin-top: 20px;
+    margin-left: 0px;
+  }
+}
