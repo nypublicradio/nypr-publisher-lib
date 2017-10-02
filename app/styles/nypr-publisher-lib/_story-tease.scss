@@ -203,7 +203,11 @@
 .story-tease--fancyfeatured {
   .story-tease__title > a {
     color: white;
-  }  
+
+    &:hover {
+      border-bottom-color: white;
+    }
+  }
 }
 
 .story-tease--flipped .story-tease__title {
