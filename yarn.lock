@@ -5373,7 +5373,7 @@ nypr-audio-services@nypublicradio/nypr-audio-services:
 
 nypr-django-for-ember@nypublicradio/nypr-django-for-ember:
   version "0.0.0"
-  resolved "https://codeload.github.com/nypublicradio/nypr-django-for-ember/tar.gz/b9dc4647e0c88757cac8b2c301f4645eccc49e29"
+  resolved "https://codeload.github.com/nypublicradio/nypr-django-for-ember/tar.gz/45290c5b913348f8244c434001f7246c6a231259"
   dependencies:
     ember-cli-babel "^6.3.0"
     ember-cli-htmlbars "^2.0.1"
