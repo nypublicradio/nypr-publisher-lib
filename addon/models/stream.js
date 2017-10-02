@@ -48,23 +48,6 @@ export default Model.extend({
     return get(this, 'isWQXR') && (get(this, 'whatsOn') > 0);
   }),
 
-  shareMetadata:        computed('currentShow', 'currentPlaylistItem', function() {
-    let shareText = '';
-    let shareUrl = '';
-    let analyticsCode = '';
-
-    let entry = get(this, 'currentPlaylistItem.catalogEntry');
-    if (entry) {
-      shareText = `${entry.title} - ${entry.composer.name}`;
-      shareUrl = 'http://www.wnyc.org/streams/' + get(this, 'slug');
-    } else {
-      shareText = get(this, 'currentShow.title');
-      shareUrl = get(this, 'currentShow.url');
-    }
-
-    return ({shareText, shareUrl, analyticsCode});
-  }),
-
   currentComposer:      computed('currentPlaylistItem', function() {
     return get(this, 'currentPlaylistItem.catalogEntry.composer');
   }),

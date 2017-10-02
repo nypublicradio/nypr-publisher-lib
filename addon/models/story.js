@@ -200,15 +200,6 @@ export default Model.extend({
       };
     }
   }),
-  shareMetadata: computed(function() {
-    let title = get(this, 'twitterHeadline') || get(this, 'title');
-    let parentTitle = get(this, 'headers.brand.title');
-    let shareText = [parentTitle, title].filter(t => t).join(' - ');
-    let shareUrl = get(this, 'url');
-    let analyticsCode = get(this, 'analyticsCode') || '';
-
-    return ({shareText, shareUrl, analyticsCode});
-  }),
 
   // so Ember Simple Auth inludes a records ID when it saves
   toJSON() {
