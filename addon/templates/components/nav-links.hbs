@@ -6,7 +6,7 @@
       {{#if link.nav-slug}}
         {{link-to link.title (concat navRoot '.page') link.nav-slug classNames="nav-links__link"}}
       {{else}}
-        <a href={{link.href}} class="nav-links__link">{{link.title}}</a>
+        <a href={{link.href}} class="nav-links__link" target="_blank">{{link.title}}</a>
       {{/if}}
       {{#if (eq index currentIndex)}}
         <div class="nav-bar"></div>
