@@ -2,9 +2,9 @@
 {{#liquid-bind activeTabIndex as |currentIndex|}}
 <ul class="nav-links__list">
   {{#each parsedLinks as |link index|}}
-    <li class="{{if (eq index currentIndex) 'is-active '}}nav-links__list-item">
+    <li class="{{if (eq index currentIndex) 'is-active '}}nav-links__list-item" {{action (action (mut activeTabIndex) index)}}>
       {{#if link.nav-slug}}
-        <button {{action 'transition' link.nav-slug index}} class="nav-links__link">{{link.title}}</button>
+        {{link-to link.title (concat navRoot '.page') link.nav-slug classNames="nav-links__link"}}
       {{else}}
         <a href={{link.href}} class="nav-links__link">{{link.title}}</a>
       {{/if}}

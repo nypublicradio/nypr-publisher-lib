@@ -1,6 +1,5 @@
 import Ember from 'ember';
 import config from 'ember-get-config';
-import { canonicalize } from 'nypr-django-for-ember/services/script-loader';
 import layout from '../templates/components/nav-links';
 const {
   get,
@@ -15,30 +14,18 @@ export default Component.extend({
   layout,
   tagName: 'nav',
   links: [],
-  classNames: ['tabs-header', 'tabs-header--border'],
+  classNames: ['nav-links'],
   classNameBindings: ['xScrollable'],
   parsedLinks: computed('links', function() {
-    let origin;
-    if (config.environment === 'development') {
-      // in development, we're usually running a copy of the prod DB which will
-      // point to prod
-      // in prod builds on demo or production, these values will point to our
-      // configured webRoot
-      origin = 'http://www.wnyc.org';
-    } else {
-      origin = canonicalize(config.webRoot);
-    }
     let links = Ember.A(get(this, 'links'));
-    let navRoot = get(this, 'navRoot');
     return links.map(i => {
-      let { href, 'nav-slug':navSlug } = i;
+      let { href } = i;
       if (!href) {
-        i.href = `/${navRoot}/${navSlug}`;
         return i;
       }
-      if (href.indexOf(origin) === 0) {
+      if (href.indexOf(config.webRoot) === 0) {
         // make sure the parsed path has a leading slash
-        i.href = href.replace(origin, '').replace(/^([^\/]+)/, '/$1');
+        i.href = href.replace(config.webRoot, '').replace(/^([^/]+)/, '/$1');
         return i;
       }
       return i;
@@ -53,13 +40,6 @@ export default Component.extend({
 
     let defaultIndex = links.indexOf(links.findBy('nav-slug', defaultSlug));
     set(this, 'activeTabIndex', defaultIndex === -1 ? 0 : defaultIndex);
-  },
-
-  actions: {
-    transition(navSlug, index) {
-      set(this, 'activeTabIndex', index);
-      get(this, 'transition')(navSlug);
-    }
   },
 
   didInsertElement() {
