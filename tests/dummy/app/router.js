@@ -30,7 +30,10 @@ Router.map(function() {
       this.route('story-comments');
       this.route('related-stories');
     });
-    this.route('streams');
+    this.route('streams', function() {
+      this.route('stream-list');
+      this.route('stream-playlist');
+    });
   });
   this.route('services');
 });
