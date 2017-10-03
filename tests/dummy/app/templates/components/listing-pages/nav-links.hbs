@@ -1,5 +1,40 @@
-{{nav-links
-  defaultSlug=defaultSlug
-  navRoot=navRoot
-  links=linkroll
-  transition=(action 'navSlugTransition')}}
+{{md-text text="
+#### `nav-links`
+
+The `nav-links` component renders a responsive navigation bar that includes a sliding bar animation to show the transition between routes. It's currently used for listing pages, but could be extended to fit other use cases.
+
+##### Params
+* `navRoot`: the dotted route name prefix to use when constructing the `link-to` components that make up the individual navigation links
+* `linkroll`: an array of objects, each of which must have either an `href` or `nav-slug` key
+
+Let's say you have the above params defined like this:
+"}}
+{{code-snippet name="nav-links-params.js"}}
+{{md-text text="
+Then you would pass them into `nav-links` like this:
+"}}
+{{code-snippet name="nav-links-component.hbs"}}
+{{!-- BEGIN-SNIPPET nav-links-component --}}
+{{nav-links navRoot=model.navRoot links=model.linkroll}}
+{{!-- END-SNIPPET --}}
+
+{{md-text text="
+Go ahead and click \"More Foo\" or \"A List of Bar\" to view the transition. The third URL will open in a new window and *won't* move the bar, because it is an external link.
+
+If a given object from the `links` array has `nav-slug` key, it will be used to render a `link-to` component using the following invocation:
+"}}
+{{code-snippet name="nav-links-link.hbs"}}
+{{md-text text="
+The `nav-slug` value will be used the final path segment for the route that is the result of `navRoot + '.page'`, which means there must be a matching route. So in this instance, the `components.listing-pages.nav-links` route is defined like this in `router.js`:
+"}}
+{{code-snippet name="nav-links-router.js"}}
+
+{{md-text text="
+As it stands, this component is built to satisfy the needs of the WNYC/WQXR listing pages and has some constraints:
+
+* There must be a nested `page` route for whatever `navRoot` value is passed in
+* Each `link-to` will be rendered with the same `navRoot` value; there's no way to link to different top-level routes
+
+To load up the component with a specific link object chosen, pass in the value of the active link's `nav-slug` as the `defaultSlug` parameter.
+"}}
+{{nav-links navRoot=model.navRoot links=model.linkroll defaultSlug='bar'}}
