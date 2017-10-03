@@ -74,7 +74,7 @@ pre > code {
     line-height: 1.8;
   }
  
-  ul {
+  ul:not([class]) {
     line-height: 1.8;
 
     a {
