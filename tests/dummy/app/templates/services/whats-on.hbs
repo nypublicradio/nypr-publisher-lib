@@ -1,0 +1,28 @@
+{{md-text text="
+#### `whats-on` service
+
+The `whats-on` service exposes an `isLive` method which can be used to determine if a given `story` is currently airing on any of the digital streams.
+
+`isLive` accepts an `pk`, which is the database primary key for a `story`. This is usually the `cmsPK` attribute on a `story` model.
+
+Depending on the `stream`, publisher will use the `pk` of a show to say if something is on the air, so in certain instances you might want to use a show's `pk` instead.
+
+The service hits the `/v1/whats_on/` endpoint and checks the given `pk` against the response to see if it matches for whatever is currently airing on each of the returned station streams.
+
+For instance, this is how you might use the `whats-on` service to see if the Brian Lehrer Show is currently on air (the show has a `pk` of `363`):
+"}}
+{{code-snippet name="use-whats-on.js"}}
+
+{{md-text text="
+And the text below will render based on the time of day:
+"}}
+{{code-snippet name="whats-on-template.hbs"}}
+{{!-- BEGIN-SNIPPET whats-on-template --}}
+<p>
+{{#if isLive}}
+  Brian Lehrer is airing.
+{{else}}
+  Not airing.
+{{/if}}
+</p>
+{{!-- END-SNIPPET --}}

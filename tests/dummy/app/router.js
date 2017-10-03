@@ -35,7 +35,9 @@ Router.map(function() {
       this.route('stream-playlist');
     });
   });
-  this.route('services');
+  this.route('services', function() {
+    this.route('whats-on');
+  });
   
   // for the stream-playlist component to properly render
   this.route('djangorendered', {path: '/*wildcard'});
