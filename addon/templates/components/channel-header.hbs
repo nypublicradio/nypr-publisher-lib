@@ -38,9 +38,9 @@
         {{#panel.button}}Subscribe to the podcast ▾{{/panel.button}}
         {{#panel.body as |body|}}
           {{#each model.podcastLinks as |podcast|}}
-            {{#body.link href=podcast.href}}
+             <a class="panel-link text--medium link--dark" href={{podcast.href}} data-show-title="{{model.title}}" target="_blank">
               <i class="fa {{if (eq podcast.title 'via RSS') 'fa-rss' 'fa-mobile'}}"></i> {{podcast.title}}
-            {{/body.link}}
+            </a>
           {{/each}}
         {{/panel.body}}
       {{/dropdown-panel}}
