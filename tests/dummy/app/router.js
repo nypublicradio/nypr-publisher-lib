@@ -36,6 +36,9 @@ Router.map(function() {
     });
   });
   this.route('services');
+  
+  // for the stream-playlist component to properly render
+  this.route('djangorendered', {path: '/*wildcard'});
 });
 
 export default Router;
