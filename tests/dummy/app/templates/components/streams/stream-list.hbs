@@ -1,0 +1,13 @@
+{{md-text text="
+#### `stream-list`
+
+Pass the `stram-list` component an array of `stream` models. Let's say you've got a model hook defined like this:
+"}}
+{{code-snippet name="stream-list-route.js"}}
+{{md-text text="
+You can render the `stream-list` like this:
+"}}
+{{code-snippet name="stream-list-template.hbs"}}
+{{!-- BEGIN-SNIPPET stream-list-template --}}
+{{stream-list streams=model}}
+{{!-- END-SNIPPET --}}

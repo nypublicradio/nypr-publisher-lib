@@ -1,22 +1,27 @@
-<ul class="stream-list">
 {{#each streams as |stream|}}
 {{#if stream.whatsOn}}
 
 {{#holygrail-layout tagName='li' class='streamitem' as |g|}}
   {{#g.left}}
-    <div class="streamitem-imagewrap"><img class="streamitem-image" src={{stream.imageLogo}}></div>
+    <div class="streamitem-imagewrap">
+      <img class="streamitem-image" src={{stream.imageLogo}}>
+    </div>
   {{/g.left}}
 
   {{#g.center class='streamitem-info'}}
-    <h2 class="text text--semi nudge-mini">
-      <a href="{{stream.scheduleUrl}}" class="link--dark">{{stream.name}}</a>
+    <h2 class="streamitem-header">
+      <a class="streamitem-link" href="{{stream.scheduleUrl}}">{{stream.name}}</a>
     </h2>
-    <div class="text--medium">
-      <a href="{{stream.currentShow.showUrl}}" class="link--dark">{{stream.currentShow.showTitle}}</a>
+    <div class="streamitem-body">
+      <a class="streamitem-link" href="{{stream.currentShow.showUrl}}">
+        {{stream.currentShow.showTitle}}
+      </a>
       {{!-- Has a current story/episode --}}
       {{#if stream.currentShow.episodeTitle}}
         -
-        <a href="{{stream.currentShow.episodeUrl}}" class="link--dark">{{stream.currentShow.episodeTitle}}</a>
+        <a class="streamitem-link" href="{{stream.currentShow.episodeUrl}}">
+          {{stream.currentShow.episodeTitle}}
+        </a>
       {{/if}}
       {{!-- Music stream with a playing song--}}
       {{#if stream.hasPlaylists}}
@@ -51,4 +56,3 @@
 
 {{/if}}
 {{/each}}
-</ul>
