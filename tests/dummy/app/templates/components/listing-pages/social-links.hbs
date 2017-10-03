@@ -1,1 +1,18 @@
-{{outlet}}
+{{md-text text="
+#### `social-links`
+
+Takes a fairly simple list of objects and renders static buttons for facebook, twitter, and mailchimp (newsletter).
+
+Given an array of objects like this:
+"}}
+{{code-snippet name="social-links-data.js"}}
+{{md-text text="
+You can render out the social links like this, using the `facebook`, `twitter`, and `newsletter` params:
+"}}
+{{code-snippet name="social-links-template.hbs"}}
+{{!-- BEGIN-SNIPPET social-links-template --}}
+{{social-links
+  facebook=model.[0]
+  twitter=model.[1]
+  newsletter=model.[2]}}
+{{!-- END-SNIPPET --}}
