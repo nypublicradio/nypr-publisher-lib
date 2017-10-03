@@ -1,0 +1,30 @@
+@import "../nypr-ui/buttons";
+
+.social-links {
+  margin-bottom: 16px;
+}
+
+.social-links__btn {
+  @include btn;
+  @include btn--circle;
+  @include btn--blacktext;
+  margin-right: 7px;
+  display: inline-block;
+  vertical-align: middle;
+  
+  > i {
+    pointer-events: none;
+  }
+}
+
+.social-links__btn--newsletter {
+  @include btn;
+  display: inline-block;
+  vertical-align: middle;
+  
+  text-decoration: none;
+}
+
+.social-links__hidden {
+  @include visuallyhidden;
+}

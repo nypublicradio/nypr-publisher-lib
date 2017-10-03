@@ -1,19 +1,17 @@
-<div class="btn-group btn-group--closer social-group">
-  {{#if facebook}}
-      <a href={{facebook.href}} target="_blank" class="btn btn--circle btn--blacktext">
-          <i class="fa fa-facebook"></i>
-          <span class="for-screenreaders">Share on Facebook</span>
-      </a>
-  {{/if}}
+{{#if facebook}}
+  <a href={{facebook.href}} target="_blank" class="social-links__btn">
+    <i class="fa fa-facebook"></i>
+    <span class="social-links__hidden">Share on Facebook</span>
+  </a>
+{{/if}}
 
-  {{#if twitter}}
-      <a href={{twitter.href}} target="_blank" class="btn btn--circle btn--blacktext">
-          <i class="fa fa-twitter"></i>
-          <span class="for-screenreaders">Share on Twitter</span>
-      </a>
-  {{/if}}
+{{#if twitter}}
+  <a href={{twitter.href}} target="_blank" class="social-links__btn">
+    <i class="fa fa-twitter"></i>
+    <span class="social-links__hidden">Share on Twitter</span>
+  </a>
+{{/if}}
 
-  {{#if newsletter}}
-      <a class="btn" href={{newsletter.href}} target="_blank">Sign up for our newsletter</a>
-  {{/if}}
-</div>
+{{#if newsletter}}
+  <a class="social-links__btn--newsletter" href={{newsletter.href}} target="_blank">Sign up for our newsletter</a>
+{{/if}}
