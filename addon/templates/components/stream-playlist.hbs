@@ -4,7 +4,7 @@
   <h3 class="streaminfo-name">{{stream.name}}</h3>
 
   <div class="streaminfo-currentshow">
-  <a href="{{stream.currentShow.url}}">{{stream.currentShow.title}}</a> until {{abbreviated-time stream.currentShow.end}}.
+  <a href="{{stream.currentShow.url}}">{{stream.currentShow.title}}</a> until {{hide-zero-minutes stream.currentShow.end}}.
   </div>
 
   {{#if stream.currentPlaylistItem}}
