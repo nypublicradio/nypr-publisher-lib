@@ -23,6 +23,10 @@
   flex: 2 1 auto;
   margin-bottom: 20px;
   margin-right: 15px;
+  
+  @include mq($medium-and-up) {
+    margin-bottom: 0;
+  }
 }
 
 .channel-header__right {
