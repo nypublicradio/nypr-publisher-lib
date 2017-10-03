@@ -62,4 +62,12 @@ export default Component.extend({
       set(this, 'xScrollable', false);
     }
   },
+  
+  actions: {
+    moveBar(index, slug) {
+      if (slug) {
+        this.set('activeTabIndex', index);
+      }
+    }
+  }
 });
