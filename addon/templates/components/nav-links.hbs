@@ -1,15 +1,15 @@
-<h1 class="for-screenreaders">Sub Nav</h1>
+<h1>Sub Nav</h1>
 {{#liquid-bind activeTabIndex as |currentIndex|}}
-<ul class="list list--inline flush">
+<ul class="nav-links__list">
   {{#each parsedLinks as |link index|}}
-    <li class="{{if (eq index currentIndex) 'is-active '}}list-item list-item--nav">
+    <li class="{{if (eq index currentIndex) 'is-active '}}nav-links__list-item">
       {{#if link.nav-slug}}
-        <a href={{link.href}} {{action 'transition' link.nav-slug index bubbles=false}} class="link link--dark link--nodecor tab-link">{{link.title}}</a>
+        <button {{action 'transition' link.nav-slug index}} class="nav-links__link">{{link.title}}</button>
       {{else}}
-        <a href={{link.href}} class="link link--dark link--nodecor tab-link">{{link.title}}</a>
+        <a href={{link.href}} class="nav-links__link">{{link.title}}</a>
       {{/if}}
       {{#if (eq index currentIndex)}}
-      <div class="tab-line--liquid"></div>
+        <div class="nav-bar"></div>
       {{/if}}
     </li>
   {{/each}}
