@@ -19,16 +19,13 @@ export default Component.extend({
   parsedLinks: computed('links', function() {
     let links = Ember.A(get(this, 'links'));
     return links.map(i => {
-      let { href } = i;
-      if (!href) {
-        return i;
-      }
-      if (href.indexOf(config.webRoot) === 0) {
+      if (typeof i.href === 'string' && i.href.indexOf(config.webRoot) === 0) {
         // make sure the parsed path has a leading slash
-        i.href = href.replace(config.webRoot, '').replace(/^([^/]+)/, '/$1');
+        i.href = i.href.replace(config.webRoot, '').replace(/^([^/]+)/, '/$1');
+        return i;
+      } else {
         return i;
       }
-      return i;
     });
   }),
   init() {
