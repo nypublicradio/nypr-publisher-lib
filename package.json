@@ -26,7 +26,7 @@
     "ember-code-snippet": "^2.0.0",
     "ember-font-awesome": "^4.0.0-alpha.10",
     "ember-get-config": "^0.2.2",
-    "liquid-fire": "0.27.2",
+    "liquid-fire": "0.27.3",
     "nypr-audio-services": "nypublicradio/nypr-audio-services",
     "nypr-django-for-ember": "nypublicradio/nypr-django-for-ember",
     "nypr-ui": "nypublicradio/nypr-ui"
