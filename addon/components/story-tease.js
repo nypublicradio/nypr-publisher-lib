@@ -20,6 +20,7 @@ export default Component.extend({
 
   status:             null,
   streamSlug:         null,
+  streamName:         null,
   isFeatured:         false,
 
   isLive:             equal('status', STATUSES.LIVE),
@@ -107,11 +108,12 @@ export default Component.extend({
   },
 
   _updateStatus(results) {
-    const [isLive, endtime, streamSlug] = results;
+    const [isLive, endtime, streamSlug, streamName] = results;
     if (isLive) {
       set(this, 'status', STATUSES.LIVE);
       set(this, 'endtime', endtime);
       set(this, 'streamSlug', streamSlug);
+      set(this, 'streamName', streamName);
     } else if (this._isUpcoming()){
       set(this, 'status', STATUSES.UPCOMING);
     } else {
