@@ -17,7 +17,7 @@ export default Service.extend({
     for (let i = 0; i < stations.length; i++) {
       let stationSlug = stations[i];
       let station = data[stationSlug];
-      let stationName = get(station, 'name');_
+      let stationName = get(station, 'name');
       // for some reason if the what's on story is an EPISODE, it's under episode_pk,
       // but if it's a SEGMENT, that pk is just on pk
       let onAirPk = get(station, 'current_show.episode_pk') || get(station, 'current_show.pk');
