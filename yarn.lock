@@ -5524,8 +5524,6 @@ nypr-metrics@nypublicradio/nypr-metrics:
     ember-cli-babel "^6.0.0"
     ember-cli-htmlbars "^1.1.1"
     ember-cli-htmlbars-inline-precompile "^0.4.0"
-    ember-get-config "^0.2.2"
-    ember-metrics "^0.12.1"
 
 nypr-ui@nypublicradio/nypr-ui:
   version "0.0.0"
