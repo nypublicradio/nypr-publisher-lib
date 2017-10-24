@@ -1,0 +1,25 @@
+<ul>
+  {{#each model.teaseList as |episode|}}
+  <li class="episode-list__list-item">
+    <article class="episode-tease">
+      <img class="episode-tease__image" alt="{{item.title}}"
+        src="{{image-template episode.imageMain.template 320 240 episode.imageMain.crop}}"
+        srcset="{{image-template episode.imageMain.template 640 480 episode.imageMain.crop}} 2x">
+      <div class="episode-tease__details">
+        {{#if episode.audioAvailable}}
+          {{#listen-button
+            class="episode-tease__listenbutton"
+            type='yellow-square'
+            itemPK=episode.id
+            itemTitle=episode.title
+            itemShow=(or episode.showTitle episode.headers.brand.title)
+          }}Listen{{/listen-button}}
+        {{/if}}
+        <h1 class="episode-tease__title">{{episode.title}}</h1>
+        <div class="episode-tease__date">{{moment-format episode.newsdate 'MMM D, YYYY'}}</div>
+        <div class="episode-tease__tease">{{{episode.tease}}}</div>
+      </div>
+    </article>
+  </li>
+  {{/each}}
+</ul>
