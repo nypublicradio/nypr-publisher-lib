@@ -59,6 +59,8 @@ export default DS.Model.extend({
   bgColor: DS.attr('string'),
   description: DS.attr('string'),
   marqueeImage: DS.attr(),
+  studiosMarqueeImage: DS.attr(),
+  studiosMarqueeMobileOffset: DS.attr('number'),
   podcastLinks: DS.attr(),
   rssFeed: DS.attr('string'),
   logoImage: DS.attr(),
