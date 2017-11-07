@@ -1,0 +1,21 @@
+{{#if hasBlock}}
+  {{yield}}
+{{else}}
+  {{#if image.caption}}
+    {{{image.caption}}}<br>
+  {{/if}}
+  {{#if image.creditsName}}
+    ({{#if image.creditsUrl}}
+      <a href="{{image.creditsUrl}}">{{image.creditsName}}</a>
+    {{else}}
+      {{image.creditsName}}
+    {{/if}}
+  {{/if}}
+  {{#if image.source}} /
+    {{#if image.source.url}}
+      <a href="{{image.source.url}}">{{image.source.name}}</a>
+    {{else}}
+      {{image.source.name}}
+    {{/if}})
+  {{/if}}
+{{/if}}
