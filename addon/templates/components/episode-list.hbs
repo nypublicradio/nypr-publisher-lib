@@ -27,9 +27,7 @@
           {{~/link-to}}
         </h1>
         <div class="episode-tease__date">
-          {{#link-to 'story' episode.slug class="episode-tease__date-link"~}}
-            {{moment-format episode.newsdate 'MMM D, YYYY'}}
-          {{~/link-to}}
+          {{moment-format episode.newsdate 'MMM D, YYYY'}}
         </div>
         <div class="episode-tease__tease">{{{truncate episode.tease 128 '…'}}}</div>
       </div>
