@@ -2,9 +2,15 @@
   {{#each model.teaseList as |episode|}}
   <li class="episode-list__list-item">
     <article class="episode-tease">
-      <img class="episode-tease__image" alt="{{item.title}}"
-        src="{{image-template episode.imageMain.template 320 240 episode.imageMain.crop}}"
-        srcset="{{image-template episode.imageMain.template 640 480 episode.imageMain.crop}} 2x">
+      {{#if episode.imageMain}}
+        <div class="episode-tease__image-wrapper">
+          {{#link-to 'story' episode.slug class="episode-tease__image-link"~}}
+          {{~/link-to}}
+          <img class="episode-tease__image" alt="{{item.title}}"
+            src="{{image-template episode.imageMain.template 320 240 episode.imageMain.crop}}"
+            srcset="{{image-template episode.imageMain.template 640 480 episode.imageMain.crop}} 2x">
+        </div>
+      {{/if}}
       <div class="episode-tease__details">
         {{#if episode.audioAvailable}}
           {{#listen-button
@@ -15,8 +21,16 @@
             itemShow=(or episode.showTitle episode.headers.brand.title)
           }}Listen{{/listen-button}}
         {{/if}}
-        <h1 class="episode-tease__title">{{episode.title}}</h1>
-        <div class="episode-tease__date">{{moment-format episode.newsdate 'MMM D, YYYY'}}</div>
+        <h1 class="episode-tease__title">
+          {{#link-to 'story' episode.slug class="episode-tease__title-link"~}}
+            {{episode.title}}
+          {{~/link-to}}
+        </h1>
+        <div class="episode-tease__date">
+          {{#link-to 'story' episode.slug class="episode-tease__date-link"~}}
+            {{moment-format episode.newsdate 'MMM D, YYYY'}}
+          {{~/link-to}}
+        </div>
         <div class="episode-tease__tease">{{{truncate episode.tease 128 '…'}}}</div>
       </div>
     </article>
