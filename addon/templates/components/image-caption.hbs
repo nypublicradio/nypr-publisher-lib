@@ -10,12 +10,12 @@
     {{else}}
       {{image.creditsName}}
     {{/if}}
-  {{/if}}
-  {{#if image.source}} /
-    {{#if image.source.url}}
-      <a href="{{image.source.url}}">{{image.source.name}}</a>
-    {{else}}
-      {{image.source.name}}
-    {{/if}})
-  {{/if}}
+    {{#if image.source}} /
+      {{#if image.source.url}}
+        <a href="{{image.source.url}}">{{image.source.name}}</a>
+      {{else}}
+        {{image.source.name}}
+      {{/if}}
+    {{/if}}
+  {{/if}})
 {{/if}}
