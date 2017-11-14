@@ -4,9 +4,9 @@
     <article class="episode-tease">
       {{#if episode.imageMain}}
         <div class="episode-tease__image-wrapper">
-          {{#link-to 'story' episode.slug class="episode-tease__image-link"~}}
+          {{#link-to 'story' episode.slug class="episode-tease__image-link" title=episode.title ariaRole="presentation" ~}}
           {{~/link-to}}
-          <img class="episode-tease__image" alt="{{item.title}}"
+          <img class="episode-tease__image" alt=""
             src="{{image-template episode.imageMain.template 320 240 episode.imageMain.crop}}"
             srcset="{{image-template episode.imageMain.template 640 480 episode.imageMain.crop}} 2x">
         </div>
