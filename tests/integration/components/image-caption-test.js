@@ -6,19 +6,55 @@ moduleForComponent('image-caption', 'Integration | Component | image caption', {
 });
 
 test('it renders', function(assert) {
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
-
   this.render(hbs`{{image-caption}}`);
 
-  assert.equal(this.$().text().trim(), '');
+  let text = this.$().text().replace(/\s\s+/g, ' ').trim();
+  assert.equal(text, '');
+});
 
-  // Template block usage:
-  this.render(hbs`
-    {{#image-caption}}
-      template block text
-    {{/image-caption}}
-  `);
+test('it renders captions', function(assert) {
+  let image = {
+    caption: "Great Photo"
+  };
+  this.set('image', image);
+  this.render(hbs`{{image-caption image=image}}`);
 
-  assert.equal(this.$().text().trim(), 'template block text');
+  let text = this.$().text().replace(/\s\s+/g, ' ').trim();
+  assert.equal(text, 'Great Photo');
+});
+
+test('it renders credits', function(assert) {
+  let image = {
+    creditsName:  "Loren Ipsson"
+  };
+  this.set('image', image);
+  this.render(hbs`{{image-caption image=image}}`);
+
+  let text = this.$().text().replace(/\s\s+/g, ' ').trim();
+  assert.equal(text, '( Loren Ipsson )');
+});
+
+test('it renders credits with sources', function(assert) {
+  let image = {
+    creditsName:  "Loren Ipsson",
+    source: {name: "World Photos"}
+  };
+  this.set('image', image);
+  this.render(hbs`{{image-caption image=image}}`);
+
+  let text = this.$().text().replace(/\s\s+/g, ' ').trim();
+  assert.equal(text, '( Loren Ipsson / World Photos )');
+});
+
+test('it renders captions and credits with sources', function(assert) {
+  let image = {
+    caption: "Great Photo",
+    creditsName:  "Loren Ipsson",
+    source: {name: "World Photos"}
+  };
+  this.set('image', image);
+  this.render(hbs`{{image-caption image=image}}`);
+
+  let text = this.$().text().replace(/\s\s+/g, ' ').trim();
+  assert.equal(text, 'Great Photo ( Loren Ipsson / World Photos )');
 });
