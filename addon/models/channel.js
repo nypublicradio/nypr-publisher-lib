@@ -55,6 +55,7 @@ export default DS.Model.extend({
   headerDonateChunk: DS.attr('string'),
 
   linkroll: DS.attr(),
+  donationUrl: DS.attr(),
   bgColor: DS.attr('string'),
   description: DS.attr('string'),
   marqueeImage: DS.attr(),
