@@ -21,6 +21,7 @@ export default Model.extend({
   audioMayStream: attr('boolean'),
   audioShowOptions: attr('boolean'),
   channel: attr('string'),
+  channelTitle: attr('string'),
   chunks: attr(),
   commentsCount: attr('number'),
   cmsPK: attr('string'),
