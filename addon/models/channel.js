@@ -10,6 +10,7 @@ export default DS.Model.extend({
   slug: DS.attr('string'),
   cmsPK: DS.attr('number'),
   title: DS.attr('string'),
+  url: DS.attr('string'),
   sortableTitle: computed('title', function() {
     return normalizeForSorting([ get(this, 'title') ]);
   }),
