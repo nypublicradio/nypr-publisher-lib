@@ -22,7 +22,7 @@ export default Factory.extend({
   producingOrganizations() {
     let org = [generateProducingOrg()];
 
-    if (Math.random() > 0.5) {
+    if (faker.random.boolean()) {
       org.push(generateProducingOrg());
     }
 
