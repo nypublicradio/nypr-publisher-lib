@@ -2345,7 +2345,7 @@ ember-cli-babel@^6.0.0, ember-cli-babel@^6.0.0-beta.4, ember-cli-babel@^6.0.0-be
     clone "^2.0.0"
     ember-cli-version-checker "^2.0.0"
 
-ember-cli-babel@^6.1.0:
+ember-cli-babel@^6.1.0, ember-cli-babel@^6.8.2:
   version "6.10.0"
   resolved "https://registry.yarnpkg.com/ember-cli-babel/-/ember-cli-babel-6.10.0.tgz#81424acd1d97fb13658168121eeb2007d6edee84"
   dependencies:
@@ -2442,7 +2442,7 @@ ember-cli-get-dependency-depth@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/ember-cli-get-dependency-depth/-/ember-cli-get-dependency-depth-1.0.0.tgz#e0afecf82a2d52f00f28ab468295281aec368d11"
 
-ember-cli-htmlbars-inline-precompile@^0.4.0, ember-cli-htmlbars-inline-precompile@^0.4.3:
+ember-cli-htmlbars-inline-precompile@^0.4.3:
   version "0.4.4"
   resolved "https://registry.yarnpkg.com/ember-cli-htmlbars-inline-precompile/-/ember-cli-htmlbars-inline-precompile-0.4.4.tgz#24a7617152630d64a047e553b72e00963a4f8d73"
   dependencies:
@@ -2923,6 +2923,13 @@ ember-hash-helper-polyfill@^0.1.2:
   resolved "https://registry.yarnpkg.com/ember-hash-helper-polyfill/-/ember-hash-helper-polyfill-0.1.2.tgz#bc8ee6fa59e9541fce07d2cf4f263cf785e9e1db"
   dependencies:
     ember-cli-babel "^5.1.7"
+    ember-cli-version-checker "^1.2.0"
+
+ember-hash-helper-polyfill@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/ember-hash-helper-polyfill/-/ember-hash-helper-polyfill-0.2.0.tgz#0913a06ad59147f345dff0edda04b112deba0f7e"
+  dependencies:
+    ember-cli-babel "^6.8.2"
     ember-cli-version-checker "^1.2.0"
 
 ember-hifi@^1.11.1:
@@ -4662,6 +4669,21 @@ liquid-fire@0.27.2:
     match-media "^0.2.0"
     velocity-animate ">= 0.11.8"
 
+liquid-fire@^0.29.1:
+  version "0.29.1"
+  resolved "https://registry.yarnpkg.com/liquid-fire/-/liquid-fire-0.29.1.tgz#bcfea12db65799def263721a2b9dd6142d426bdf"
+  dependencies:
+    broccoli-funnel "^1.0.1"
+    broccoli-merge-trees "^1.0.0"
+    broccoli-stew "^1.4.2"
+    ember-cli-babel "^6.6.0"
+    ember-cli-htmlbars "^2.0.1"
+    ember-cli-version-checker "^2.0.0"
+    ember-getowner-polyfill "^2.0.1"
+    ember-hash-helper-polyfill "^0.2.0"
+    match-media "^0.2.0"
+    velocity-animate ">= 0.11.8"
+
 livereload-js@^2.2.2:
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/livereload-js/-/livereload-js-2.2.2.tgz#6c87257e648ab475bc24ea257457edcc1f8d0bc2"
@@ -5517,21 +5539,21 @@ number-is-nan@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
 
-nypr-audio-services@~0.0.0:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/nypr-audio-services/-/nypr-audio-services-0.0.1.tgz#88bbf7520242e95986e3f0ad0e634ac2385c96f4"
+nypr-audio-services@~0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/nypr-audio-services/-/nypr-audio-services-0.1.0.tgz#f556f0ed9d6ef9ffe28fbcd717cdbc95485ee0ad"
   dependencies:
     ember-cli-babel "^6.6.0"
     ember-cli-htmlbars "^2.0.1"
-    ember-cli-htmlbars-inline-precompile "^0.4.3"
+    ember-cli-htmlbars-inline-precompile "^1.0.0"
     ember-cli-sass "^7.0.0"
     ember-diff-attrs "^0.1.2"
     ember-fetch "^3.3.0"
     ember-get-config "^0.2.2"
     ember-hifi "^1.11.1"
     ember-simple-auth "^1.3.0"
-    liquid-fire "0.27.2"
-    nypr-metrics "~0.0.1"
+    liquid-fire "^0.29.1"
+    nypr-metrics "~0.1.0"
     nypr-ui nypublicradio/nypr-ui
 
 nypr-django-for-ember@nypublicradio/nypr-django-for-ember:
@@ -5542,13 +5564,13 @@ nypr-django-for-ember@nypublicradio/nypr-django-for-ember:
     ember-cli-htmlbars "^2.0.1"
     ember-wormhole "^0.5.2"
 
-nypr-metrics@~0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/nypr-metrics/-/nypr-metrics-0.0.1.tgz#5954087401a04f3cf19c878191d6b638cbbd1b20"
+nypr-metrics@~0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/nypr-metrics/-/nypr-metrics-0.1.0.tgz#083de9fa4bee9c37d0b0bb2d577a9e30100951ba"
   dependencies:
-    ember-cli-babel "^6.0.0"
-    ember-cli-htmlbars "^1.1.1"
-    ember-cli-htmlbars-inline-precompile "^0.4.0"
+    ember-cli-babel "^6.6.0"
+    ember-cli-htmlbars "^2.0.1"
+    ember-cli-htmlbars-inline-precompile "^1.0.0"
     ember-get-config "^0.2.2"
     ember-metrics "^0.12.1"
 
