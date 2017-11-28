@@ -71,6 +71,7 @@ export default DS.Model.extend({
   newsletter: computed.filterBy('socialLinks', 'title', 'newsletter'),
   featured: DS.belongsTo('story', { inverse: null }),
   scheduleSummary: DS.attr('string'),
+  newsletterListId: DS.attr('string'),
   producingOrganizations: DS.attr(),
   // computeds
   hasLinkroll: computed.bool('linkroll.length'),
