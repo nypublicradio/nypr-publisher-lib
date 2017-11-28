@@ -28,6 +28,6 @@ export default Factory.extend({
 
     return org;
   },
-  tease: faker.lorem.sentences,
+  tease: () => faker.lorem.sentences(),
   isFeatured: false,
 });
