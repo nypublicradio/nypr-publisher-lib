@@ -28,7 +28,7 @@
     "ember-font-awesome": "^4.0.0-alpha.10",
     "ember-get-config": "^0.2.2",
     "liquid-fire": "~0.29.1",
-    "nypr-audio-services": "~0.2.0-0",
+    "nypr-audio-services": "~0.2.0",
     "nypr-django-for-ember": "nypublicradio/nypr-django-for-ember",
     "nypr-ui": "nypublicradio/nypr-ui"
   },
