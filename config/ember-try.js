@@ -75,6 +75,7 @@ module.exports = {
           'ember': 'canary'
         }
       },
+      allowedToFail: true,
       npm: {
         devDependencies: {
           'ember-source': null
