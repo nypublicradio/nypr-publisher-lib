@@ -1,0 +1,25 @@
+{{#each comments as |comment|}}
+  <article class="comment-list__item{{if comment.isStaffComment ' comment-list__item--highlight'}}" data-id="{{comment.id}}">
+    <h1 class="comment-author">
+    {{#if comment.staffNameOverride}}
+      {{comment.staffNameOverride}}
+    {{else if comment.location}}
+      {{comment.author}} from {{comment.location}}
+    {{else}}
+      {{comment.author}}
+    {{/if}}
+    </h1>
+
+    <div class="comment-body">{{{comment.comment}}}</div>
+
+    <div class="comment-footer">
+      <div class="comment-date">{{moment-format comment.publishDate 'MMM D, YYYY, h:mm A'}}</div>
+
+      {{#if isStaff}}
+        <a href="{{adminURL}}/comments/wnyccomment/{{comment.id}}" target="_blank" data-test-selector="moderate" class="comment-moderate">Moderate</a>
+      {{/if}}
+
+    </div>
+    <!-- .l-split -->
+  </article>
+{{/each}}

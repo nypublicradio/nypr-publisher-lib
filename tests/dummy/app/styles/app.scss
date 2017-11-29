@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700');
+
+@import "ember-power-select";
+
+$site-chrome-nav-bg: #f1f1f1;
+$site-chrome-nav-bg-small: #f1f1f1;
+$site-chrome-link-color: #333;
+$site-chrome-link-hover: #999;
+$site-chrome-active-link-color: #3480ce; 
+$site-chrome-active-link-right-border: #3480ce;
+$site-chrome-active-link-bg: #ddd;
+$site-chrome-nav-width-large: 200px;
+
+@import "nypr-ui/site-chrome";
+@import "nypr-ui/dropdown";
+@import "nypr-publisher-lib";
+@import "nypr-audio-services";
+
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+html {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+}
+
+img {
+  max-width: 100%;
+}
+
+code {
+  padding: 0;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(27,31,35,0.05);
+  border-radius: 3px;
+  @include mq((max-width: 600px)) {
+    word-break: break-all;
+  }
+  
+  &::before,
+  &::after {
+    letter-spacing: -0.2em;
+    content: "\00a0";
+  }
+}
+
+pre > code {
+  display: block;
+  padding:: 16px;
+  overflow: auto;
+  
+  &::before,
+  &::after {
+    display: none;
+  }
+}
+
+.l-page {
+  max-width: 1000px;
+  margin: auto;
+  padding: 0 15px;
+  
+  p {
+    line-height: 1.8;
+  }
+ 
+  ul:not([class]) {
+    line-height: 1.8;
+
+    a {
+      font-size: 14px;
+    }
+  }
+}
+
+
+.site-title {
+  font-size: 16px;
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-weight: 600;
+  
+  > a {
+    color: black;
+    
+    &:focus,
+    &:hover {
+      color: #333;
+    }
+  }
+}
+
+.site-tag {
+  font-size: 10px;
+  margin-bottom: 20px;
+  
+  @include mq((min-width: 1025px))  {
+    font-size: 12px;
+  }
+}
+
+.site-chrome__left-corner {
+  margin-bottom: 15px;
+  padding: 0 15px;
+}
+
+.site-chrome__nav {
+  @include mq((min-width: 1025px)) {
+    text-align: right;
+  }
+}
+
+.site-chrome__link > a {
+  font-size: 14px;
+  color: black;
+  font-weight: 600;
+    
+  &:focus,
+  &:hover {
+    color: #333;
+  }
+  
+  @include mq((min-width: 1025px)) {
+    font-size: 16px;
+  }
+}
+
+.index-header {
+  font-size: 14px;
+  
+  @include mq((min-width: 600px)) {
+    font-size: 32px;
+  }
+}
+
+hr {
+  border: none;
+  height: 1px;
+  background-color: $lightestgray;
+  max-width: 80%;
+}
+
+table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  margin-top: 0;
+  margin-bottom:: 16px;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+table tr {
+  background-color: #fff;
+  border-top: 1px solid #c6cbd1;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f6f8fa;
+}
+
+table th {
+  font-weight: 600;
+}
+
+table th,
+table td {
+  padding: 6px 13px;
+  border: 1px solid #dfe2e5;
+}

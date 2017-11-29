@@ -1,0 +1,27 @@
+<h3>Serializers</h3>
+<p>
+  Like {{link-to 'adapters' 'mas.adapters'}}, the serializers are mostly straightforward transformations of legacy output to the JSON:API format expected by Ember Data, but there are a few exceptions.
+</p>
+
+{{md-text text="
+#### Bucket
+Buckets are containers of arbitrary content which map to defined ember data models. Currently, these \"bucket itmes\" are not transformed into instances of models in the `store`. The serializer merely takes what is provided by the server and camelizes the keys to match the casing of of ember data model fields.
+"}}
+{{code-snippet name="bucket-serializer.js"}}
+
+{{md-text text="
+#### Story
+Stories are not fully serialized by the server for all of its attributes due to its many foreign key relationships. Some fields are nested objects from the server, so the serializer camelizes the nested keys so they match the ember convention.
+"}}
+{{code-snippet name="story-serializer-fields.js"}}
+{{code-snippet name="story-serializer.js"}}
+
+<h4>Stream</h4>
+<p>
+  As pointed out in the {{link-to 'adapters section' 'mas.adapters'}}, the Stream adapter hits two endpoints, so the Stream serializer is more complex to handle joining the incoming data from two sources.
+</p>
+
+{{md-text text="
+The other thing the stream serializer does is decide which URLs to provide to the app based on the current platform.
+"}}
+{{code-snippet name="stream-serializer-urls.js"}}

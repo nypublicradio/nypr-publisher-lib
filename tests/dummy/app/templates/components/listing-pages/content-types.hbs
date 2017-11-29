@@ -1,0 +1,75 @@
+{{md-text text="
+#### `content-types`
+These components are used to render the content proxied to by an `api-response`. The `model` passed into each of these will be an `api-response` model, and the component is configured to pull out the appropriate attributes to use for rendering.
+
+Remember, an `api-response` is an `ember-data` model with an attribute that points to **another** `ember-data` model.
+
+##### `about-page`
+So let's say we have an `about-page` model with the following attributes.
+"}}
+{{code-snippet name="about-page.js"}}
+{{md-text text="
+The `api-response` model that is passed into the `about-page` component could be defined like so:
+"}}
+{{code-snippet name="about-page-api-response.js"}}
+
+{{md-text text="
+And the `about-page` component will be rendered out like this:
+"}}
+{{code-snippet name="about-page-component.hbs"}}
+
+{{md-text text="###### About"}}
+{{!-- BEGIN-SNIPPET about-page-component --}}
+{{about-page model=model.aboutApiResponse}}
+{{!-- END-SNIPPET --}}
+<hr>
+
+{{md-text text="
+##### `tease-list`
+The `tease-list` component renders out an `api-response` that has a `teaseList` attribute, which is just a list of `story` models.
+
+So let's say we have an `api-response` defined like so with a list of `story` models set as its `teaseList` property:
+"}}
+{{code-snippet name="tease-list-api-response.js"}}
+
+{{md-text text="
+The `story-list` component is rendered like so, accepting the `api-response` model as its `model` parameter:
+"}}
+{{code-snippet name="story-list-component.hbs"}}
+
+{{!-- BEGIN-SNIPPET story-list-component --}}
+{{story-list model=model.listApiResponse}}
+{{!-- END-SNIPPET --}}
+
+{{md-text text="
+##### `story-detail`
+The `story-detail` component renders an `api-response` that has a `story` attribute that points to a `story` model. It renders the full content of the `body` attribute of the story, but it passes that text through a `django-page` component in order to properly execute any embedded `<script>` tags that may be found.
+
+The `api-response` with a `story` attribute can be defined like so:
+"}}
+{{code-snippet name="detail-api-response.js"}}
+
+{{md-text text="
+The `story-detail` component is rendered like this, taking an `api-response` model as its `model` parameter, and expecting to find a `story` model at the `story` attribute.
+"}}
+{{code-snippet name="story-detail-component.hbs"}}
+
+{{md-text text="
+The `story-detail` component will just render the body text:
+"}}
+{{!-- BEGIN-SNIPPET story-detail-component --}}
+{{story-detail model=model.detailApiResponse}}
+{{!-- END-SNIPPET --}}
+
+<hr>
+
+{{md-text text="
+#### Adding new `content-types`
+The nice part of this setup is that it keeps the templates fairly simple. A dynamic computed proprety of the `api-response` model can be passed to the `component` helper, which renders the correct UI for the available property.
+
+To add a new component/content-type pairing, do the following:
+1. Generate a new component that is specialized to render the passed in content
+1. Add a new clause to the `contentType` computed property of the `api-response` model, returning the name of the component you generated in step 1.
+1. Add a new relationship field to the `api-response` model to match the data that is returned for this new `contentType`
+1. Update the pubslier back end to return your new content type. A discusson of the publiser logic is outside the scope of this document.
+"}}

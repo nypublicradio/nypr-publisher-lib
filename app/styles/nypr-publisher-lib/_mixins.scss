@@ -1,0 +1,20 @@
+@import "../nypr-ui/colors";
+
+@mixin publisher-link {
+  color: $blue;
+  word-wrap: break-word;
+  text-decoration: none;
+  background-color: transparent;
+  border-bottom: 1px solid rgba($blue, 0);
+  transition: border-color 250ms ease, color 250ms ease;
+  
+  &:active,
+  &:hover {
+    outline: 0;
+  }
+  
+  &:focus,
+  &:hover {
+    border-bottom-color: $blue;
+  }
+}

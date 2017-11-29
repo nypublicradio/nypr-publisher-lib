@@ -1,0 +1,25 @@
+{{md-text text="
+#### `story-comments`
+Story comments require a story model to be passed in as the `story` param. There is a model function, `commentSecurityURL`, which the component runs in order to do some basic abuse prevention. This method will include the `browserId` in the request if it is passed in.
+
+The `email` and `userName` params are not required, but can be passed in to autofill the fields if the values can be retrieved from an authenticated session.
+
+The component expects a `getComments` parameter which must be a function that when run will do a query for comments associated with the current story. The comments query requires two parameters: `itemTypeId` and `itemId`, both of which are available from a given story at the keys used in the following example:
+"}}
+{{code-snippet name="get-comments.js"}}
+
+{{md-text text="
+And let's imagine that there's a `realStory` attribute on the `model` that is the result of a backend lookup of an actual story. A list of comments for this given story would be rendered like the below. Please note that `isStaff` is set to true for example purposes.
+"}}
+{{code-snippet name="story-comments.hbs"}}
+
+{{md-text text="Click below to see the list of comments and reveal the comment submission form."}}
+{{!-- BEGIN-SNIPPET story-comments --}}
+{{story-comments
+  story=model.realStory
+  isStaff=true
+  email='me@example.com'
+  userName='username'
+  getComments=model.getComments
+  browserId=model.browserId}}
+{{!-- END-SNIPPET --}}

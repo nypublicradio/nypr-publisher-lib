@@ -1,0 +1,34 @@
+{{md-text text="
+#### `channel-header`
+
+The `channel-header` component is used on show, series. and article channel pages. If a given model has a `podcastLinks` attribute, it will render a dropdown menu with links.
+"}}
+{{code-snippet name="channel-header-normal.hbs"}}
+{{!-- BEGIN-SNIPPET channel-header-normal --}}
+{{channel-header model=model.channel}}
+{{!-- END-SNIPPET --}}
+
+{{md-text text="
+The `listenLive` attr should be a `django-page` instance that will render below the producing organization info and schedule line.
+
+For instance, say there's a `listenLive` attribute that looks like this:
+"}}
+{{code-snippet name="listen-live.js"}}
+{{md-text text="You could render a `channel-header` with a listen live button like so:"}}
+{{code-snippet name="channel-header-listen-live.hbs"}}
+{{!-- BEGIN-SNIPPET channel-header-listen-live --}}
+{{channel-header
+  model=model.channel
+  listenLive=model.listenLive}}
+{{!-- END-SNIPPET --}}
+
+{{md-text text="
+The `isStaff` attrbute controls whether or not to show a staff link. The `adminURL` should be the `adminRoot` config value plus the `/admin` path prefix.
+"}}
+{{code-snippet name="channel-header-staff.hbs"}}
+{{!-- BEGIN-SNIPPET channel-header-staff --}}
+{{channel-header
+  model=model.channel
+  isStaff=true
+  adminURL=adminURL}}
+{{!-- END-SNIPPET --}}

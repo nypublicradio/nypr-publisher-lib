@@ -1,0 +1,19 @@
+<h1>Sub Nav</h1>
+{{#liquid-bind activeTabIndex as |currentIndex|}}
+<ul class="nav-links__list">
+  {{#each parsedLinks as |link index|}}
+    <li class="{{if (eq index currentIndex) 'is-active '}}nav-links__list-item" {{action 'moveBar' index link.nav-slug preventDefault=false}}>
+      {{#if link.nav-slug}}
+        {{!-- BEGIN-SNIPPET nav-links-link --}}
+        {{link-to link.title (concat navRoot '.page') link.nav-slug classNames="nav-links__link"}}
+        {{!-- END-SNIPPET --}}
+      {{else}}
+        <a href={{link.href}} class="nav-links__link" target="_blank">{{link.title}}</a>
+      {{/if}}
+      {{#if (eq index currentIndex)}}
+        <div class="nav-bar"></div>
+      {{/if}}
+    </li>
+  {{/each}}
+</ul>
+{{/liquid-bind}}

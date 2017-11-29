@@ -1,0 +1,15 @@
+.story-list > ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 24px;
+}
+
+.story-list-item {
+  border-bottom: 1px solid $nearwhite;
+  padding: 2.4rem 0;
+  
+  > .story-tease {
+    margin-bottom: 0;
+  }
+}

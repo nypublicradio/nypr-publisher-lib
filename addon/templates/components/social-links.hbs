@@ -1,0 +1,17 @@
+{{#if facebook}}
+  <a href={{facebook.href}} target="_blank" class="social-links__btn">
+    {{fa-icon 'facebook'}}
+    <span class="social-links__hidden">Share on Facebook</span>
+  </a>
+{{/if}}
+
+{{#if twitter}}
+  <a href={{twitter.href}} target="_blank" class="social-links__btn">
+    {{fa-icon 'twitter'}}
+    <span class="social-links__hidden">Share on Twitter</span>
+  </a>
+{{/if}}
+
+{{#if newsletter}}
+  <a class="social-links__btn--newsletter" href={{newsletter.href}} target="_blank">Sign up for our newsletter</a>
+{{/if}}

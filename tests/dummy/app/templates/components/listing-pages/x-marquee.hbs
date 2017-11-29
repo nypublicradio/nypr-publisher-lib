@@ -1,0 +1,13 @@
+<h4><code>x-marquee</code></h4>
+<p>
+  The <code>x-marquee</code> component wraps the <code>{{#link-to 'components.listing-pages.channel-header'}}channel-header{{/link-to}}</code> component and renders a full-width banner image above it. The component expects <code>bgColor</code> and <code>marqueeImage</code> attributes on the passed in <code>model</code> parameter.
+</p>
+
+{{md-text text="The `x-marquee` accepts the same params and types as the `channel-header` component."}}
+
+{{code-snippet name="x-marquee-normal.hbs"}}
+{{!-- BEGIN-SNIPPET x-marquee-normal --}}
+{{x-marquee model=model.channel}}
+{{!-- END-SNIPPET --}}
+
+{{md-text text=""}}

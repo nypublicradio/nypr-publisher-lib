@@ -1,0 +1,16 @@
+{{md-text text="
+#### `stream-playlist`
+
+Accepts a single `stream` model and renders out any available playlist items as fetched from the `whats-on` API.
+
+A single stream can be fetched like so:
+"}}
+{{code-snippet name="stream-playlist-route.js"}}
+{{md-text text="
+And the component can be rendered like so:
+"}}
+{{code-snippet name="stream-playlist-template.hbs"}}
+
+{{!-- BEGIN-SNIPPET stream-playlist-template --}}
+{{stream-playlist stream=model}}
+{{!-- END-SNIPPET --}}

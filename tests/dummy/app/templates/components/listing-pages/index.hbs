@@ -1,0 +1,65 @@
+{{md-text text="
+#### How Listing Pages Work
+Listing pages were designed with maximum flexibility in mind. They represent a `show` object as defined in the database, e.g. The Brian Lehrer Show, combined with arbitrary collections of content as defined by producers using the Publisher admin.
+
+The content collections are defined using `LinkRoll` objects with specially configured `LinkRollLink` items. These are used to define a literal Django ORM query, the result of which is returned to the client and rendered in a UI area called the \"well\" (the space below the show title and logo).
+
+##### `LinkRollLinks`
+The `url` property of a `LinkRollLink` follows a convention which is used to generate a special model called an `api-response`, which acts as a pointer to a set of producer-defined content. The convention for the `url` property is as follows:
+```shell
+[content type]://[nav slug]/?[ORM query]
+```
+This `url` value is parsed by the server and used to retrieve some content, as defined by the `[ORM query]`. The `[nav slug]` and `[content type]` values are used to construct an `api-response` model, which serves as a pointer for the Ember app to access the results of the `[ORM query]`.
+
+##### `api-response` models
+When Ember requests a model from the store, it is only aware of the ID that it is looking for, usually supplied by a `link-to` helper and defined as a pathname of some kind.
+
+Using the `api-response` as a pointer allows us to get different types and quantities of content without knowing exactly what we're requesting at look-up-time. The id is constructed using a known api path prefix, the slug of the \"owner\" object, plus the `[nav slug]`, and a page number, which defaults to `1`.
+
+For example, a `LinkRollLink` with a `url` property defined as: `list://episodes/?_show__slug=\"bl\"&episode__id__isnull=False` would be looked up using a conventional `findRecord` call such as:
+```js
+this.store.findRecord('api-response', 'shows/bl/episodes/1');
+```
+This request is translated by Publisher to lookup the `LinkRoll` that has a slug `navigation-shows-bl`, which is derived from the given id: `shows/bl` is transformed to `shows-bl`.
+
+The `[ORM query]` is extracted from the retrieved `LinkRollLink` object, and the results are packaged up into a `JSON:API` response that defines an `api-response` model and includes the results of the query. 
+
+The response for the above request would look something like this:
+```json
+{
+  \"data\": {
+    \"relationships\": {
+      \"tease-list\": {
+        \"data\": [
+          {type: \"story\", \"id\": 123456},
+          {type: \"story\", \"id\": 789123},
+          ...
+        ]
+      }
+    },
+    \"attributes\": {
+      \"total-count\": 3891
+    },
+    \"type\": \"api-response\",
+    \"id\": \"shows/bl/episodes/1\"
+  },
+  \"included\": [
+    {type: \"story\", \"id\": 123456, attributes: { ... } },
+    {type: \"story\", \"id\": 789123, attributes: { ... } }
+  ]
+}
+```
+The results of the query are sent in the `included` array, and Ember follows the `tease-list` relatinship to access them in the app. As you can see below, `tease-list`, `story`, and `about-page` are defined on the `api-response` model.
+"}}
+{{code-snippet name="api-response-fields.js"}}
+
+{{md-text text="
+The `contentType` computed property is derived based on which one of the those relationship keys are defined on the server response. The returned value can be used to dynamically render out a component for a template like so:
+```handlebars
+{{component model.contentType}}
+```
+"}}
+
+<p>
+  For more on <code>content-types</code> {{link-to 'click here' 'components.listing-pages.content-types'}}.
+</p>

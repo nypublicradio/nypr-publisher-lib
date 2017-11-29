@@ -1,0 +1,106 @@
+{{#if (or isFancyFeatured fullScreen)}}
+  <div class="story-tease__backdrop {{if fullScreen 'box-mat--fullscreen'}}" style={{fancyFeaturedBackground}}></div>
+{{/if}}
+
+{{#if hasBlock}}
+<div class="story-tease__floating-header">
+  {{yield}}
+</div>
+{{/if}}
+
+{{#if isFeatured}}
+  <div class="story-tease__status">
+    <p>{{status}}</p>
+  </div>
+{{/if}}
+
+<div class="story-tease-meta">
+
+  {{#if (and item.imageMain flipped)}}
+  <a href={{item.url}} class="story-tease__image story-tease__image--flipped">
+    <img alt="{{item.title}}"
+      src="{{image-template item.imageMain.template 200 200 item.imageMain.crop}}"
+      srcset="{{image-template item.imageMain.template 400 400 item.imageMain.crop}} 2x,
+        {{image-template item.imageMain.template 600 600 item.imageMain.crop}} 3x"
+      width="200" height="200">
+  </a>
+  <!-- .flag-image -->
+  {{/if}}
+
+  <div class="story-tease__body">
+    {{#if (and item.headers.links showParent)}}
+      <div class="story-tease-parent">
+        {{#each item.headers.links as |link|}}
+          <a class="story-tease-parent__link" href="{{link.url}}">{{{link.title}}}</a>
+          <span class="story-tease-parent__slash"> / </span>
+        {{/each}}
+      </div>
+    {{/if}}
+
+    <div class="story-tease__body-text">
+      <h2 class="story-tease__title">
+        {{! #link-to 'story' item.id class="link--dark"}}{{! item.title}}{{! /link-to}}
+        <a data-test-selector="story-tease-title" href={{item.url}}>
+          {{{item.title}}}
+        </a>
+      </h2>
+
+      <p>
+        {{{item.tease}}}
+        {{#if (not fullScreen)}}
+          <span class="story-tease__newsdate"> {{moment-format item.newsdate 'MMM D, YYYY'}}</span>
+        {{/if}}
+      </p>
+    </div>
+
+    <div class="story-tease__footer">
+      {{#if isListenableNow}}
+        {{#listen-button
+          isLive=isLive
+          type=playButton
+          playContext=playContext
+          itemPK=itemId
+          itemTitle=item.title
+          itemShow=(or item.showTitle item.headers.brand.title)
+          itemStream=streamName}}
+          {{if isLive 'Listen Live' 'Listen'}}
+          <span class="story-tease__duration">{{if isLive endtimeLabel item.audioDurationReadable}}</span>
+
+        {{/listen-button}}
+
+        {{#if item.audioAvailable}}
+          {{queue-button
+            type=(if (or isFancyFeatured fullScreen) 'queue-button--fancyfeature' 'just-gray')
+            itemPK=item.id
+            itemTitle=item.title
+            duration=item.audioDurationReadable
+            data-test-selector="queue-button"
+            playContext=playContext}}
+        {{/if}}
+
+      {{else if isListenableEventually}}
+        <div class="text text--medium text--lightergray flush--medium">
+          <em>Audio not yet available</em>
+        </div>
+      {{/if}}
+
+      {{#if isStaff}}
+        <a href="{{adminURL}}/{{item.editLink}}" class="story-tease__staff-btn" target="_blank" data-test-selector="admin-link">Edit this</a>
+      {{/if}}
+    </div>
+    <!-- .btn-group -->
+
+  </div> <!-- .flag-body -->
+
+  {{#if (and item.imageMain (not flipped) (not isFancyFeatured) (not fullScreen))}}
+  <a href={{item.url}} class="story-tease__image">
+    <img alt="{{item.title}}"
+      src="{{image-template item.imageMain.template 100 100 item.imageMain.crop}}"
+      srcset="{{image-template item.imageMain.template 200 200 item.imageMain.crop}} 2x,
+        {{image-template item.imageMain.template 300 300 item.imageMain.crop}} 3x"
+      width="100" height="100">
+  </a>
+  <!-- .flag-image -->
+  {{/if}}
+
+</div>
