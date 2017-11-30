@@ -1,9 +1,0 @@
-{{#if stories}}
-  <h1 class="related-stories__heading">Related</h1>
-{{/if}}
-
-{{#each stories as |item|}}
-<div class="related-item">
-  {{story-tease item=item playContext='RelatedStories'}}
-</div>
-{{/each}}
