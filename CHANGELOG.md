@@ -1,5 +1,8 @@
 # nypr-publisher-lib Changelog
 
+## 0.0.4
+- [BUGFIX] Allow tests to fail on ember canary
+
 ## 0.0.3
 - [ENHANCEMENT] #7 Add url to channel model
 - [ENHANCEMENT] #9 Allow tests to fail on ember beta
