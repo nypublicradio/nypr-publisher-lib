@@ -11,6 +11,14 @@ export default DS.Model.extend({
   cmsPK: DS.attr('number'),
   title: DS.attr('string'),
   url: DS.attr('string'),
+  canonicalHost: computed('url', function() {
+    let url = get(this, 'url');
+    let hostMatch = url && url.match(/\/\/([^/]+)\//);
+    if (hostMatch) {
+      return hostMatch[1];
+    }
+    return undefined;
+  }),
   sortableTitle: computed('title', function() {
     return normalizeForSorting([ get(this, 'title') ]);
   }),
