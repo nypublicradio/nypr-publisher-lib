@@ -2,6 +2,7 @@
 
 ## 0.2.2
 - [BUGFIX] #10 Add donationUrl to channel attr
+- [ENHANCEMENT] #11 Add canonicalHost to channel model
 
 ## 0.2.1
 - [ENHANCEMENT] #5 Add studios image headers to channel model for studios show header
