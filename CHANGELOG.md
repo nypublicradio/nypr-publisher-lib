@@ -1,5 +1,8 @@
 # nypr-publisher-lib Changelog
 
+## 0.0.5
+- [ENHANCEMENT] #11 Add canonicalHost to channel model
+
 ## 0.0.4
 - [BUGFIX] Allow tests to fail on ember canary
 
