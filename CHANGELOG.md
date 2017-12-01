@@ -1,5 +1,8 @@
 # nypr-publisher-lib Changelog
 
+## 0.2.2
+- [BUGFIX] #10 Add donationUrl to channel attr
+
 ## 0.2.1
 - [ENHANCEMENT] #5 Add studios image headers to channel model for studios show header
 - [ENHANCEMENT] #6 Adds episode-list component + image-caption component
