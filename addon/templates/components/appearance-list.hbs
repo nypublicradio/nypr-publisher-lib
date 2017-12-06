@@ -4,7 +4,7 @@
       <article class="team-person">
         {{#if appearance.person.image.template}}
           <div class="team-person__image-wrapper">
-            {{#link-to 'story' appearance.person.slug class="team-person__image-link" title=appearance.person.name ariaRole="presentation" ~}}
+            {{#link-to 'person-detail' appearance.person.slug class="team-person__image-link" title=appearance.person.name ariaRole="presentation" ~}}
             <img class="team-person__image" alt=""
               src="{{image-template appearance.person.image.template 320 240 appearance.person.image.crop}}"
               srcset="{{image-template appearance.person.image.template 640 480 appearance.person.image.crop}} 2x">
@@ -12,7 +12,7 @@
           </div>
         {{else if defaultPersonImage}}
           <div class="team-person__image-wrapper team-person__image-wrapper--fallback">
-            {{#link-to 'story' appearance.person.slug class="team-person__image-link" title=appearance.person.name ariaRole="presentation" ~}}
+            {{#link-to 'person-detail' appearance.person.slug class="team-person__image-link" title=appearance.person.name ariaRole="presentation" ~}}
               <img class="team-person__image" alt=""
                 src="{{image-template defaultPersonImage.template 320 240 defaultPersonImage.crop}}"
                 srcset="{{image-template defaultPersonImage.template 640 480 defaultPersonImage.crop}} 2x">
@@ -23,7 +23,7 @@
         {{/if}}
         <div class="team-person__details">
           <h1 class="team-person__name">
-            {{#link-to 'story' appearance.person.slug class="team-person__title-link"~}}
+            {{#link-to 'person-detail' appearance.person.slug class="team-person__title-link"~}}
               {{appearance.person.name}}
             {{~/link-to}}
           </h1>

@@ -5,5 +5,5 @@ export default Component.extend({
   layout,
   classNames: ['appearance-list'],
   attributeBindings: ['data-test-selector'],
-  'data-test-selector': 'episode-list'
+  'data-test-selector': 'appearance-list'
 });
