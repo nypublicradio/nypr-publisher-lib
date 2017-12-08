@@ -2,7 +2,8 @@
   {{#each model.appearances as |appearance|}}
     <li class="appearance-list__list-item">
       <article class="team-person">
-        {{#if appearance.person.image.template}}
+        {{#if (and appearance.person.image.template
+                   (gt appearance.person.image.w 800))}}
           <div class="team-person__image-wrapper">
             {{#link-to 'person-detail' appearance.person.slug class="team-person__image-link" title=appearance.person.name ariaRole="presentation" ~}}
             <img class="team-person__image" alt=""
@@ -23,15 +24,19 @@
         {{/if}}
         <div class="team-person__details">
           <h1 class="team-person__name">
-            {{#link-to 'person-detail' appearance.person.slug class="team-person__title-link"~}}
+            {{#link-to 'person-detail' appearance.person.slug class="team-person__name-link"~}}
               {{appearance.person.name}}
-            {{~/link-to}}
+            {{~/link-to~}}
           </h1>
-          {{~whitespace-control~}}
           <h2 class="team-person__type">
             {{appearance.appearanceType}}
           </h2>
-          <div class="team-person__bio">{{{truncate appearance.person.bio 150 '…'}}}</div>
+          <div class="team-person__bio">{{{truncate appearance.person.lede 150 '…'}}}</div>
+          {{social-iconlist
+            class="team-person__social-iconlist"
+            links=appearance.socialLinks
+            followPrefix=(concat "Follow " appearance.person.name " on")
+          }}
         </div>
       </article>
     </li>

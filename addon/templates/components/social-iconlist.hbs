@@ -1,0 +1,34 @@
+{{#if hasBlock}}
+  {{yield}}
+{{else}}
+  {{#each links as |link|}}
+    {{#if (eq link.title 'facebook')}}
+      <li class="social-iconlist__item">
+        <a class="social-iconlist__link" href={{link.href}} title="{{followPrefix}} {{link.title}}">
+          {{~fa-icon "facebook"~}}
+        </a>
+      </li>
+    {{/if}}
+    {{#if (eq link.title 'twitter')}}
+      <li class="social-iconlist__item">
+        <a class="social-iconlist__link" href={{link.href}} title="{{followPrefix}} {{link.title}}">
+          {{~fa-icon "twitter"~}}
+        </a>
+      </li>
+    {{/if}}
+    {{#if (eq link.title 'instagram')}}
+      <li class="social-iconlist__item">
+        <a class="social-iconlist__link" href={{link.href}} title="{{followPrefix}} {{link.title}}">
+          {{~fa-icon "instagram"~}}
+        </a>
+      </li>
+    {{/if}}
+    {{#if (eq link.title 'youtube')}}
+      <li class="social-iconlist__item">
+        <a class="social-iconlist__link" href={{link.href}} title="{{followPrefix}} {{link.title}}">
+          {{~fa-icon "youtube"~}}
+        </a>
+      </li>
+    {{/if}}
+  {{/each}}
+{{/if}}
