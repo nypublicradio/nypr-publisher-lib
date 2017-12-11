@@ -2,6 +2,7 @@
   {{django-page page=model.page loadingType='channel-page'}}
 </div>
 
+{{#unless hidePeople}}
 <section>
   <h1 class="about-page__hidden">People</h1>
   {{#each model.aboutPage.people as |person|}}
@@ -30,7 +31,8 @@
           width="100" height="100">
     </div>
     {{/if}}
-    
+
   </article>
   {{/each}}
 </section>
+{{/unless}}
