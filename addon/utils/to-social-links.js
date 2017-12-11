@@ -40,5 +40,8 @@ export default function(social) {
           href: item['contact-string']
         };
       }
+  }).sort((a, b) => {
+    let sortOrder = ["facebook", "twitter", "instagram", "youtube"];
+    return sortOrder.indexOf(a.title) - sortOrder.indexOf(b.title);
   });
 }
