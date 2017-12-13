@@ -1,0 +1,44 @@
+<ul class="appearance-list__list">
+  {{#each model.appearances as |appearance|}}
+    <li class="appearance-list__list-item">
+      <article class="team-person">
+        {{#if (and appearance.person.image.template
+                   (gt appearance.person.image.w 800))}}
+          <div class="team-person__image-wrapper">
+            {{#link-to 'person-detail' appearance.person.slug class="team-person__image-link" title=appearance.person.name ariaRole="presentation" ~}}
+            <img class="team-person__image" alt=""
+              src="{{image-template appearance.person.image.template 320 240 appearance.person.image.crop}}"
+              srcset="{{image-template appearance.person.image.template 640 480 appearance.person.image.crop}} 2x">
+            {{~/link-to}}
+          </div>
+        {{else if defaultPersonImage}}
+          <div class="team-person__image-wrapper team-person__image-wrapper--fallback">
+            {{#link-to 'person-detail' appearance.person.slug class="team-person__image-link" title=appearance.person.name ariaRole="presentation" ~}}
+              <img class="team-person__image" alt=""
+                src="{{image-template defaultPersonImage.template 320 240 defaultPersonImage.crop}}"
+                srcset="{{image-template defaultPersonImage.template 640 480 defaultPersonImage.crop}} 2x">
+            {{~/link-to}}
+          </div>
+        {{else}}
+          <div class="team-person__image-wrapper team-person__image-wrapper--placeholder"></div>
+        {{/if}}
+        <div class="team-person__details">
+          <h1 class="team-person__name">
+            {{#link-to 'person-detail' appearance.person.slug class="team-person__name-link"~}}
+              {{appearance.person.name}}
+            {{~/link-to~}}
+          </h1>
+          <h2 class="team-person__type">
+            {{appearance.appearanceType}}
+          </h2>
+          <div class="team-person__bio">{{{truncate appearance.person.lede 150 '…'}}}</div>
+          {{social-iconlist
+            class="team-person__social-iconlist"
+            links=appearance.socialLinks
+            followPrefix=(concat "Follow " appearance.person.name " on")
+          }}
+        </div>
+      </article>
+    </li>
+  {{/each}}
+</ul>
