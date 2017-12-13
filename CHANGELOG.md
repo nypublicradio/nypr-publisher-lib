@@ -1,5 +1,8 @@
 # nypr-publisher-lib Changelog
 
+## 0.0.6
+- [CHORE] loose versioning for liquid fire
+
 ## 0.0.5
 - [ENHANCEMENT] #11 Add canonicalHost to channel model
 
