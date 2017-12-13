@@ -1,5 +1,15 @@
 # nypr-publisher-lib Changelog
 
+## 0.2.3
+- [ENHANCEMENT] Add person model, serializer, adapter
+- [ENHANCEMENT] Add appearance model 
+- [ENHANCEMENT] Add appearance-list to api-response linkroll types
+- [ENHANCEMENT] Add appearance-list component
+- [ENHANCEMENT] Add socialLinks computed prop to appearances, people
+- [ENHANCEMENT] Add social-iconlist component
+- [ENHANCEMENT] Add option to hide people from about-page
+- [BUGFIX] #13 Check for bucket items and add fake id if empty
+
 ## 0.2.2
 - [BUGFIX] #10 Add donationUrl to channel attr
 - [ENHANCEMENT] #11 Add canonicalHost to channel model
