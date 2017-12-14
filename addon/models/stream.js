@@ -4,11 +4,6 @@ import { belongsTo } from 'ember-data/relationships';
 import computed, { readOnly } from 'ember-computed';
 import get from 'ember-metal/get';
 
-const WQXR_slugs = ["wqxr","q2","jonathan-channel","wqxr-special","wqxr-special2"];
-// wqxr-special = Operavore,
-// wqxr-special2 = Holiday Channel
-const WNYC_slugs = ["wnyc-fm939", "wnyc-am820"];
-
 export default Model.extend({
   // BEGIN-SNIPPET stream-fields
   audioType:            'livestream',
@@ -24,6 +19,7 @@ export default Model.extend({
   playlistUrl:          attr('string'),
   cmsPK:                attr('number'),
   twitterHandle:        attr('string'),
+  sourceTags:           attr('string', {defaultValue: ''}),
 
   currentShow:          attr(),
   currentPlaylistItem:  attr(),
@@ -36,12 +32,12 @@ export default Model.extend({
   story:                readOnly('currentStory'),
   audioBumper:          attr('string'),
 
-  isWQXR:               computed('slug', function(){
-    return WQXR_slugs.includes(get(this, 'slug'));
+  isWQXR:               computed('sourceTags', function(){
+    return get(this, 'sourceTags').includes('wqxr_site');
   }),
 
-  isWNYC:               computed('slug', function(){
-    return WNYC_slugs.includes(get(this, 'slug'));
+  isWNYC:               computed('sourceTags', function(){
+    return get(this, 'sourceTags').includes('wnyc_site');
   }),
 
   liveWQXR:             computed('isWQXR', 'whatsOn', function(){
