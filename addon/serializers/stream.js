@@ -34,6 +34,7 @@ export default DS.JSONAPISerializer.extend({
       'audio_bumper',
       'twitter_handle',
       'source_tags',
+      'site_priority',
     ];
     let attributes = {};
     keys.forEach(k => attributes[k] = data[k]);
