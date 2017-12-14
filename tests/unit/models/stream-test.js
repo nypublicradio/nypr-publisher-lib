@@ -4,6 +4,7 @@ import {
 } from 'ember-qunit';
 import sinon from 'sinon';
 import Ember from 'ember';
+import run from 'ember-runloop';
 
 moduleForModel('stream', 'Unit | Model | stream', {
   // Specify the other units that are required for this test.
@@ -46,4 +47,19 @@ test('it has the required information for sending a listen action', function(ass
       });
     });
   // })
+});
+
+test('it uses the source_tags attribute to determine site specificty', function(assert) {
+  let stream = this.subject();
+  assert.notOk(stream.get('isWQXR'), 'no sourceTags should be ok');
+
+  run(() => {
+    stream.set('sourceTags', 'wqxr_site');
+    assert.ok(stream.get('isWQXR'), 'should be wqxr');
+  });
+  
+  run(() => {
+    stream.set('sourceTags', 'wnyc_site');
+    assert.ok(stream.get('isWNYC'), 'should be wnyc');
+  });
 });
