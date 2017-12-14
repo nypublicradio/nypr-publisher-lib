@@ -32,7 +32,8 @@ export default DS.JSONAPISerializer.extend({
       'playlist_url',
       'whats_on',
       'audio_bumper',
-      'twitter_handle'
+      'twitter_handle',
+      'source_tags',
     ];
     let attributes = {};
     keys.forEach(k => attributes[k] = data[k]);
