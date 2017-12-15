@@ -1,5 +1,8 @@
 # nypr-publisher-lib Changelog
 
+## 0.2.4
+- [CHORE] versions nypr-django-for-ember and nypr-ui
+
 ## 0.2.3
 - [ENHANCEMENT] Add person model, serializer, adapter
 - [ENHANCEMENT] Add appearance model 
