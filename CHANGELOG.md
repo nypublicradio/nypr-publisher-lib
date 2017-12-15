@@ -1,5 +1,8 @@
 # nypr-publisher-lib Changelog
 
+## 0.0.8
+- [CHORE] versions nypr-ui and django-for-ember
+
 ## 0.0.7
 - [ENHANCEMENT] adds site_priority and source_tags to stream model. source_tags will be used to determine if a stream "belongs" to a site, either WNYC or WQXR.
 
