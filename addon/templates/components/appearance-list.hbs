@@ -11,12 +11,10 @@
               srcset="{{image-template appearance.person.image.template 640 480 appearance.person.image.crop}} 2x">
             {{~/link-to}}
           </div>
-        {{else if defaultPersonImage}}
+        {{else if defaultImageUrl}}
           <div class="team-person__image-wrapper team-person__image-wrapper--fallback">
             {{#link-to 'person-detail' appearance.person.slug class="team-person__image-link" title=appearance.person.name ariaRole="presentation" ~}}
-              <img class="team-person__image" alt=""
-                src="{{image-template defaultPersonImage.template 320 240 defaultPersonImage.crop}}"
-                srcset="{{image-template defaultPersonImage.template 640 480 defaultPersonImage.crop}} 2x">
+              <img class="team-person__image" alt="" src="{{defaultImageUrl}}">
             {{~/link-to}}
           </div>
         {{else}}
