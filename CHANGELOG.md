@@ -1,5 +1,8 @@
 # nypr-publisher-lib Changelog
 
+## 0.2.6
+- [ENHANCEMENT] #14 Let appearance-list accept a url for default image
+
 ## 0.2.5
 - [CHORE] fix version typo
 
