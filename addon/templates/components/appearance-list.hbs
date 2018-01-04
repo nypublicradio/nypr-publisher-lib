@@ -29,7 +29,7 @@
           <h2 class="team-person__type">
             {{appearance.appearanceType}}
           </h2>
-          <div class="team-person__bio">{{{truncate appearance.person.lede 150 '…'}}}</div>
+          <div class="team-person__bio">{{{truncate (concat appearance.person.bio appearance.person.lede) 150 '…'}}}</div>
           {{social-iconlist
             class="team-person__social-iconlist"
             links=appearance.socialLinks
