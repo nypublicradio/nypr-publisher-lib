@@ -3,7 +3,7 @@
     <li class="appearance-list__list-item">
       <article class="team-person">
         {{#if (and appearance.person.image.template
-                   (gt appearance.person.image.w 800))}}
+                   (gte appearance.person.image.w 800))}}
           <div class="team-person__image-wrapper">
             {{#link-to 'person-detail' appearance.person.slug class="team-person__image-link" title=appearance.person.name ariaRole="presentation" ~}}
             <img class="team-person__image" alt=""
