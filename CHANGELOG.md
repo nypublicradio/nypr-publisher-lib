@@ -1,5 +1,9 @@
 # nypr-publisher-lib Changelog
 
+## 0.2.7
+- [ENHANCEMENT] #15 show lede or bio in appearance list instead of just bio
+- [BUGFIX] #16 Show appearance list images when width >= 800px instead of > 800px
+
 ## 0.2.6
 - [ENHANCEMENT] #14 Let appearance-list accept a url for default image
 
