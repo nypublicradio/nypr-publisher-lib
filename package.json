@@ -28,7 +28,7 @@
     "liquid-fire": "^0.29.1",
     "nypr-audio-services": "~0.0.0",
     "nypr-django-for-ember": "~0.0.0",
-    "nypr-ui": "~0.0.0"
+    "nypr-ui": "~0.1.0"
   },
   "devDependencies": {
     "broccoli-asset-rev": "^2.4.5",
