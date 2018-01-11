@@ -1,5 +1,8 @@
 # nypr-publisher-lib Changelog
 
+## 0.0.9
+- [CHORE] bump nypr-ui
+
 ## 0.0.8
 - [CHORE] versions nypr-ui and django-for-ember
 
