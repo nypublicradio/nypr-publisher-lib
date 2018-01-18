@@ -21,6 +21,13 @@
             itemShow=(or episode.showTitle episode.headers.brand.title)
           }}Listen{{/listen-button}}
         {{/if}}
+
+        <div class="episode-tease__show-info">
+          <img class="episode-tease__show-logo" alt=""
+            src="{{image-template episode.headers.brand.logo-image.template 41 41 episode.headers.brand.logo-image.crop}}"
+            srcset="{{image-template episode.headers.brand.logo-image.template 82 82 episode.headers.brand.logo-image.crop}} 2x">
+          <h2 class="episode-tease__show-title">{{episode.headers.brand.title}}</h2>
+        </div>
         <h1 class="episode-tease__title">
           {{#link-to 'story' episode.slug class="episode-tease__title-link"~}}
             {{episode.title}}
