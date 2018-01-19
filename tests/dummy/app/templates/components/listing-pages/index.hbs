@@ -22,7 +22,7 @@ this.store.findRecord('api-response', 'shows/bl/episodes/1');
 ```
 This request is translated by Publisher to lookup the `LinkRoll` that has a slug `navigation-shows-bl`, which is derived from the given id: `shows/bl` is transformed to `shows-bl`.
 
-The `[ORM query]` is extracted from the retrieved `LinkRollLink` object, and the results are packaged up into a `JSON:API` response that defines an `api-response` model and includes the results of the query. 
+The `[ORM query]` is extracted from the retrieved `LinkRollLink` object, and the results are packaged up into a `JSON:API` response that defines an `api-response` model and includes the results of the query.
 
 The response for the above request would look something like this:
 ```json
