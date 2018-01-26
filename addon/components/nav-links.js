@@ -16,6 +16,7 @@ export default Component.extend({
   links: [],
   classNames: ['nav-links'],
   classNameBindings: ['xScrollable'],
+  didChangeIndex: () => {},
   parsedLinks: computed('links', function() {
     let links = Ember.A(get(this, 'links'));
     return links.map(i => {
@@ -62,11 +63,13 @@ export default Component.extend({
       set(this, 'xScrollable', false);
     }
   },
-  
+
   actions: {
-    moveBar(index, slug) {
-      if (slug) {
+    moveBar: function(index, slug) {
+      let currentIndex = this.get('activeTabIndex', index);
+      if (slug && index !== currentIndex) {
         this.set('activeTabIndex', index);
+        this.get('didChangeIndex')(index)
       }
     }
   }
