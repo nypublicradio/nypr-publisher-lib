@@ -1,5 +1,9 @@
 # nypr-publisher-lib Changelog
 
+## 0.2.9
+- [ENHANCEMENT] #17 Truncate episode teases with ember-truncate
+- [ENHANCEMENT] #18 Add option to include logo and title for shows in episode-list
+
 ## 0.2.8
 - [CHORE] bump nypr-ui
 
