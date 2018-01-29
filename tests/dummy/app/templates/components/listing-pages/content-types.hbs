@@ -64,6 +64,15 @@ The `story-detail` component will just render the body text:
 <hr>
 
 {{md-text text="
+##### `episode-list`
+The `episode-list` component provides an alternate rendering of an `api-response` that has a `teaseList` attribute.
+
+Set the includeShows property to true to include the associated shows in the episode teases.
+"}}
+
+<hr>
+
+{{md-text text="
 #### Adding new `content-types`
 The nice part of this setup is that it keeps the templates fairly simple. A dynamic computed proprety of the `api-response` model can be passed to the `component` helper, which renders the correct UI for the available property.
 

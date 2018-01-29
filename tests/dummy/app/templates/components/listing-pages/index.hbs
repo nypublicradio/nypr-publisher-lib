@@ -22,7 +22,7 @@ this.store.findRecord('api-response', 'shows/bl/episodes/1');
 ```
 This request is translated by Publisher to lookup the `LinkRoll` that has a slug `navigation-shows-bl`, which is derived from the given id: `shows/bl` is transformed to `shows-bl`.
 
-The `[ORM query]` is extracted from the retrieved `LinkRollLink` object, and the results are packaged up into a `JSON:API` response that defines an `api-response` model and includes the results of the query. 
+The `[ORM query]` is extracted from the retrieved `LinkRollLink` object, and the results are packaged up into a `JSON:API` response that defines an `api-response` model and includes the results of the query.
 
 The response for the above request would look something like this:
 ```json
@@ -56,7 +56,19 @@ The results of the query are sent in the `included` array, and Ember follows the
 {{md-text text="
 The `contentType` computed property is derived based on which one of the those relationship keys are defined on the server response. The returned value can be used to dynamically render out a component for a template like so:
 ```handlebars
-{{component model.contentType}}
+{{component model.contentType model=model}}
+```
+
+For more control over the components that are rendered for each `contentType`, you can use something like this:
+
+```handlebars
+{{#if (eq model.contentType 'tease-list')}}
+  {{episode-list model=model displayShow=true}}
+{{else if (eq model.contentType 'about-page')}}
+  {{my-custom-about-page model=model}}
+{{else}}
+  {{component model.contentType model=model}}
+{{/if}}
 ```
 "}}
 
