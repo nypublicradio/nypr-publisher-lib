@@ -27,6 +27,7 @@
     "ember-cli-sass": "^7.0.0",
     "ember-font-awesome": "^4.0.0-alpha.10",
     "ember-get-config": "^0.2.2",
+    "ember-truncate": "^1.0.0",
     "liquid-fire": "~0.29.1",
     "nypr-audio-services": "~0.2.0",
     "nypr-django-for-ember": "~0.0.0",
