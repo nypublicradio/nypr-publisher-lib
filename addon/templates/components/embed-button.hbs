@@ -1,0 +1,8 @@
+<button class="embed-button__button" {{action (mut showEmbed) true}}>{{nypr-svg icon="embed"}} Embed</button>
+{{#if showEmbed}}
+  {{#click-outside class="embed-button__embed-popup" action=(action (mut showEmbed) false)}}
+    <h2 class="embed-button__embed-header">Want to embed this player?</h2>
+    <p class="embed-button__embed-instructions">Use the code below.</p>
+    <div class="embed-button__embed-code">{{story.embedCode}}</div>
+  {{/click-outside}}
+{{/if}}
