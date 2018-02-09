@@ -26,6 +26,8 @@ Router.map(function() {
       this.route('social-links');
     });
     this.route('stories', function() {
+      this.route('download-link');
+      this.route('embed-button');
       this.route('story-tease');
       this.route('story-comments');
       this.route('related-stories');

@@ -1,5 +1,6 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
+import { next } from '@ember/runloop'
 
 moduleForComponent('embed-button', 'Integration | Component | embed button', {
   integration: true
@@ -11,14 +12,26 @@ test('it renders', function(assert) {
 
   this.render(hbs`{{embed-button}}`);
 
-  assert.equal(this.$().text().trim(), '');
+  assert.equal(this.$('.embed-button__button').length, 1);
+});
 
-  // Template block usage:
-  this.render(hbs`
-    {{#embed-button}}
-      template block text
-    {{/embed-button}}
-  `);
+test('it shows the popup when you click the button', function(assert) {
+  this.render(hbs`{{embed-button}}`);
+  assert.equal(this.$('.embed-button__embed-popup').length, 0, 'the popup should begin hidden');
 
-  assert.equal(this.$().text().trim(), 'template block text');
+  this.$('.embed-button__button').click();
+  assert.equal(this.$('.embed-button__embed-popup').length, 1,  'the popup should appear when you click the button');
+});
+
+
+test('it hides the popup when you click the button', function(assert) {
+  this.render(hbs`{{embed-button showEmbed=true}}`);
+  assert.equal(this.$('.embed-button__embed-popup').length, 1, 'the popup should begin visible');
+
+  next(() => {
+    this.$('.embed-button__button').click();
+    next(() => {
+      assert.equal(this.$('.embed-button__embed-popup').length, 0,  'the popup should hide when you click the button');
+    });
+  });
 });

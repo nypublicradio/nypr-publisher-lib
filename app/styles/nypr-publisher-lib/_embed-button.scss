@@ -1,3 +1,7 @@
+.embed-button {
+  position: relative;
+}
+
 .embed-button__button {
   display: inline-block;
   -moz-appearance: none;
@@ -13,16 +17,8 @@
   position: absolute;
   width: 238px;
   height: 217px;
-  top: 45px;  // override these to
-  left: 95px; // position the popup
-
-  // top: 72px;
-  // left: calc(50% - 119px);
-
-  // @media #{$mq_medium-and-up} {
-  //   top: 42px;
-  //   left: 104px;
-  // }
+  top: 38px;   // override these to
+  left: -99px; // position the popup
 
   background: white;
   box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.5);
@@ -33,7 +29,7 @@
     content: "";
     position: absolute;
     top: 5px;
-    left: 145px; // override this to adjust pointer position
+    left: 125px; // override this to adjust pointer position
     width: 20px;
     height: 20px;
     transform: translateX(-50%) translateY(-50%) rotate(45deg);

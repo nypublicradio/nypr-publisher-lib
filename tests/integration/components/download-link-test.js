@@ -8,17 +8,11 @@ moduleForComponent('download-link', 'Integration | Component | download link', {
 test('it renders', function(assert) {
   // Set any properties with this.set('myProperty', 'value');
   // Handle any actions with this.on('myAction', function(val) { ... });
+  let story = ({audio: "http://example.com", title:"Story"})
+  this.set('story', story)
 
-  this.render(hbs`{{download-link}}`);
+  this.render(hbs`{{download-link story=story}}`);
 
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
-  this.render(hbs`
-    {{#download-link}}
-      template block text
-    {{/download-link}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.equal(this.$('.download-link').length, 1);
+  assert.equal(this.$('.download-link').attr('href'), story.audio);
 });
