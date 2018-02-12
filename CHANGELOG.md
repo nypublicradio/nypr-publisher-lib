@@ -1,5 +1,8 @@
 # nypr-publisher-lib Changelog
 
+## 0.2.10
+- [ENHANCEMENT] Adds estimatedDuration attribute to story model
+
 ## 0.2.9
 - [ENHANCEMENT] #17 Truncate episode teases with ember-truncate
 - [ENHANCEMENT] #18 Add option to include logo and title for shows in episode-list
