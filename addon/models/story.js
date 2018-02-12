@@ -30,6 +30,7 @@ export default Model.extend({
   editLink: attr('string'),
   embedCode: attr('string'),
   enableComments: attr('boolean'),
+  estimatedDuration: attr('number'),
   headers: attr(),
   headerDonateChunk: attr('string'),
   // TODO: make this a relationship when stories come in only over /api/v3
