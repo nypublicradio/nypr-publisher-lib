@@ -1,0 +1,4 @@
+"{{musicEntry.title}}"
+{{if musicEntry.artists (concat 'by ' musicEntry.artists)}}
+{{if musicEntry.label (concat 'from ' musicEntry.label)}}
+{{yield}}

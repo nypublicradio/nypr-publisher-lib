@@ -1,0 +1,15 @@
+{{#with story.appearances as |a|}}
+  {{appearance-credit 'Produced by' a.producers}}
+  {{appearance-credit 'Edited by' a.editors}}
+  {{appearance-credit 'Hosted by' a.hosts}}
+  {{appearance-credit 'Contributions by' a.contributors}}
+  {{appearance-credit 'Guests:' a.guests}}
+{{/with}}
+{{#if story.playlist}}
+  Music credits:
+  {{#each story.playlist as |musicEntry index|}}
+    {{if index ", "}}
+    {{playlist-credit musicEntry=musicEntry}}
+  {{/each}}
+{{/if}}
+{{yield}}
