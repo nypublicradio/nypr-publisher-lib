@@ -1,4 +1,8 @@
-"{{musicEntry.title}}"
+{{#if amazonUrl}}
+  "<a href={{amazonUrl}} target="_blank" title='Buy "{{unquotedTitle}}" on Amazon'>{{unquotedTitle}}</a>"
+{{else}}
+  "{{unquotedTitle}}"
+{{/if}}
 {{if musicEntry.artists (concat 'by ' musicEntry.artists)}}
 {{if musicEntry.label (concat 'from ' musicEntry.label)}}
 {{yield}}
