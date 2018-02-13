@@ -6,10 +6,28 @@
   {{appearance-credit 'Guests:' a.guests}}
 {{/with}}
 {{#if story.playlist}}
-  Music credits:
+  Music Credits:
   {{#each story.playlist as |musicEntry index|}}
     {{if index ", "}}
     {{playlist-credit musicEntry=musicEntry}}
   {{/each}}
 {{/if}}
+
+{{#if (or story.producingOrganizations story.showProducingOrgs)}}
+  {{#with (or story.producingOrganizations story.showProducingOrgs) as |orgs|}}
+  <div class="producing-org-credits">
+    <div class="producing-org-credits__logos">
+      {{#each orgs as |org|}}
+        {{#if org.logo}}
+        <a href={{org.url}} title={{org.name}}><img class="producing-org-credits__logo-image" alt="{{org.name}}" src="{{image-template org.logo.template org.logo.w org.logo.h org.logo.crop}}" /></a>
+        {{/if}}
+      {{/each}}
+    </div>
+    <div class="producing-org-credits__links">
+      Produced by {{producing-orgs story.producingOrganizations}}
+    </div>
+  </div>
+  {{/with}}
+{{/if}}
+
 {{yield}}
