@@ -36,6 +36,30 @@ const DUMMY_STORY = {
   tease: "When the owner of reBar, a DUMBO gastropub and wedding venue, disappeared two weeks ago with upwards of $150,000 in deposits, couples and employees were left in the lurch. The restaurateur has since turned himself in and paid bail but now faces up to 15 years in prison.",
   title: "reBar: Closed and Bankrupt",
   url: "http://www.wnyc.org/story/rebar/",
+  appearances: {
+    producers: [
+      {name: "Amanda Aronczyk", url:"http://www.example.com"},
+      {name: "Bethel Habte", url:"http://www.example.com"},
+      {name: "Firstname Lastname", url:"http://www.example.com"},
+    ],
+    editors: [
+      {name: "Amanda Aronczyk", url:"http://www.example.com"},
+      {name: "Bethel Habte", url:"http://www.example.com"}
+    ],
+    hosts: [
+      {name: "Amanda Aronczyk", url:"http://www.example.com"}
+    ],
+    contributors: [
+      {name: "Amanda Aronczyk", url:"http://www.example.com"}
+    ],
+    guests: [
+      {name: "Amanda Aronczyk", url:"http://www.example.com"}
+    ],
+  },
+  playlist: [
+    {title: "Thannoid", artists: "Blue Dot Sessions", asin: "XXXXX"},
+    {title: "Stairs", artists: "Blue Dot Sessions", label: "Sony Records", asin: "XXXXX"},
+  ]
 }
 // END-SNIPPET
 
