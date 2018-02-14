@@ -19,7 +19,7 @@
 
 {{#if (or story.producingOrganizations story.showProducingOrgs)}}
   {{#with (or story.producingOrganizations story.showProducingOrgs) as |orgs|}}
-  <div class="producing-org-credits">
+  <div class="story-credits__producing-org-credits producing-org-credits">
     <div class="producing-org-credits__logos">
       {{#each orgs as |org|}}
         {{#if org.logo}}
