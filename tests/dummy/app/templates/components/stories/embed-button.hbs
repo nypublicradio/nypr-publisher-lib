@@ -1,0 +1,31 @@
+{{md-text text="
+#### `embed-button`
+Renders a button with an icon that shows a popup with a story's embed code. Expects a `story` model as its `story` parameter.
+
+##### Properties
+| Property | Default Value | Description|
+|--|--|--|
+| `story`| | a story
+| `icon` | 'embed' | an `nypr-svg` icon name
+| `buttonText` | 'Embed' | the text for the button that toggles the popup
+
+##### Styling
+the following SASS values are important for positioning the popup. Override them in your app to suit your layout. By default, the popup is absolute positioned relative to the component's main element.
+```sass
+.embed-button {
+  .embed-button__embed-popup {
+    top: 38px;   // override these to adjust the
+    left: -99px; // position of the popup
+
+    &:before,
+    &:after {
+      left: 125px; // override this to adjust the position of the pointer
+    }
+  }
+}
+```
+"}}
+
+<div style="padding-left: 100px">
+  {{embed-button}}
+</div>
