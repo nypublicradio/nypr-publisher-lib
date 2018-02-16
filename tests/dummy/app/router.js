@@ -31,6 +31,9 @@ Router.map(function() {
       this.route('story-tease');
       this.route('story-comments');
       this.route('related-stories');
+      this.route('story-credits');
+      this.route('appearance-credit');
+      this.route('playlist-credit');
     });
     this.route('streams', function() {
       this.route('stream-list');

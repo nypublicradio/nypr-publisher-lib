@@ -1,0 +1,37 @@
+{{#with story.appearances as |a|}}
+  <div class="story-credits__appearance-credits">
+    {{appearance-credit 'Produced by' a.producers}}
+    {{appearance-credit 'Edited by' a.editors}}
+    {{appearance-credit 'Hosted by' a.hosts}}
+    {{appearance-credit 'Contributions by' a.contributors}}
+    {{appearance-credit 'Guests:' a.guests}}
+  </div>
+{{/with}}
+{{#if story.playlist}}
+  <div class="story-credits__music-credits">
+    Music Credits:
+    {{#each story.playlist as |musicEntry index|}}
+      {{if index ", "}}
+      {{playlist-credit musicEntry=musicEntry}}
+    {{/each}}
+  </div>
+{{/if}}
+
+{{#if (or story.producingOrganizations story.showProducingOrgs)}}
+  {{#with (or story.producingOrganizations story.showProducingOrgs) as |orgs|}}
+  <div class="story-credits__producing-org-credits producing-org-credits">
+    <div class="producing-org-credits__logos">
+      {{#each orgs as |org|}}
+        {{#if org.logo}}
+        <a href={{org.url}} title={{org.name}}><img class="producing-org-credits__logo-image" alt="{{org.name}}" src="{{image-template org.logo.template org.logo.w org.logo.h org.logo.crop}}" /></a>
+        {{/if}}
+      {{/each}}
+    </div>
+    <div class="producing-org-credits__links">
+      Produced by {{producing-orgs orgs}}
+    </div>
+  </div>
+  {{/with}}
+{{/if}}
+
+{{yield}}

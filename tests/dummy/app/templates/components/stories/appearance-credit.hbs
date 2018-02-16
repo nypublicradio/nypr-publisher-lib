@@ -1,0 +1,11 @@
+{{md-text text="
+#### `appearance-credit`
+Renders a credit line for an appearance list. Expects a description as its first parameter. Expects a list of  `appearance` objects as its second parameter.
+
+If the list is empty, it will render nothing.
+
+```hbs
+{{appearance-credit 'Produced by' story.appearances.producers}}
+```
+"}}
+{{appearance-credit 'Produced by' model.item.appearances.producers}}
