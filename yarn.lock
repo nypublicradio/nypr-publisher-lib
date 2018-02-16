@@ -5549,7 +5549,7 @@ nypr-ui@nypublicradio/nypr-ui:
     ember-power-select "^1.9.2"
     ivy-tabs "3.1.0"
 
-nypr-ui@v0.1.5:
+nypr-ui@~0.1.5:
   version "0.1.5"
   resolved "https://registry.yarnpkg.com/nypr-ui/-/nypr-ui-0.1.5.tgz#2740a6461e346fd882b15cbf7bda39698db3eef3"
   dependencies:
