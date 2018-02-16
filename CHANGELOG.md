@@ -1,5 +1,12 @@
 # nypr-publisher-lib Changelog
 
+## 0.2.11
+- [ENHANCEMENT] #20 Adds story-credits component
+- [ENHANCEMENT] Adds appearance-credit component
+- [ENHANCEMENT] Adds music-credit component
+- [ENHANCEMENT] #19 Adds download-link component
+- [ENHANCEMENT] Adds embed-button component
+
 ## 0.2.10
 - [ENHANCEMENT] Adds estimatedDuration attribute to story model
 
