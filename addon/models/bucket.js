@@ -5,6 +5,7 @@ export default Model.extend({
   // BEGIN-SNIPPET bucket-fields
   slug: attr('string'),
   title: attr('string'),
+  editLink: attr('string'),
   bucketItems: attr()
   // END-SNIPPET
 });
