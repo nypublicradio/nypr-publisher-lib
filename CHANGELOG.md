@@ -1,5 +1,8 @@
 # nypr-publisher-lib Changelog
 
+## 0.2.12
+- [ENHANCEMENT] Adds editLink to bucket model
+
 ## 0.2.11
 - [ENHANCEMENT] #20 Adds story-credits component
 - [ENHANCEMENT] Adds appearance-credit component
@@ -32,7 +35,7 @@
 
 ## 0.2.3
 - [ENHANCEMENT] Add person model, serializer, adapter
-- [ENHANCEMENT] Add appearance model 
+- [ENHANCEMENT] Add appearance model
 - [ENHANCEMENT] Add appearance-list to api-response linkroll types
 - [ENHANCEMENT] Add appearance-list component
 - [ENHANCEMENT] Add socialLinks computed prop to appearances, people
