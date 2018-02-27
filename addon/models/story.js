@@ -1,4 +1,5 @@
-import Ember from 'ember';
+import { Promise as EmberPromise } from 'rsvp';
+import $ from 'jquery';
 import DS from 'ember-data';
 import config from 'ember-get-config';
 import get, { getProperties } from 'ember-metal/get';
@@ -126,7 +127,7 @@ export default Model.extend({
     if (browserId) {
       data.id = browserId;
     }
-    return `${config.adminRoot}/comments/security_info/?${Ember.$.param(data)}`;
+    return `${config.adminRoot}/comments/security_info/?${$.param(data)}`;
   },
   nprAnalyticsDimensions: attr(),
   allProducingOrgs: computed('producingOrganizations', 'showProducingOrgs', function(){
@@ -244,7 +245,7 @@ export default Model.extend({
   },
 
   forListenAction(data = {}) {
-    return Ember.RSVP.Promise.resolve(Object.assign({
+    return EmberPromise.resolve(Object.assign({
       audio_type: 'on_demand',
       cms_id: get(this, 'cmsPK'),
       item_type: get(this, 'itemType') // episode, article, segment

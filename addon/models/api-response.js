@@ -1,7 +1,7 @@
 import DS from 'ember-data';
 import computed from 'ember-computed';
 import get from 'ember-metal/get';
-import { readOnly  } from 'ember-computed';
+import { readOnly } from 'ember-computed';
 import { totalPages } from 'nypr-publisher-lib/utils/math-util';
 
 export default DS.Model.extend({

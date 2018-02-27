@@ -1,9 +1,10 @@
-import Ember from 'ember';
+import { computed } from '@ember/object';
+import Component from '@ember/component';
 import layout from '../templates/components/show-tease';
 
-export default Ember.Component.extend({
+export default Component.extend({
   layout,
-  showUrl: Ember.computed('show.slug', function(){
+  showUrl: computed('show.slug', function(){
     return '/shows/' + this.get('show.slug');
   })
 });

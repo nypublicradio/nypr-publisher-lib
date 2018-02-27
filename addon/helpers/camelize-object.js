@@ -1,4 +1,5 @@
-import Ember from 'ember';
+import { helper } from '@ember/component/helper';
+import { camelize } from '@ember/string';
 
 export function camelizeObject(source) {
   let dest = null;
@@ -10,7 +11,7 @@ export function camelizeObject(source) {
   } else if (source !== null && typeof source === "object") {
     dest = {};
     for (var prop in source){
-      let newKey = Ember.String.camelize(prop);
+      let newKey = camelize(prop);
       dest[newKey] = camelizeObject(source[prop]);
     }
   } else {
@@ -20,4 +21,4 @@ export function camelizeObject(source) {
   return dest;
 }
 
-export default Ember.Helper.helper(camelizeObject);
+export default helper(camelizeObject);

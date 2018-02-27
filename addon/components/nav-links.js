@@ -1,14 +1,10 @@
-import Ember from 'ember';
+import { A } from '@ember/array';
+import $ from 'jquery';
+import { computed, set, get } from '@ember/object';
+import Component from '@ember/component';
+import { run } from '@ember/runloop';
 import config from 'ember-get-config';
 import layout from '../templates/components/nav-links';
-const {
-  get,
-  set,
-  $,
-  computed,
-  Component,
-  run
-} = Ember;
 
 export default Component.extend({
   layout,
@@ -18,7 +14,7 @@ export default Component.extend({
   classNameBindings: ['xScrollable'],
   didChangeIndex: () => {},
   parsedLinks: computed('links', function() {
-    let links = Ember.A(get(this, 'links'));
+    let links = A(get(this, 'links'));
     return links.map(i => {
       if (typeof i.href === 'string' && i.href.indexOf(config.webRoot) === 0) {
         // make sure the parsed path has a leading slash
@@ -34,7 +30,7 @@ export default Component.extend({
     // fallback to null if defaultSlug is undefined because a linkrolLlink without
     // a navSlug key will match on `undefined` in `findBy` below
     let defaultSlug = get(this, 'defaultSlug') || null;
-    let links = Ember.A(get(this, 'links'));
+    let links = A(get(this, 'links'));
 
     let defaultIndex = links.indexOf(links.findBy('nav-slug', defaultSlug));
     set(this, 'activeTabIndex', defaultIndex === -1 ? 0 : defaultIndex);

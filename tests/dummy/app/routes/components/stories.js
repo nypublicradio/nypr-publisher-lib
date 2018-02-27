@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import Route from '@ember/routing/route';
 import config from 'dummy/config/environment';
 import rsvp from 'rsvp';
 
@@ -73,7 +73,7 @@ LATEST_STORY.isLatest = true;
 const STORY_ID = 371424;
 // END-SNIPPET
 
-export default Ember.Route.extend({
+export default Route.extend({
   model() {
     return this.store.findRecord('story', 'rebar').then(story => {
       return rsvp.hash({

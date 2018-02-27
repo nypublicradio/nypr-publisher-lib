@@ -1,5 +1,5 @@
+import { assign } from '@ember/polyfills';
 import DS from 'ember-data';
-import Ember from 'ember';
 import config from 'ember-get-config';
 
 export default DS.JSONAPIAdapter.extend({
@@ -10,7 +10,7 @@ export default DS.JSONAPIAdapter.extend({
     options = this._super(...arguments);
     const url = decodeURIComponent(urlToDecode);
 
-    return Ember.assign(options, {
+    return assign(options, {
       url: url.slice(-1) === '/' ? `${url}/` : url,
     });
   }

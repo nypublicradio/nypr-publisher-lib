@@ -1,9 +1,10 @@
-import Ember from 'ember';
+import { helper } from '@ember/component/helper';
+import { camelize } from '@ember/string';
 
 export function camelizeKeys([ source ]/*, hash*/) {
   let dest = {};
-  Object.keys(source).forEach(k => dest[Ember.String.camelize(k)] = source[k]);
+  Object.keys(source).forEach(k => dest[camelize(k)] = source[k]);
   return dest;
 }
 
-export default Ember.Helper.helper(camelizeKeys);
+export default helper(camelizeKeys);

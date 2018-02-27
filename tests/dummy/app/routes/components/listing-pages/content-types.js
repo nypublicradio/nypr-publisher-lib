@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import Route from '@ember/routing/route';
 import {
   DUMMY_STORY_1,
   DUMMY_STORY_2,
@@ -6,7 +6,7 @@ import {
  } from '../../../fixtures';
 
 
-export default Ember.Route.extend({
+export default Route.extend({
   model() {
     // BEGIN-SNIPPET about-page-api-response
     let aboutApiResponse = this.store.createRecord('api-response', {

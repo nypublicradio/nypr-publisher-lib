@@ -1,20 +1,23 @@
-import Ember from 'ember';
+import $ from 'jquery';
+import { scheduleOnce } from '@ember/runloop';
+import { computed } from '@ember/object';
+import Component from '@ember/component';
 import layout from '../templates/components/related-stories';
 import get from 'ember-metal/get';
 import set from 'ember-metal/set';
 
-export default Ember.Component.extend({
+export default Component.extend({
   tagName: 'section',
   layout,
   classNames: ['related-stories'],
 
-  stories: Ember.computed('getStories', {
+  stories: computed('getStories', {
     get() {
       get(this, 'getStories')().then(stories => {
         set(this, 'stories', stories);
         // TODO: make this an app concern
         if (this.$().imagesLoaded) {
-          Ember.run.scheduleOnce('afterRender', this, this.imagesLoaded);
+          scheduleOnce('afterRender', this, this.imagesLoaded);
         }
       });
     },
@@ -26,7 +29,7 @@ export default Ember.Component.extend({
     // call back to run once all the <img/> els are finished downloading
     this.$().imagesLoaded()
       .progress(function(instance, image) {
-        Ember.$(image.img).addClass('is-loaded');
+        $(image.img).addClass('is-loaded');
       });
   }
 });

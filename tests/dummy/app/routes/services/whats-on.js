@@ -1,7 +1,8 @@
-import Ember from 'ember';
+import { inject as service } from '@ember/service';
+import Route from '@ember/routing/route';
 
-export default Ember.Route.extend({
-  whatsOn: Ember.inject.service(),
+export default Route.extend({
+  whatsOn: service(),
   setupController(controller) {
     this._super(...arguments);
     // BEGIN-SNIPPET use-whats-on

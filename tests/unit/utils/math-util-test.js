@@ -1,4 +1,8 @@
-import { totalPages, calculateOffset, firstLessThan } from 'dummy/utils/math-util';
+import {
+  totalPages,
+  calculateOffset,
+  firstLessThan
+} from 'dummy/utils/math-util';
 import { module, test } from 'qunit';
 
 module('Unit | Utility | math util');

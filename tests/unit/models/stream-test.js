@@ -1,9 +1,10 @@
+import EmberObject from '@ember/object';
+import { Promise as EmberPromise } from 'rsvp';
 import {
   moduleForModel,
   test
 } from 'ember-qunit';
 import sinon from 'sinon';
-import Ember from 'ember';
 import run from 'ember-runloop';
 
 moduleForModel('stream', 'Unit | Model | stream', {
@@ -21,7 +22,7 @@ test('it has the required information for sending a listen action', function(ass
   assert.expect(2);
   let model = this.subject({});
 
-  let storyPromise = Ember.RSVP.Promise.resolve(Ember.Object.create({
+  let storyPromise = EmberPromise.resolve(EmberObject.create({
     id: 5,
     cmsPK: 5,
     itemType: 'episode'
