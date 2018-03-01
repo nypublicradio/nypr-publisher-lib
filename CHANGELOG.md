@@ -1,5 +1,8 @@
 # nypr-publisher-lib Changelog
 
+## 0.2.13
+- [ENHANCEMENT] Allow for multiple nav-links components in one page
+
 ## 0.2.12
 - [ENHANCEMENT] Adds editLink to bucket model
 
