@@ -6,6 +6,8 @@ The `nav-links` component renders a responsive navigation bar that includes a sl
 ##### Params
 * `navRoot`: the dotted route name prefix to use when constructing the `link-to` components that make up the individual navigation links
 * `linkroll`: an array of objects, each of which must have either an `href` or `nav-slug` key
+* `channelSlug` (optional): the slug to be used as the base for the linkroll items urls; should be used if the nav-links component is rendered outside the context of its show/series (i.e. on a story page)
+* `didChangeIndex` (optional): a hook for an action. the component will call it with the tab index as a parameter when the selected tab changes.
 
 Let's say you have the above params defined like this:
 "}}
