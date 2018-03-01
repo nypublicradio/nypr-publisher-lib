@@ -1,5 +1,6 @@
 import JSONAPISerializer from 'ember-data/serializers/json-api';
-import { camelize } from 'ember-string';
+import { camelize } from '@ember/string';
+import { getWithDefault } from '@ember/object';
 
 export default JSONAPISerializer.extend({
   extractId: (modelClass, {attributes}) => attributes.slug || "none",
@@ -8,9 +9,8 @@ export default JSONAPISerializer.extend({
     // these are not actual ember models; need to camelize for consumption by components
     if (payload.data.attributes['bucket-items']) {
       payload.data.attributes['bucket-items'].forEach(item => {
-        let { attributes } = item;
+        let attributes = getWithDefault(item, 'attributes', {});
         item.attributes = {};
-
         Object.keys(attributes)
           .forEach(k => item.attributes[camelize(k)] = attributes[k]);
       });
