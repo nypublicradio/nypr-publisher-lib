@@ -1,7 +1,7 @@
-import Component from 'ember-component';
-import computed, { readOnly } from 'ember-computed';
-import get from 'ember-metal/get';
-import { A } from 'ember-array/utils';
+import Component from '@ember/component';
+import { computed, get } from '@ember/object';
+import { readOnly } from '@ember/object/computed';
+import { A } from '@ember/array';
 import layout from '../templates/components/stream-playlist';
 
 const HOMEPAGES = {

@@ -1,6 +1,7 @@
 import $ from 'jquery';
-import Component from 'ember-component';
-import computed, { reads } from 'ember-computed';
+import Component from '@ember/component';
+import { computed } from '@ember/object';
+import { reads } from '@ember/object/computed';
 import config from 'ember-get-config';
 import fetch from 'fetch';
 import layout from '../templates/components/comments-form';
@@ -76,7 +77,7 @@ export default Component.extend({
             this.set('isDisabled', false);
           } else {
             this.set('isSaved', true);
-            this.sendAction();
+            this.get('onSave')();
           }
         }.bind(this));
       });

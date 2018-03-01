@@ -1,5 +1,5 @@
 import { moduleForModel, test } from 'ember-qunit';
-import run from 'ember-runloop';
+import { run } from '@ember/runloop';
 
 moduleForModel('story', 'Unit | Model | story', {
   // Specify the other units that are required for this test.

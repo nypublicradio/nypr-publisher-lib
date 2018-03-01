@@ -1,7 +1,7 @@
 import { htmlSafe } from '@ember/string';
 import { makeArray } from '@ember/array';
 import Helper from '@ember/component/helper';
-import get from 'ember-metal/get';
+import { get } from '@ember/object';
 
 export function producingOrgs([ orgsList ]/*, hash*/, {unlinked=false}={}) {
   let producingString = '';

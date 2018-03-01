@@ -1,11 +1,8 @@
 import EmberObject from '@ember/object';
 import { Promise as EmberPromise } from 'rsvp';
-import {
-  moduleForModel,
-  test
-} from 'ember-qunit';
+import { moduleForModel, test } from 'ember-qunit';
 import sinon from 'sinon';
-import run from 'ember-runloop';
+import { run } from '@ember/runloop';
 
 moduleForModel('stream', 'Unit | Model | stream', {
   // Specify the other units that are required for this test.

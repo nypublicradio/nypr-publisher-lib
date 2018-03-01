@@ -1,8 +1,7 @@
 import DS from 'ember-data';
-import computed from 'ember-computed';
-import get from 'ember-metal/get';
+import { get, computed } from '@ember/object';
 import { normalizeForSorting } from 'nypr-publisher-lib/helpers/normalize-for-sorting';
-import { A } from 'ember-array/utils';
+import { A } from '@ember/array';
 
 export default DS.Model.extend({
   // BEGIN-SNIPPET channel-fields

@@ -1,5 +1,5 @@
 import JSONAPISerializer from 'ember-data/serializers/json-api';
-import { camelize } from 'ember-string';
+import { camelize } from '@ember/string';
 
 export default JSONAPISerializer.extend({
   normalizeFindRecordResponse(store, primaryModelClass, payload, id) {

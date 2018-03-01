@@ -3,8 +3,7 @@ import { scheduleOnce } from '@ember/runloop';
 import { computed } from '@ember/object';
 import Component from '@ember/component';
 import layout from '../templates/components/related-stories';
-import get from 'ember-metal/get';
-import set from 'ember-metal/set';
+import { get, set } from '@ember/object';
 
 export default Component.extend({
   tagName: 'section',

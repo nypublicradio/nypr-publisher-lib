@@ -9,7 +9,6 @@ import layout from '../templates/components/nav-links';
 export default Component.extend({
   layout,
   tagName: 'nav',
-  links: [],
   classNames: ['nav-links'],
   classNameBindings: ['xScrollable'],
   didChangeIndex: () => {},
@@ -31,6 +30,8 @@ export default Component.extend({
     // a navSlug key will match on `undefined` in `findBy` below
     let defaultSlug = get(this, 'defaultSlug') || null;
     let links = A(get(this, 'links'));
+
+    this.links = links;
 
     let defaultIndex = links.indexOf(links.findBy('nav-slug', defaultSlug));
     set(this, 'activeTabIndex', defaultIndex === -1 ? 0 : defaultIndex);

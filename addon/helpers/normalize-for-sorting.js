@@ -1,4 +1,5 @@
-import { helper } from 'ember-helper';
+
+import { helper } from '@ember/component/helper';
 
 export function normalizeForSorting([ title ]/*, hash */) {
   let articles = ['the', 'a', 'an'];
