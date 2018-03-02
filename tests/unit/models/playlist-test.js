@@ -2,7 +2,7 @@ import { moduleForModel, test } from 'ember-qunit';
 
 moduleForModel('playlist', 'Unit | Model | playlist', {
   // Specify the other units that are required for this test.
-  needs: []
+  needs: ['model:stream']
 });
 
 test('it exists', function(assert) {

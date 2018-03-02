@@ -2,7 +2,7 @@ import { moduleForModel, test } from 'ember-qunit';
 
 moduleForModel('api-response', 'Unit | Model | api response', {
   // Specify the other units that are required for this test.
-  needs: []
+  needs: ['model:story', 'model:appearance', 'model:about-page']
 });
 
 test('it exists', function(assert) {
