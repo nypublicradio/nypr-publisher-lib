@@ -3,7 +3,7 @@ import { run } from '@ember/runloop';
 
 moduleForModel('channel', 'Unit | Model | channel', {
   // Specify the other units that are required for this test.
-  needs: []
+  needs: ['model:api-response']
 });
 
 test('it exists', function(assert) {
