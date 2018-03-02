@@ -1,5 +1,8 @@
 # nypr-publisher-lib Changelog
 
+## 0.2.14
+- [BUGFIX] Protect against bucket attributes being missing and everything blowing up
+
 ## 0.2.13
 - [ENHANCEMENT] Allow for multiple nav-links components in one page
 
