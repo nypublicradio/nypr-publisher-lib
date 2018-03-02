@@ -68,7 +68,7 @@
 
         {{/listen-button}}
 
-        {{#if item.audioAvailable}}
+        {{#if (and item.audioAvailable allowQueueing)}}
           {{queue-button
             type=(if (or isFancyFeatured fullScreen) 'queue-button--fancyfeature' 'just-gray')
             itemPK=item.id

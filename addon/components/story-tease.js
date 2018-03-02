@@ -22,6 +22,7 @@ export default Component.extend({
   streamSlug:         null,
   streamName:         null,
   isFeatured:         false,
+  allowQueueing:      false,
 
   isLive:             equal('status', STATUSES.LIVE),
   isLatest:           readOnly('item.isLatest'),
