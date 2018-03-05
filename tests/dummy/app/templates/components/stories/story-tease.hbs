@@ -17,7 +17,7 @@ There are several variations on the story tease layout. They are controlled via 
     {{story-tease item=model.item}}
     {{!-- END-SNIPPET --}}
   </li>
-  
+
   <li>
     <p>
       The "flipped" layout is controlled with the <code>flipped</code> parameter.
@@ -27,7 +27,7 @@ There are several variations on the story tease layout. They are controlled via 
     {{story-tease item=model.item flipped=true}}
     {{!-- END-SNIPPET --}}
   </li>
-  
+
   <li>
     {{md-text text="
 The \"featured\" layout: some extra padding and and a gray background.
@@ -40,7 +40,7 @@ Set the `isFeatured` parameter to be true. If the passed in `item` must has its 
     {{story-tease item=model.latestItem isFeatured=true}}
     {{!-- END-SNIPPET --}}
   </li>
-  
+
   <li>
     {{md-text text="
 The \"fancy featured image\" layout: use the main image as a background and add a gradient.
@@ -53,7 +53,7 @@ Set `isFancyFeatured` to `true`, or else let the component derive it using the `
     {{story-tease item=model.latestItem isFeatured=true isFancyFeatured=true}}
     {{!-- END-SNIPPET --}}
   </li>
-  
+
   <li>
     {{md-text text="
 The full screen layout: set `isFeatured` and `fullScreen` to `true`.
@@ -80,7 +80,7 @@ Accepts a block which is positioned above the main tease content inside a `.stor
     {{story-tease item=model.item parentTitle="The Brian Lehrer Show"}}
     {{!-- END-SNIPPET --}}
   </li>
-  
+
   <li>
     {{md-text text="
 `adminURL`: the **host and path prefix** of the admin site used in editorial controls.
@@ -92,8 +92,19 @@ Accepts a block which is positioned above the main tease content inside a `.stor
     {{story-tease item=model.item isStaff=true adminURL=(concat config.adminRoot '/admin')}}
     {{!-- END-SNIPPET --}}
   </li>
-  
+
   <li>
     {{md-text text="`playContext`: a string passed to Google Analytics event tracking"}}
   </li>
+
+  <li>
+    {{md-text text="
+    `allowQueueing`: show queue button on story for nypr sites that allow queueing
+    "}}
+    {{code-snippet name="allow-queueing.hbs"}}
+    {{!-- BEGIN-SNIPPET allow-queueing --}}
+    {{story-tease item=model.item allowQueueing=true}}
+    {{!-- END-SNIPPET --}}
+  </li>
+
 </ol>
