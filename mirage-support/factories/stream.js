@@ -26,6 +26,17 @@ export default Factory.extend({
     }
   },
   schedule_url: faker.internet.url,
+  short_description: () => faker.lorem.sentence(1),
+  playlist_url: faker.internet.url,
+  whats_on: 100,
+  urls: () => {
+    return {
+      ipod: faker.internet.url(),
+      mobile_aac: faker.internet.url(),
+      aac: [faker.internet.url()],
+      rtsp: faker.internet.url()
+    };
+  },
   source_tags: i => {
     switch(i) {
       case 0:
@@ -46,16 +57,5 @@ export default Factory.extend({
         return '';
     }
   },
-  site_priority: () => faker.random.number(10),
-  short_description: faker.lorem.sentence,
-  playlist_url: faker.internet.url,
-  whats_on: 100,
-  urls: () => {
-    return {
-      ipod: faker.internet.url(),
-      mobile_aac: faker.internet.url(),
-      aac: [faker.internet.url()],
-      rtsp: faker.internet.url()
-    };
-  }
+  site_priority: () => faker.random.number(10)
 });
