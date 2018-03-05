@@ -64,6 +64,9 @@ module.exports = function() {
           name: 'ember-default',
           npm: {
             devDependencies: {}
+          },
+          bower: {
+            dependencies: {}
           }
         }
       ]
