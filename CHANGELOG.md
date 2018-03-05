@@ -1,5 +1,11 @@
 # nypr-publisher-lib Changelog
 
+## 0.2.15
+- [BUGFIX] Add source_tags to stream serializer so isWNYC and isWQXR will work correctly on stream models
+- [ENHANCEMENT] Add allowQueueing switch to story-tease
+- [BUGFIX] Update ember-font-awesome
+- [CHORE] Update some factories
+
 ## 0.2.14
 - [BUGFIX] Protect against bucket attributes being missing and everything blowing up
 
