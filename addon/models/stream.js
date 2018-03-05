@@ -20,7 +20,7 @@ export default Model.extend({
   cmsPK:                attr('number'),
   twitterHandle:        attr('string'),
   sourceTags:           attr('string', {defaultValue: ''}),
-
+  sitePriority:         attr('number'),
   currentShow:          attr(),
   currentPlaylistItem:  attr(),
   future:               attr(),
