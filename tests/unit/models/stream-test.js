@@ -54,12 +54,12 @@ test('it uses the source_tags attribute to determine site specificty', function(
   assert.notOk(stream.get('isWQXR'), 'no sourceTags should be ok');
 
   run(() => {
-    stream.set('sourceTags', 'wqxr_site');
+    stream.set('sourceTags', 'wqxr_site, wnyc_site');
     assert.ok(stream.get('isWQXR'), 'should be wqxr');
   });
-  
+
   run(() => {
-    stream.set('sourceTags', 'wnyc_site');
+    stream.set('sourceTags', 'wnyc_site, wnyc_app');
     assert.ok(stream.get('isWNYC'), 'should be wnyc');
   });
 });

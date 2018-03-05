@@ -26,6 +26,27 @@ export default Factory.extend({
     }
   },
   schedule_url: faker.internet.url,
+  source_tags: i => {
+    switch(i) {
+      case 0:
+        return 'wqxr_site, wqxr_app';
+      case 1:
+        return 'wqxr_site, wqxr_app';
+      case 2:
+        return 'wqxr_site, wnyc_site, wqxr_app';
+      case 3:
+        return 'wnyc_site';
+      case 4:
+        return 'wnyc_site';
+      case 5:
+        return 'wqxr_site';
+      case 6:
+        return 'wqxr_site, wqxr_app';
+      default:
+        return '';
+    }
+  },
+  site_priority: () => faker.random.number(10),
   short_description: faker.lorem.sentence,
   playlist_url: faker.internet.url,
   whats_on: 100,
