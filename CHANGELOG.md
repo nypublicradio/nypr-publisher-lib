@@ -1,4 +1,6 @@
 # nypr-publisher-lib Changelog
+## 0.2.16
+- [BUGFIX] Remove custom mirage serializer for buckets, as it breaks things when using a custom response.
 
 ## 0.2.15
 - [BUGFIX] Add source_tags to stream serializer so isWNYC and isWQXR will work correctly on stream models
