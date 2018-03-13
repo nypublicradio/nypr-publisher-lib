@@ -77,7 +77,10 @@ export default Component.extend({
             this.set('isDisabled', false);
           } else {
             this.set('isSaved', true);
-            this.get('onSave')();
+            let onSave = this.get('onSave');
+            if (onSave) {
+              onSave();
+            }
           }
         }.bind(this));
       });
