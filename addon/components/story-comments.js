@@ -1,8 +1,7 @@
-import Component from 'ember-component';
-import computed from 'ember-computed';
+import Component from '@ember/component';
+import { computed, get } from '@ember/object';
 import config from 'ember-get-config';
 import layout from '../templates/components/story-comments';
-import get from 'ember-metal/get';
 
 export default Component.extend({
   layout,
@@ -51,7 +50,7 @@ export default Component.extend({
   actions: {
     getComments() {
       if (!get(this, 'isShowingComments') && !!get(this, 'onShowComments')) {
-        this.attrs.onShowComments(get(this, 'story'));
+        this.get('onShowComments')(get(this, 'story'));
       }
       this.set('isShowingComments', true);
       this.set('isShowingForm', true);

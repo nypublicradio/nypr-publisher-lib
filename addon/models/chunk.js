@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import { computed } from '@ember/object';
 import Model from 'ember-data/model';
 import attr from 'ember-data/attr';
 
@@ -6,7 +6,7 @@ export default Model.extend({
   // BEGIN-SNIPPET chunk-fields
   slug: attr(),
   content: attr(),
-  pagecontent: Ember.computed('content', function() {
+  pagecontent: computed('content', function() {
     let text = this.get('content');
     try {
       return this.store.createRecord('django-page', { text });

@@ -1,8 +1,7 @@
-
-import Component from 'ember-component';
+import Component from '@ember/component';
 import $ from 'jquery';
-import computed, { equal } from 'ember-computed';
-import get from 'ember-metal/get';
+import { computed, get } from '@ember/object';
+import { equal } from '@ember/object/computed';
 import layout from '../templates/components/social-button';
 
 export default Component.extend({
@@ -13,7 +12,7 @@ export default Component.extend({
     let svc = get(this, 'item.service');
     return svc === 'email' ? 'envelope' : svc;
   }),
-  url: computed('item.service', 'item.contactString', function() {
+  url: computed('item.{service,contactString}', function() {
     let svc = get(this, 'item.service');
     let user = get(this, 'item.contactString');
 

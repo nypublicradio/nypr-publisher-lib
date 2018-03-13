@@ -1,6 +1,7 @@
-import Component from 'ember-component';
-import computed, { reads } from 'ember-computed';
-import Ember from 'ember';
+import $ from 'jquery';
+import Component from '@ember/component';
+import { computed } from '@ember/object';
+import { reads } from '@ember/object/computed';
 import config from 'ember-get-config';
 import fetch from 'fetch';
 import layout from '../templates/components/comments-form';
@@ -68,15 +69,18 @@ export default Component.extend({
           type: 'PUT',
           url,
           xhrFields: { withCredentials: true },
-          data: data + '&' + Ember.$.param(metaData)
+          data: data + '&' + $.param(metaData)
         };
-        Ember.$.ajax(options).always(function(response) {
+        $.ajax(options).always(function(response) {
           if ( response.errors ) {
             this.set('errors', response.errors);
             this.set('isDisabled', false);
           } else {
             this.set('isSaved', true);
-            this.sendAction();
+            let onSave = this.get('onSave');
+            if (onSave) {
+              onSave();
+            }
           }
         }.bind(this));
       });

@@ -1,7 +1,7 @@
 import config from 'ember-get-config';
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import { canonicalize  } from 'nypr-django-for-ember/services/script-loader';
+import { canonicalize } from 'nypr-django-for-ember/services/script-loader';
 let { webRoot } = config;
 webRoot = canonicalize(webRoot);
 

@@ -1,17 +1,15 @@
-import Component from 'ember-component';
-import computed from 'ember-computed';
-import set from 'ember-metal/set';
-import get from 'ember-metal/get';
+import Component from '@ember/component';
+import { get, getWithDefault, set, computed } from '@ember/object';
 import layout from '../templates/components/tabbed-list';
 
 export default  Component.extend({
   layout,
-  tabTitles: [],
-  childComponents: [],
   defaultTab: 0,
 
   init() {
     this._super(...arguments);
+    this.tabTitles = getWithDefault(this, 'tabTitles', []);
+    this.childComponents = getWithDefault(this, 'childComponents', []);
     set(this, 'activeTabIndex', get(this, 'defaultTab'));
   },
 

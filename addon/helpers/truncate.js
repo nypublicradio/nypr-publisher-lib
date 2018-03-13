@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import { helper } from '@ember/component/helper';
 
 // Truncate a string but end with a full word.
 
@@ -15,4 +15,4 @@ export function truncate([text, maxLength=1000, ellipsis='']/*, hash*/) {
   }
 }
 
-export default Ember.Helper.helper(truncate);
+export default helper(truncate);

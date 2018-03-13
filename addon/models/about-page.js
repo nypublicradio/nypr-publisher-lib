@@ -1,6 +1,5 @@
+import { get, computed } from '@ember/object';
 import DS from 'ember-data';
-import Ember from 'ember';
-const { computed, get } = Ember;
 
 export default DS.Model.extend({
   // BEGIN-SNIPPET about-page-fields

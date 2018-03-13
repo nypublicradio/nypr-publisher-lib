@@ -1,11 +1,10 @@
-import service from 'ember-service/inject';
+import { inject } from '@ember/service';
 import moment from 'moment';
-import Component from 'ember-component';
-import computed, { and, equal, readOnly, or } from 'ember-computed';
-import get, { getProperties } from 'ember-metal/get';
-import set from 'ember-metal/set';
+import Component from '@ember/component';
+import { and, equal, readOnly, or } from '@ember/object/computed';
+import { computed, get, set, getProperties} from '@ember/object';
 import { imageTemplate } from 'nypr-ui/helpers/image-template';
-import { htmlSafe } from 'ember-string';
+import { htmlSafe } from '@ember/string';
 import layout from '../templates/components/story-tease';
 
 const STATUSES = {
@@ -16,7 +15,7 @@ const STATUSES = {
 
 export default Component.extend({
   layout,
-  whatsOn:            service(),
+  whatsOn:            inject(),
 
   status:             null,
   streamSlug:         null,

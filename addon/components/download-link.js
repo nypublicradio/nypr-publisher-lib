@@ -7,6 +7,11 @@ export default Component.extend({
   story: null,
   icon: 'download-arrow',
   linkText: 'Download',
-  deviceIsIos: !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform),
-  shouldHide: alias('deviceIsIos')
+  shouldHide: alias('deviceIsIos'),
+
+  init() {
+    this._super(...arguments);
+
+    this.deviceIsIos = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
+  }
 });

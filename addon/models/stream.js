@@ -1,8 +1,8 @@
 import Model from 'ember-data/model';
 import attr from 'ember-data/attr';
 import { belongsTo } from 'ember-data/relationships';
-import computed, { readOnly } from 'ember-computed';
-import get from 'ember-metal/get';
+import { computed, get } from '@ember/object';
+import  { readOnly } from '@ember/object/computed'
 
 export default Model.extend({
   // BEGIN-SNIPPET stream-fields

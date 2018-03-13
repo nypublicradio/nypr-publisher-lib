@@ -1,5 +1,5 @@
 import DS from 'ember-data';
-import { underscore } from 'ember-string';
+import { underscore } from '@ember/string';
 import { camelizeKeys } from 'nypr-publisher-lib/helpers/camelize-keys';
 
 export default DS.JSONAPISerializer.extend({

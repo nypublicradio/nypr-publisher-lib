@@ -1,13 +1,12 @@
-import Ember from 'ember';
-import get from 'ember-metal/get';
-const {
-  Helper
-} = Ember;
+import { htmlSafe } from '@ember/string';
+import { makeArray } from '@ember/array';
+import Helper from '@ember/component/helper';
+import { get } from '@ember/object';
 
 export function producingOrgs([ orgsList ]/*, hash*/, {unlinked=false}={}) {
   let producingString = '';
 
-  Ember.makeArray(orgsList).forEach((org, idx) => {
+  makeArray(orgsList).forEach((org, idx) => {
     let line = '';
 
     if (unlinked){
@@ -25,7 +24,7 @@ export function producingOrgs([ orgsList ]/*, hash*/, {unlinked=false}={}) {
     producingString += line;
   });
 
-  return Ember.String.htmlSafe(`${producingString}`);
+  return htmlSafe(`${producingString}`);
 }
 
 export default Helper.helper(producingOrgs);

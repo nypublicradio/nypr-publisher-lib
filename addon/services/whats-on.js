@@ -1,7 +1,7 @@
 import config from 'ember-get-config';
 import wrapAjax from 'nypr-publisher-lib/utils/wrap-ajax';
-import Service from 'ember-service';
-import get from 'ember-metal/get';
+import Service from '@ember/service';
+import { get } from '@ember/object';
 
 export default Service.extend({
   endPoint: 'v1/whats_on/',

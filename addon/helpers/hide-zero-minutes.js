@@ -1,5 +1,5 @@
+import { helper } from '@ember/component/helper';
 import moment from 'moment';
-import Ember from 'ember';
 
 export function hideZeroMinutes([ timestamp ]/*, hash*/) {
   let date = moment(timestamp);
@@ -10,4 +10,4 @@ export function hideZeroMinutes([ timestamp ]/*, hash*/) {
   }
 }
 
-export default Ember.Helper.helper(hideZeroMinutes);
+export default helper(hideZeroMinutes);

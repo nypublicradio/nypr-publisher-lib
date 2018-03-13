@@ -1,5 +1,5 @@
 import DS from 'ember-data';
-import {A} from 'ember-array/utils';
+import { A } from '@ember/array';
 
 export function serializeApiResponseRelationships(relationships = {}, included = []) {
   if (relationships['tease-list'] && relationships['tease-list'].data.length) {

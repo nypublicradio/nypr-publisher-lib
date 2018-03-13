@@ -1,8 +1,8 @@
-import Component from 'ember-component';
-import computed, { reads } from 'ember-computed';
+import Component from '@ember/component';
 import { imageTemplate } from 'nypr-ui/helpers/image-template';
-import { htmlSafe } from 'ember-string';
-import get from 'ember-metal/get';
+import { htmlSafe } from '@ember/string';
+import { get, computed } from '@ember/object';
+import { reads } from '@ember/object/computed';
 import layout from '../templates/components/x-marquee';
 
 export default Component.extend({

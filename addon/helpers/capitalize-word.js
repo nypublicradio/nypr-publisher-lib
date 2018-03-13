@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import { helper } from '@ember/component/helper';
 
 export function capitalizeWord([ value ]){
   if ( value ) {
@@ -6,4 +6,4 @@ export function capitalizeWord([ value ]){
   }
 }
 
-export default Ember.Helper.helper(capitalizeWord);
+export default helper(capitalizeWord);
