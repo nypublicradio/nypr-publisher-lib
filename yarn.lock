@@ -6156,9 +6156,9 @@ number-is-nan@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
 
-nypr-audio-services@~0.2.0:
-  version "0.2.6"
-  resolved "https://registry.yarnpkg.com/nypr-audio-services/-/nypr-audio-services-0.2.6.tgz#841be1abd2a59ba9d849654019d32da64264f65b"
+nypr-audio-services@~0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/nypr-audio-services/-/nypr-audio-services-0.3.0.tgz#a0fc51eb26d7a23e384931018e18ec373f550f54"
   dependencies:
     ember-cli-babel "^6.6.0"
     ember-cli-htmlbars "^2.0.1"
@@ -6170,28 +6170,28 @@ nypr-audio-services@~0.2.0:
     ember-hifi "^1.11.1"
     ember-simple-auth "^1.3.0"
     liquid-fire "^0.29.1"
-    nypr-metrics "~0.2.5"
-    nypr-ui "~0.1.0"
+    nypr-metrics "~0.3.0"
+    nypr-ui "~0.2.0"
 
-nypr-django-for-ember@~0.0.0:
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/nypr-django-for-ember/-/nypr-django-for-ember-0.0.4.tgz#9bf8886d4e4e064a4b57abbd9ecdeebe4afe274d"
+nypr-django-for-ember@~0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/nypr-django-for-ember/-/nypr-django-for-ember-0.1.0.tgz#9d50f9467add0099e90d8ed7cf866e9348afa932"
   dependencies:
-    ember-cli-babel "^6.3.0"
+    ember-cli-babel "^6.6.0"
     ember-cli-htmlbars "^2.0.1"
     ember-wormhole "^0.5.2"
 
-nypr-metrics@~0.2.5:
-  version "0.2.6"
-  resolved "https://registry.yarnpkg.com/nypr-metrics/-/nypr-metrics-0.2.6.tgz#357d4053778ec41bbcc052b22b894c70997373ac"
+nypr-metrics@~0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/nypr-metrics/-/nypr-metrics-0.3.0.tgz#4e1d61c4285a308303cb8ac0a283afacd8b6d76b"
   dependencies:
     ember-cli-babel "^6.6.0"
     ember-get-config "^0.2.2"
     ember-metrics "^0.12.1"
 
-nypr-ui@~0.1.0, nypr-ui@~0.1.5:
-  version "0.1.8"
-  resolved "https://registry.yarnpkg.com/nypr-ui/-/nypr-ui-0.1.8.tgz#2b71a6f5564aa1335efb55811047df9317c2f480"
+nypr-ui@~0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/nypr-ui/-/nypr-ui-0.2.0.tgz#f182d31faeaab1a9ca765209c90444fa65094b16"
   dependencies:
     ember-basic-dropdown "0.33.1"
     ember-cli-babel "^6.8.0"

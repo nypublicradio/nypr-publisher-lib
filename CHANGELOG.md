@@ -1,4 +1,8 @@
 # nypr-publisher-lib Changelog
+
+## 0.3.0
+- [CHANGE] Update to Ember 3.0 and new module syntax
+
 ## 0.2.16
 - [BUGFIX] Remove custom mirage serializer for buckets, as it breaks things when using a custom response.
 
