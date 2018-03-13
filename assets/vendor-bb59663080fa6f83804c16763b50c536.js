@@ -9436,7 +9436,7 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.default=self.moment}),define(
 Object.defineProperty(e,"__esModule",{value:!0}),e.default=Ember.Component.extend({layout:t.default,listens:Ember.inject.service("listen-history"),isConfirming:!1,classNames:["clearhistory"],classNameBindings:["isConfirming"],actions:{showConfirmation:function(){Ember.set(this,"isConfirming",!0)},cancel:function(){Ember.set(this,"isConfirming",!1)},clearHistory:function(){Ember.get(this,"listens").clearHistory(),Ember.set(this,"isConfirming",!1)}}})}),define("nypr-audio-services/components/listen-button",["exports","nypr-audio-services/templates/components/listen-button","ember-diff-attrs"],function(e,t,r){"use strict"
 Object.defineProperty(e,"__esModule",{value:!0})
 var n="is-playing",i="is-paused",a="is-loading"
-e.default=Ember.Component.extend({layout:t.default,dj:Ember.inject.service(),disabled:Ember.computed.not("dj.isReady"),isCurrentSound:Ember.computed("dj.currentContentId","itemPK",function(){return Ember.get(this,"itemPK")===Ember.get(this,"dj.currentContentId")}),isPlaying:Ember.computed.and("dj.isPlaying","isCurrentSound"),_hifiPaused:Ember.computed.not("dj.isPlaying"),isPaused:Ember.computed.and("_hifiPaused","isCurrentSound"),isLoading:Ember.computed("isCurrentSound","buttonLoading","dj.currentSound.isLoading","dj.currentlyLoadingIds",function(){var e=Ember.A(Ember.getWithDefault(this,"dj.currentlyLoadingIds",[]))
+e.default=Ember.Component.extend({layout:t.default,dj:Ember.inject.service(),disabled:Ember.computed.not("dj.isReady"),isCurrentSound:Ember.computed("dj.currentContentId","itemPK",function(){return Ember.get(this,"itemPK")===Ember.get(this,"dj.currentContentId")}),isPlaying:Ember.computed.and("dj.isPlaying","isCurrentSound"),_hifiPaused:Ember.computed.not("dj.isPlaying"),isPaused:Ember.computed.and("_hifiPaused","isCurrentSound"),isLoading:Ember.computed("isCurrentSound","buttonLoading","dj.{currentSound.isLoading,currentlyLoadingIds}",function(){var e=Ember.A(Ember.getWithDefault(this,"dj.currentlyLoadingIds",[]))
 return Ember.get(this,"buttonLoading")||e.includes(String(Ember.get(this,"itemPK")))||Ember.get(this,"isCurrentSound")&&Ember.get(this,"dj.currentSound.isLoading")}),isExpandable:Ember.computed.match("type",/(blue|gray|red)-(minion|boss)|white-hollow-block/),"aria-label":Ember.computed.readOnly("title"),"data-test-selector":"listen-button","data-story":Ember.computed.readOnly("itemTitle"),"data-show":Ember.computed.readOnly("itemShow"),"data-stream":Ember.computed.readOnly("itemStream"),tagName:"button",classNames:["listen-button"],classNameBindings:["isHovering","type","isCurrentSound","isErrored","playState","isCurrentSound","isLive"],attributeBindings:["aria-label","title","disabled","data-test-selector","style","data-story","data-show","data-stream"],title:Ember.computed("itemTitle",function(){return"Listen to "+Ember.get(this,"itemTitle")}),style:Ember.computed("width",function(){var e=Ember.get(this,"width")
 return e?Ember.String.htmlSafe("width: "+e+"px;"):null}),playState:Ember.computed("isPlaying","isPaused","isLoading","wasMeasured","isExpandable",function(){var e=Ember.getProperties(this,"wasMeasured","isExpandable"),t=e.wasMeasured
 return e.isExpandable&&!t?i:Ember.get(this,"isLoading")?a:Ember.get(this,"isPlaying")?n:(Ember.get(this,"isPaused"),i)}),width:Ember.computed("playState","contentWidth","isExpandable",function(){if(!this.element||!Ember.get(this,"isExpandable"))return!1
@@ -9457,7 +9457,7 @@ define("nypr-audio-services/components/nypr-player-integration/stream-info",["ex
 Object.defineProperty(e,"__esModule",{value:!0}),e.default=Ember.Component.extend({layout:t.default,tagName:"",streamScheduleUrl:null,streamPlaylistUrl:null,streamName:null})}),define("nypr-audio-services/components/nypr-player-integration/track-info",["exports","nypr-audio-services/templates/components/nypr-player-integration/track-info","ember-diff-attrs"],function(e,t,r){"use strict"
 Object.defineProperty(e,"__esModule",{value:!0}),e.default=Ember.Component.extend({layout:t.default,tagName:"",showTitle:null,showUrl:null,storyTitle:null,storyUrl:null,audioId:null,songDetails:null,didReceiveAttrs:(0,r.default)("showTitle",function(e){for(var t=arguments.length,r=Array(t>1?t-1:0),n=1;n<t;n++)r[n-1]=arguments[n]
 this._super.apply(this,r)
-var i=null===e,a=e&&e.showTitle&&e.showTitle[0]!==e.showTitle[1];(i||a)&&this.attrs.titleDidChange&&this.attrs.titleDidChange()})})}),define("nypr-audio-services/components/player-history",["exports","nypr-audio-services/templates/components/player-history"],function(e,t){"use strict"
+var i=null===e,a=e&&e.showTitle&&e.showTitle[0]!==e.showTitle[1];(i||a)&&this.get("titleDidChange")&&this.get("titleDidChange")()})})}),define("nypr-audio-services/components/player-history",["exports","nypr-audio-services/templates/components/player-history"],function(e,t){"use strict"
 Object.defineProperty(e,"__esModule",{value:!0}),e.default=Ember.Component.extend({layout:t.default,dj:Ember.inject.service(),listenHistory:Ember.inject.service(),metrics:Ember.inject.service(),listens:Ember.computed.readOnly("listenHistory.items"),classNames:["player-history"],actions:{removeFromHistory:function(e){this.get("listenHistory").removeListenByStoryPk(e)},trackShare:function(e,t){var r=this.get("metrics"),n=e.story.get("shareMetadata"),i=n.analyticsCode,a=n.type,o=n.shareText
 r.trackEvent("GoogleAnalytics",{category:"Persistent Player",action:'Shared Story "'+o+'"',label:"History|"+i+"|"+a+"|"+t})}}})}),define("nypr-audio-services/components/player-notification",["exports","nypr-audio-services/templates/components/player-notification"],function(e,t){"use strict"
 Object.defineProperty(e,"__esModule",{value:!0}),e.default=Ember.Component.extend({layout:t.default,didAnimate:!1,classNames:["player-notification","js-player-notification"],actions:{dismiss:function(){Ember.get(this,"onDismiss")()}}})}),define("nypr-audio-services/components/player-notification/autoplay-message",["exports","nypr-audio-services/templates/components/player-notification/autoplay-message"],function(e,t){"use strict"
@@ -9526,8 +9526,10 @@ return"default_stream"===Ember.get(this,"autoplayPref")?e:Ember.get(this,"queue"
 if("default_stream"===Ember.get(this,"autoplayPref")){var r=this.getStream(e)
 if(r)return Ember.get(r,"audioBumper")}return t.default.queueAudioBumperURL},getStream:function(e){return Ember.get(this,"store").peekRecord("stream",e)},cacheStreamsInStore:function(){Ember.get(this,"store").findAll("stream")}})}),define("nypr-audio-services/services/dj",["exports"],function(e){"use strict"
 Object.defineProperty(e,"__esModule",{value:!0})
-var t=["wqxr","q2","wqxr-special","wnyc-fm939","wnyc-am820","njpr","jonathan-channel","special-events-stream","wqxr-special2"]
-e.default=Ember.Service.extend({hifi:Ember.inject.service(),store:Ember.inject.service(),actionQueue:Ember.inject.service(),listenAnalytics:Ember.inject.service(),noErrors:Ember.computed.not("hasErrors"),showPlayer:Ember.computed.and("noErrors","playedOnce"),playedOnce:!1,currentSound:Ember.computed.reads("hifi.currentSound"),currentContentModel:Ember.computed.reads("currentSound.metadata.contentModel"),currentContentId:Ember.computed.reads("currentSound.metadata.contentId"),currentContentType:Ember.computed.reads("currentSound.metadata.contentModelType"),currentlyLoadingIds:[],isReady:Ember.computed.reads("hifi.isReady"),isPlaying:Ember.computed.reads("hifi.isPlaying"),init:function(){var e=this,t=Ember.get(this,"actionQueue"),r=Ember.get(this,"hifi")
+var t=["wqxr","q2","wqxr-special","wnyc-fm939","wnyc-am820","njpr","jonathan-channel","special-events-stream","wqxr-special2","takeaway"]
+e.default=Ember.Service.extend({hifi:Ember.inject.service(),store:Ember.inject.service(),actionQueue:Ember.inject.service(),listenAnalytics:Ember.inject.service(),noErrors:Ember.computed.not("hasErrors"),showPlayer:Ember.computed.and("noErrors","playedOnce"),playedOnce:!1,currentSound:Ember.computed.reads("hifi.currentSound"),currentContentModel:Ember.computed.reads("currentSound.metadata.contentModel"),currentContentId:Ember.computed.reads("currentSound.metadata.contentId"),currentContentType:Ember.computed.reads("currentSound.metadata.contentModelType"),isReady:Ember.computed.reads("hifi.isReady"),isPlaying:Ember.computed.reads("hifi.isPlaying"),init:function(){var e=this
+this._super.apply(this,arguments)
+var t=Ember.get(this,"actionQueue"),r=Ember.get(this,"hifi")
 r.on("current-sound-changed",function(){return e.set("playedOnce",!0)}),t.addAction(r,"audio-ended",{priority:1,name:"segmented-audio"},Ember.run.bind(this,this.playSegmentedAudio)),this.set("currentlyLoadingIds",[]),this.initCurrentLoadingIdsWatcher()},initCurrentLoadingIdsWatcher:function(){var e=this
 Ember.get(this,"hifi").on("new-load-request",function(t){var r=t.loadPromise,n=t.options,i=Ember.A(Ember.get(e,"currentlyLoadingIds")),a=String(Ember.get(n,"metadata.contentId"))
 a&&(i.push(a),Ember.set(e,"currentlyLoadingIds",i.uniq())),r.finally(function(){Ember.set(e,"currentlyLoadingIds",i.without(a))})})},playSegmentedAudio:function(e){var t=Ember.get(e,"metadata.contentModel")
@@ -9546,7 +9548,7 @@ r.removeObject(n),t.set("data.listens",r)},clearHistory:function(){this.get("ses
 return Ember.A(t.getWithDefault("data.listens",[])).filterBy("story.id",e)},indexByStoryPk:function(e){var t=this.get("session"),r=Ember.A(t.getWithDefault("data.listens",[])),n=r.findBy("story.id",e)
 return r.indexOf(n)}})}),define("nypr-audio-services/services/listen-queue",["exports"],function(e){"use strict"
 Object.defineProperty(e,"__esModule",{value:!0}),e.default=Ember.Service.extend({session:Ember.inject.service(),store:Ember.inject.service(),actionQueue:Ember.inject.service(),hifi:Ember.inject.service(),dj:Ember.inject.service(),listenAnalytics:Ember.inject.service(),items:Ember.computed.alias("session.data.queue"),isPlayingFromQueue:Ember.computed.equal("hifi.currentSound.metadata.playContext","queue"),init:function(){var e=this
-this.set("pending",[])
+this._super.apply(this,arguments),this.set("pending",[])
 var t=Ember.get(this,"actionQueue"),r=Ember.get(this,"hifi")
 this.set("items",this.getWithDefault("session.data.queue",Ember.A())),t.addAction(r,"audio-ended",{priority:2,name:"queue"},Ember.run.bind(this,this.onTrackFinished)),r.on("audio-played",function(t){"queue"===Ember.get(t,"metadata.playContext")&&e.removeFromQueueById(Ember.get(t,"metadata.contentId"))})},onTrackFinished:function(e){if("queue"===Ember.get(e,"metadata.playContext")){var t=this.nextItem()
 if(t)return Ember.get(this,"dj").play(t,{playContext:"queue"}),!0}},findRecord:function(e){return Ember.get(this,"store").findRecord("story",e)},addToQueueById:function(e,t){var r=this,n=this.get("pending")
@@ -9590,65 +9592,59 @@ var t=new Error(e)
 throw t.response=e,t}e.default=t.default.Adapter.extend({findRecord:function(e,t,s){if((0,i.isInDom)(s))return document
 var l=s.split("?"),u=a(l,2),c=u[0],d=u[1]
 return c="/"===c?"":c.replace(/\/*$/,"/"),d&&(c=c+"?"+d),(0,r.default)(n.default.webRoot+"/"+c,{headers:{"X-WNYC-EMBER":1}}).then(o).then(function(e){return e.text()})},shouldBackgroundReloadRecord:function(){return!1}})}),define("nypr-django-for-ember/components/django-page",["exports","ember-get-config","nypr-django-for-ember/mixins/legacy-support","nypr-django-for-ember/utils/alien-dom","nypr-django-for-ember/templates/components/django-page"],function(e,t,r,n,i){"use strict"
-Object.defineProperty(e,"__esModule",{value:!0})
-var a=Ember.get,o=Ember.computed
-e.default=Ember.Component.extend(r.default,{layout:i.default,loadingType:o("page",function(){switch((a(this,"page.id")||"").split("/")[0]){case"":return"index"
+Object.defineProperty(e,"__esModule",{value:!0}),e.default=Ember.Component.extend(r.default,{layout:i.default,loadingType:Ember.computed("page",function(){switch((Ember.get(this,"page.id")||"").split("/")[0]){case"":return"index"
 case"shows":case"articles":case"series":case"tags":case"blogs":return"channel"
 case"story":return"story"
 default:return"legacy"}}),didReceiveAttrs:function(){this.get("page")!==this._lastPage&&this.set("showingOverlay",!1)},didRender:function(){var e=this,r=this.get("page")
 if(r!==this._lastPage){this._lastPage=r
 var i=this.$(".django-content")
 i.empty(),(0,n.isInDom)(r.get("id"))&&(0,n.clearAlienDom)(),this.get("page").appendTo(i).then(function(){e.set("showingOverlay",!0),e.get("session.data.isStaff")&&e.revealStaffLinks(e.$(),t.default.adminRoot),e.$().imagesLoaded().progress(function(e,t){Ember.run(function(){t.img.classList.add("is-loaded")})})})}}})}),define("nypr-django-for-ember/instance-initializers/link-handler",["exports","ember-get-config"],function(e,t){"use strict"
-Object.defineProperty(e,"__esModule",{value:!0}),e.normalizeHref=n,e.shouldHandleLink=i
-var r=Ember.$
-function n(e){var r=arguments.length>1&&void 0!==arguments[1]?arguments[1]:location,n=/^https?:/i,i=e.getAttribute("href")||"",a=new URL(i,r).toString(),o=!1,s=t.default.webRoot.replace(n,""),l=a.replace(n,"")
-return i.startsWith("#")||i.startsWith("mailto:")?{url:a,href:i,isExternal:o}:(l.startsWith(s)?i=l.replace(s,"").replace(/^\//,"")||"/":i.startsWith("/")||(i="",o=!0),{url:a,href:i,isExternal:o})}function i(e){var t=n(e,arguments.length>1&&void 0!==arguments[1]?arguments[1]:location).href
-return"_blank"!==e.getAttribute("target")&&(!Array.from(e.classList).includes("ember-view")&&(!e.getAttribute("data-ember-action")&&(!(!t||t.startsWith("#")||t.startsWith("?")||t.startsWith("mailto:"))&&!(t.split(".").length>1))))}e.default={name:"link-handler",initialize:function(e){var t=e.lookup("service:wnyc-routing"),a=r(document.body)
-a.off("click.href-to","a"),a.on("click.href-to","a",function(a){var o=a.currentTarget,s=a.preventDefault,l=n(o),u=l.url,c=l.href,d=l.isExternal,p=i(o),m=r(o)
-if(m.data("trackingCategory")&&m.data("trackingAction")&&function(e,t){var r=t.lookup("service:metrics")
+function r(e){var r=arguments.length>1&&void 0!==arguments[1]?arguments[1]:location,n=/^https?:/i,i=e.getAttribute("href")||"",a=new URL(i,r).toString(),o=!1,s=t.default.webRoot.replace(n,""),l=a.replace(n,"")
+return i.startsWith("#")||i.startsWith("mailto:")?{url:a,href:i,isExternal:o}:(l.startsWith(s)?i=l.replace(s,"").replace(/^\//,"")||"/":i.startsWith("/")||(i="",o=!0),{url:a,href:i,isExternal:o})}function n(e){var t=r(e,arguments.length>1&&void 0!==arguments[1]?arguments[1]:location).href
+return"_blank"!==e.getAttribute("target")&&(!Array.from(e.classList).includes("ember-view")&&(!e.getAttribute("data-ember-action")&&(!(!t||t.startsWith("#")||t.startsWith("?")||t.startsWith("mailto:"))&&!(t.split(".").length>1))))}Object.defineProperty(e,"__esModule",{value:!0}),e.normalizeHref=r,e.shouldHandleLink=n,e.default={name:"link-handler",initialize:function(e){var t=e.lookup("service:wnyc-routing"),i=Ember.$(document.body)
+i.off("click.href-to","a"),i.on("click.href-to","a",function(i){var a=i.currentTarget,o=i.preventDefault,s=r(a),l=s.url,u=s.href,c=s.isExternal,d=n(a),p=Ember.$(a)
+if(p.data("trackingCategory")&&p.data("trackingAction")&&function(e,t){var r=t.lookup("service:metrics")
 if(r){var n=e.trackingCategory,i=e.trackingAction,a="",o=null
 e.trackingModel&&(o=t.lookup("service:store").peekRecord("story",e.trackingModel))
 var s=e.trackingRegion,l=e.trackingLabel
 l||(o&&(l=a=o.get("analyticsCode")),a&&o?l=s+":"+a:s&&(l=s))
 var u={category:n,action:i}
-l&&(u.label=l),o&&(u.model=o),r.trackEvent("GoogleAnalytics",u)}}(m.data(),e),p){if(m.closest(".django-content").length>0&&function(e,t){var r=t.lookup("service:legacy-analytics")
-r&&r.dispatch(e)}(a,e),u===location.toString())return!1
-var f=t.recognize(c),h=f.routeName,g=f.params,b=f.queryParams
-return t.transitionTo(h,g,b),s.bind(a)(),!1}return d&&!Ember.testing&&m.attr("target","_blank"),!0})}}}),define("nypr-django-for-ember/mixins/legacy-support",["exports"],function(e){"use strict"
+l&&(u.label=l),o&&(u.model=o),r.trackEvent("GoogleAnalytics",u)}}(p.data(),e),d){if(p.closest(".django-content").length>0&&function(e,t){var r=t.lookup("service:legacy-analytics")
+r&&r.dispatch(e)}(i,e),l===location.toString())return!1
+var m=t.recognize(u),f=m.routeName,h=m.params,g=m.queryParams
+return t.transitionTo(f,h,g),o.bind(i)(),!1}return c&&!Ember.testing&&p.attr("target","_blank"),!0})}}}),define("nypr-django-for-ember/mixins/legacy-support",["exports"],function(e){"use strict"
 Object.defineProperty(e,"__esModule",{value:!0})
-var t=Ember.Mixin,r=Ember.$,n=[".js-listen",".js-queue"]
-e.default=t.create({isLegacyEvent:function(e){return!!(t=e.target,r(t).closest(n.join(","))).length
-var t},fireLegacyEvent:function(){},revealStaffLinks:function(e,t){e.find(".stf").each(function(){var e,n=r(this)
-"a"===this.tagName.toLowerCase()?e=n:n.append(e=r("<a/>").addClass(this.className)),e.html(e.html()||"Edit This").attr("target","_blank"),e.attr("href",t+"/admin/"+n.attr("data-url")),n.show(),n.parent().show()})},actions:{listen:function(){},queue:function(){}}})}),define("nypr-django-for-ember/models/django-page",["exports","ember-data","nypr-django-for-ember/utils/compat-hooks","nypr-django-for-ember/utils/is-js"],function(e,t,r,n){"use strict"
+var t=[".js-listen",".js-queue"]
+e.default=Ember.Mixin.create({isLegacyEvent:function(e){return!!(r=e.target,Ember.$(r).closest(t.join(","))).length
+var r},fireLegacyEvent:function(){},revealStaffLinks:function(e,t){e.find(".stf").each(function(){var e,r=Ember.$(this)
+"a"===this.tagName.toLowerCase()?e=r:r.append(e=Ember.$("<a/>").addClass(this.className)),e.html(e.html()||"Edit This").attr("target","_blank"),e.attr("href",t+"/admin/"+r.attr("data-url")),r.show(),r.parent().show()})},actions:{listen:function(){},queue:function(){}}})}),define("nypr-django-for-ember/models/django-page",["exports","ember-data","nypr-django-for-ember/utils/compat-hooks","nypr-django-for-ember/utils/is-js"],function(e,t,r,n){"use strict"
 Object.defineProperty(e,"__esModule",{value:!0})
-var i=Ember.$,a=Ember.RSVP,o=a.allSettled,s=a.Promise,l=0
-function u(e){return window.document.importNode(e,!0)}e.default=t.default.Model.extend({htmlParser:Ember.inject.service(),scriptLoader:Ember.inject.service(),inlineDocument:t.default.attr(),text:t.default.attr(),document:Ember.computed("inlineDocument","text",function(){var e=this.get("inlineDocument"),t=this.get("text")
+var i=0
+function a(e){return window.document.importNode(e,!0)}e.default=t.default.Model.extend({htmlParser:Ember.inject.service(),scriptLoader:Ember.inject.service(),inlineDocument:t.default.attr(),text:t.default.attr(),document:Ember.computed("inlineDocument","text",function(){var e=this.get("inlineDocument"),t=this.get("text")
 return e||this.get("htmlParser").parse(t)}),title:Ember.computed("document",function(){var e=this.get("document").querySelector("title")
 if(e)return e.textContent}),wnycChannel:Ember.computed("document",function(){var e=this.get("document").querySelector("#wnyc-channel-jsonapi"),t=this.store.serializerFor("channel"),r=this.store.modelFor("channel"),n=this.get("id"),i=void 0
 if(e){try{i=JSON.parse(e.textContent)}catch(e){}if(i)return this.store.push(t.normalizeResponse(this.store,r,i,n,"findRecord"))}}),embeddedEmberComponents:Ember.computed("pieces",function(){var e=this.get("pieces.body"),t=Ember.getOwner(this)
 return Array.from(e.querySelectorAll("[data-ember-component]")).map(function(e){var r=e.getAttribute("data-ember-component")
 if(!t.lookup("component:"+r))return console.warn(r+" is not available in this app. Will not render embedded component "+r+"."),!1
 var n=e.id,i=void 0
-try{(i=JSON.parse(e.getAttribute("data-ember-args"))).itemTitle=i.itemTitle?decodeURIComponent(i.itemTitle):"",i.itemShow=i.itemShow?decodeURIComponent(i.itemShow):"",i.content=e.getAttribute("data-text-content")}catch(t){Ember.testing||console.warn("could not parse",e.getAttribute("data-ember-args")),i={error:t}}return{id:n,componentName:r,args:i}}).filter(function(e){return!1!==e})}),appendStyles:function(e,t){var r=t.map(function(e){return function(e){if("LINK"!==e.tagName)return s.resolve()
-return new s(function(t,r){i(e).on("load",t).on("error",r)
-var n=Date.now(),a=setInterval(function(){Date.now()-n>1e3?(clearInterval(a),r()):Array.from(document.styleSheets).find(function(t){return t.ownerNode===e})&&(clearInterval(a),t())},20)})}(e)})
-return e.append(t),o(r)},pieces:Ember.computed("document",function(){return this._separateScripts()}),_separateScripts:function(){var e=this.get("document"),t=u(e.querySelector("body")),i=[]
-Array.from(e.querySelectorAll("head script")).forEach(function(e){(0,n.default)(e)?i.push(e):t.appendChild(u(e))}),Array.from(t.querySelectorAll("script")).forEach(function(e){if((0,n.default)(e)){var t=document.createElement("script")
+try{(i=JSON.parse(e.getAttribute("data-ember-args"))).itemTitle=i.itemTitle?decodeURIComponent(i.itemTitle):"",i.itemShow=i.itemShow?decodeURIComponent(i.itemShow):"",i.content=e.getAttribute("data-text-content")}catch(t){Ember.testing||console.warn("could not parse",e.getAttribute("data-ember-args")),i={error:t}}return{id:n,componentName:r,args:i}}).filter(function(e){return!1!==e})}),appendStyles:function(e,t){var r=t.map(function(e){return function(e){if("LINK"!==e.tagName)return Ember.RSVP.Promise.resolve()
+return new Ember.RSVP.Promise(function(t,r){Ember.$(e).on("load",t).on("error",r)
+var n=Date.now(),i=setInterval(function(){Date.now()-n>1e3?(clearInterval(i),r()):Array.from(document.styleSheets).find(function(t){return t.ownerNode===e})&&(clearInterval(i),t())},20)})}(e)})
+return e.append(t),Ember.RSVP.allSettled(r)},pieces:Ember.computed("document",function(){return this._separateScripts()}),_separateScripts:function(){var e=this.get("document"),t=a(e.querySelector("body")),o=[]
+Array.from(e.querySelectorAll("head script")).forEach(function(e){(0,n.default)(e)?o.push(e):t.appendChild(a(e))}),Array.from(t.querySelectorAll("script")).forEach(function(e){if((0,n.default)(e)){var t=document.createElement("script")
 t.type="text/x-original-location"
-var r=l++
-t.setAttribute("data-script-id",r),e.parentElement.insertBefore(t,e),e.parentNode.removeChild(e),e.setAttribute("data-script-id",r),i.push(e)}}),Array.from(t.querySelectorAll("[data-ember-component]")).forEach(function(e){e.id=e.id||Ember.guidFor(e),e.setAttribute("data-text-content",e.textContent.trim()),e.textContent=""})
-var a=Array.from(e.querySelectorAll("style, link[rel=stylesheet]")).map(function(e){return u(e)})
-return Array.from(t.querySelectorAll("style, link[rel=stylesheet]")).forEach(function(e){return e.parentNode.removeChild(e)}),{body:t=(0,r.beforeAppend)(t,this),scripts:i,styles:a}},appendTo:function(e){var t=this,r=this.get("scriptLoader")
-return this.appendStyles(e,this.get("pieces.styles")).finally(function(){Array.from(t.get("pieces.body").childNodes).forEach(function(t){e[0].appendChild(u(t))}),r.load(t.get("pieces.scripts"),e[0])})}})}),define("nypr-django-for-ember/serializers/django-page",["exports","ember-data"],function(e,t){"use strict"
+var r=i++
+t.setAttribute("data-script-id",r),e.parentElement.insertBefore(t,e),e.parentNode.removeChild(e),e.setAttribute("data-script-id",r),o.push(e)}}),Array.from(t.querySelectorAll("[data-ember-component]")).forEach(function(e){e.id=e.id||Ember.guidFor(e),e.setAttribute("data-text-content",e.textContent.trim()),e.textContent=""})
+var s=Array.from(e.querySelectorAll("style, link[rel=stylesheet]")).map(function(e){return a(e)})
+return Array.from(t.querySelectorAll("style, link[rel=stylesheet]")).forEach(function(e){return e.parentNode.removeChild(e)}),{body:t=(0,r.beforeAppend)(t,this),scripts:o,styles:s}},appendTo:function(e){var t=this,r=this.get("scriptLoader")
+return this.appendStyles(e,this.get("pieces.styles")).finally(function(){Array.from(t.get("pieces.body").childNodes).forEach(function(t){e[0].appendChild(a(t))}),r.load(t.get("pieces.scripts"),e[0])})}})}),define("nypr-django-for-ember/serializers/django-page",["exports","ember-data"],function(e,t){"use strict"
 function r(e){if(Array.isArray(e)){for(var t=0,r=Array(e.length);t<e.length;t++)r[t]=e[t]
 return r}return Array.from(e)}Object.defineProperty(e,"__esModule",{value:!0}),e.default=t.default.Serializer.extend({normalizeResponse:function(e,t,n,i){var a,o,s={}
 if(n instanceof Document){var l=void 0
 Ember.testing?(l=document.implementation.createHTMLDocument()).body.appendChild(n.querySelector("#ember-testing").cloneNode(!0)):l=n.documentElement.cloneNode(!0),s.inlineDocument=(a=l,(o=[]).push.apply(o,r(a.querySelectorAll(".ember-view"))),o.push.apply(o,r(a.querySelectorAll("[data-ember-asset]"))),o.forEach(function(e){return e&&e.parentNode.removeChild(e)}),a)}else s.text=n
 return{data:{type:"django-page",id:i,attributes:s}}}})}),define("nypr-django-for-ember/services/async-writer",["exports","nypr-django-for-ember/utils/is-js"],function(e,t){"use strict"
-Object.defineProperty(e,"__esModule",{value:!0})
-var r=Ember.$
-e.default=Ember.Service.extend({htmlParser:Ember.inject.service(),scriptLoader:Ember.inject.service(),init:function(){this._super(),this.queue=[]},install:function(){var e=this
-r(document).ready(function(){document.write=function(t){return e.write(t)}})},_nodesFrom:function(e){var t=this.get("htmlParser").parse(e)
+Object.defineProperty(e,"__esModule",{value:!0}),e.default=Ember.Service.extend({htmlParser:Ember.inject.service(),scriptLoader:Ember.inject.service(),init:function(){this._super(),this.queue=[]},install:function(){var e=this
+Ember.$(document).ready(function(){document.write=function(t){return e.write(t)}})},_nodesFrom:function(e){var t=this.get("htmlParser").parse(e)
 return["head","body"].map(function(e){return Array.from(t.querySelector(e).childNodes)}).reduce(function(e,t){return e.concat(t)})},_extractScripts:function(e){var r=[],n=[]
 return e.forEach(function(e){"SCRIPT"===e.tagName&&(0,t.default)(e)?r.push(e):e.nodeType===Node.ELEMENT_NODE&&(Array.from(e.querySelectorAll("script")).forEach(function(e){(0,t.default)(e)&&(r.push(e),e.parentNode.removeChild(e))}),n.push(e))}),{scripts:r,nonscripts:n}},write:function(e){var t=this
 this.queue.push({string:e,cursor:this.cursor}),1===this.queue.length&&setTimeout(function(){return t.flush()},0)},flush:function(){var e=this,t=this.queue
@@ -9669,20 +9665,18 @@ if(i){var a=this.get("router").recognize(location.pathname).params[0]
 return i.reject(function(e){return t.modules[e]}).reject(function(e){return n[e]&&n[e]!==a})}return[]},_evaluate:function(e,r){var n=this
 this.modules[e]&&i[e]?t.default.LOG_LEGACY_LOADER&&console.log("Not rerunning "+e):(t.default.LOG_LEGACY_LOADER&&console.log("Running "+e),this.modules[e]=r,r(),this.waiting[e]&&setTimeout(function(){var t=n.waiting[e]
 n.waiting[e]=null,t.pending-=1,t.pending<1&&n._evaluate(t.name,t.fn)}))}})}),define("nypr-django-for-ember/services/script-loader",["exports","fetch","nypr-django-for-ember/utils/compat-hooks","ember-get-config"],function(e,t,r,n){"use strict"
-Object.defineProperty(e,"__esModule",{value:!0}),e.canonicalize=a
-var i=Ember.RSVP.Promise
-function a(e){return new URL(e,location.href).toString()}e.default=Ember.Service.extend({asyncWriter:Ember.inject.service(),init:function(){this.stack=[]},load:function(e,r){var o=Array.from(e).map(function(e){return function(e){return e.hasAttribute("src")?(0,t.default)((r=e,o=a(n.default.webRoot),s=a(r.attributes.src.value),0===s.indexOf(o)?s:n.default.publisherAPI+"/v1/dynamic-script-loader/?url="+encodeURIComponent(a(s)))).then(function(e){return e.text()}):i.resolve(e.textContent)
-var r,o,s}(e).then(function(t){return{src:t,tag:e}})})
-this.stack.unshift({sources:o,containerElement:r}),1===this.stack.length&&this._evalNext()},_evalNext:function(){var e=this
-if(0===this.stack.length)return i.resolve()
-var t=this.stack[0],n=t.sources,a=t.containerElement
+function i(e){return new URL(e,location.href).toString()}Object.defineProperty(e,"__esModule",{value:!0}),e.canonicalize=i,e.default=Ember.Service.extend({asyncWriter:Ember.inject.service(),init:function(){this.stack=[]},load:function(e,r){var a=Array.from(e).map(function(e){return function(e){return e.hasAttribute("src")?(0,t.default)((r=e,a=i(n.default.webRoot),o=i(r.attributes.src.value),0===o.indexOf(a)?o:n.default.publisherAPI+"/v1/dynamic-script-loader/?url="+encodeURIComponent(i(o)))).then(function(e){return e.text()}):Ember.RSVP.Promise.resolve(e.textContent)
+var r,a,o}(e).then(function(t){return{src:t,tag:e}})})
+this.stack.unshift({sources:a,containerElement:r}),1===this.stack.length&&this._evalNext()},_evalNext:function(){var e=this
+if(0===this.stack.length)return Ember.RSVP.Promise.resolve()
+var t=this.stack[0],n=t.sources,i=t.containerElement
 if(0===n.length)return this.stack.shift(),this._evalNext()
-var o=this.get("asyncWriter")
-return n.shift().then(function(e){var t=e.src,n=e.tag,i=(0,r.mangleJavascript)(n,t)
-if(i){var s=document.createElement("script"),l=function(e){if(!e.hasAttribute("data-script-id"))return null
+var a=this.get("asyncWriter")
+return n.shift().then(function(e){var t=e.src,n=e.tag,o=(0,r.mangleJavascript)(n,t)
+if(o){var s=document.createElement("script"),l=function(e){if(!e.hasAttribute("data-script-id"))return null
 var t=e.getAttribute("data-script-id")
 return document.querySelector('[data-script-id="'+t+'"]')}(n)
-s.textContent=i,s.type="text/javascript",l?(o.cursorTo(l),l.parentNode.insertBefore(s,l)):a.appendChild(s),o.flush()}}).finally(function(){return e._evalNext()})}})}),define("nypr-django-for-ember/services/wnyc-routing",["exports"],function(e){"use strict"
+s.textContent=o,s.type="text/javascript",l?(a.cursorTo(l),l.parentNode.insertBefore(s,l)):i.appendChild(s),a.flush()}}).finally(function(){return e._evalNext()})}})}),define("nypr-django-for-ember/services/wnyc-routing",["exports"],function(e){"use strict"
 Object.defineProperty(e,"__esModule",{value:!0}),e.default=Ember.Service.extend({_routing:Ember.inject.service("-routing"),transitionTo:function(e,t,r){this.get("_routing").transitionTo(e,t,r)},recognize:function(e){var t=this.get("_routing").router.router.recognizer.recognize(e),r=t.queryParams;(t=Array.from(t)).shift()
 var n=t[t.length-1].handler,i=[]
 return t.forEach(function(e){Object.keys(e.params).forEach(function(t){i.push(e.params[t])})}),{routeName:n,params:i,queryParams:r}}})})
@@ -9695,8 +9689,8 @@ e=r+" > :not(.ember-view):not(#fb-root), "+r+" > head > link[rel=stylesheet]:not
 Array.from(n).forEach(function(e){e.parentNode.removeChild(e)})},e.addAlienLanding=function(e,t){var r=document.querySelector(t),n=document.createElement("div")
 n.id=e
 try{Ember.testing?r.appendChild(n):r.parentNode.insertBefore(n,r)}catch(e){return!1}},e.assign=function(e){Ember.testing?window.assign(e):window.location.assign(e)}}),define("nypr-django-for-ember/utils/compat-hooks",["exports","ember-get-config","nypr-django-for-ember/utils/alien-dom","nypr-django-for-ember/services/legacy-loader","nypr-django-for-ember/services/script-loader"],function(e,t,r,n,i){"use strict"
-Object.defineProperty(e,"__esModule",{value:!0}),e.beforeTeardown=function(){a(window).off("unload storage")
-var e=o(window,"wnyc.apis.whatsOnToday.update.updateTimeoutId")
+Object.defineProperty(e,"__esModule",{value:!0}),e.beforeTeardown=function(){Ember.$(window).off("unload storage")
+var e=Ember.get(window,"wnyc.apis.whatsOnToday.update.updateTimeoutId")
 clearInterval(e),window.define=void 0,window.wnyc=void 0},e.beforeAppend=function(e){var t=document.createElement("div"),r=e.querySelector("#site")||e.querySelector("#flatpage")||e.querySelector(".wqxr-main-contents")
 r||(r=e)
 var n=document.createElement("div")
@@ -9704,11 +9698,10 @@ for(;r.firstChild;)n.appendChild(r.firstChild)
 t.appendChild(n)
 var i=e.querySelector("#wnyc-sitewide")
 i&&t.appendChild(i)
-return t},e.mangleJavascript=function(e,t){if(s(Object.keys(n.runOnce)).any(function(t){return e.src.match(t)}))return!1
+return t},e.mangleJavascript=function(e,t){if(Ember.A(Object.keys(n.runOnce)).any(function(t){return e.src.match(t)}))return!1
 if("bad url"===t)return!1
 return t},e.retryFromServer=function(e,n){var a=e.response
-if(a&&(404===a.status||500===a.status))throw e;(0,r.assign)((0,i.canonicalize)(t.default.webRoot)+"/"+n)}
-var a=Ember.$,o=Ember.get,s=Ember.A}),define("nypr-django-for-ember/utils/is-js",["exports"],function(e){"use strict"
+if(a&&(404===a.status||500===a.status))throw e;(0,r.assign)((0,i.canonicalize)(t.default.webRoot)+"/"+n)}}),define("nypr-django-for-ember/utils/is-js",["exports"],function(e){"use strict"
 Object.defineProperty(e,"__esModule",{value:!0}),e.default=function(e){var t=e.attributes.type?e.attributes.type.value:"text/javascript"
 return!(e.src&&!e.src.match(/^http|^(\.)?\//))&&/(?:application|text)\/(deferred-)?javascript/i.test(t)}}),define("nypr-django-for-ember/utils/wrap-ajax",["exports"],function(e){"use strict"
 Object.defineProperty(e,"__esModule",{value:!0}),e.default=function(e){return new Ember.RSVP.Promise(function(t,r){Ember.$.ajax(e).done(function(e){return t(e)}).fail(function(e){var t=new Error(e.statusText)
@@ -10113,7 +10106,7 @@ r.reopen({attributeBindings:["data-test-selector"]}),e.default=r}),define("nypr-
 Object.defineProperty(e,"__esModule",{value:!0}),e.default=Ember.Component.extend({layout:t.default,classNames:["nypr-card-header"]})}),define("nypr-ui/components/nypr-card/title",["exports","nypr-ui/templates/components/nypr-card/title"],function(e,t){"use strict"
 Object.defineProperty(e,"__esModule",{value:!0}),e.default=Ember.Component.extend({layout:t.default,tagName:""})}),define("nypr-ui/components/nypr-floating-banner",["exports","nypr-ui/templates/components/nypr-floating-banner"],function(e,t){"use strict"
 Object.defineProperty(e,"__esModule",{value:!0}),e.default=Ember.Component.extend({layout:t.default,tagName:"",arrow:!0})}),define("nypr-ui/components/nypr-form",["exports","nypr-ui/templates/components/nypr-form"],function(e,t){"use strict"
-Object.defineProperty(e,"__esModule",{value:!0}),e.default=Ember.Component.extend({layout:t.default,changeset:null,allowedKeys:[],onSubmit:function(){},onFailure:function(){},onSuccess:function(){},onInvalid:function(){},tried:!1,success:!1,failure:!1,invalid:!1,processing:!1,actions:{submit:function(){var e=this
+Object.defineProperty(e,"__esModule",{value:!0}),e.default=Ember.Component.extend({layout:t.default,init:function(){this._super.apply(this,arguments),Ember.getWithDefault(this,"allowedKeys",[])},changeset:null,onSubmit:function(){},onFailure:function(){},onSuccess:function(){},onInvalid:function(){},tried:!1,success:!1,failure:!1,invalid:!1,processing:!1,actions:{submit:function(){var e=this
 Ember.set(this,"tried",!0),Ember.set(this,"processing",!0)
 var t=Ember.get(this,"changeset"),r=t.snapshot()
 return t.cast(Ember.get(this,"allowedKeys")).validate().then(function(){Ember.get(t,"isValid")?(t.execute(),Ember.RSVP.Promise.resolve(Ember.get(e,"onSubmit")()).then(function(){Ember.set(e,"success",!0),Ember.get(e,"onSuccess")(),Ember.set(e,"processing",!1)}).catch(function(n){t.restore(r),Ember.set(e,"failure",!0),Ember.get(e,"onFailure")(n),Ember.set(e,"processing",!1)})):(t.restore(r),Ember.set(e,"invalid",!0),Ember.get(e,"onInvalid")(),Ember.set(e,"processing",!1))})}}})}),define("nypr-ui/components/nypr-input",["exports","nypr-ui/templates/components/nypr-input"],function(e,t){"use strict"
@@ -10121,7 +10114,7 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.default=Ember.Component.exten
 Object.defineProperty(e,"__esModule",{value:!0}),e.default=Ember.Component.extend({layout:t.default,classNames:["l-full"],classNameBindings:["cssOverrides"],attributeBindings:["style"],pageTemplate:Ember.computed("type",function(){return"components/nypr-loading-templates/"+this.get("type")}),cssOverrides:Ember.computed("type",function(){return this.get("type")+"-loading"}),didRender:function(){Ember.testing||"channel-page"===this.get("type")||window.scrollTo(0,0)}})}),define("nypr-ui/components/nypr-mini-chrome",["exports","nypr-ui/templates/components/nypr-mini-chrome"],function(e,t){"use strict"
 Object.defineProperty(e,"__esModule",{value:!0}),e.default=Ember.Component.extend({classNames:["nypr-mini-chrome"],layout:t.default})}),define("nypr-ui/components/nypr-multi-card",["exports","nypr-ui/templates/components/nypr-multi-card"],function(e,t){"use strict"
 Object.defineProperty(e,"__esModule",{value:!0}),e.default=Ember.Component.extend({layout:t.default,children:null,lookupKey:"name",init:function(){this._super.apply(this,arguments),this.set("children",Ember.A([]))},activate:function(e){this.get("children").setEach("active",!1),"number"==typeof e?this.get("children").objectAt(e).set("active",!0):this.get("children").findBy("name",e).set("active",!0)},actions:{notify:function(e){this.get("children").pushObject(e),1===this.get("children.length")&&this.get("children.firstObject").set("active",!0)}}})}),define("nypr-ui/components/nypr-multi-card/panel",["exports","nypr-ui/templates/components/nypr-multi-card/panel"],function(e,t){"use strict"
-Object.defineProperty(e,"__esModule",{value:!0}),e.default=Ember.Component.extend({tagName:"",layout:t.default,didInsertElement:function(){this._super.apply(this,arguments),this.sendAction("notify",this)},actions:{goTo:function(e){this.get("setActive")(e)}}})}),define("nypr-ui/components/nypr-notification",["exports","nypr-ui/templates/components/nypr-notification"],function(e,t){"use strict"
+Object.defineProperty(e,"__esModule",{value:!0}),e.default=Ember.Component.extend({tagName:"",layout:t.default,didInsertElement:function(){this._super.apply(this,arguments),this.get("notify")&&this.get("notify")(this)},actions:{goTo:function(e){this.get("setActive")(e)}}})}),define("nypr-ui/components/nypr-notification",["exports","nypr-ui/templates/components/nypr-notification"],function(e,t){"use strict"
 Object.defineProperty(e,"__esModule",{value:!0}),e.default=Ember.Component.extend({layout:t.default})}),define("nypr-ui/components/nypr-popup-menu",["exports","nypr-ui/templates/components/nypr-popup-menu"],function(e,t){"use strict"
 Object.defineProperty(e,"__esModule",{value:!0}),e.default=Ember.Component.extend({layout:t.default,classNames:["nypr-popupmenu"],classNameBindings:["isOpen"],tagName:"div",isOpen:!1,popupStyle:Ember.String.htmlSafe(""),pointerStyle:Ember.String.htmlSafe(""),screenMargin:5,clickOutside:function(){this.send("closePopup")},actions:{togglePopup:function(){Ember.get(this,"isOpen")?this.send("closePopup"):this.send("openPopup")},openPopup:function(){Ember.set(this,"isOpen",!0),this._adjustPopupPosition()},closePopup:function(){Ember.set(this,"isOpen",!1)}},_adjustPopupPosition:function(){var e=this.$(".nypr-popupmenu-popup")[0]
 Ember.set(this,"popupStyle",Ember.String.htmlSafe("")),Ember.run.next(this,function(){var t=e.getBoundingClientRect(),r=this.$(".nypr-popupmenu-button")[0].getBoundingClientRect(),n=this._calcMidpointOffset(r,t),i=this._calcOffscreenOffset(t,n),a=Ember.String.htmlSafe("left: "+(n+i)+"px")
