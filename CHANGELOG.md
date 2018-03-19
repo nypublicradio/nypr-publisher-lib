@@ -1,5 +1,8 @@
 # nypr-publisher-lib Changelog
 
+## 0.3.1
+- [BUGFIX] Fix selector to find nav link items so the element is scrollable
+
 ## 0.3.0
 - [CHANGE] Update to Ember 3.0 and new module syntax
 
