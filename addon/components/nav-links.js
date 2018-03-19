@@ -50,7 +50,7 @@ export default Component.extend({
   },
 
   handleResize() {
-    let list = Array.from(this.$('.list-item'));
+    let list = Array.from(this.$('.nav-links__list-item'));
     let el = this.element;
     let listWidth = list.map(n => $(n).outerWidth(true)).reduce((a, b) => a + b, 0);
 
