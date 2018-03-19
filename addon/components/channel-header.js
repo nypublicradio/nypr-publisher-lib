@@ -1,5 +1,5 @@
 import Component from '@ember/component';
-import { readOnly } from '@ember/computed';
+import { readOnly } from '@ember/object/computed';
 import layout from '../templates/components/channel-header';
 
 export default Component.extend({
