@@ -1,5 +1,8 @@
 # nypr-publisher-lib Changelog
 
+## 0.3.2
+- [BUGFIX] Fixes bad import path in `channel-header`
+
 ## 0.3.1
 - [BUGFIX] Fix selector to find nav link items so the element is scrollable
 
