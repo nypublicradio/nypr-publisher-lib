@@ -83,6 +83,7 @@ export default DS.Model.extend({
   scheduleSummary: DS.attr('string'),
   newsletterListId: DS.attr('string'),
   producingOrganizations: DS.attr(),
+  parentShow:  DS.attr('string'),
   // computeds
   hasLinkroll: computed.bool('linkroll.length'),
   hasMarquee: computed.bool('marqueeImage'),
