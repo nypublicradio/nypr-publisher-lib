@@ -1,5 +1,9 @@
 # nypr-publisher-lib Changelog
 
+## 0.3.3
+- [ENHANCEMENT] #27 Removes ember-truncate
+- [BUGFIX] #26 Fixes inconsistent camelcase in story serializations
+
 ## 0.3.2
 - [BUGFIX] Fixes bad import path in `channel-header`
 
