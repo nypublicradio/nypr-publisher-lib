@@ -1,6 +1,7 @@
 import JSONAPISerializer from 'ember-data/serializers/json-api';
 import { camelize } from '@ember/string';
 import { getWithDefault } from '@ember/object';
+import { serializeStoryAttributes } from 'nypr-publisher-lib/serializers/story';
 
 export default JSONAPISerializer.extend({
   extractId: (modelClass, {attributes}) => attributes.slug || "none",
@@ -13,6 +14,10 @@ export default JSONAPISerializer.extend({
         item.attributes = {};
         Object.keys(attributes)
           .forEach(k => item.attributes[camelize(k)] = attributes[k]);
+
+        if (item.type === 'story') {
+          serializeStoryAttributes(item.attributes);
+        }
       });
     }
     return this._super(...arguments);

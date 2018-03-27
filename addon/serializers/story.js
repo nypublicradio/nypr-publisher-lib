@@ -17,22 +17,23 @@ const propertiesWithChildren = [
 ];
 // END-SNIPPET
 
+// BEGIN-SNIPPET story-serializer
+export function serializeStoryAttributes(attributes) {
+  for (var prop of propertiesWithChildren) {
+    //if we have the property, process it
+    if (attributes && attributes.hasOwnProperty(prop)){
+      attributes[prop] = camelizeObject(attributes[prop]);
+    }
+  }
+}
+// END-SNIPPET
+
 export default DS.JSONAPISerializer.extend({
   extractId: (modelClass, {attributes}) => attributes.slug,
   payloadKeyFromModelName: () => 'story',
 
-  // BEGIN-SNIPPET story-serializer
   normalizeResponse(store, primaryModelClass, payload, id, requestType) {
-
-    for (var prop of propertiesWithChildren) {
-      //if we have the property, process it
-      if (payload.data.attributes && payload.data.attributes.hasOwnProperty(prop)){
-        payload.data.attributes[prop] = camelizeObject(payload.data.attributes[prop]);
-      }
-    }
-
+    serializeStoryAttributes(payload.data.attributes);
     return this._super(store, primaryModelClass, payload, id, requestType);
   },
-  // END-SNIPPET
-
 });
