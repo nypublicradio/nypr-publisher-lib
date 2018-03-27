@@ -43,11 +43,7 @@
           {{moment-format episode.newsdate 'MMM D, YYYY'}}
         </div>
         <div class="episode-tease__tease">
-          {{#truncate-multiline lines=4 as |tm|~}}
-            {{#tm.target~}}
               {{{episode.tease}}}
-            {{~/tm.target}}
-          {{~/truncate-multiline}}
         </div>
       </div>
     </article>
