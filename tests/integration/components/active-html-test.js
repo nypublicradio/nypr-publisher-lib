@@ -1,30 +1,29 @@
-import { module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
-import { render } from '@ember/test-helpers';
+import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
+import { later } from '@ember/runloop';
 
-module('Integration | Component | active-html', function(hooks) {
-  setupRenderingTest(hooks);
-
-  test('it renders', async function(assert) {
-    await render(hbs`{{active-html}}`);
-    assert.equal(this.element.textContent.trim(), '');
-  });
-
-  test('it renders html', async function(assert) {
-    let html = '<div class="target">test</div>'
-    this.set('html', html);
-    await render(hbs`{{active-html html=html}}`);
-    let contents = find('.target');
-    assert.equal(contents.textContent.trim(), 'test');
-  });
-
-  test('it renders', async function(assert) {
-    let html = `<div id="test-target">test</div><script>document.querySelector('#test-target').innerHTML = 'changed'</script>`
-    this.set('html', html);
-    await render(hbs`{{active-html html=html}}`);
-    let contents = find('.target');
-    assert.equal(contents.textContent.trim(), 'changed');
-  });
-
+moduleForComponent('Integration | Component | active-html', {
+  integration: true
 });
+
+test('it renders', async function(assert) {
+  this.render(hbs`{{active-html}}`);
+  assert.equal(this.$().text().trim(), '');
+});
+
+test('it renders html', async function(assert) {
+  let html = '<div class="target">test</div>'
+  this.set('html', html);
+  this.render(hbs`{{active-html html=html}}`);
+  let contents = this.$('.target');
+  assert.equal(contents.text().trim(), 'test');
+});
+
+test('it runs scripts', async function(assert) {
+  let html = `<div id="target">test</div><script>document.querySelector('#target').innerHTML = 'changed';</script>`
+  this.set('html', qhtml);
+  this.render(hbs`{{active-html html=html}}`);
+  let contents = this.$('#target');
+  assert.equal(contents.text().trim(), 'changed');
+});
+
