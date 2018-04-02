@@ -1,0 +1,14 @@
+{{md-text text="
+#### `active-html`
+
+Accepts an HTML string as its `html` property and renders out the content.  Unlike with triple curly brackets (`{{{ }}}`), scripts inside the included HTML will be run. Handle active HTML with caution.
+
+This is similar to the advanced usage of the `django-page` component in [`nypr-django-for-ember`](https://github.com/nypublicradio/nypr-django-for-ember) but doesn't require the creation of a `django-page` model. You can use it when you don't need to process an entire HTML document and just want to include a chunk of HTML provided by one of our APIs, scripts and all. Handy for rendering HTML from flat-page, chunk, and api-response models.
+
+Use the component and pass in your html like this:
+"}}
+{{code-snippet name="active-html.hbs"}}
+
+{{!-- BEGIN-SNIPPET active-html --}}
+{{active-html html="<b>Hello world.</b><script>console.log('CAUTION: active-html will run script tags.')</script>"}}
+{{!-- END-SNIPPET --}}

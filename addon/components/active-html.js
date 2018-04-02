@@ -4,11 +4,11 @@ import { computed } from '@ember/object';
 
 export default Component.extend({
   layout,
-  activatedHTML: computed('html', function() {
+  unescapedHTML: computed('html', function() {
      return this.get('html').replace(/\\x3C\/script>/g, '</script>');
   }),
   didRender() {
-    let html = this.get('activatedHTML');
+    let html = this.get('unescapedHTML');
     let element = this.$();
     element.empty();
     element.append(html);

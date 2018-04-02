@@ -39,6 +39,9 @@ Router.map(function() {
       this.route('stream-list');
       this.route('stream-playlist');
     });
+    this.route('utility', function() {
+      this.route('active-html');
+    });
   });
   this.route('services', function() {
     this.route('whats-on');
