@@ -1,5 +1,9 @@
 # nypr-publisher-lib Changelog
 
+## 0.3.4
+- [BUGFIX] Update django page factory to include gothamist row for WNYC
+- [BUGFIX] Add extractId to show serializer to silence warning about using findRecord
+
 ## 0.3.3
 - [ENHANCEMENT] #27 Removes ember-truncate
 - [BUGFIX] #26 Fixes inconsistent camelcase in story serializations
