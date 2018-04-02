@@ -7,20 +7,24 @@ module('Integration | Component | active-html', function(hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function(assert) {
-    // Set any properties with this.set('myProperty', 'value');
-    // Handle any actions with this.set('myAction', function(val) { ... });
-
     await render(hbs`{{active-html}}`);
-
     assert.equal(this.element.textContent.trim(), '');
-
-    // Template block usage:
-    await render(hbs`
-      {{#active-html}}
-        template block text
-      {{/active-html}}
-    `);
-
-    assert.equal(this.element.textContent.trim(), 'template block text');
   });
+
+  test('it renders html', async function(assert) {
+    let html = '<div class="target">test</div>'
+    this.set('html', html);
+    await render(hbs`{{active-html html=html}}`);
+    let contents = find('.target');
+    assert.equal(contents.textContent.trim(), 'test');
+  });
+
+  test('it renders', async function(assert) {
+    let html = `<div id="test-target">test</div><script>document.querySelector('#test-target').innerHTML = 'changed'</script>`
+    this.set('html', html);
+    await render(hbs`{{active-html html=html}}`);
+    let contents = find('.target');
+    assert.equal(contents.textContent.trim(), 'changed');
+  });
+
 });

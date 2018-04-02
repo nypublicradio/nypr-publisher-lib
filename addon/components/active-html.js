@@ -4,6 +4,7 @@ import { computed } from '@ember/object';
 
 export default Component.extend({
   layout,
+  html: "",
   unescapedHTML: computed('html', function() {
      return this.get('html').replace(/\\x3C\/script>/g, '</script>');
   }),
