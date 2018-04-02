@@ -8,6 +8,7 @@ export default Route.extend({
       'channel',
       'chunk',
       'comment',
+      'flat-page',
       'playlist',
       'show',
       'story',
