@@ -10,6 +10,9 @@ export default DS.JSONAPIAdapter.extend({
       if (!query.filter) {
         query.filter = {};
       }
+      if (query.filter.url && query.filter.url.substr(-1) !== '/') {
+        query.filter.url += '/';
+      }
       query.filter.site = config.siteId;
     }
     return this._super(...arguments);
