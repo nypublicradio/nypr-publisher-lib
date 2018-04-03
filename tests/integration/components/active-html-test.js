@@ -1,6 +1,5 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import { later } from '@ember/runloop';
 
 moduleForComponent('Integration | Component | active-html', {
   integration: true
@@ -21,7 +20,7 @@ test('it renders html', async function(assert) {
 
 test('it runs scripts', async function(assert) {
   let html = `<div id="target">test</div><script>document.querySelector('#target').innerHTML = 'changed';</script>`
-  this.set('html', qhtml);
+  this.set('html', html);
   this.render(hbs`{{active-html html=html}}`);
   let contents = this.$('#target');
   assert.equal(contents.text().trim(), 'changed');
