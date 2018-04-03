@@ -20,7 +20,7 @@ export default DS.Model.extend({
       return 'story-list';
     }
 
-    if (/\/about\/1/.test(id)) {
+    if (/\/about\/?1?(\?[\S]+)?$/.test(id)) {
       return 'about-page';
     }
 
