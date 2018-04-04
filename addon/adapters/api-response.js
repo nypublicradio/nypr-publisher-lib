@@ -9,6 +9,16 @@ export default DS.JSONAPIAdapter.extend({
     let url = this._super(...arguments);
     return decodeURIComponent(url);
   },
+  urlForFindRecord(id, modelName, snapshot) {
+    let baseUrl = this.buildURL(modelName, id, snapshot);
+    if (snapshot.adapterOptions) {
+      let limit = (snapshot.adapterOptions.limit);
+      if (limit) {
+        baseUrl += `?limit=${limit}`;
+      }
+    }
+    return baseUrl;
+  },
   // ember 2.0 deprecation
   shouldBackgroundReloadRecord: () => false
 });
