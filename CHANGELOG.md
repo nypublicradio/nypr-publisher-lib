@@ -1,5 +1,8 @@
 # nypr-publisher-lib Changelog
 
+## 0.3.5
+- [ENHANCEMENT] Adds support for passing a `limit` option to the `api-response` adapter via `adapterOptions`
+
 ## 0.3.4
 - [BUGFIX] Update django page factory to include gothamist row for WNYC
 - [BUGFIX] Add extractId to show serializer to silence warning about using findRecord
