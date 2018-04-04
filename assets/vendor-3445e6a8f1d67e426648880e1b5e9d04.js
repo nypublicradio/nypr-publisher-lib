@@ -9794,7 +9794,9 @@ n&&!i||(i=n?i+":":"",o&&(a=Ember.get(s,"analyticsCode")),(n||o)&&(r=""+i+a),Embe
 "pause"===i&&t.slice(n).find(function(e){return"end"===e.type})||("audioError"===i?Ember.get(e,"dataLayer").audioErrorTracking(a,s):Ember.get(e,"dataLayer").audioTracking(i,o))}),Ember.get(this,"isDestroying")||Ember.set(this,"dataLayerQueue",Ember.A()))},_trackPlayerEventForNpr:function(e){Ember.get(this,"metrics").trackEvent("NprAnalytics",e)},_formatContext:function(e){return"Continuous Play"===e?e:"nav"===e?"Navigation":e?Ember.String.classify(e):void 0}})})
 define("nypr-publisher-lib/adapters/api-response",["exports","ember-data","ember-get-config"],function(e,t,r){"use strict"
 Object.defineProperty(e,"__esModule",{value:!0}),e.default=t.default.JSONAPIAdapter.extend({host:r.default.publisherAPI,namespace:"v3",pathForType:function(){return"channel"},buildURL:function(){var e=this._super.apply(this,arguments)
-return decodeURIComponent(e)},shouldBackgroundReloadRecord:function(){return!1}})}),define("nypr-publisher-lib/adapters/bucket",["exports","ember-data","ember-get-config"],function(e,t,r){"use strict"
+return decodeURIComponent(e)},urlForFindRecord:function(e,t,r){var n=this.buildURL(t,e,r)
+if(r.adapterOptions){var i=r.adapterOptions.limit
+i&&(n+="?limit="+i)}return n},shouldBackgroundReloadRecord:function(){return!1}})}),define("nypr-publisher-lib/adapters/bucket",["exports","ember-data","ember-get-config"],function(e,t,r){"use strict"
 Object.defineProperty(e,"__esModule",{value:!0}),e.default=t.default.JSONAPIAdapter.extend({host:r.default.publisherAPI,namespace:"v3",buildURL:function(e,t,n,i,o){var a=this._super.apply(this,arguments)
 if("findRecord"!==i)return a;(a+="/?site="+r.default.siteSlug,o&&Object.keys(o).length)&&(a+=Object.keys(o).map(function(e){return e+"="+o[e]}).join("&"))
 return a}})}),define("nypr-publisher-lib/adapters/channel",["exports","ember-data","ember-get-config"],function(e,t,r){"use strict"
