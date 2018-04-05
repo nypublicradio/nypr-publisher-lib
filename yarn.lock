@@ -2634,7 +2634,7 @@ ember-cli-htmlbars-inline-precompile@^1.0.0:
     heimdalljs-logger "^0.1.7"
     silent-error "^1.1.0"
 
-ember-cli-htmlbars@^1.0.10, ember-cli-htmlbars@^1.0.3, ember-cli-htmlbars@^1.1.1:
+ember-cli-htmlbars@^1.0.3, ember-cli-htmlbars@^1.1.1:
   version "1.3.4"
   resolved "https://registry.yarnpkg.com/ember-cli-htmlbars/-/ember-cli-htmlbars-1.3.4.tgz#461289724b34af372a6a0c4b6635819156963353"
   dependencies:
@@ -2999,12 +2999,12 @@ ember-data@^2.16.0:
     semver "^5.1.0"
     silent-error "^1.0.0"
 
-ember-diff-attrs@^0.1.2:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/ember-diff-attrs/-/ember-diff-attrs-0.1.2.tgz#47bbe6141786fa554ac543b4622a9928e7168cf6"
+ember-diff-attrs@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/ember-diff-attrs/-/ember-diff-attrs-0.2.1.tgz#ad9592ab8ba63d796bb9b1633801fe27ca43fc74"
   dependencies:
-    ember-cli-babel "^5.1.7"
-    ember-weakmap "2.0.0"
+    ember-cli-babel "^6.6.0"
+    ember-weakmap "^3.0.0"
 
 ember-disable-prototype-extensions@^1.1.2:
   version "1.1.3"
@@ -3087,12 +3087,13 @@ ember-hifi@^1.11.1:
     hls.js "^0.8.8"
     howler "^2.0.5"
 
-ember-holygrail-layout@^0.1.4:
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/ember-holygrail-layout/-/ember-holygrail-layout-0.1.4.tgz#ac7fe907d7aa4376366831d31e9cbe3c5e5a8a00"
+ember-holygrail-layout@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/ember-holygrail-layout/-/ember-holygrail-layout-0.3.0.tgz#6244f5696495fcb8530bacba633d27cf10cbd6e5"
   dependencies:
-    ember-cli-babel "^5.1.6"
-    ember-cli-htmlbars "^1.0.3"
+    ember-cli-babel "^6.6.0"
+    ember-cli-htmlbars "^2.0.1"
+    ember-cli-htmlbars-inline-precompile "^1.0.0"
 
 ember-inflector@^2.0.0:
   version "2.2.0"
@@ -3325,12 +3326,6 @@ ember-try@^0.2.23:
     rimraf "^2.3.2"
     rsvp "^3.0.17"
     semver "^5.1.0"
-
-ember-weakmap@2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/ember-weakmap/-/ember-weakmap-2.0.0.tgz#71c6819a8bfd0b077ae17ca1d9053fc5db06e4ac"
-  dependencies:
-    ember-cli-babel "^5.1.6"
 
 ember-weakmap@^3.0.0:
   version "3.1.1"
@@ -5007,12 +5002,12 @@ isurl@^1.0.0-alpha5:
     has-to-string-tag-x "^1.2.0"
     is-object "^1.0.1"
 
-ivy-tabs@3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/ivy-tabs/-/ivy-tabs-3.1.0.tgz#07eae83bf46c974bf7de2f4d9404a7abaebe39fe"
+ivy-tabs@^3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/ivy-tabs/-/ivy-tabs-3.3.0.tgz#e29efcba1aaed855e97f5fa4789b1ac7387a32ac"
   dependencies:
-    ember-cli-babel "^5.1.7"
-    ember-cli-htmlbars "^1.0.10"
+    ember-cli-babel "^6.10.0"
+    ember-cli-htmlbars "^2.0.3"
 
 jquery@^3.2.1:
   version "3.3.1"
@@ -6185,32 +6180,32 @@ number-is-nan@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
 
-nypr-audio-services@~0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/nypr-audio-services/-/nypr-audio-services-0.3.0.tgz#a0fc51eb26d7a23e384931018e18ec373f550f54"
+nypr-audio-services@>=0.3.0:
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/nypr-audio-services/-/nypr-audio-services-0.3.2.tgz#c1aa2c0d6e8630db4366a67d722275c1940ff06d"
   dependencies:
     ember-cli-babel "^6.6.0"
     ember-cli-htmlbars "^2.0.1"
     ember-cli-htmlbars-inline-precompile "^1.0.0"
     ember-cli-sass "^7.0.0"
-    ember-diff-attrs "^0.1.2"
+    ember-diff-attrs "^0.2.1"
     ember-fetch "^3.3.0"
     ember-get-config "^0.2.2"
     ember-hifi "^1.11.1"
     ember-simple-auth "^1.3.0"
     liquid-fire "^0.29.1"
-    nypr-metrics "~0.3.0"
-    nypr-ui "~0.2.0"
+    nypr-metrics ">=0.3.0"
+    nypr-ui ">=0.2.0"
 
-nypr-django-for-ember@~0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/nypr-django-for-ember/-/nypr-django-for-ember-0.1.0.tgz#9d50f9467add0099e90d8ed7cf866e9348afa932"
+nypr-django-for-ember@>=0.1.0:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/nypr-django-for-ember/-/nypr-django-for-ember-0.1.1.tgz#797b15aa45575bd307484542b74a8ba2c5156dea"
   dependencies:
     ember-cli-babel "^6.6.0"
     ember-cli-htmlbars "^2.0.1"
     ember-wormhole "^0.5.2"
 
-nypr-metrics@~0.3.0:
+nypr-metrics@>=0.3.0:
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/nypr-metrics/-/nypr-metrics-0.3.1.tgz#917d61ad0f7fc5ffd7409a560f8a64588663c576"
   dependencies:
@@ -6218,9 +6213,9 @@ nypr-metrics@~0.3.0:
     ember-get-config "^0.2.2"
     ember-metrics "^0.12.1"
 
-nypr-ui@~0.2.0, nypr-ui@~0.2.4:
-  version "0.2.4"
-  resolved "https://registry.yarnpkg.com/nypr-ui/-/nypr-ui-0.2.4.tgz#d258a5d0477652265cbc32c3cff456929e41074b"
+nypr-ui@>=0.2.0, nypr-ui@>=0.2.4:
+  version "0.2.6"
+  resolved "https://registry.yarnpkg.com/nypr-ui/-/nypr-ui-0.2.6.tgz#282b712df5fbbc58c643fa93130ba7a79c8cc139"
   dependencies:
     ember-basic-dropdown "0.33.1"
     ember-burger-menu "^3.1.0"
@@ -6230,9 +6225,9 @@ nypr-ui@~0.2.0, nypr-ui@~0.2.4:
     ember-cli-sass "^7.1.7"
     ember-click-outside "0.1.11"
     ember-composable-helpers "2.0.3"
-    ember-holygrail-layout "^0.1.4"
+    ember-holygrail-layout "^0.3.0"
     ember-power-select "^1.9.2"
-    ivy-tabs "3.1.0"
+    ivy-tabs "^3.3.0"
     waypoints "^4.0.1"
 
 oauth-sign@~0.8.1, oauth-sign@~0.8.2:
