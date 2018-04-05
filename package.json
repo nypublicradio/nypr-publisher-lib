@@ -70,6 +70,7 @@
     "ember-try": "^0.2.23",
     "eslint-plugin-ember": "^5.0.0",
     "eslint-plugin-node": "^5.2.1",
+    "imagesloaded": "^4.1.4",
     "loader.js": "^4.2.3"
   },
   "engines": {
