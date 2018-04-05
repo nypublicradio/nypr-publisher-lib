@@ -1,5 +1,8 @@
 # nypr-publisher-lib Changelog
 
+## 0.3.6
+- [CHORE] loosen in house deps
+
 ## 0.3.5
 - [ENHANCEMENT] Adds support for passing a `limit` option to the `api-response` adapter via `adapterOptions`
 
