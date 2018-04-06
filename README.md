@@ -1,5 +1,7 @@
 # nypr-publisher-lib
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/nypublicradio/nypr-publisher-lib.svg)](https://greenkeeper.io/)
+
 This addon provides a whole suite of ember objects that allow an app to integrate with the publisher back end.
 
 More information is [available here, on the documentation site](https://nypublicradio.github.io/nypr-publisher-lib/).
