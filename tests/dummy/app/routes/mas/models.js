@@ -9,6 +9,7 @@ export default Route.extend({
       'chunk',
       'comment',
       'flat-page',
+      'link-roll',
       'playlist',
       'show',
       'story',
