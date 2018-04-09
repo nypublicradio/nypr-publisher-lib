@@ -16,5 +16,9 @@ export default DS.JSONAPIAdapter.extend({
       query.filter.site = config.siteId;
     }
     return this._super(...arguments);
-  }
+  },
+  buildURL() {
+    let url = this._super(...arguments);
+    return url.replace(/([^/])$/, '$1/');
+  },
 });
