@@ -44,7 +44,11 @@ jobs:
           key: bower-deps-{{ checksum "bower.json" }}
       - run:
           name: Test
+          environment:
+            CIRCLE_TEST_REPORTS: test-results
           command: yarn test
+      - store_test_results:
+          path: test-results/
 
   deploy:
     docker:
