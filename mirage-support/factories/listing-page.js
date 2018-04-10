@@ -25,5 +25,5 @@ export default ShowFactory.extend({
     ];
   },
   listingObjectType: 'show',
-  socialLinks: [],
+  socialLinks: () => [],
 });
