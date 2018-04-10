@@ -11,7 +11,7 @@ function generateLogo() {
 
 export default ShowFactory.extend({
   id(id) {
-    return `shows/${this.firstPage}-${id}/`;
+    return `shows/${this.firstPage}-${id}`;
   },
   logoImage: generateLogo,
   firstPage: 'list',
