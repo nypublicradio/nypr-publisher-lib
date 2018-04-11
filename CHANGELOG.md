@@ -1,5 +1,8 @@
 # nypr-publisher-lib Changelog
 
+## 0.3.7
+- [CHORE] remove unecessary trailing slash for channels
+
 ## 0.3.6
 - [CHORE] loosen in house deps
 
