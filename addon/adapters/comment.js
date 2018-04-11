@@ -6,10 +6,14 @@ import wrapAjax from 'nypr-django-for-ember/utils/wrap-ajax'
 import DataAdapterMixin from 'ember-simple-auth/mixins/data-adapter-mixin';
 
 export default DS.JSONAPIAdapter.extend(DataAdapterMixin, {
-  authorizer: 'authorizer:nypr',
   host: config.publisherAPI,
   namespace: 'v1/list/comments',
-  
+  authorize(xhr) {
+    let headers = this.get('session').authorize({});
+    for (var h in headers) {
+      xhr.setRequestHeader(h, headers[h]);
+    }
+  },
   query(store, type, query) {
     let url = [this.host, this.namespace, query.itemTypeId, query.itemId, ''].join('/');
     let options = this.ajaxOptions(url, 'GET', {});
