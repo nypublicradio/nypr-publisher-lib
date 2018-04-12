@@ -9,12 +9,15 @@ jobs:
       - checkout
 
       - restore_cache:
-          key: node-deps-{{ checksum "yarn.lock" }}
+          key: v2-node8-yarn-deps-{{ arch  }}-{{ checksum "yarn.lock" }}
       - run:
           name: Install node dependencies
-          command: yarn --pure-lockfile
+          command: |
+            if [ ! -d ./node_modules ]; then
+              yarn --pure-lockfile
+            fi
       - save_cache:
-          key: node-deps-{{ checksum "yarn.lock" }}
+          key: v2-node8-yarn-deps-{{ arch  }}-{{ checksum "yarn.lock" }}
           paths:
             - ./node_modules
 
@@ -24,7 +27,7 @@ jobs:
           name: Install bower dependencies
           command: |
             yarn add bower --pure-lockfile
-            ./node_modules/bower/bin/bower i
+            npx bower i
       - save_cache:
           key: bower-deps-{{ checksum "bower.json" }}
           paths:
@@ -65,7 +68,7 @@ jobs:
           name: Deploy to GitHub Pages
           command: |
             git checkout gh-pages; git checkout master
-            ./node_modules/ember-cli/bin/ember deploy production
+            npx ember deploy production
 
 workflows:
   version: 2
