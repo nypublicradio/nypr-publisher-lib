@@ -1,5 +1,8 @@
 # nypr-publisher-lib Changelog
 
+## 0.3.8
+- [CHORE] update to avoid using deprecated authorizers (ember-simple-auth)
+
 ## 0.3.7
 - [CHORE] remove unecessary trailing slash for channels
 
