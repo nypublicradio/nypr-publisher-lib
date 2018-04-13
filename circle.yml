@@ -9,7 +9,7 @@ jobs:
       - checkout
 
       - restore_cache:
-          key: v2-node8-yarn-deps-{{ arch  }}-{{ checksum "yarn.lock" }}
+          key: v2-node8-yarn-deps-{{ arch }}-{{ checksum "yarn.lock" }}
       - run:
           name: Install node dependencies
           command: |
@@ -17,7 +17,7 @@ jobs:
               yarn --pure-lockfile
             fi
       - save_cache:
-          key: v2-node8-yarn-deps-{{ arch  }}-{{ checksum "yarn.lock" }}
+          key: v2-node8-yarn-deps-{{ arch }}-{{ checksum "yarn.lock" }}
           paths:
             - ./node_modules
 
@@ -42,7 +42,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: node-deps-{{ checksum "yarn.lock" }}
+          key: v2-node8-yarn-deps-{{ arch }}-{{ checksum "yarn.lock" }}
       - restore_cache:
           key: bower-deps-{{ checksum "bower.json" }}
       - run:
@@ -61,7 +61,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: node-deps-{{ checksum "yarn.lock" }}
+          key: v2-node8-yarn-deps-{{ arch }}-{{ checksum "yarn.lock" }}
       - restore_cache:
           key: bower-deps-{{ checksum "bower.json" }}
       - run:
