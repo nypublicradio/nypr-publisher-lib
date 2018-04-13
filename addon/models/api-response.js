@@ -42,8 +42,9 @@ export default DS.Model.extend({
   totalCount: DS.attr('number'),
   totalPages: computed('totalCount', {
     get() {
+      let length = get(this, 'teaseList.length') || get(this, 'appearances.length');
       const total = get(this, 'totalCount');
-      return totalPages(total);
+      return totalPages(total, length);
     }
   }),
   // END-SNIPPET
