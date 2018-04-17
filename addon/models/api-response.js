@@ -1,7 +1,6 @@
 import DS from 'ember-data';
 import { computed, get } from '@ember/object';
 import { readOnly } from '@ember/object/computed';
-import { totalPages } from 'nypr-publisher-lib/utils/math-util';
 
 export default DS.Model.extend({
   // BEGIN-SNIPPET api-response-fields
@@ -40,16 +39,7 @@ export default DS.Model.extend({
     }
   }),
   totalCount: DS.attr('number'),
-  totalPages: computed('totalCount', {
-    get() {
-      const responseLength = get(this, 'teaseList.length') || get(this, 'appearances.length');
-      const total = get(this, 'totalCount');
-      if (responseLength > 0) {
-        return totalPages(total, responseLength);
-      } else {
-        return totalPages(total);
-      }
-    }
-  }),
+  totalPages: DS.attr('number'),
+  pageSize: DS.attr('number')
   // END-SNIPPET
 });
