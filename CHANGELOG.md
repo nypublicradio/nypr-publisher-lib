@@ -1,5 +1,9 @@
 # nypr-publisher-lib Changelog
 
+## 0.3.9
+- [ENHANCEMENT] Add flat-page model
+- [ENHANCEMENT] Add active-html component for rendering html with scripts
+
 ## 0.3.8
 - [CHORE] update to avoid using deprecated authorizers (ember-simple-auth)
 
