@@ -13,5 +13,15 @@ export default DS.JSONAPIAdapter.extend({
     return assign(options, {
       url: url.slice(-1) === '/' ? `${url}/` : url,
     });
-  }
+  },
+  urlForFindRecord(id, modelName, snapshot) {
+    let baseUrl = this.buildURL(modelName, id, snapshot);
+    if (snapshot.adapterOptions) {
+      let limit = (snapshot.adapterOptions.limit);
+      if (limit) {
+        baseUrl += `?limit=${limit}`;
+      }
+    }
+    return baseUrl;
+  },
 });
