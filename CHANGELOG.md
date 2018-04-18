@@ -1,5 +1,8 @@
 # nypr-publisher-lib Changelog
 
+## 0.3.10
+- [BUGFIX] Use URL from Show model in show-tease rather than computed property
+
 ## 0.3.9
 - [ENHANCEMENT] Add flat-page model
 - [ENHANCEMENT] Add active-html component for rendering html with scripts
