@@ -15,6 +15,12 @@ function makeSegment(_, index) {
   };
 }
 
+function makeSeries() {
+  return {
+    title: () => faker.lorem.words(2),
+  }
+}
+
 export default Factory.extend({
   slug(id) {
     return `story-${id}`;
@@ -49,9 +55,16 @@ export default Factory.extend({
     };
   },
   cmsPK: id => id + 1,
+  /* eslint-disable */
+  appearances: {
+    authors: [{name: 'Author 1'}, {name: 'Author 2'}]
+  },
   producingOrganizations: [],
   showProducingOrgs: [],
   allProducingOrgs: [],
+  series: () => Array.from(Array(3), makeSeries),
+  /* eslint-enable */
+  tags: () =>  faker.lorem.words(5).split(' '),
   showTitle: faker.lorem.words(3),
   
   withSegments: trait({
