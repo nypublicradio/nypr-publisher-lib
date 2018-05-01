@@ -47,13 +47,6 @@ export default Factory.extend({
   audioAvailable: true,
   audioMayEmbed: true,
   audioMayStream: true,
-  analyticsCode: 'ExperimentalStory:trump-rubio-super-tuesday-morning-politics $A1$AD771$V0$Ms$D1$HS1$HC0$B0$SS+Everything You Need to Know About the 2016 Election+$C$SThe Brian Lehrer Show$T!news!politics!2016_election!super_tuesday!$AP/bl/bl022916apod.mp3$',
-  analytics() {
-    return {
-      containers: "Show: The Brian Lehrer Show | Series: Everything You Need to Know About the 2016 Election",
-      title: this.title
-    };
-  },
   cmsPK: id => id + 1,
   /* eslint-disable */
   appearances: {
@@ -66,7 +59,7 @@ export default Factory.extend({
   /* eslint-enable */
   tags: () =>  faker.lorem.words(5).split(' '),
   showTitle: faker.lorem.words(3),
-  
+
   withSegments: trait({
     segments: Array.from(Array(3), makeSegment)
   })
