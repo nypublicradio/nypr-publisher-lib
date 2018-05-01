@@ -68,6 +68,7 @@ export default Factory.extend({
     } else if (type === 'home') {
       wormholes = `
         <div id="stream-banner" class="clearfix"></div>
+        <div id="go-to-gothamist"></div>
         <div id="gothamist-row"></div>
       `;
     } else if (type === 'legacy') {
