@@ -1,11 +1,13 @@
-import { moduleForModel, test } from 'ember-qunit';
+import { module, test } from 'qunit';
+import { setupTest } from 'ember-qunit';
 
-moduleForModel('playlist', 'Unit | Serializer | playlist', {
-  // Specify the other units that are required for this test.
-  needs: ['serializer:playlist']
-});
+import { run } from '@ember/runloop';
 
-test('it loads',  function(assert) {
-  let record = this.subject();
-  assert.ok(record);
+module('Unit | Serializer | playlist', function(hooks) {
+  setupTest(hooks);
+
+  test('it loads',  function(assert) {
+    let record = run(() => this.owner.lookup('service:store').createRecord('playlist'));
+    assert.ok(record);
+  });
 });

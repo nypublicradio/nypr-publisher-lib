@@ -1,17 +1,19 @@
 
-import { moduleForComponent, test } from 'ember-qunit';
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
+import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('truncate', 'helper:truncate', {
-  integration: true
-});
+module('helper:truncate', function(hooks) {
+  setupRenderingTest(hooks);
 
-// Replace this with your real tests.
-test('it renders', function(assert) {
-  this.set('inputValue', '1234');
+  // Replace this with your real tests.
+  test('it renders', async function(assert) {
+    this.set('inputValue', '1234');
 
-  this.render(hbs`{{truncate inputValue}}`);
+    await render(hbs`{{truncate inputValue}}`);
 
-  assert.equal(this.$().text().trim(), '1234');
+    assert.equal(this.$().text().trim(), '1234');
+  });
 });
 
