@@ -1,5 +1,8 @@
 # nypr-publisher-lib Changelog
 
+## 0.4.0-beta
+- [FEATURE] analytics upgrade
+
 ## 0.3.10
 - [BUGFIX] Use URL from Show model in show-tease rather than computed property
 
