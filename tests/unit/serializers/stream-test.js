@@ -1,11 +1,13 @@
-import { moduleForModel, test } from 'ember-qunit';
+import { module, test } from 'qunit';
+import { setupTest } from 'ember-qunit';
 
-moduleForModel('stream', 'Unit | Serializer | stream', {
-  // Specify the other units that are required for this test.
-  needs: ['serializer:stream']
-});
+import { run } from '@ember/runloop';
 
-test('it loads',  function(assert) {
-  let record = this.subject();
-  assert.ok(record);
+module('Unit | Serializer | stream', function(hooks) {
+  setupTest(hooks);
+
+  test('it loads',  function(assert) {
+    let record = run(() => this.owner.lookup('service:store').createRecord('stream'));
+    assert.ok(record);
+  });
 });
