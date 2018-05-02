@@ -1,5 +1,8 @@
 # nypr-publisher-lib Changelog
 
+## 0.4.0-beta
+- [FEATURE] analytics upgrade
+
 ## 0.3.13
 - [BUGFIX] #39 Add api-response pagination logic to mirage factory
 
