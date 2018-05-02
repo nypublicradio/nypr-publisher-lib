@@ -6208,9 +6208,9 @@ nypr-audio-services@>=0.4.0-beta.2:
     nypr-metrics "0.4.0-beta.1"
     nypr-ui "0.3.0-beta.1"
 
-nypr-django-for-ember@>=0.2.0-beta.1:
-  version "0.2.3"
-  resolved "https://registry.yarnpkg.com/nypr-django-for-ember/-/nypr-django-for-ember-0.2.3.tgz#18fd1a96739e51930987c3e9b12cc10f114588a5"
+nypr-django-for-ember@>=0.3.0-beta.1:
+  version "0.3.0-beta.1"
+  resolved "https://registry.yarnpkg.com/nypr-django-for-ember/-/nypr-django-for-ember-0.3.0-beta.1.tgz#053ea9a9a90369cc3809908500ac623ae7bcfc49"
   dependencies:
     ember-cli-babel "^6.6.0"
     ember-cli-htmlbars "^2.0.1"
