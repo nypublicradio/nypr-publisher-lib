@@ -1,6 +1,6 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import '@ember/test-helpers';
+import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
 module('helper:numeric-duration', function(hooks) {
@@ -32,9 +32,9 @@ module('helper:numeric-duration', function(hooks) {
   }];
 
   testCases.forEach(testCase => {
-    test(testCase.description, function(assert) {
+    test(testCase.description, async function(assert) {
       this.set('inputValue', testCase.inputMs)
-      this.render(hbs`{{numeric-duration inputValue}}`);
+      await render(hbs`{{numeric-duration inputValue}}`);
 
       assert.equal(this.$().text().trim(), testCase.expected);
     });
