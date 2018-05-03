@@ -1,5 +1,8 @@
 # nypr-publisher-lib Changelog
 
+## 0.3.12
+- [ENHANCEMENT] #38 Add #go-to-gothamist to django-page factory
+
 ## 0.3.11
 - [ENHANCEMENT] #32 Add link-roll model
 - [ENHANCEMENT] #35 Rely on publisher for page counts
