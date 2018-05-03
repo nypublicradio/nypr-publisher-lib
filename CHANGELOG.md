@@ -1,5 +1,9 @@
 # nypr-publisher-lib Changelog
 
+## 0.3.11
+- [ENHANCEMENT] #32 Add link-roll model
+- [ENHANCEMENT] #35 Rely on publisher for page counts
+
 ## 0.3.10
 - [BUGFIX] Use URL from Show model in show-tease rather than computed property
 
