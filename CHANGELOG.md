@@ -1,5 +1,8 @@
 # nypr-publisher-lib Changelog
 
+## 0.3.13
+- [BUGFIX] #39 Add api-response pagination logic to mirage factory
+
 ## 0.3.12
 - [ENHANCEMENT] #38 Add #go-to-gothamist to django-page factory
 
