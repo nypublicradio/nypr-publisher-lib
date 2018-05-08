@@ -38,9 +38,6 @@
   {{#g.right}}
   {{#if media.isMediumAndUp}}
       {{#listen-button
-        class='gtm__click-tracking'
-        data-action='Clicked Play/Pause Stream: Other'
-        data-label=stream.name
         type='gray-minion'
         itemPK=stream.slug
         itemTitle=stream.name}}
@@ -48,9 +45,6 @@
       {{/listen-button}}
     {{else}}
       {{listen-button
-        class='gtm__click-tracking'
-        data-action='Clicked Play/Pause Stream: Other'
-        data-label=stream.name
         type='blue-hollow'
         itemPK=stream.slug
         itemTitle=stream.name}}
