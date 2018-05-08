@@ -38,11 +38,7 @@
         {{#panel.button}}Subscribe to the podcast ▾{{/panel.button}}
         {{#panel.body as |body|}}
           {{#each model.podcastLinks as |podcast|}}
-            {{#body.link
-              classNames="gtm__click-tracking"
-              data-action=(concat "Subscribed to " model.title)
-              data-label=podcast.title
-              href=podcast.href}}
+            {{#body.link href=podcast.href}}
               <i class="fa {{if (eq podcast.title 'via RSS') 'fa-rss' 'fa-mobile'}}"></i> {{podcast.title}}
             {{/body.link}}
           {{/each}}
