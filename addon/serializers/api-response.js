@@ -1,16 +1,19 @@
 import DS from 'ember-data';
 import { A } from '@ember/array';
+import { get } from '@ember/object';
 import { serializeStoryAttributes } from 'nypr-publisher-lib/serializers/story';
 
 export function serializeApiResponseRelationships(relationships = {}, included = []) {
-  if (relationships['tease-list'] && relationships['tease-list'].data.length) {
-    relationships['tease-list'].data.forEach(story => {
-      let { attributes } = A(included).findBy('attributes.cms-pk', Number(story.id));
-      story.id = attributes.slug;
-      serializeStoryAttributes(attributes);
+  if (get(relationships, 'tease-list.data.length')) {
+    relationships['tease-list'].data.forEach(item => {
+      if (item.type === 'story') {
+        let { attributes } = A(included).findBy('attributes.cms-pk', Number(item.id));
+        item.id = attributes.slug;
+        serializeStoryAttributes(attributes);
+      }
     });
   }
-  if (relationships.story && relationships.story.data) {
+  if (get(relationships, 'story.data')) {
     let { attributes } = A(included).findBy('attributes.cms-pk', Number(relationships.story.data.id));
     relationships.story.data.id = attributes.slug;
     serializeStoryAttributes(attributes);
