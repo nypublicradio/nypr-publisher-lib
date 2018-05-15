@@ -4,7 +4,7 @@ import { readOnly } from '@ember/object/computed';
 
 export default DS.Model.extend({
   // BEGIN-SNIPPET api-response-fields
-  teaseList: DS.hasMany('bucketItem', {async: false, polymorphic: true}),
+  teaseList: DS.hasMany('bucketItem', {async: false, polymorphic: true, inverse: null}),
   story: DS.belongsTo('story', {async: false}),
   appearances: readOnly('appearance'),
   appearance: DS.hasMany('appearance', {async: false}),

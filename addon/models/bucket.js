@@ -7,6 +7,6 @@ export default Model.extend({
   slug: attr('string'),
   title: attr('string'),
   editLink: attr('string'),
-  bucketItems: hasMany('bucketItem', {async: false, polymorphic: true})
+  bucketItems: hasMany('bucketItem', {async: false, polymorphic: true, inverse: null})
   // END-SNIPPET
 });
