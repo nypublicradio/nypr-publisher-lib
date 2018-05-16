@@ -1,6 +1,6 @@
 import { Model, hasMany, belongsTo } from 'ember-cli-mirage';
 
 export default Model.extend({
-  teaseList: hasMany('bucketItem'),
+  teaseList: hasMany({ polymorphic: true }),
   story: belongsTo('story')
 });
