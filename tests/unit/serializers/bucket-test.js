@@ -2,7 +2,7 @@ import { moduleForModel, test } from 'ember-qunit';
 
 moduleForModel('bucket', 'Unit | Serializer | bucket', {
   // Specify the other units that are required for this test.
-  needs: ['serializer:bucket', 'model:bucket-item']
+  needs: ['serializer:bucket']
 });
 
 // Replace this with your real tests.
