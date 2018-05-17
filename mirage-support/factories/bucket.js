@@ -9,27 +9,30 @@ function headerItem() {
 
 let links = Array.apply(null, Array(10)).map(headerItem);
 
-function createBucketItem(server) {
-  server.create('story', {
-    slug: faker.lorem.words().dasherize(),
-    title: faker.lorem.words(),
-    imageMain: {
-      url: faker.image.image()
-    },
-    headers: {
-      brand: faker.random.arrayElement(links),
-      links: [faker.random.arrayElement(links), faker.random.arrayElement(links)]
-    },
-    template: faker.random.arrayElement(['story_default', 'story_video']),
-    url: faker.internet.url()
-  })
+function bucketItems() {
+  var res = [];
+  for (let i = 0; i < 20; i++) {
+    res.push({
+      attributes: {
+        slug: faker.lorem.words().dasherize(),
+        title: faker.lorem.words(),
+        imageMain: {
+          url: faker.image.image()
+        },
+        headers: {
+          brand: faker.random.arrayElement(links),
+          links: [faker.random.arrayElement(links), faker.random.arrayElement(links)]
+        },
+        template: faker.random.arrayElement(['story_default', 'story_video']),
+        url: faker.internet.url()
+      },
+      type: faker.random.arrayElement(['event', 'story'])
+    });
+  }
+  return res;
 }
 
 export default Factory.extend({
   slug: () => faker.lorem.words().dasherize(),
-  afterCreate(bucket, server) {
-    let stories = new Array(20);
-    stories.map(() => createBucketItem(server));
-    bucket.bucketItems = stories;
-  }
+  bucketItems
 });
