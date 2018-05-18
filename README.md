@@ -9,18 +9,19 @@ Installation
 
 * `git clone <repository-url>` this repository
 * `cd nypr-publisher-lib`
-* `npm install`
+* `bower install`
+* `yarn`
 
 ### Linting
 
-* `npm run lint:js`
-* `npm run lint:js -- --fix`
+* `yarn run lint:js`
+* `yarn run lint:js --fix`
 
 ### Running tests
 
 * `ember test` – Runs the test suite on the current Ember version
 * `ember test --server` – Runs the test suite in "watch mode"
-* `npm test` – Runs `ember try:each` to test your addon against multiple Ember versions
+* `yarn test` – Runs `ember try:each` to test your addon against multiple Ember versions
 
 ### Running the dummy application
 
