@@ -4,6 +4,7 @@ import { get, computed } from '@ember/object';
 import toSocialLinks from 'nypr-publisher-lib/utils/to-social-links'
 
 export default DS.Model.extend({
+  // BEGIN-SNIPPET person-fields
   slug: attr('string'),
   name: attr('string'),
   jobTitle: attr('string'),
@@ -16,4 +17,5 @@ export default DS.Model.extend({
     let social = get(this, 'social') || [];
     return toSocialLinks(social);
   }),
+  // END-SNIPPET
 });

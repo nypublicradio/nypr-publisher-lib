@@ -1,8 +1,8 @@
 import { moduleForModel, test } from 'ember-qunit';
 
-moduleForModel('api-response', 'Unit | Model | api response', {
+moduleForModel('bucket-item', 'Unit | Model | bucket item', {
   // Specify the other units that are required for this test.
-  needs: ['model:story', 'model:appearance', 'model:about-page', 'model:bucket-item'],
+  needs: []
 });
 
 test('it exists', function(assert) {

@@ -63,7 +63,7 @@ For more control over the components that are rendered for each `contentType`, y
 
 ```handlebars
 {{#if (eq model.contentType 'tease-list')}}
-  {{episode-list model=model displayShow=true}}
+  {{tease-list model=model displayShow=true}}
 {{else if (eq model.contentType 'about-page')}}
   {{my-custom-about-page model=model}}
 {{else}}

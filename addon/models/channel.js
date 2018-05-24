@@ -1,9 +1,10 @@
 import DS from 'ember-data';
+import BucketItemModel from 'nypr-publisher-lib/models/bucket-item';
 import { get, computed } from '@ember/object';
 import { normalizeForSorting } from 'nypr-publisher-lib/helpers/normalize-for-sorting';
 import { A } from '@ember/array';
 
-export default DS.Model.extend({
+export default BucketItemModel.extend({
   // BEGIN-SNIPPET channel-fields
   altLayout: DS.attr('boolean'),
   slug: DS.attr('string'),

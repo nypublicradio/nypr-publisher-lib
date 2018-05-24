@@ -1,13 +1,14 @@
 import { Promise as EmberPromise } from 'rsvp';
+import BucketItemModel from 'nypr-publisher-lib/models/bucket-item';
 import $ from 'jquery';
 import DS from 'ember-data';
 import config from 'ember-get-config';
 import { get, getProperties, computed } from '@ember/object';
 import { producingOrgs } from 'nypr-publisher-lib/helpers/producing-orgs';
-const { attr, Model } = DS;
+const { attr } = DS;
 import moment from 'moment';
 
-export default Model.extend({
+export default BucketItemModel.extend({
   // BEGIN-SNIPPET story-fields
   analyticsCode: attr('string'),
   appearances: attr(),
