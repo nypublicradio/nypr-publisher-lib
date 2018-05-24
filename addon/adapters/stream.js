@@ -2,8 +2,9 @@ import config from 'ember-get-config';
 import DS from 'ember-data';
 import rsvp from 'rsvp';
 import wrapAjax from 'nypr-publisher-lib/utils/wrap-ajax';
+import AdapterFetch from 'ember-fetch/mixins/adapter-fetch';
 
-export default DS.JSONAPIAdapter.extend({
+export default DS.JSONAPIAdapter.extend(AdapterFetch, {
   host: config.publisherAPI,
   namespace: 'v1',
   findAll() {
