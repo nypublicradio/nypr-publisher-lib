@@ -1,5 +1,9 @@
 # nypr-publisher-lib Changelog
 
+## 0.3.14
+- [ENHANCEMENT] #40 Allow teaseLists in api-responses to support channels in addition to stories
+- [CHORE] #41 Update readme to use yarn, mention bower
+
 ## 0.3.13
 - [BUGFIX] #39 Add api-response pagination logic to mirage factory
 
