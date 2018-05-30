@@ -106,6 +106,149 @@ jobs:
       - store_test_results:
           path: test-results/
 
+  setup_test_clients:
+    docker:
+      - image: circleci/buildpack-deps:jessie
+    working_directory: /home/circleci
+    steps:
+      - run:
+          name: Keyscan Github
+          command: |
+            mkdir ~/.ssh
+            ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+      - run:
+          name: clone clients
+          command: |
+            for client in wnyc wqxr new-sounds wnyc-studios; do
+              git clone git@github.com:nypublicradio/$client-web-client
+            done
+      - persist_to_workspace:
+          root: .
+          paths:
+            - wnyc-web-client
+            - wqxr-web-client
+            - new-sounds-web-client
+            - wnyc-studios-web-client
+
+  test_wnyc:
+    <<: *defaults
+    working_directory: /home/circleci/wnyc-web-client
+    environment:
+      CIRCLE_TEST_REPORTS: wnyc-test-results
+
+    steps:
+      - <<: *attach
+      - <<: *register_nypr_publisher_lib
+
+      - <<: *restore_node
+      - <<: *install_node
+      - <<: *save_node
+
+      - <<: *restore_bower
+      - <<: *install_bower
+      - <<: *save_bower
+
+      - <<: *build_modernizr
+
+      - <<: *run_client_tests
+
+      - store_test_results:
+          path: wnyc-test-results/
+
+  test_wqxr:
+    <<: *defaults
+    working_directory: /home/circleci/wqxr-web-client
+    environment:
+      CIRCLE_TEST_REPORTS: wqxr-test-results
+
+    steps:
+      - <<: *attach
+      - <<: *register_nypr_publisher_lib
+
+      - <<: *restore_node
+      - <<: *install_node
+      - <<: *save_node
+
+      - <<: *restore_bower
+      - <<: *install_bower
+      - <<: *save_bower
+
+      - <<: *build_modernizr
+
+      - <<: *run_client_tests
+
+      - store_test_results:
+          path: wqxr-test-results/
+
+  test_new_sounds:
+    <<: *defaults
+    working_directory: /home/circleci/new-sounds-web-client
+    environment:
+      CIRCLE_TEST_REPORTS: new-sounds-test-results
+
+    steps:
+      - <<: *attach
+      - <<: *register_nypr_publisher_lib
+
+      - <<: *restore_node
+      - <<: *install_node
+      - <<: *save_node
+
+      - <<: *run_client_tests
+
+      - store_test_results:
+          path: new-sounds-test-results/
+
+  test_wnyc_studios_ember:
+    <<: *defaults
+    parallelism: 4
+    working_directory: /home/circleci/wnyc-studios-web-client
+    environment:
+      CIRCLE_TEST_REPORTS: wnyc-studios-test-results
+
+    steps:
+      - <<: *attach
+      - <<: *register_nypr_publisher_lib
+
+      - <<: *restore_node
+      - <<: *install_node
+      - <<: *save_node
+
+      - <<: *build_modernizr
+
+      - run: |
+          cp .env.sample .env
+          npx ember exam --split=$CIRCLE_NODE_TOTAL --partition=$(($CIRCLE_NODE_INDEX + 1))
+
+      - store_test_results:
+          path: wnyc-studios-test-results/
+
+  test_wnyc_studios_cypress:
+    <<: *defaults
+    parallelism: 4
+    working_directory: /home/circleci/wnyc-studios-web-client
+    environment:
+      CIRCLE_TEST_REPORTS: wnyc-studios-test-results
+
+    steps:
+      - <<: *attach
+      - <<: *register_nypr_publisher_lib
+
+      - <<: *restore_node
+      - <<: *install_node
+      - <<: *save_node
+
+      - <<: *build_modernizr
+
+      - run: |
+          cp .env.sample .env
+          sudo apt-get install libgconf-2-4
+          yarn run cy:ci:test
+
+      - store_test_results:
+          path: wnyc-studios-test-results/
+
+
   deploy:
     <<: *defaults
     working_directory: /home/circleci/nypr-publisher-lib
