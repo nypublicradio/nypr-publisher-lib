@@ -3,7 +3,13 @@
 {{else}}
   {{#each links as |link|}}
     <li class="social-iconlist__item">
-      <a class="social-iconlist__link" href={{link.href}} title="{{followPrefix}} {{link.title}}">
+      <a
+        class="social-iconlist__link gtm__click-tracking"
+        data-action="Follow"
+        data-label="Follow {{followName}} on {{link.title}}"
+        href={{link.href}}
+        target="_blank"
+        title="{{followPrefix}} {{link.title}}">
         {{~fa-icon link.title~}}
       </a>
     </li>
