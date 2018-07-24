@@ -1,5 +1,5 @@
 <h1 class="story-comments__title">
-  <button class="story-comments__reveal-button gtm__click-tracking" {{action 'getComments'}} data-test-selector="story-comments" data-action="Displayed Comments" data-label="{{story.title}} | {{or story.showTitle story.channelTitle}}">
+  <button class="story-comments__reveal-button gtm__click-tracking" {{action 'getComments'}} data-test-selector="story-comments" data-action="Displayed Comments" data-label="{{story.title}} | {{or story.showTitle story.channelTitle 'NPR Article'}}">
     {{fa-icon 'comment' class="story-comments__icon"}}
     <span class="story-comments__button-text">
     {{#if (gt commentsCount 1)}}
