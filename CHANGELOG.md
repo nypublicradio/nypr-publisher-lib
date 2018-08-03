@@ -2,6 +2,7 @@
 
 ## 0.4.0
 - [FEATURE] analytics upgrade
+- [FEATURE] ember 3 and code mods
 
 ## 0.3.14
 - [ENHANCEMENT] #40 Allow teaseLists in api-responses to support channels in addition to stories
