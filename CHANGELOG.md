@@ -1,6 +1,6 @@
 # nypr-publisher-lib Changelog
 
-## 0.4.0-beta
+## 0.4.0
 - [FEATURE] analytics upgrade
 
 ## 0.3.14
