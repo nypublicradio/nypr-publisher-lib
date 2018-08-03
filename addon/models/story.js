@@ -4,13 +4,11 @@ import $ from 'jquery';
 import DS from 'ember-data';
 import config from 'ember-get-config';
 import { get, getProperties, computed } from '@ember/object';
-import { producingOrgs } from 'nypr-publisher-lib/helpers/producing-orgs';
 const { attr } = DS;
 import moment from 'moment';
 
 export default BucketItemModel.extend({
   // BEGIN-SNIPPET story-fields
-  analyticsCode: attr('string'),
   appearances: attr(),
   audio: attr(),
   audioType: 'on_demand',
@@ -155,53 +153,6 @@ export default BucketItemModel.extend({
     }
 
     return allProdOrgs;
-  }),
-  analytics: computed('series', 'show', 'channel', 'headers', 'allProducingOrgs', {
-    get() {
-      let brandtitle = get(this, 'headers.brand.title');
-      let brandurl = get(this, 'headers.brand.url');
-      let channeltitle = null,
-          showtitle = null,
-          isblog = false,
-          seriestitles = [],
-          allProdOrgs = [];
-
-      if (get(this, 'allProducingOrgs')){
-        allProdOrgs = get(this, 'allProducingOrgs');
-      }
-      if (get(this, 'channel')){
-        channeltitle = brandtitle;
-      }
-      if (get(this, 'show')){
-        showtitle = brandtitle;
-      }
-      if (get(this, 'series')){
-        seriestitles = get(this, 'series').map((s) => {
-          return s.title;
-        });
-      }
-
-      if (brandurl && brandurl.indexOf('/blogs/') > 0 ){
-        isblog = true;
-      }
-
-      let containers = [channeltitle, showtitle, seriestitles, allProdOrgs].map((c, i) => {
-        if (i === 0 && c) {
-          return `${isblog ? 'Blog' : 'Article Channel'}: ${c}`;
-        } else if (i === 1 && c) {
-          return `Show: ${c}`;
-        } else if (i === 2 && c.length) {
-          return `Series: ${c.join('+')}`;
-        } else if (i === 3 && Array.isArray(c) && c.length) {
-          return `Produced by ${producingOrgs([c], {unlinked:true})}`;
-        }
-      }).compact().join(' | ');
-
-      return {
-        containers,
-        title: get(this, 'title')
-      };
-    }
   }),
 
   // so Ember Simple Auth inludes a records ID when it saves

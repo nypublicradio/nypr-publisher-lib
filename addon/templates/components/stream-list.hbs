@@ -39,7 +39,7 @@
   {{#if media.isMediumAndUp}}
       {{#listen-button
         class='gtm__click-tracking'
-        data-action='Clicked Play/Pause Stream: Other'
+        data-action='Clicked Play/Pause Stream: stream-list'
         data-label=stream.name
         type='gray-minion'
         itemPK=stream.slug
@@ -49,7 +49,7 @@
     {{else}}
       {{listen-button
         class='gtm__click-tracking'
-        data-action='Clicked Play/Pause Stream: Other'
+        data-action='Clicked Play/Pause Stream: stream-list'
         data-label=stream.name
         type='blue-hollow'
         itemPK=stream.slug

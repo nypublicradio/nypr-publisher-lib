@@ -27,14 +27,7 @@ export default  Component.extend({
       };
       let tabLabel = titleMap[tabTitle] || tabTitle;
       if (get(this, 'onChooseTab')) {
-          this.send('onChooseTab', tabLabel);
-
-          // get(this, 'metrics').trackEvent('GoogleAnalytics', {
-          //   category: 'Persistent Player',
-          //   action: 'Click',
-          //   label: `Switch to ${tabLabel} Tab`
-          // });
-
+        this.send('onChooseTab', tabLabel);
       }
     }
   }

@@ -59,6 +59,11 @@
           isLive=isLive
           type=playButton
           playContext=playContext
+          data-action=(concat 'Clicked Play/Pause ' (if isLive 'Stream: ' 'On Demand: ') playContext)
+          data-label=(if isLive
+            streamName
+            (concat item.title ' | ' (or item.showTitle item.headers.brand.title))
+          )
           itemPK=itemId
           itemTitle=item.title
           itemShow=(or item.showTitle item.headers.brand.title)

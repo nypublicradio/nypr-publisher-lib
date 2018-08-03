@@ -15,6 +15,12 @@ function makeSegment(_, index) {
   };
 }
 
+function makeSeries() {
+  return {
+    title: () => faker.lorem.words(2),
+  }
+}
+
 export default Factory.extend({
   slug(id) {
     return `story-${id}`;
@@ -41,19 +47,19 @@ export default Factory.extend({
   audioAvailable: true,
   audioMayEmbed: true,
   audioMayStream: true,
-  analyticsCode: 'ExperimentalStory:trump-rubio-super-tuesday-morning-politics $A1$AD771$V0$Ms$D1$HS1$HC0$B0$SS+Everything You Need to Know About the 2016 Election+$C$SThe Brian Lehrer Show$T!news!politics!2016_election!super_tuesday!$AP/bl/bl022916apod.mp3$',
-  analytics() {
-    return {
-      containers: "Show: The Brian Lehrer Show | Series: Everything You Need to Know About the 2016 Election",
-      title: this.title
-    };
-  },
   cmsPK: id => id + 1,
+  /* eslint-disable */
+  appearances: {
+    authors: [{name: 'Author 1'}, {name: 'Author 2'}]
+  },
   producingOrganizations: [],
   showProducingOrgs: [],
   allProducingOrgs: [],
+  series: () => Array.from(Array(3), makeSeries),
+  /* eslint-enable */
+  tags: () =>  faker.lorem.words(5).split(' '),
   showTitle: faker.lorem.words(3),
-  
+
   withSegments: trait({
     segments: Array.from(Array(3), makeSegment)
   })

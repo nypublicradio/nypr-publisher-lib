@@ -3,7 +3,7 @@
   {{#liquid-bind activeTabIndex as |currentIndex|}}
     {{#each tabTitles as |title index|}}
       <li class="tabbedlist-tab {{if (eq index currentIndex) 'is-active'}}">
-        <button class="tabbedlist-button" {{action 'chooseTab' index}}>{{title}}</button>
+        <button class="tabbedlist-button gtm__click-tracking" data-action='Switch to "{{title}}" Tab' {{action 'chooseTab' index}}>{{title}}</button>
         {{#if (eq index currentIndex)}}
           <div class="tabbedlist-marker"></div>
         {{/if}}
