@@ -25,7 +25,8 @@ export default Component.extend({
 
   isLive:             equal('status', STATUSES.LIVE),
   isLatest:           readOnly('item.isLatest'),
-  isListenableNow:    or('item.audioAvailable', 'isLive'),
+  isStreamable:       and('item.audioAvailable', 'item.audioMayStream'),
+  isListenableNow:    or('isStreamable', 'isLive'),
   // BEGIN-SNIPPET is-fancy-featured-cp
   isFancyFeatured:    and('item.largeTeaseLayout', 'item.imageMain', 'isFeatured'),
   // END-SNIPPET
