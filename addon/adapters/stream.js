@@ -1,36 +1,27 @@
 import config from 'ember-get-config';
 import DS from 'ember-data';
 import rsvp from 'rsvp';
-import wrapAjax from 'nypr-publisher-lib/utils/wrap-ajax';
-import AdapterFetch from 'ember-fetch/mixins/adapter-fetch';
+import fetch from 'fetch';
 
-export default DS.JSONAPIAdapter.extend(AdapterFetch, {
+const json = r => r.json();
+
+export default DS.JSONAPIAdapter.extend({
   host: config.publisherAPI,
   namespace: 'v1',
   findAll() {
-    let streams, whatsOn;
-    let streamUrl = [this.host, this.namespace, 'list/streams'].join('/') + '/';
-    let whatsOnUrl = [this.host, this.namespace, 'whats_on'].join('/') + '/';
-
-    let options = this.ajaxOptions(streamUrl, 'GET', {});
-    streams = wrapAjax(options);
-
-    options = this.ajaxOptions(whatsOnUrl, 'GET', {});
-    whatsOn = wrapAjax(options);
-    return rsvp.hash({streams, whatsOn});
+    let base = `${this.host}/${this.namespace}`;
+    return rsvp.hash({
+      streams: fetch(`${base}/list/streams/`).then(json),
+      whatsOn: fetch(`${base}/whats_on/`).then(json),
+    });
   },
   // BEGIN-SNIPPET stream-find-record
   findRecord(store, type, id/*, snapshot*/) {
-    let stream, whatsOn;
-    let streamUrl = [this.host, this.namespace, 'list/streams', id].join('/') + '/';
-    let whatsOnUrl = [this.host, this.namespace, 'whats_on', id].join('/') + '/';
-
-    let options = this.ajaxOptions(streamUrl, 'GET', {});
-    stream = wrapAjax(options);
-
-    options = this.ajaxOptions(whatsOnUrl, 'GET', {});
-    whatsOn = wrapAjax(options);
-    return rsvp.hash({stream, whatsOn});
+    let base = `${this.host}/${this.namespace}`;
+    return rsvp.hash({
+      stream: fetch(`${base}/list/streams/${id}/`).then(json),
+      whatsOn: fetch(`${base}/whats_on/${id}/`).then(json),
+    });
   }
   // END-SNIPPET
 });

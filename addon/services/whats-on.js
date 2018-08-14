@@ -1,7 +1,7 @@
 import config from 'ember-get-config';
-import wrapAjax from 'nypr-publisher-lib/utils/wrap-ajax';
 import Service from '@ember/service';
 import { get } from '@ember/object';
+import fetch from 'fetch';
 
 export default Service.extend({
   endPoint: 'v1/whats_on/',
@@ -9,7 +9,9 @@ export default Service.extend({
     let endPoint = get(this, 'endPoint');
     let url = `${config.publisherAPI}/${endPoint}`;
 
-    return wrapAjax(url).then(d => this._extractStatus(d, pk));
+    return fetch(url)
+      .then(r => r.json())
+      .then(d => this._extractStatus(d, pk));
   },
 
   _extractStatus(data, pk) {
