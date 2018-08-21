@@ -1,5 +1,8 @@
 # nypr-publisher-lib Changelog
 
+## 0.4.1
+- [BUGFIX] walk up the tree to find the consuming app at build time
+
 ## 0.4.0
 - [FEATURE] analytics upgrade
 - [FEATURE] ember 3 and code mods
