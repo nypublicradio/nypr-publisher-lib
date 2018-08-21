@@ -6,8 +6,14 @@ const Funnel = require('broccoli-funnel');
 
 module.exports = {
   name: 'nypr-publisher-lib',
-  included: function(app) {
-    this.addonConfig = this.app.project.config(app.env)['ember-cli-mirage'] || {};
+  included: function(app, parentAddon) {
+    let target = parentAddon || app;
+    while(target.app) {
+      target = target.app;
+    }
+    this.app = target;
+
+    this.addonConfig = this.app.project.config(this.app.env)['ember-cli-mirage'] || {};
     this.mirageSupportDirectory = path.join(this.root, 'mirage-support');
 
     this._super.included.apply(this, arguments);
