@@ -11,6 +11,7 @@ export default BucketItemModel.extend({
   cmsPK: DS.attr('number'),
   title: DS.attr('string'),
   url: DS.attr('string'),
+  siteId: DS.attr('number'),
   canonicalHost: computed('url', function() {
     let url = get(this, 'url');
     let hostMatch = url && url.match(/\/\/([^/]+)\//);
@@ -20,7 +21,8 @@ export default BucketItemModel.extend({
     return undefined;
   }),
   sortableTitle: computed('title', function() {
-    return normalizeForSorting([ get(this, 'title') ]);
+    let title = this.getWithDefault('title', '');
+    return normalizeForSorting([ title ]);
   }),
   about: DS.belongsTo('api-response', {async: false}),
 
