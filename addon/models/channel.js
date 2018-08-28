@@ -75,6 +75,7 @@ export default BucketItemModel.extend({
   podcastLinks: DS.attr(),
   rssFeed: DS.attr('string'),
   logoImage: DS.attr(),
+  fbImage: DS.attr(),
   listingObjectType: DS.attr('string'),
   itemType: computed.readOnly('listingObjectType'),
   editLink: DS.attr('string'),
