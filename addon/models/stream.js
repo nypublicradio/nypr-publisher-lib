@@ -45,7 +45,7 @@ export default Model.extend({
     return get(this, 'isWQXR') && (get(this, 'whatsOn') > 0);
   }),
 
-  liveWNYC:             computed('isWNYC', 'whatsOn', function(){
+  liveWNYC:             computed('isWNYC', 'whatsOn', 'alwaysBroadcasting', function(){
     return get(this, 'isWNYC') && ((get(this, 'whatsOn') > 0) || (get(this, 'alwaysBroadcasting')));
   }),
 
