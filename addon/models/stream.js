@@ -8,6 +8,7 @@ export default Model.extend({
   // BEGIN-SNIPPET stream-fields
   audioType:            'livestream',
 
+  alwaysBroadcasting:   attr('boolean'),
   hasPlaylists:         attr('boolean'),
   imageLogo:            attr('string'),
   scheduleUrl:          attr('string'),
@@ -42,6 +43,10 @@ export default Model.extend({
 
   liveWQXR:             computed('isWQXR', 'whatsOn', function(){
     return get(this, 'isWQXR') && (get(this, 'whatsOn') > 0);
+  }),
+
+  liveWNYC:             computed('isWNYC', 'whatsOn', function(){
+    return get(this, 'isWNYC') && ((get(this, 'whatsOn') > 0) || (get(this, 'alwaysBroadcasting')));
   }),
 
   currentComposer:      computed('currentPlaylistItem', function() {
