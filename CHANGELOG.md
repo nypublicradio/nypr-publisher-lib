@@ -1,5 +1,8 @@
 # nypr-publisher-lib Changelog
 
+## 0.4.3
+- [FEATURE] consider whether or not a stream is marked as 'always broadcasting' for liveWNYC property
+
 ## 0.4.1
 - [BUGFIX] walk up the tree to find the consuming app at build time
 
