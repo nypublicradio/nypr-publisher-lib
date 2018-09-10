@@ -9,9 +9,8 @@ export default Component.extend({
   linkText: 'Download',
   shouldHide: alias('deviceIsIos'),
 
-  init() {
-    this._super(...arguments);
-
-    this.deviceIsIos = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
+  didInsertElement() {
+    let isIos =  !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
+    this.set('deviceIsIos', isIos);
   }
 });

@@ -119,12 +119,15 @@ export default DS.JSONAPISerializer.extend({
     if (!urls) {
       return [];
     }
-    let { userAgent }   = navigator;
-    let browser = {
-      mobile  : userAgent.indexOf('Mobile') > -1,
-      android : userAgent.indexOf('Android') > -1,
-      ios     : userAgent.indexOf('iPhone') > -1 || userAgent.indexOf('iPad') > -1
-    };
+    let browser;
+    if (typeof navigator !== 'undefined') {
+      let { userAgent }   = navigator;
+      browser = {
+        mobile  : userAgent.indexOf('Mobile') > -1,
+        android : userAgent.indexOf('Android') > -1,
+        ios     : userAgent.indexOf('iPhone') > -1 || userAgent.indexOf('iPad') > -1
+      };
+    }
     let {
       /*ipod:hls,*/ // no HLS until CDN servers are working correctly
       aac, rtsp:mp3, mobile_aac, mobile:mobile_mp3 } = urls;
@@ -132,7 +135,7 @@ export default DS.JSONAPISerializer.extend({
     // why is this an array?
     aac = aac[0];
 
-    if (browser.mobile || browser.android || browser.ios) {
+    if (browser && browser.mobile || browser.android || browser.ios) {
       // there are mobile-specific mount points for mp3 and aac
       aac = mobile_aac ? mobile_aac : aac;
       mp3 = mobile_mp3 ? mobile_mp3 : mp3;

@@ -3,10 +3,11 @@ import DS from 'ember-data';
 import wrapAjax from 'nypr-publisher-lib/utils/wrap-ajax';
 // TODO: auth headers for native fetch
 // import fetch from 'fetch';
+import AdapterFetch from 'ember-fetch/mixins/adapter-fetch';
 
 const DRAFT_TOKENS = ['content_type_id', 'object_id', 'token', '_'];
 
-export default DS.JSONAPIAdapter.extend({
+export default DS.JSONAPIAdapter.extend(AdapterFetch, {
   host: config.publisherAPI,
   namespace: 'v3',
   pathForType: () => 'story',
