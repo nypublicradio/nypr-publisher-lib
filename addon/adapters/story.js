@@ -1,8 +1,6 @@
 import config from 'ember-get-config';
 import DS from 'ember-data';
-import wrapAjax from 'nypr-publisher-lib/utils/wrap-ajax';
-// TODO: auth headers for native fetch
-// import fetch from 'fetch';
+import fetch from 'fetch';
 import AdapterFetch from 'ember-fetch/mixins/adapter-fetch';
 
 const DRAFT_TOKENS = ['content_type_id', 'object_id', 'token', '_'];
@@ -31,8 +29,10 @@ export default DS.JSONAPIAdapter.extend(AdapterFetch, {
   query(store, type, {related}) {
     if (related) {
       let url = `${this.host}/${this.namespace}/story/related/?limit=${related.limit}&related=${related.itemId}`;
-      let options = this.ajaxOptions(url, 'GET', {});
-      return wrapAjax(options);
+      return fetch(url, {
+        mode: 'cors',
+        credentials: 'include'
+      }).then(r => r.json());
     } else {
       return this._super(...arguments);
     }
