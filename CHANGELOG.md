@@ -1,5 +1,8 @@
 # nypr-publisher-lib Changelog
 
+## 0.5.0
+- [ENHANCEMENT] Fastboot compatibility
+
 ## 0.4.3
 - [FEATURE] consider whether or not a stream is marked as 'always broadcasting' for liveWNYC property
 
