@@ -26,5 +26,16 @@ module('Integration | Component | active-html', function(hooks) {
     let contents = this.$('#target');
     assert.equal(contents.text().trim(), 'changed');
   });
+
+  test('it handles changes to html', async function(assert) {
+    let html = '<div class="target">test</div>'
+    this.set('html', html);
+    await render(hbs`{{active-html html=html}}`);
+
+    let html2 = '<div class="target2">test2</div>'
+    this.set('html', html2);
+    let contents = this.$('.target2');
+    assert.equal(contents.text().trim(), 'test2');
+  });
 });
 
