@@ -1,5 +1,8 @@
 # nypr-publisher-lib Changelog
 
+## 0.5.1
+- [BUGFIX] #48 Fix active-html component to handle updates to html
+
 ## 0.5.0
 - [ENHANCEMENT] Fastboot compatibility
 
