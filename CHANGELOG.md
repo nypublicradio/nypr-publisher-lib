@@ -1,5 +1,8 @@
 # nypr-publisher-lib Changelog
 
+## 0.5.2
+- [ENHANCEMENT] liveWQXR now considers the "alwaysBroadcasting" flag on streams
+
 ## 0.5.1
 - [BUGFIX] #48 Fix active-html component to handle updates to html
 
