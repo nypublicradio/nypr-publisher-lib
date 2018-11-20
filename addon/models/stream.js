@@ -41,8 +41,8 @@ export default Model.extend({
     return get(this, 'sourceTags').includes('wnyc_site');
   }),
 
-  liveWQXR:             computed('isWQXR', 'whatsOn', function(){
-    return get(this, 'isWQXR') && (get(this, 'whatsOn') > 0);
+  liveWQXR:             computed('isWQXR', 'whatsOn', 'alwaysBroadcasting', function(){
+    return get(this, 'isWQXR') && ((get(this, 'whatsOn') > 0) || (get(this, 'alwaysBroadcasting')));
   }),
 
   liveWNYC:             computed('isWNYC', 'whatsOn', 'alwaysBroadcasting', function(){
