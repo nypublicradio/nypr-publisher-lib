@@ -1,5 +1,8 @@
 # nypr-publisher-lib Changelog
 
+## 0.5.3
+- [BUGFIX] add liveOnAny flag on streams to surface streams w/o playlists on "All Streams" lists
+
 ## 0.5.2
 - [ENHANCEMENT] liveWQXR now considers the "alwaysBroadcasting" flag on streams
 
