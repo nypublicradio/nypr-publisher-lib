@@ -41,12 +41,16 @@ export default Model.extend({
     return get(this, 'sourceTags').includes('wnyc_site');
   }),
 
-  liveWQXR:             computed('isWQXR', 'whatsOn', 'alwaysBroadcasting', function(){
-    return get(this, 'isWQXR') && ((get(this, 'whatsOn') > 0) || (get(this, 'alwaysBroadcasting')));
+  liveOnAny:            computed('whatsOn', 'alwaysBroadcasting', function() {
+    return ((get(this, 'whatsOn') > 0) || (get(this, 'alwaysBroadcasting')));
   }),
 
-  liveWNYC:             computed('isWNYC', 'whatsOn', 'alwaysBroadcasting', function(){
-    return get(this, 'isWNYC') && ((get(this, 'whatsOn') > 0) || (get(this, 'alwaysBroadcasting')));
+  liveWQXR:             computed('isWQXR', 'liveOnAny', function(){
+    return get(this, 'isWQXR') && get(this, 'liveOnAny');
+  }),
+
+  liveWNYC:             computed('isWNYC', 'liveOnAny', function(){
+    return get(this, 'isWNYC') && get(this, 'liveOnAny');
   }),
 
   currentComposer:      computed('currentPlaylistItem', function() {
