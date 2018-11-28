@@ -1,5 +1,8 @@
 # nypr-publisher-lib Changelog
 
+## 0.5.4
+- [BUGFIX] cache Cypress binary in circle.yml
+
 ## 0.5.3
 - [BUGFIX] add liveOnAny flag on streams to surface streams w/o playlists on "All Streams" lists
 
