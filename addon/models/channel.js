@@ -87,11 +87,12 @@ export default BucketItemModel.extend({
   scheduleSummary: DS.attr('string'),
   newsletterListId: DS.attr('string'),
   producingOrganizations: DS.attr(),
+  nprAnalyticsDimensions: DS.attr(),
+  itunesPodcastId: DS.attr('string'),
   // computeds
   hasLinkroll: computed.bool('linkroll.length'),
   hasMarquee: computed.bool('marqueeImage'),
   hasSubscriptionLinks: computed.bool('podcastLinks.length'),
   hasHeaderButtons: computed.or('donateChunk', 'hasSubscriptionLinks'),
-  nprAnalyticsDimensions: DS.attr(),
   // END-SNIPPET
 });
