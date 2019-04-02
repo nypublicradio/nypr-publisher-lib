@@ -1,5 +1,8 @@
 # nypr-publisher-lib Changelog
 
+## 0.5.5
+- [ENHANCEMENT] include itunesPodcastId in channel model
+
 ## 0.5.4
 - [BUGFIX] cache Cypress binary in circle.yml
 
