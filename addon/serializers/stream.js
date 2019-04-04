@@ -135,7 +135,8 @@ export default DS.JSONAPISerializer.extend({
     // why is this an array?
     aac = aac[0];
 
-    if (browser && browser.mobile || browser.android || browser.ios) {
+    // still run this even if we are in fastboot and browser isn't available
+    if ((typeof document === 'undefined') || (browser && browser.mobile || browser.android || browser.ios)) {
       // there are mobile-specific mount points for mp3 and aac
       aac = mobile_aac ? mobile_aac : aac;
       mp3 = mobile_mp3 ? mobile_mp3 : mp3;

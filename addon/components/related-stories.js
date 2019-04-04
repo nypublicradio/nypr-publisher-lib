@@ -14,6 +14,10 @@ export default Component.extend({
     get() {
       get(this, 'getStories')().then(stories => {
         set(this, 'stories', stories);
+        if (typeof document === 'undefined') {
+          // don't run in fastboot
+          return;
+        }
         // TODO: make this an app concern
         if (this.$().imagesLoaded) {
           scheduleOnce('afterRender', this, this.imagesLoaded);

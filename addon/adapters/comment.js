@@ -1,8 +1,7 @@
 import config from 'ember-get-config';
 import DS from 'ember-data';
-import wrapAjax from 'nypr-django-for-ember/utils/wrap-ajax'
 // TODO: auth headers for native fetch
-// import fetch from 'fetch';
+import fetch from 'fetch';
 import DataAdapterMixin from 'ember-simple-auth/mixins/data-adapter-mixin';
 import AdapterFetch from 'ember-fetch/mixins/adapter-fetch';
 
@@ -17,7 +16,9 @@ export default DS.JSONAPIAdapter.extend(AdapterFetch, DataAdapterMixin, {
   },
   query(store, type, query) {
     let url = [this.host, this.namespace, query.itemTypeId, query.itemId, ''].join('/');
-    let options = this.ajaxOptions(url, 'GET', {});
-    return wrapAjax(options);
+    return fetch(url, {
+      mode: 'cors',
+      credentials: 'include'
+    }).then(r => r.json())
   }
 });
