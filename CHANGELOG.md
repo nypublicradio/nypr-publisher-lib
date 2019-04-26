@@ -1,5 +1,8 @@
 # nypr-publisher-lib Changelog
 
+## 0.5.6
+- [ENHANCEMENT] Use more accessible nypr-ui ^0.5.0
+
 ## 0.5.5
 - [ENHANCEMENT] include itunesPodcastId in channel model
 
