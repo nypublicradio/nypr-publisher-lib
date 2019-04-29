@@ -3,6 +3,7 @@ import { computed, get } from '@ember/object';
 import config from 'ember-get-config';
 import layout from '../templates/components/story-comments';
 
+
 export default Component.extend({
   layout,
   classNames: ['story-comments'],
@@ -41,6 +42,10 @@ export default Component.extend({
 
   isShowingComments: computed({
     get() {
+      if (typeof document === 'undefined') {
+        // don't run in fastboot
+        return;
+      }
       var hash = window.location.hash.slice(1).split('&');
       return hash.indexOf('comments') !== -1 || hash.indexOf('commentlist') !== -1;
     },
