@@ -1,5 +1,8 @@
 # nypr-publisher-lib Changelog
 
+## 0.5.7
+- [ENHANCEMENT] Fastboot compatibility
+
 ## 0.5.6
 - [ENHANCEMENT] Use more accessible nypr-ui ^0.5.0
 
