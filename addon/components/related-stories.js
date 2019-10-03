@@ -3,7 +3,7 @@ import { scheduleOnce } from '@ember/runloop';
 import { computed } from '@ember/object';
 import Component from '@ember/component';
 import layout from '../templates/components/related-stories';
-import { get, set } from '@ember/object';
+import { get } from '@ember/object';
 
 export default Component.extend({
   tagName: 'section',
@@ -13,7 +13,7 @@ export default Component.extend({
   stories: computed('getStories', {
     get() {
       get(this, 'getStories')().then(stories => {
-        set(this, 'stories', stories);
+        // set(this, 'stories', stories);
         if (typeof document === 'undefined') {
           // don't run in fastboot
           return;
@@ -22,6 +22,7 @@ export default Component.extend({
         if (this.$().imagesLoaded) {
           scheduleOnce('afterRender', this, this.imagesLoaded);
         }
+        return stories;
       });
     },
     set(k,v) { return v; }
