@@ -9,18 +9,22 @@ export default Component.extend({
   classNames: ['story-comments'],
   adminURL: `${config.adminRoot}/admin`,
 
+  /* eslint-disable */
   comments: computed('getComments', {
     get() {
       // @todo: figure out if we need isLoading here
-      // @body: commented these out to silence build errors, needs improved approach
-      // this.set('isLoading', true);
+      // @body: excluded these from eslint to silence build errors, needs improved approach
+
+      this.set('isLoading', true);
       return get(this, 'getComments')().then(comments => {
-        // this.set('isLoading', false);
-        return comments;
+        this.set('isLoading', false);
+        this.set('comments', comments);
+        // return comments;
       });
     },
     set(k,v) { return v; }
   }),
+  /* eslint-enable */
 
   didInsertElement() {
     if (get(this, 'isShowingComments')) {
