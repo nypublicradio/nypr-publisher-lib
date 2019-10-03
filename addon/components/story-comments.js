@@ -11,10 +11,13 @@ export default Component.extend({
 
   comments: computed('getComments', {
     get() {
-      this.set('isLoading', true);
-      get(this, 'getComments')().then(comments => {
-        this.set('comments', comments);
-      }).finally(() => this.set('isLoading', false));
+      // @todo: figure out if we need isLoading here
+      // @body: commented these out to silence build errors, needs improved approach
+      // this.set('isLoading', true);
+      return get(this, 'getComments')().then(comments => {
+        // this.set('isLoading', false);
+        return comments;
+      });
     },
     set(k,v) { return v; }
   }),
