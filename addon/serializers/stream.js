@@ -62,7 +62,8 @@ export default DS.JSONAPISerializer.extend({
       current_show,
       has_playlists,
       current_playlist_item,
-      future
+      future,
+      previous
     } = whatsOn;
 
     if (current_show) {
@@ -103,6 +104,10 @@ export default DS.JSONAPISerializer.extend({
     if (future) {
       attributes.future = [];
       future.forEach((p, i) => attributes.future[i] = camelizeKeys([ p ]));
+    }
+    if (previous) {
+      attributes.previous = [];
+      previous.forEach((p, i) => attributes.previous[i] = camelizeKeys([ p ]));
     }
 
     json.attributes = attributes;

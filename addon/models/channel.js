@@ -24,7 +24,7 @@ export default BucketItemModel.extend({
     let title = this.getWithDefault('title', '');
     return normalizeForSorting([ title ]);
   }),
-  about: DS.belongsTo('api-response', {async: false}),
+  about: DS.attr(),
 
   sidebarChunks: DS.attr(), // Array of custom html markup
   chunkSidebarTop: computed('sidebarChunks', {
