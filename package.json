@@ -56,7 +56,7 @@
     "ember-cli-uglify": "^2.0.0",
     "ember-code-snippet": "^2.0.0",
     "ember-composable-helpers": "^2.1.0",
-    "ember-data": "^2.16.0",
+    "ember-data": "~3.9.2",
     "ember-disable-prototype-extensions": "^1.1.2",
     "ember-export-application-global": "^2.0.0",
     "ember-fetch": "^6.5.0",
