@@ -1,11 +1,10 @@
 import config from 'ember-get-config';
 import DS from 'ember-data';
 import fetch from 'fetch';
-import AdapterFetch from 'ember-fetch/mixins/adapter-fetch';
 
 const DRAFT_TOKENS = ['content_type_id', 'object_id', 'token', '_'];
 
-export default DS.JSONAPIAdapter.extend(AdapterFetch, {
+export default DS.JSONAPIAdapter.extend({
   host: config.publisherAPI,
   namespace: 'v3',
   pathForType: () => 'story',

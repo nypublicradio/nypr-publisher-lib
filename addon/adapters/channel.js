@@ -1,9 +1,8 @@
 import { assign } from '@ember/polyfills';
 import DS from 'ember-data';
 import config from 'ember-get-config';
-import AdapterFetch from 'ember-fetch/mixins/adapter-fetch';
 
-export default DS.JSONAPIAdapter.extend(AdapterFetch, {
+export default DS.JSONAPIAdapter.extend({
   host: config.publisherAPI,
   namespace: 'v3',
   pathForType: () => 'channel',

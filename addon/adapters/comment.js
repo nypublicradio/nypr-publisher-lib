@@ -3,9 +3,8 @@ import DS from 'ember-data';
 // TODO: auth headers for native fetch
 import fetch from 'fetch';
 import DataAdapterMixin from 'ember-simple-auth/mixins/data-adapter-mixin';
-import AdapterFetch from 'ember-fetch/mixins/adapter-fetch';
 
-export default DS.JSONAPIAdapter.extend(AdapterFetch, DataAdapterMixin, {
+export default DS.JSONAPIAdapter.extend(DataAdapterMixin, {
   host: config.publisherAPI,
   namespace: 'v1/list/comments',
   authorize(xhr) {
