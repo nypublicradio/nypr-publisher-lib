@@ -1,5 +1,8 @@
 # nypr-publisher-lib Changelog
 
+## 0.5.8
+- [ENHANCEMENT] Added link comment policy in comments component
+
 ## 0.5.7
 - [ENHANCEMENT] Fastboot compatibility
 
