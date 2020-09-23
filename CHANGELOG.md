@@ -1,5 +1,8 @@
 # nypr-publisher-lib Changelog
 
+## 0.5.9
+- [ENHANCEMENT] Configure HLS as the preferred playback format
+
 ## 0.5.8
 - [ENHANCEMENT] Added link comment policy in comments component
 
