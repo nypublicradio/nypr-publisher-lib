@@ -33,7 +33,7 @@
     "ember-click-outside": "^0.1.12",
     "ember-get-config": "^0.2.2",
     "liquid-fire": "~0.29.1",
-    "nypr-audio-services": "^0.5.0",
+    "nypr-audio-services": "nypublicradio/nypr-audio-services#bkammin/upgrades",
     "nypr-django-for-ember": "^0.4.0",
     "nypr-ui": "^0.5.0"
   },
