@@ -133,7 +133,9 @@ export default DS.JSONAPISerializer.extend({
         ios     : userAgent.indexOf('iPhone') > -1 || userAgent.indexOf('iPad') > -1
       };
     }
-    let { ipod:hls, aac, rtsp:mp3, mobile_aac, mobile:mobile_mp3 } = urls;
+    let {
+      /*ipod:hls,*/ // no HLS until CDN servers are working correctly
+      aac, rtsp:mp3, mobile_aac, mobile:mobile_mp3 } = urls;
 
     // why is this an array?
     aac = aac[0];
@@ -146,10 +148,10 @@ export default DS.JSONAPISerializer.extend({
 
       // only offer aac streams on mobile for now until HLS servers are working
       // also: the mp3 mount point does not have an extension
-      return [hls, aac, {url: mp3, mimeType: 'audio/mpeg'}];
+      return [aac, {url: mp3, mimeType: 'audio/mpeg'}];
     } else {
       // the mp3 mount point does not have an extension
-      return [hls, {url: mp3, mimeType: 'audio/mpeg'}, aac];
+      return [{url: mp3, mimeType: 'audio/mpeg'}, aac];
     }
   }
   // END-SNIPPET
