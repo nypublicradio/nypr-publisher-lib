@@ -1,5 +1,9 @@
 # nypr-publisher-lib Changelog
 
+## 0.5.10
+
+- [BUGFIX] Turn off HLS until stable
+
 ## 0.5.9
 - [ENHANCEMENT] Configure HLS as the preferred playback format
 
