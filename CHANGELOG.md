@@ -1,5 +1,9 @@
 # nypr-publisher-lib Changelog
 
+## 0.5.11
+
+- [CHORE] upgrade `nypr-audio-services`
+
 ## 0.5.10
 
 - [BUGFIX] Turn off HLS until stable
