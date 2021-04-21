@@ -100,16 +100,17 @@ export default DS.JSONAPISerializer.extend({
     }
     if (current_playlist_item) {
       attributes.current_playlist_item = camelizeKeys([ current_playlist_item ]);
+    } else {
+      attributes.current_playlist_item = null;
     }
+    attributes.future = [];
     if (future) {
-      attributes.future = [];
       future.forEach((p, i) => attributes.future[i] = camelizeKeys([ p ]));
     }
+    attributes.previous = [];
     if (previous) {
-      attributes.previous = [];
       previous.forEach((p, i) => attributes.previous[i] = camelizeKeys([ p ]));
     }
-
     json.attributes = attributes;
     json.relationships = relationships;
     return json;
