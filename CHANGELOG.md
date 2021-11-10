@@ -1,5 +1,9 @@
 # nypr-publisher-lib Changelog
 
+## 0.5.13
+
+- [ENHANCEMENT] add enhanced content field for flatpages
+
 ## 0.5.12
 
 - [CHORE] default what's on `current_playlist_item`, `previous`, and `future` to empty values
