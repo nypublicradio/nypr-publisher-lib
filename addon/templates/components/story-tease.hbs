@@ -89,6 +89,10 @@
         </div>
       {{/if}}
 
+      {{#if item.transcript}}
+        <a href="{{item.url}}?tab=transcript" class="story-tease__transcript-link">Read Transcript</a>
+      {{/if}}
+
       {{#if isStaff}}
         <a href="{{adminURL}}/{{item.editLink}}" class="story-tease__staff-btn" target="_blank" data-test-selector="admin-link">Edit this</a>
       {{/if}}
