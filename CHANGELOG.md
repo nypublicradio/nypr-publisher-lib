@@ -1,4 +1,7 @@
 # nypr-publisher-lib Changelog
+## 0.5.14
+
+- [ENHANCEMENT] add transcript links to story teases
 
 ## 0.5.13
 
