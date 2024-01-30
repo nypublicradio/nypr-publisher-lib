@@ -282,6 +282,12 @@
   @include btn--lightgreen;
 }
 
+.story-tease__transcript-link {
+  font-size: 14px;
+  border-bottom: 1px solid #f1f1f1;
+  margin-left: 16px;
+}
+
 .story-tease__floating-header {
   text-align: left;
   position: absolute;
