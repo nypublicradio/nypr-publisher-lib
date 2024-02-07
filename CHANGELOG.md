@@ -1,4 +1,8 @@
 # nypr-publisher-lib Changelog
+## 0.5.15
+
+- [ENHANCEMENT] Move transcript links to the right of staff only edit buttons
+
 ## 0.5.14
 
 - [ENHANCEMENT] add transcript links to story teases
