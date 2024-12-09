@@ -1,4 +1,8 @@
 # nypr-publisher-lib Changelog
+## 0.5.16
+
+- [BUGFIX] Update social-links component to use fontawesome styles instead of fa-icon svg component
+
 ## 0.5.15
 
 - [ENHANCEMENT] Move transcript links to the right of staff only edit buttons
