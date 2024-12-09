@@ -9,7 +9,9 @@
   @include btn--circle;
   @include btn--blacktext;
   margin-right: 7px;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   vertical-align: middle;
   
   > i {
